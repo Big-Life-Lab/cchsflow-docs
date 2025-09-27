@@ -1,0 +1,17 @@
+default:
+  osf:
+    token: !expr Sys.getenv("OSF_PAT")
+    project_id: !expr Sys.getenv("OSF_PROJECT_ID")
+    documentation_component_id: "jm8bx"
+
+development:
+  osf:
+    token: !expr Sys.getenv("OSF_PAT")
+    project_id: !expr Sys.getenv("OSF_PROJECT_ID")
+    documentation_component_id: "jm8bx"
+
+production:
+  osf:
+    token: !expr Sys.getenv("OSF_PAT")
+    project_id: !expr Sys.getenv("OSF_PROJECT_ID")
+    documentation_component_id: "jm8bx"

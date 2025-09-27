@@ -1,0 +1,18 @@
+# R files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Environment variables
+.env
+.env.local
+.Renviron
+
+# OSF credentials (security)
+osf_credentials.R
+
+# Temporary files
+*~
+.DS_Store
