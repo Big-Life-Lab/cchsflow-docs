@@ -1,0 +1,445 @@
+---
+title: "CCHS Documentation Catalog"
+subtitle: "Canadian Community Health Survey File Inventory"
+author: "CCHS Documentation Project"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: bootstrap
+    code-fold: true
+    embed-resources: true
+  pdf:
+    toc: true
+    toc-depth: 2
+    papersize: letter
+    geometry:
+      - top=1in
+      - left=1in
+      - right=1in
+      - bottom=1in
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(dplyr)
+library(gt)
+library(DT)
+library(ggplot2)
+library(htmltools)
+
+# Load CCHS structure and categorization functions
+source("R/load_cchs_structure.R")
+source("R/cchs_file_download.R")
+
+# Load data
+load_cchs_structure()
+categorized_files <- categorize_all_files()
+```
+
+# Executive Summary
+
+The Canadian Community Health Survey (CCHS) documentation spans **`r length(get_expected_years())` survey years** from 2001 to 2023, covering both early biannual cycles and modern annual surveys.
+
+```{r summary-stats}
+# Calculate summary statistics
+total_files <- sum(sapply(categorized_files, length))
+years_with_files <- length(categorized_files)
+english_files <- length(filter_files(categorized_files, languages = "english"))
+
+# File type counts
+all_files_flat <- unlist(categorized_files, recursive = FALSE)
+type_counts <- table(sapply(all_files_flat, function(x) x$file_type))
+lang_counts <- table(sapply(all_files_flat, function(x) x$language))
+```
+
+**Current Inventory:**
+
+- **Total Files**: `r total_files` files across `r years_with_files` survey years
+- **English Files**: `r english_files` files
+- **File Types**: `r length(type_counts)` different document types
+- **Survey Coverage**: `r min(get_expected_years())` - `r max(get_expected_years())`
+
+# Survey Overview
+
+## CCHS Survey Evolution
+
+The CCHS methodology evolved from biannual cycles to annual data collection:
+
+- **Early Cycles (2001-2005)**: Biannual surveys with cycle naming (1.1, 2.1, 3.1)
+- **Annual Surveys (2006-2023)**: Yearly data collection with standardized structure
+
+```{r survey-overview-table}
+# Create survey overview table
+expected_years <- get_expected_years()
+overview_data <- data.frame(
+  Year = expected_years,
+  Survey_Type = ifelse(expected_years %in% c(2001, 2003, 2005), "Cycle", "Annual"),
+  Cycle_Name = case_when(
+    expected_years == 2001 ~ "1.1",
+    expected_years == 2003 ~ "2.1", 
+    expected_years == 2005 ~ "3.1",
+    TRUE ~ "12-Month"
+  ),
+  Folder_Status = ifelse(as.character(expected_years) %in% names(categorized_files), "✓ Created", "Missing"),
+  File_Count = sapply(expected_years, function(y) {
+    if (as.character(y) %in% names(categorized_files)) {
+      length(categorized_files[[as.character(y)]])
+    } else {
+      0
+    }
+  })
+)
+
+overview_data %>%
+  gt() %>%
+  tab_header(
+    title = "CCHS Survey Years and Documentation Status"
+  ) %>%
+  cols_label(
+    Year = "Year",
+    Survey_Type = "Survey Type", 
+    Cycle_Name = "Cycle/Period",
+    Folder_Status = "Folder Status",
+    File_Count = "Files Found"
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(Year, File_Count)
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "lightgreen", alpha = 0.3),
+    locations = cells_body(
+      columns = Folder_Status,
+      rows = Folder_Status == "✓ Created"
+    )
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "lightcoral", alpha = 0.3),
+    locations = cells_body(
+      columns = Folder_Status, 
+      rows = Folder_Status == "Missing"
+    )
+  )
+```
+
+# Document Type Analysis
+
+## File Type Distribution
+
+```{r file-type-chart}
+# Create file type visualization
+type_df <- data.frame(
+  File_Type = names(type_counts),
+  Count = as.numeric(type_counts)
+) %>%
+  arrange(desc(Count))
+
+ggplot(type_df, aes(x = reorder(File_Type, Count), y = Count)) +
+  geom_col(fill = "steelblue", alpha = 0.7) +
+  coord_flip() +
+  labs(title = "Distribution of File Types",
+       x = "Document Type",
+       y = "Number of Files") +
+  theme_minimal()
+```
+
+```{r file-type-table}
+type_df %>%
+  gt() %>%
+  tab_header(
+    title = "File Types Available"
+  ) %>%
+  cols_label(
+    File_Type = "Document Type",
+    Count = "File Count"
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = Count
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(
+      columns = File_Type
+    )
+  )
+```
+
+## Document Availability Matrix
+
+```{r availability-matrix}
+# Create availability matrix for key document types
+key_types <- c("data_dictionary", "questionnaire", "user_guide", "derived_variables", "cv_tables")
+
+# Get years that have files
+years_with_data <- names(categorized_files)
+
+# Create matrix
+availability_matrix <- matrix(FALSE, 
+                             nrow = length(years_with_data), 
+                             ncol = length(key_types),
+                             dimnames = list(years_with_data, key_types))
+
+for (year in years_with_data) {
+  year_files <- categorized_files[[year]]
+  year_types <- sapply(year_files, function(x) x$file_type)
+  
+  for (type in key_types) {
+    if (type %in% year_types) {
+      availability_matrix[year, type] <- TRUE
+    }
+  }
+}
+
+# Convert to data frame for display
+availability_df <- as.data.frame(availability_matrix)
+availability_df$Year <- rownames(availability_df)
+availability_df <- availability_df[, c("Year", key_types)]
+
+# Convert TRUE/FALSE to checkmarks/X
+display_matrix <- availability_df
+for (col in key_types) {
+  display_matrix[[col]] <- ifelse(display_matrix[[col]], "✓", "✗")
+}
+
+display_matrix %>%
+  gt() %>%
+  tab_header(
+    title = "Document Availability by Year"
+  ) %>%
+  cols_label(
+    Year = "Year",
+    data_dictionary = "Data Dictionary",
+    questionnaire = "Questionnaire", 
+    user_guide = "User Guide",
+    derived_variables = "Derived Variables",
+    cv_tables = "CV Tables"
+  ) %>%
+  cols_align(
+    align = "center",
+    columns = c(data_dictionary, questionnaire, user_guide, derived_variables, cv_tables)
+  ) %>%
+  tab_style(
+    style = cell_fill(color = "lightgreen", alpha = 0.3),
+    locations = cells_body(
+      columns = everything(),
+      rows = data_dictionary == "✓" | questionnaire == "✓" | user_guide == "✓" | derived_variables == "✓" | cv_tables == "✓"
+    )
+  )
+```
+
+# Detailed File Inventory
+
+## English Language Documents
+
+```{r english-files-table}
+# Get all English files with details
+english_files_list <- filter_files(categorized_files, languages = "english")
+
+if (length(english_files_list) > 0) {
+  english_df <- data.frame(
+    Year = sapply(english_files_list, function(x) x$survey_year),
+    File_Type = sapply(english_files_list, function(x) x$file_type),
+    Filename = sapply(english_files_list, function(x) x$filename),
+    Path = sapply(english_files_list, function(x) x$path),
+    stringsAsFactors = FALSE
+  ) %>%
+    arrange(Year, File_Type, Filename)
+  
+  datatable(english_df, 
+            caption = "Complete English File Inventory",
+            options = list(pageLength = 15, scrollX = TRUE),
+            filter = 'top')
+} else {
+  cat("No English language files found.")
+}
+```
+
+## Files by Survey Year
+
+```{r year-table-function}
+# Function to create GT table for a specific year
+create_year_table <- function(year) {
+  if (year %in% names(categorized_files)) {
+    year_files <- categorized_files[[year]]
+    
+    if (length(year_files) > 0) {
+      year_df <- data.frame(
+        Filename = sapply(year_files, function(x) x$filename),
+        Type = sapply(year_files, function(x) x$file_type),
+        Language = sapply(year_files, function(x) x$language),
+        Extension = sapply(year_files, function(x) x$extension),
+        Path = sapply(year_files, function(x) x$path),
+        stringsAsFactors = FALSE
+      )
+      
+      year_df %>%
+        gt() %>%
+        tab_header(
+          title = paste("Files for", year)
+        ) %>%
+        cols_label(
+          Filename = "Filename",
+          Type = "Document Type",
+          Language = "Language", 
+          Extension = "Extension",
+          Path = "Full Path"
+        ) %>%
+        tab_style(
+          style = cell_text(size = "small"),
+          locations = cells_body(columns = Path)
+        )
+    } else {
+      # Return empty GT table with message
+      data.frame(Message = paste("No files found for", year)) %>%
+        gt() %>%
+        tab_header(title = paste("Files for", year))
+    }
+  } else {
+    # Return message for missing year
+    data.frame(Message = paste("Year", year, "not found in data")) %>%
+      gt() %>%
+      tab_header(title = paste("Files for", year))
+  }
+}
+```
+
+### Year 2022
+
+```{r year-2022-table}
+create_year_table("2022")
+```
+
+### Year 2023
+
+```{r year-2023-table}
+create_year_table("2023")
+```
+
+# Download Planning
+
+## Priority Downloads for RAG System
+
+Based on the file inventory, the following files are recommended for initial RAG system ingestion:
+
+```{r download-recommendations}
+# Identify key files for RAG system
+rag_priority <- filter_files(categorized_files, 
+                            file_types = c("data_dictionary", "questionnaire", "user_guide"),
+                            languages = "english")
+
+if (length(rag_priority) > 0) {
+  rag_df <- data.frame(
+    Priority = "High",
+    Year = sapply(rag_priority, function(x) x$survey_year),
+    Type = sapply(rag_priority, function(x) x$file_type),
+    Filename = sapply(rag_priority, function(x) x$filename),
+    stringsAsFactors = FALSE
+  ) %>%
+    arrange(Year, Type)
+  
+  rag_df %>%
+    gt() %>%
+    tab_header(
+      title = "Recommended Files for RAG System"
+    ) %>%
+    cols_label(
+      Priority = "Priority",
+      Year = "Year", 
+      Type = "Document Type",
+      Filename = "Filename"
+    ) %>%
+    tab_style(
+      style = cell_fill(color = "gold", alpha = 0.3),
+      locations = cells_body(
+        columns = Priority,
+        rows = Priority == "High"
+      )
+    )
+  
+  cat("\n**Download Commands:**\n\n")
+  cat("```r\n")
+  cat("# Download all data dictionaries\n")
+  cat("download_data_dictionaries()\n\n")
+  cat("# Download all questionnaires\n") 
+  cat("download_questionnaires()\n\n")
+  cat("# Download user guides\n")
+  cat("download_files_by_criteria(file_types = 'user_guide', languages = 'english')\n")
+  cat("```\n")
+}
+```
+
+## Coverage Gaps
+
+```{r coverage-gaps}
+# Identify years with missing documentation
+all_expected <- get_expected_years()
+years_with_files <- as.numeric(names(categorized_files))
+missing_years <- setdiff(all_expected, years_with_files)
+
+if (length(missing_years) > 0) {
+  cat("**Years with missing documentation:**", paste(missing_years, collapse = ", "), "\n\n")
+  cat("These years have folder structures created but no files uploaded yet.\n\n")
+} else {
+  cat("✓ All expected years have documentation files.\n\n")
+}
+
+# Identify document types that are inconsistently available
+cat("**Document Type Coverage:**\n\n")
+for (type in key_types) {
+  type_years <- c()
+  for (year in names(categorized_files)) {
+    year_types <- sapply(categorized_files[[year]], function(x) x$file_type)
+    if (type %in% year_types) {
+      type_years <- c(type_years, year)
+    }
+  }
+  
+  coverage_pct <- round(length(type_years) / length(names(categorized_files)) * 100, 1)
+  cat("- **", gsub("_", " ", stringr::str_to_title(type)), "**: ", 
+      length(type_years), " of ", length(names(categorized_files)), 
+      " years (", coverage_pct, "%)\n", sep = "")
+}
+```
+
+# Technical Details
+
+## OSF Project Information
+
+- **Project ID**: `r cchs_structure_data$metadata$osf_project_id`
+- **Documentation Component**: `r cchs_structure_data$metadata$osf_documentation_component_id`
+- **Last Updated**: `r cchs_structure_data$metadata$files_last_scanned`
+
+## Folder Structure
+
+The standardized CCHS folder structure follows this pattern:
+
+```
+YEAR/
+├── [CYCLE.1 | 12-Month]/
+    └── Master/
+        ├── Docs/          # PDF documentation
+        └── Layout/        # SAS/SPSS syntax files
+```
+
+## Update Instructions
+
+To regenerate this catalog with updated data:
+
+```r
+# Update file inventory from OSF
+source("R/enhance_structure_with_files.R")
+enhanced_data <- enhance_structure_with_files()
+
+# Regenerate catalog
+quarto::quarto_render("cchs_catalog.qmd")
+```
+
+---
+
+*This catalog was generated automatically from OSF.io data on `r Sys.Date()`.*
