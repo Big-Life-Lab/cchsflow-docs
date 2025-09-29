@@ -1,0 +1,410 @@
+id: https://github.com/Big-Life-Lab/cchs-documentation/schema/v2
+name: cchs-documentation-schema-v2
+title: CCHS Documentation Metadata Schema v2
+description: >-
+  LinkML schema for Canadian Community Health Survey (CCHS) documentation
+  metadata with enhanced UID system, namespace support, and ISO compliance
+version: "2.0.0"
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cchs: https://github.com/Big-Life-Lab/cchs-documentation/
+  schema: http://schema.org/
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  
+default_prefix: cchs
+default_range: string
+
+imports:
+  - linkml:types
+
+#==================================
+# Classes
+#==================================
+
+classes:
+
+  CCHSFile:
+    description: >-
+      A single CCHS documentation file with unique identifier and metadata
+    slots:
+      - cchs_uid
+      - catalog_id
+      - year
+      - temporal_type
+      - doc_type
+      - category
+      - language
+      - version
+      - sequence
+      - filename
+      - canonical_filename
+      - local_path
+      - osf_path
+      - file_extension
+      - file_size
+      - checksum
+      - created_date
+      - last_modified
+      - tags
+    slot_usage:
+      cchs_uid:
+        identifier: true
+        required: true
+      catalog_id:
+        required: true
+      year:
+        required: true
+      temporal_type:
+        required: true
+      doc_type:
+        required: true
+      category:
+        required: true
+      language:
+        required: true
+      version:
+        required: true
+      sequence:
+        required: true
+      filename:
+        required: true
+      canonical_filename:
+        required: true
+
+  CCHSCatalog:
+    description: >-
+      Complete catalog of CCHS files with metadata and namespace support
+    slots:
+      - catalog_metadata
+      - files
+
+  CatalogMetadata:
+    description: >-
+      Enhanced metadata about the catalog with namespaces and documentation
+    slots:
+      - version
+      - created_date
+      - last_updated
+      - total_files
+      - years_covered
+      - uid_system_version
+      - data_sources
+      - namespaces
+      - field_descriptions
+      - generation_formulas
+
+  NamespaceConfig:
+    description: >-
+      Namespace definitions for different path types
+    slots:
+      - local
+      - osf
+      - github
+
+#==================================
+# Slots (Properties)
+#==================================
+
+slots:
+
+  # Enhanced primary identifiers
+  cchs_uid:
+    description: >-
+      Unique identifier with temporal awareness including file extension:
+      cchs-{year}{temporal}-{doc_type}-{category}-{language}-{extension}-{sequence:02d}
+    pattern: "^cchs-[0-9]{4}[sdm]-[ms]-[a-z]{2}-[ef]-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log)-[0-9]{2}$"
+    examples:
+      - cchs-2009d-m-qu-e-pdf-01
+      - cchs-2001s-m-ug-f-doc-01
+      - cchs-2015s-s-dd-e-docx-02
+
+  catalog_id:
+    description: 6-character alphanumeric unique identifier for referencing
+    pattern: "^[0-9A-Z]{6}$"
+    examples:
+      - A1B2C3
+      - XYZ123
+      - M5PAL5
+
+  # Core file components  
+  year:
+    description: Survey year as string
+    pattern: "^[0-9]{4}$"
+    examples:
+      - "2001"
+      - "2009"
+      - "2023"
+
+  temporal_type:
+    description: Temporal scope of survey
+    range: TemporalTypeEnum
+
+  doc_type:
+    description: Document type classification
+    range: DocTypeEnum
+
+  category:
+    description: Full document category name
+    range: DocumentCategoryEnum
+
+  language:
+    description: ISO 639-1 language code
+    range: LanguageCodeEnum
+
+  version:
+    description: Document version in v1, v2, v3 format
+    pattern: "^v[0-9]+$"
+    examples:
+      - v1
+      - v2
+      - v10
+
+  sequence:
+    description: Integer sequence for multiple versions
+    range: integer
+    minimum_value: 1
+
+  # File identification
+  filename:
+    description: Original filename from source
+    required: true
+
+  canonical_filename:
+    description: Standardized filename following Jenny Bryan conventions
+    pattern: "^cchs_[0-9]{4}[sdm]_[a-z-]+_[ms]_[ef][nr]_[0-9]+_v[0-9]+\\.[a-z]+$"
+    examples:
+      - cchs_2001s_questionnaire_m_en_1_v1.doc
+      - cchs_2009d_user-guide_m_fr_1_v2.pdf
+
+  local_path:
+    description: Relative path in local repository (namespace prefix removed)
+    examples:
+      - "2001/1.1/Master/Docs/CCHS 1.1 household questionnaire_e.doc"
+      - "2009/12-Month/Master/Layout/hs_fmt.sas"
+
+  osf_path:
+    description: Relative OSF repository path
+    examples:
+      - "2001/1.1/Master/Docs/CCHS 1.1 household questionnaire_e.doc"
+
+  file_extension:
+    description: File extension type
+    range: FileExtensionEnum
+
+  # File metadata
+  file_size:
+    description: File size in bytes
+    range: integer
+    minimum_value: 0
+
+  checksum:
+    description: SHA-256 file checksum for integrity
+    pattern: "^[a-f0-9]{64}$"
+
+  created_date:
+    description: Catalog entry creation date (ISO 8601)
+    range: date
+
+  last_modified:
+    description: Last modification date (ISO 8601)
+    range: date
+
+  tags:
+    description: Additional metadata tags (derivable tags removed)
+    multivalued: true
+
+  # Catalog-level slots
+  catalog_metadata:
+    range: CatalogMetadata
+
+  files:
+    range: CCHSFile
+    multivalued: true
+
+  # Catalog metadata slots
+  catalog_version:
+    description: Catalog version (v1, v2, etc.)
+    pattern: "^v[0-9]+$"
+
+  last_updated:
+    description: Last catalog update date
+    range: date
+
+  total_files:
+    description: Total number of files in catalog
+    range: integer
+    minimum_value: 0
+
+  years_covered:
+    description: Range of years covered
+    pattern: "^[0-9]{4}-[0-9]{4}$"
+    examples:
+      - "2001-2023"
+
+  uid_system_version:
+    description: Version of UID system used
+
+  data_sources:
+    description: Data sources for catalog
+    multivalued: true
+
+  # Namespace configuration
+  namespaces:
+    description: Namespace definitions for path resolution
+    range: NamespaceConfig
+
+  local:
+    description: Local filesystem namespace
+    examples:
+      - "cchs-osf-docs/"
+
+  osf:
+    description: OSF repository namespace
+    examples:
+      - "https://osf.io/project-id/"
+
+  github:
+    description: GitHub repository namespace
+    examples:
+      - "https://github.com/user/repo/blob/main/"
+
+  # Documentation
+  field_descriptions:
+    description: Field descriptions for documentation
+
+  generation_formulas:
+    description: Generation formulas for computed fields
+
+#==================================
+# Enumerations
+#==================================
+
+enums:
+
+  TemporalTypeEnum:
+    description: Temporal scope classification
+    permissible_values:
+      single:
+        description: Single year survey
+      dual:
+        description: Two-year cycle survey
+      multi:
+        description: Multi-year survey
+
+  DocTypeEnum:
+    description: Document type classification
+    permissible_values:
+      master:
+        description: Master files
+      share:
+        description: Share files
+
+  DocumentCategoryEnum:
+    description: Enhanced document category classification
+    permissible_values:
+      questionnaire:
+        description: Survey instruments and question sets
+      user-guide:
+        description: Survey methodology and usage guidance
+      data-dictionary:
+        description: Variable definitions and coding schemes
+      record-layout:
+        description: Record layout documentation
+      derived-variables:
+        description: Calculated variables documentation
+      content-overview:
+        description: Content overview documentation
+      optional-content:
+        description: Optional content documentation
+      interpreting-estimates:
+        description: Guidance on interpreting estimates
+      household-weights:
+        description: Household weighting documentation
+      cv-tables:
+        description: Coefficient of variation tables
+      alpha-index:
+        description: Alphabetical index
+      topical-index:
+        description: Topical index
+      income-imputation:
+        description: Income imputation documentation
+      errata:
+        description: Error corrections and updates
+      format-file:
+        description: SAS format files
+      frequency-file:
+        description: Frequency files
+      label-file-english:
+        description: English label files
+      label-file-french:
+        description: French label files
+      print-format-english:
+        description: English print format files
+      print-format-french:
+        description: French print format files
+      weights-file:
+        description: Weights files
+      read-master:
+        description: Read master files
+      read-share:
+        description: Read share files
+      syntax-sas:
+        description: SAS syntax files
+      syntax-spss:
+        description: SPSS syntax files
+      syntax-stata:
+        description: Stata syntax files
+      missing-values:
+        description: Missing values files
+      value-labels-english:
+        description: English value labels
+      value-labels-french:
+        description: French value labels
+      variable-labels-english:
+        description: English variable labels
+      variable-labels-french:
+        description: French variable labels
+      input-format:
+        description: Input format files
+      readme:
+        description: README files
+      other:
+        description: Other documentation
+
+  LanguageCodeEnum:
+    description: ISO 639-1 language codes
+    permissible_values:
+      EN:
+        description: English
+      FR:
+        description: French
+
+  FileExtensionEnum:
+    description: File extension types
+    permissible_values:
+      pdf:
+        description: PDF document
+      doc:
+        description: Word document (old format)
+      docx:
+        description: Word document (new format)
+      sas:
+        description: SAS syntax file
+      sps:
+        description: SPSS syntax file
+      do:
+        description: Stata do-file
+      dct:
+        description: Stata dictionary file
+      txt:
+        description: Text file
+      csv:
+        description: CSV data file
+      xlsx:
+        description: Excel file
+      mdb:
+        description: Microsoft Access database
+      log:
+        description: Log file
