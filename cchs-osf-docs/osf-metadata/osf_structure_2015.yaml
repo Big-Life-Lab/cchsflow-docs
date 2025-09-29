@@ -1,0 +1,443 @@
+created: 1.759086e+09
+year: 2015.0
+source: OSF.io API (recursive)
+purpose: Complete OSF structure for year 2015
+base_directory: cchs-osf-docs
+folder_id: 68d73500b07f2942dd6040d1
+total_items: 87.0
+structure:
+- id: 68d73503b804253fdfb8f67b
+  name: 12-Month
+  path: 2015/12-Month
+  kind: folder
+  children:
+  - id: 68d735063e03f18df3d4e92c
+    name: Master
+    path: 2015/12-Month/Master
+    kind: folder
+    children:
+    - id: 68d7350aeeb548900d1b9e6f
+      name: Docs
+      path: 2015/12-Month/Master/Docs
+      kind: folder
+      children:
+      - id: 68d7f9ca826d4666ed432cd9
+        name: CCHS_2015_Content_Overview.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_Content_Overview.pdf
+        kind: file
+        size: 346875
+      - id: 68d7f9cbf79c002ac3432cd0
+        name: CCHS_2015_CV_Tables_Share.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_CV_Tables_Share.pdf
+        kind: file
+        size: 659242
+      - id: 68d7f9cf8813619bb2d4eaf0
+        name: CCHS_2015_Derived_variables.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_Derived_variables.pdf
+        kind: file
+        size: 1323378
+      - id: 68d7f9d0df290276a51ba127
+        name: CCHS_2015_DataDictionary_Freqs.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_DataDictionary_Freqs.pdf
+        kind: file
+        size: 4475675
+      - id: 68d7f9d3d2f53d396d60404d
+        name: CCHS_2015_Household_Weights.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_Household_Weights.pdf
+        kind: file
+        size: 130393
+      - id: 68d7f9d3d5a5fd6d3a60423c
+        name: CCHS_2015_Optional_content.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_Optional_content.pdf
+        kind: file
+        size: 68261
+      - id: 68d7f9d58009605db4d4e9f3
+        name: CCHS_2015_Record_Layout.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_Record_Layout.pdf
+        kind: file
+        size: 476752
+      - id: 68d7f9d5c7535e4c7b1b9f4a
+        name: CCHS_2015_Questionnaire.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_Questionnaire.pdf
+        kind: file
+        size: 2845787
+      - id: 68d7f9d7f79c002ac3432cd3
+        name: CCHS_Errata 2015-2018.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_Errata 2015-2018.pdf
+        kind: file
+        size: 1038094
+      - id: 68d7f9d9c7535e4c7b1b9f4c
+        name: CCHS_2015_User_Guide.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2015_User_Guide.pdf
+        kind: file
+        size: 1088878
+      - id: 68d7f9dbf79c002ac3432cd5
+        name: ESCC_2000-2014_Errata.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2000-2014_Errata.pdf
+        kind: file
+        size: 1306068
+      - id: 68d7f9dcc7535e4c7b1b9f4e
+        name: ESCC_2015_Aperçu_Contenu.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Aperçu_Contenu.pdf
+        kind: file
+        size: 348948
+      - id: 68d7f9def33fc3382db8f68f
+        name: ESCC_2015_Cliché_Enregistrement.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Cliché_Enregistrement.pdf
+        kind: file
+        size: 492208
+      - id: 68d7f9e0c7535e4c7b1b9f50
+        name: ESCC_2015_Contenu_Optionnel.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Contenu_Optionnel.pdf
+        kind: file
+        size: 18986
+      - id: 68d7f9e2171c2a636c432c0b
+        name: ESCC_2015_DictionnaireDonnées_Fréq.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_DictionnaireDonnées_Fréq.pdf
+        kind: file
+        size: 4546801
+      - id: 68d7f9e3171c2a636c432c0d
+        name: ESCC_2015_Guide_Utilisateur.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Guide_Utilisateur.pdf
+        kind: file
+        size: 1514698
+      - id: 68d7f9e5a023599f02b8f978
+        name: ESCC_2015_Poids_Ménages.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Poids_Ménages.pdf
+        kind: file
+        size: 130295
+      - id: 68d7f9e6d5a5fd6d3a604240
+        name: ESCC_2015_Questionnaire.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Questionnaire.pdf
+        kind: file
+        size: 3491753
+      - id: 68d7f9e7f79c002ac3432cd9
+        name: ESCC_2015_Tableaux_CV_Partagé.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Tableaux_CV_Partagé.pdf
+        kind: file
+        size: 683384
+      - id: 68d7f9e8d2f53d396d604054
+        name: ESCC_2015_Variables_dérivées.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_2015_Variables_dérivées.pdf
+        kind: file
+        size: 1461011
+      - id: 68d7f9e9d2f53d396d604056
+        name: ESCC_Errata 2015-2018.pdf
+        path: 2015/12-Month/Master/Docs/ESCC_Errata 2015-2018.pdf
+        kind: file
+        size: 860004
+      - id: 68d7f9eaf33fc3382db8f695
+        name: 2015 CCHS Redesign Summary.pdf
+        path: 2015/12-Month/Master/Docs/2015 CCHS Redesign Summary.pdf
+        kind: file
+        size: 239791
+      - id: 68d7f9eb6bd97c48fdb8f74c
+        name: 2015 ESCC Résumé du Remaniement.pdf
+        path: 2015/12-Month/Master/Docs/2015 ESCC Résumé du Remaniement.pdf
+        kind: file
+        size: 244102
+      - id: 68d7f9ed2bff8ab47860426a
+        name: CCHS_2000-2014_Errata.pdf
+        path: 2015/12-Month/Master/Docs/CCHS_2000-2014_Errata.pdf
+        kind: file
+        size: 1261029
+    - id: 68d7350e96e64a5b37b8f6f8
+      name: Layout
+      path: 2015/12-Month/Master/Layout
+      kind: folder
+      children:
+      - id: 68d7fac7826d4666ed432cf2
+        name: HS_fmt.SAS
+        path: 2015/12-Month/Master/Layout/HS_fmt.SAS
+        kind: file
+        size: 81902
+      - id: 68d7fad76fe82b56061ba023
+        name: HS_HHWT_i.sas
+        path: 2015/12-Month/Master/Layout/HS_HHWT_i.sas
+        kind: file
+        size: 90
+      - id: 68d7fad8171c2a636c432c33
+        name: HS_frq.SAS
+        path: 2015/12-Month/Master/Layout/HS_frq.SAS
+        kind: file
+        size: 145058
+      - id: 68d7fada171c2a636c432c35
+        name: HS_HHWT_i.sps
+        path: 2015/12-Month/Master/Layout/HS_HHWT_i.sps
+        kind: file
+        size: 91
+      - id: 68d7fada6bd97c48fdb8f772
+        name: HS_i.SAS
+        path: 2015/12-Month/Master/Layout/HS_i.SAS
+        kind: file
+        size: 145058
+      - id: 68d7fadcd2f53d396d604075
+        name: HS_i.sps
+        path: 2015/12-Month/Master/Layout/HS_i.sps
+        kind: file
+        size: 93038
+      - id: 68d7faddb0a6dfba5cb8f900
+        name: HS_lbe.SAS
+        path: 2015/12-Month/Master/Layout/HS_lbe.SAS
+        kind: file
+        size: 114562
+      - id: 68d7fadf5cb572d62f60420e
+        name: HS_lbf.SAS
+        path: 2015/12-Month/Master/Layout/HS_lbf.SAS
+        kind: file
+        size: 122789
+      - id: 68d7fadff79c002ac3432cf4
+        name: HS_miss.sps
+        path: 2015/12-Month/Master/Layout/HS_miss.sps
+        kind: file
+        size: 86642
+      - id: 68d7fae1f79c002ac3432cf6
+        name: HS_pfe.SAS
+        path: 2015/12-Month/Master/Layout/HS_pfe.SAS
+        kind: file
+        size: 183931
+      - id: 68d7fae2a0aab1936460421b
+        name: HS_pff.SAS
+        path: 2015/12-Month/Master/Layout/HS_pff.SAS
+        kind: file
+        size: 192325
+      - id: 68d7fae3a023599f02b8f97f
+        name: HS_vale.sps
+        path: 2015/12-Month/Master/Layout/HS_vale.sps
+        kind: file
+        size: 188358
+      - id: 68d7fae4171c2a636c432c37
+        name: HS_valf.sps
+        path: 2015/12-Month/Master/Layout/HS_valf.sps
+        kind: file
+        size: 196752
+      - id: 68d7fae6c6b624768d1ba168
+        name: HS_vare.sps
+        path: 2015/12-Month/Master/Layout/HS_vare.sps
+        kind: file
+        size: 114572
+      - id: 68d7fae76fe82b56061ba027
+        name: HS_varf.sps
+        path: 2015/12-Month/Master/Layout/HS_varf.sps
+        kind: file
+        size: 122799
+      - id: 68d7fae785137c5eab1ba0f3
+        name: readmstr.sas
+        path: 2015/12-Month/Master/Layout/readmstr.sas
+        kind: file
+        size: 1468
+      - id: 68d7fae97925b364ec432c93
+        name: readmstr.sps
+        path: 2015/12-Month/Master/Layout/readmstr.sps
+        kind: file
+        size: 1518
+  - id: 68d8341030481b0313d4e9cc
+    name: Share
+    path: 2015/12-Month/Share
+    kind: folder
+    children:
+    - id: 68d83422687dfc0a10432ca3
+      name: Docs
+      path: 2015/12-Month/Share/Docs
+      kind: folder
+      children:
+      - id: 68d8346a0828d1a603b8f8d2
+        name: CCHS_2015_Content_Overview.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_Content_Overview.pdf
+        kind: file
+        size: 346875
+      - id: 68d8346ae0f31f61051b9ec7
+        name: CCHS_2000-2014_Errata.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2000-2014_Errata.pdf
+        kind: file
+        size: 1261029
+      - id: 68d8346c92b1b9849460431f
+        name: CCHS_2015_CV_Tables_Share.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_CV_Tables_Share.pdf
+        kind: file
+        size: 659242
+      - id: 68d8346de0f31f61051b9ec9
+        name: CCHS_2015_DataDictionary_Freqs.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_DataDictionary_Freqs.pdf
+        kind: file
+        size: 4474457
+      - id: 68d8347075f2c26bc4d4ea69
+        name: CCHS_2015_Derived_variables.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_Derived_variables.pdf
+        kind: file
+        size: 1305791
+      - id: 68d8347061d20decaab8f898
+        name: CCHS_2015_Household_Weights.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_Household_Weights.pdf
+        kind: file
+        size: 130389
+      - id: 68d83472dbee1678a3432c42
+        name: CCHS_2015_Optional_content.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_Optional_content.pdf
+        kind: file
+        size: 68261
+      - id: 68d83473d8db420044b8f96c
+        name: CCHS_2015_Questionnaire.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_Questionnaire.pdf
+        kind: file
+        size: 2845787
+      - id: 68d834754fe56a8c1560415f
+        name: CCHS_2015_Record_Layout.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_Record_Layout.pdf
+        kind: file
+        size: 476253
+      - id: 68d83476d8db420044b8f970
+        name: CCHS_2015_User_Guide.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_2015_User_Guide.pdf
+        kind: file
+        size: 1088878
+      - id: 68d834776ffe34d49f6042f9
+        name: CCHS_Errata 2015-2018.pdf
+        path: 2015/12-Month/Share/Docs/CCHS_Errata 2015-2018.pdf
+        kind: file
+        size: 1038094
+      - id: 68d8347999ed20093bd4e9cb
+        name: ESCC_2000-2014_Errata.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2000-2014_Errata.pdf
+        kind: file
+        size: 1306068
+      - id: 68d8347a30481b0313d4e9e5
+        name: ESCC_2015_Aperçu_Contenu.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Aperçu_Contenu.pdf
+        kind: file
+        size: 348948
+      - id: 68d8347b12a11f8f9e432db8
+        name: ESCC_2015_Cliché_Enregistrement.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Cliché_Enregistrement.pdf
+        kind: file
+        size: 491595
+      - id: 68d8347d8f604eb251d4eb40
+        name: ESCC_2015_Contenu_Optionnel.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Contenu_Optionnel.pdf
+        kind: file
+        size: 18986
+      - id: 68d8347e6ffe34d49f6042fe
+        name: ESCC_2015_DictionnaireDonnées_Fréq.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_DictionnaireDonnées_Fréq.pdf
+        kind: file
+        size: 4548653
+      - id: 68d8347fd8db420044b8f972
+        name: ESCC_2015_Guide_Utilisateur.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Guide_Utilisateur.pdf
+        kind: file
+        size: 1514698
+      - id: 68d83480d8db420044b8f974
+        name: ESCC_2015_Poids_Ménages.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Poids_Ménages.pdf
+        kind: file
+        size: 130292
+      - id: 68d8348175f2c26bc4d4ea6d
+        name: ESCC_2015_Questionnaire.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Questionnaire.pdf
+        kind: file
+        size: 3491753
+      - id: 68d83482687dfc0a10432cb4
+        name: ESCC_2015_Tableaux_CV_Partagé.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_Tableaux_CV_Partagé.pdf
+        kind: file
+        size: 683384
+      - id: 68d834846ffe34d49f604302
+        name: ESCC_2015_variables_derivées.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_2015_variables_derivées.pdf
+        kind: file
+        size: 1458717
+      - id: 68d83485e0f31f61051b9ecf
+        name: ESCC_Errata 2015-2018.pdf
+        path: 2015/12-Month/Share/Docs/ESCC_Errata 2015-2018.pdf
+        kind: file
+        size: 860004
+    - id: 68d8343c687dfc0a10432ca7
+      name: Layout
+      path: 2015/12-Month/Share/Layout
+      kind: folder
+      children:
+      - id: 68d834e730481b0313d4e9fd
+        name: HS_lbe.SAS
+        path: 2015/12-Month/Share/Layout/HS_lbe.SAS
+        kind: file
+        size: 114483
+      - id: 68d834e7b9e7abfe591ba281
+        name: HS_i.sps
+        path: 2015/12-Month/Share/Layout/HS_i.sps
+        kind: file
+        size: 92916
+      - id: 68d834e9e4b28a67921ba164
+        name: HS_lbf.SAS
+        path: 2015/12-Month/Share/Layout/HS_lbf.SAS
+        kind: file
+        size: 122700
+      - id: 68d834e9e4b28a67921ba166
+        name: HS_miss.sps
+        path: 2015/12-Month/Share/Layout/HS_miss.sps
+        kind: file
+        size: 86577
+      - id: 68d834ebe4b28a67921ba168
+        name: HS_pfe.SAS
+        path: 2015/12-Month/Share/Layout/HS_pfe.SAS
+        kind: file
+        size: 183931
+      - id: 68d834ec687dfc0a10432cc5
+        name: HS_pff.SAS
+        path: 2015/12-Month/Share/Layout/HS_pff.SAS
+        kind: file
+        size: 192325
+      - id: 68d834ee30481b0313d4e9ff
+        name: HS_vale.sps
+        path: 2015/12-Month/Share/Layout/HS_vale.sps
+        kind: file
+        size: 188358
+      - id: 68d834efdbee1678a3432c5d
+        name: HS_valf.sps
+        path: 2015/12-Month/Share/Layout/HS_valf.sps
+        kind: file
+        size: 196752
+      - id: 68d834f0e4b28a67921ba16a
+        name: HS_vare.sps
+        path: 2015/12-Month/Share/Layout/HS_vare.sps
+        kind: file
+        size: 114493
+      - id: 68d834f292b1b9849460432d
+        name: HS_varf.sps
+        path: 2015/12-Month/Share/Layout/HS_varf.sps
+        kind: file
+        size: 122710
+      - id: 68d834f212a11f8f9e432dbc
+        name: readshr.sas
+        path: 2015/12-Month/Share/Layout/readshr.sas
+        kind: file
+        size: 1464
+      - id: 68d834f4d8db420044b8f990
+        name: readshr.sps
+        path: 2015/12-Month/Share/Layout/readshr.sps
+        kind: file
+        size: 1534
+      - id: 68d834f58f604eb251d4eb46
+        name: HS_fmt.SAS
+        path: 2015/12-Month/Share/Layout/HS_fmt.SAS
+        kind: file
+        size: 81902
+      - id: 68d834f75999d949dfb8fa35
+        name: HS_frq.SAS
+        path: 2015/12-Month/Share/Layout/HS_frq.SAS
+        kind: file
+        size: 144886
+      - id: 68d834f8dbee1678a3432c60
+        name: HS_HHWT_i.sas
+        path: 2015/12-Month/Share/Layout/HS_HHWT_i.sas
+        kind: file
+        size: 90
+      - id: 68d834fa92b1b98494604330
+        name: HS_HHWT_i.sps
+        path: 2015/12-Month/Share/Layout/HS_HHWT_i.sps
+        kind: file
+        size: 94
+      - id: 68d834fb081a4f1ace60423a
+        name: HS_i.SAS
+        path: 2015/12-Month/Share/Layout/HS_i.SAS
+        kind: file
+        size: 144886

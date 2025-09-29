@@ -1,0 +1,47 @@
+created: 1.7590848e+09
+source: OSF.io API (working system)
+purpose: Simple OSF year folder structure for CCHS documentation
+base_directory: cchs-osf-docs
+total_folders: 19
+note: OSF structure is simply year folders - no subfolders at top level
+year_folders:
+  year:
+  - '2023'
+  - '2022'
+  - '2021'
+  - '2020'
+  - '2001'
+  - '2003'
+  - '2009'
+  - '2010'
+  - '2011'
+  - '2012'
+  - '2013'
+  - '2014'
+  - '2015'
+  - '2016'
+  - '2017'
+  - '2018'
+  - '2019'
+  - '2007'
+  - '2005'
+  folder_id:
+  - 68d721ba4714c13124432bc5
+  - 68d724945d66d3ed9ed4e948
+  - 68d725bf6853e231f81b9eac
+  - 68d72e47c62d1ee19ed4e81c
+  - 68d732009b7a52efd31b9eb0
+  - 68d732103063077b656041ea
+  - 68d732c59b7a52efd31b9ed7
+  - 68d732dd96e64a5b37b8f692
+  - 68d732ec3f29454febb8f682
+  - 68d732fb592a4939106040fc
+  - 68d7330a0e3de91745432ce4
+  - 68d7331a90d26177ed60420d
+  - 68d73500b07f2942dd6040d1
+  - 68d735113e03f18df3d4e92e
+  - 68d7351f49dd359efd432cf1
+  - 68d73530fa2302b84f1b9f84
+  - 68d7353e07d65e2111b8f8ce
+  - 68d7359496e64a5b37b8f70b
+  - 68d82dd8030a8d70a71ba015

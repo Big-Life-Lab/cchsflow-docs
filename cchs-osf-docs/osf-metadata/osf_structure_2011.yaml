@@ -1,0 +1,373 @@
+created: 1.759086e+09
+year: 2011.0
+source: OSF.io API (recursive)
+purpose: Complete OSF structure for year 2011
+base_directory: cchs-osf-docs
+folder_id: 68d732ec3f29454febb8f682
+total_items: 73.0
+structure:
+- id: 68d732efeea5c66aa91b9fcb
+  name: 12-Month
+  path: 2011/12-Month
+  kind: folder
+  children:
+  - id: 68d732f16853e231f81b9ff1
+    name: Master
+    path: 2011/12-Month/Master
+    kind: folder
+    children:
+    - id: 68d732f4c65f47ae2bd4e8eb
+      name: Docs
+      path: 2011/12-Month/Master/Docs
+      kind: folder
+      children:
+      - id: 68d7ffbf6bd97c48fdb8f83d
+        name: CCHS_2000-2014_Errata.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2000-2014_Errata.pdf
+        kind: file
+        size: 1261029
+      - id: 68d7ffbf6bd97c48fdb8f83f
+        name: CCHS_2011_Alpha_Index.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Alpha_Index.pdf
+        kind: file
+        size: 239069
+      - id: 68d7ffc199c6cc74afd4e8ac
+        name: CCHS_2011_Content_Overview.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Content_Overview.pdf
+        kind: file
+        size: 155403
+      - id: 68d7ffc36bd97c48fdb8f841
+        name: CCHS_2011_CV_Tables_Share.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_CV_Tables_Share.pdf
+        kind: file
+        size: 736083
+      - id: 68d7ffc5171c2a636c432cfa
+        name: CCHS_2011_DataDictionary_Freqs.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_DataDictionary_Freqs.pdf
+        kind: file
+        size: 3106168
+      - id: 68d7ffc5ef44449a30432b43
+        name: CCHS_2011_Derived_Variables.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Derived_Variables.pdf
+        kind: file
+        size: 1253494
+      - id: 68d7ffc8171c2a636c432cfd
+        name: CCHS_2011_Income_Imputation.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Income_Imputation.pdf
+        kind: file
+        size: 309228
+      - id: 68d7ffc92e440a07731b9fd6
+        name: CCHS_2011_Household_Weights.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Household_Weights.pdf
+        kind: file
+        size: 259414
+      - id: 68d7ffca6bd97c48fdb8f845
+        name: CCHS_2011_Interpreting_Estimates.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Interpreting_Estimates.pdf
+        kind: file
+        size: 136914
+      - id: 68d7ffcbb0a6dfba5cb8f968
+        name: CCHS_2011_Optional_Content.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Optional_Content.pdf
+        kind: file
+        size: 64319
+      - id: 68d7ffcdd6861fdd06d4e8a4
+        name: CCHS_2011_Questionnaire.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Questionnaire.pdf
+        kind: file
+        size: 2156200
+      - id: 68d7ffce6fe82b56061ba11a
+        name: CCHS_2011_Record_layout.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Record_layout.pdf
+        kind: file
+        size: 239841
+      - id: 68d7ffd1d85f5191751ba14f
+        name: CCHS_2011_User_Guide.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_User_Guide.pdf
+        kind: file
+        size: 2031363
+      - id: 68d7ffd36fe82b56061ba11c
+        name: CCHS_2011_Topical_Index.pdf
+        path: 2011/12-Month/Master/Docs/CCHS_2011_Topical_Index.pdf
+        kind: file
+        size: 234895
+      - id: 68d7ffd36fe82b56061ba11e
+        name: ESCC_2000-2014_Errata.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2000-2014_Errata.pdf
+        kind: file
+        size: 1306068
+      - id: 68d7ffd607d64e9301b8f93d
+        name: ESCC_2011_Cliché_enregistrement.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Cliché_enregistrement.pdf
+        kind: file
+        size: 269898
+      - id: 68d7ffd7f33fc3382db8f81b
+        name: ESCC_2011_Aperçu_Contenu.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Aperçu_Contenu.pdf
+        kind: file
+        size: 174941
+      - id: 68d7ffd8fdbbb306591ba05a
+        name: ESCC_2011_Contenu_Optionnel.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Contenu_Optionnel.pdf
+        kind: file
+        size: 71069
+      - id: 68d7ffdbf33fc3382db8f81f
+        name: ESCC_2011_DictionnaireDonnées_Fréq.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_DictionnaireDonnées_Fréq.pdf
+        kind: file
+        size: 3250517
+      - id: 68d7ffdcd85f5191751ba151
+        name: ESCC_2011_Guide_utilisateur.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Guide_utilisateur.pdf
+        kind: file
+        size: 2268783
+      - id: 68d7ffddb0a6dfba5cb8f96c
+        name: ESCC_2011_Imputation_sur_le_revenu.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Imputation_sur_le_revenu.pdf
+        kind: file
+        size: 328618
+      - id: 68d7ffde6bd97c48fdb8f848
+        name: ESCC_2011_Interprétation_Estimations.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Interprétation_Estimations.pdf
+        kind: file
+        size: 289081
+      - id: 68d7ffe0d2f53d396d60414b
+        name: ESCC_2011_Poids_Ménages.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Poids_Ménages.pdf
+        kind: file
+        size: 318409
+      - id: 68d7ffe2f33fc3382db8f824
+        name: ESCC_2011_Table_Alphabétique.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Table_Alphabétique.pdf
+        kind: file
+        size: 255034
+      - id: 68d7ffe55cb572d62f604242
+        name: ESCC_2011_Questionnaire.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Questionnaire.pdf
+        kind: file
+        size: 2639762
+      - id: 68d7ffe6fdbbb306591ba05d
+        name: ESCC_2011_Table_sujet.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Table_sujet.pdf
+        kind: file
+        size: 299599
+      - id: 68d7ffe86fe82b56061ba126
+        name: ESCC_2011_Tableaux_CV_Partagé.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Tableaux_CV_Partagé.pdf
+        kind: file
+        size: 752467
+      - id: 68d7ffea8009605db4d4ea87
+        name: ESCC_2011_Variables_Dérivées.pdf
+        path: 2011/12-Month/Master/Docs/ESCC_2011_Variables_Dérivées.pdf
+        kind: file
+        size: 1412205
+      - id: 68d7ffecce5e1c9382d4e9bb
+        name: HS_metadata_métadonnées.mdb
+        path: 2011/12-Month/Master/Docs/HS_metadata_métadonnées.mdb
+        kind: file
+        size: 2396160
+      - id: 68d8008ba0aab193646042f1
+        name: Sub-sample
+        path: 2011/12-Month/Master/Docs/Sub-sample
+        kind: folder
+        children:
+        - id: 68d800b47925b364ec432cf2
+          name: CCHS_2011_Alpha_Index.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/CCHS_2011_Alpha_Index.pdf
+          kind: file
+          size: 143086
+        - id: 68d800b4f33fc3382db8f851
+          name: CCHS_2011_DataDictionary_Freqs.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/CCHS_2011_DataDictionary_Freqs.pdf
+          kind: file
+          size: 1567695
+        - id: 68d800b76bd97c48fdb8f861
+          name: CCHS_2011_Record_layout.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/CCHS_2011_Record_layout.pdf
+          kind: file
+          size: 143006
+        - id: 68d800b9a0aab193646042f6
+          name: CCHS_2011_Topical_Index.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/CCHS_2011_Topical_Index.pdf
+          kind: file
+          size: 138080
+        - id: 68d800c1d2f53d396d60417a
+          name: ESCC_2011_Cliché_enregistrement.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/ESCC_2011_Cliché_enregistrement.pdf
+          kind: file
+          size: 159596
+        - id: 68d800c32e440a07731b9fe7
+          name: ESCC_2011_DictionnaireDonnées_Fréq.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/ESCC_2011_DictionnaireDonnées_Fréq.pdf
+          kind: file
+          size: 1635628
+        - id: 68d800c4f79c002ac3432d76
+          name: ESCC_2011_Table_Alphabétique.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/ESCC_2011_Table_Alphabétique.pdf
+          kind: file
+          size: 152439
+        - id: 68d800c5f33fc3382db8f856
+          name: ESCC_2011_Table_sujet.pdf
+          path: 2011/12-Month/Master/Docs/Sub-sample/ESCC_2011_Table_sujet.pdf
+          kind: file
+          size: 192825
+        - id: 68d800c68f604eb251d4e908
+          name: HSS1_metadata_métadonnées.mdb
+          path: 2011/12-Month/Master/Docs/Sub-sample/HSS1_metadata_métadonnées.mdb
+          kind: file
+          size: 1294336
+    - id: 68d732f896e64a5b37b8f697
+      name: Layout
+      path: 2011/12-Month/Master/Layout
+      kind: folder
+      children:
+      - id: 68d800ec3ad391d0dc604311
+        name: HS_HHWT_i.sas
+        path: 2011/12-Month/Master/Layout/HS_HHWT_i.sas
+        kind: file
+        size: 110
+      - id: 68d800eed5a5fd6d3a6042fd
+        name: HS_fmt.sas
+        path: 2011/12-Month/Master/Layout/HS_fmt.sas
+        kind: file
+        size: 46124
+      - id: 68d800eff33fc3382db8f85f
+        name: HS_HHWT_i.sps
+        path: 2011/12-Month/Master/Layout/HS_HHWT_i.sps
+        kind: file
+        size: 120
+      - id: 68d800f0ce5e1c9382d4e9d2
+        name: HS_i.sas
+        path: 2011/12-Month/Master/Layout/HS_i.sas
+        kind: file
+        size: 113442
+      - id: 68d800f2fdbbb306591ba079
+        name: HS_i.sps
+        path: 2011/12-Month/Master/Layout/HS_i.sps
+        kind: file
+        size: 48145
+      - id: 68d800f36fe82b56061ba159
+        name: HS_lbe.sas
+        path: 2011/12-Month/Master/Layout/HS_lbe.sas
+        kind: file
+        size: 149640
+      - id: 68d800f4e2632e4165b8f6b0
+        name: HS_lbf.sas
+        path: 2011/12-Month/Master/Layout/HS_lbf.sas
+        kind: file
+        size: 149640
+      - id: 68d800f56fe82b56061ba15b
+        name: HS_o.sas
+        path: 2011/12-Month/Master/Layout/HS_o.sas
+        kind: file
+        size: 113438
+      - id: 68d800f78f604eb251d4e90d
+        name: HS_pff.sas
+        path: 2011/12-Month/Master/Layout/HS_pff.sas
+        kind: file
+        size: 314142
+      - id: 68d800f76bd97c48fdb8f86b
+        name: HS_pfe.sas
+        path: 2011/12-Month/Master/Layout/HS_pfe.sas
+        kind: file
+        size: 314142
+      - id: 68d800fab0a6dfba5cb8f97c
+        name: hss1_fmt.sas
+        path: 2011/12-Month/Master/Layout/hss1_fmt.sas
+        kind: file
+        size: 22796
+      - id: 68d800fa8009605db4d4eaac
+        name: HSmiss.sps
+        path: 2011/12-Month/Master/Layout/HSmiss.sps
+        kind: file
+        size: 139318
+      - id: 68d800fc6fe82b56061ba15d
+        name: hss1_i.sas
+        path: 2011/12-Month/Master/Layout/hss1_i.sas
+        kind: file
+        size: 56418
+      - id: 68d800fed6861fdd06d4e8e2
+        name: hss1_i.sps
+        path: 2011/12-Month/Master/Layout/hss1_i.sps
+        kind: file
+        size: 23953
+      - id: 68d800fefdbbb306591ba07c
+        name: hss1_lbe.sas
+        path: 2011/12-Month/Master/Layout/hss1_lbe.sas
+        kind: file
+        size: 74472
+      - id: 68d80100826d4666ed432da2
+        name: hss1_lbf.sas
+        path: 2011/12-Month/Master/Layout/hss1_lbf.sas
+        kind: file
+        size: 74472
+      - id: 68d80102d2f53d396d60418c
+        name: hss1_pfe.sas
+        path: 2011/12-Month/Master/Layout/hss1_pfe.sas
+        kind: file
+        size: 220334
+      - id: 68d80106ef44449a30432b89
+        name: hss1_pff.sas
+        path: 2011/12-Month/Master/Layout/hss1_pff.sas
+        kind: file
+        size: 220334
+      - id: 68d8010685137c5eab1ba117
+        name: hss1_o.sas
+        path: 2011/12-Month/Master/Layout/hss1_o.sas
+        kind: file
+        size: 56414
+      - id: 68d801096bd97c48fdb8f872
+        name: hss1vale.sps
+        path: 2011/12-Month/Master/Layout/hss1vale.sps
+        kind: file
+        size: 736278
+      - id: 68d8010ac6b624768d1ba18b
+        name: hss1miss.sps
+        path: 2011/12-Month/Master/Layout/hss1miss.sps
+        kind: file
+        size: 68798
+      - id: 68d8010d826d4666ed432da6
+        name: hss1vare.sps
+        path: 2011/12-Month/Master/Layout/hss1vare.sps
+        kind: file
+        size: 70192
+      - id: 68d80110d5a5fd6d3a604303
+        name: hss1valf.sps
+        path: 2011/12-Month/Master/Layout/hss1valf.sps
+        kind: file
+        size: 736278
+      - id: 68d80110d5a5fd6d3a604305
+        name: hss1varf.sps
+        path: 2011/12-Month/Master/Layout/hss1varf.sps
+        kind: file
+        size: 70192
+      - id: 68d80113fdbbb306591ba07f
+        name: HSvale.sps
+        path: 2011/12-Month/Master/Layout/HSvale.sps
+        kind: file
+        size: 1363414
+      - id: 68d80114d6861fdd06d4e8ef
+        name: HSvalf.sps
+        path: 2011/12-Month/Master/Layout/HSvalf.sps
+        kind: file
+        size: 1363414
+      - id: 68d80116e2632e4165b8f6ba
+        name: HSvare.sps
+        path: 2011/12-Month/Master/Layout/HSvare.sps
+        kind: file
+        size: 141040
+      - id: 68d801178f604eb251d4e910
+        name: HSvarf.sps
+        path: 2011/12-Month/Master/Layout/HSvarf.sps
+        kind: file
+        size: 139319
+      - id: 68d80119c7535e4c7b1ba034
+        name: readmstr.sas
+        path: 2011/12-Month/Master/Layout/readmstr.sas
+        kind: file
+        size: 1843
+      - id: 68d8011ad2f53d396d60419a
+        name: readmstr.sps
+        path: 2011/12-Month/Master/Layout/readmstr.sps
+        kind: file
+        size: 1984

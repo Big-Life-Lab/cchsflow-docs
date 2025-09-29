@@ -1,0 +1,1018 @@
+created: 1.7590859e+09
+year: 2003.0
+source: OSF.io API (recursive)
+purpose: Complete OSF structure for year 2003
+base_directory: cchs-osf-docs
+folder_id: 68d732103063077b656041ea
+total_items: 202.0
+structure:
+- id: 68d73213eea5c66aa91b9fb7
+  name: '2.1'
+  path: 2003/2.1
+  kind: folder
+  children:
+  - id: 68d732163063077b656041ec
+    name: Master
+    path: 2003/2.1/Master
+    kind: folder
+    children:
+    - id: 68d732192757efb4c9b8f86e
+      name: Docs
+      path: 2003/2.1/Master/Docs
+      kind: folder
+      children:
+      - id: 68d8142cc7535e4c7b1ba180
+        name: December 2004
+        path: 2003/2.1/Master/Docs/December 2004
+        kind: folder
+        children: []
+      - id: 68d8146c17b0e9a536d4ea33
+        name: CCHS_2000-2014_Errata.pdf
+        path: 2003/2.1/Master/Docs/CCHS_2000-2014_Errata.pdf
+        kind: file
+        size: 1261029
+      - id: 68d8146eb2dbb4e8a01b9f10
+        name: CCHS_2003_Revised_DV_Doc_Income_variables.doc
+        path: 2003/2.1/Master/Docs/CCHS_2003_Revised_DV_Doc_Income_variables.doc
+        kind: file
+        size: 960000
+      - id: 68d8146e07d64e9301b8f9b2
+        name: CCHS_2003_Revised_DV_Doc_Income_variables.pdf
+        path: 2003/2.1/Master/Docs/CCHS_2003_Revised_DV_Doc_Income_variables.pdf
+        kind: file
+        size: 193435
+      - id: 68d8147023cbffecf3d4e8e8
+        name: CCHS_New_income_variables.pdf
+        path: 2003/2.1/Master/Docs/CCHS_New_income_variables.pdf
+        kind: file
+        size: 41868
+      - id: 68d814708e53b866b060419b
+        name: CCHS_New_income_variables.doc
+        path: 2003/2.1/Master/Docs/CCHS_New_income_variables.doc
+        kind: file
+        size: 2673664
+      - id: 68d81473b2dbb4e8a01b9f14
+        name: Data_quality_all_tables.doc
+        path: 2003/2.1/Master/Docs/Data_quality_all_tables.doc
+        kind: file
+        size: 13237248
+      - id: 68d8147323cbffecf3d4e8eb
+        name: DvDoc_English.doc
+        path: 2003/2.1/Master/Docs/DvDoc_English.doc
+        kind: file
+        size: 3303424
+      - id: 68d81476b2dbb4e8a01b9f19
+        name: DvDoc_English.pdf
+        path: 2003/2.1/Master/Docs/DvDoc_English.pdf
+        kind: file
+        size: 669792
+      - id: 68d814764fe56a8c156040a7
+        name: DvDoc_French.doc
+        path: 2003/2.1/Master/Docs/DvDoc_French.doc
+        kind: file
+        size: 3101696
+      - id: 68d81478b2dbb4e8a01b9f1b
+        name: DvDoc_French.pdf
+        path: 2003/2.1/Master/Docs/DvDoc_French.pdf
+        kind: file
+        size: 703657
+      - id: 68d8147ac68767387a6042e6
+        name: English Data Dictionary (Freqs).pdf
+        path: 2003/2.1/Master/Docs/English Data Dictionary (Freqs).pdf
+        kind: file
+        size: 2365514
+      - id: 68d8147b7925b364ec432d7a
+        name: English DD Alpha Index.pdf
+        path: 2003/2.1/Master/Docs/English DD Alpha Index.pdf
+        kind: file
+        size: 226482
+      - id: 68d8147d272bae9829432b8b
+        name: English DD Topical Index.pdf
+        path: 2003/2.1/Master/Docs/English DD Topical Index.pdf
+        kind: file
+        size: 241047
+      - id: 68d8147fb2dbb4e8a01b9f1e
+        name: English Questionnaire.doc
+        path: 2003/2.1/Master/Docs/English Questionnaire.doc
+        kind: file
+        size: 1816064
+      - id: 68d8147f6960147905b8f767
+        name: English Questionnaire.pdf
+        path: 2003/2.1/Master/Docs/English Questionnaire.pdf
+        kind: file
+        size: 1453431
+      - id: 68d81482e2632e4165b8f9b5
+        name: English Record Layout.pdf
+        path: 2003/2.1/Master/Docs/English Record Layout.pdf
+        kind: file
+        size: 234042
+      - id: 68d8148212a11f8f9e432c5d
+        name: English_Household questionnaire.pdf
+        path: 2003/2.1/Master/Docs/English_Household questionnaire.pdf
+        kind: file
+        size: 19541
+      - id: 68d814845999d949dfb8f6ee
+        name: ESCC_2000-2014_Errata.pdf
+        path: 2003/2.1/Master/Docs/ESCC_2000-2014_Errata.pdf
+        kind: file
+        size: 1306068
+      - id: 68d814855999d949dfb8f6f0
+        name: ESCC_2003_Doc_VD_Revisee_Variables_revenu.doc
+        path: 2003/2.1/Master/Docs/ESCC_2003_Doc_VD_Revisee_Variables_revenu.doc
+        kind: file
+        size: 959488
+      - id: 68d81486272bae9829432b8f
+        name: ESCC_2003_Doc_VD_Revisee_Variables_revenu.pdf
+        path: 2003/2.1/Master/Docs/ESCC_2003_Doc_VD_Revisee_Variables_revenu.pdf
+        kind: file
+        size: 193962
+      - id: 68d814875999d949dfb8f6f2
+        name: ESCC_Nouvelles_variables_revenu.doc
+        path: 2003/2.1/Master/Docs/ESCC_Nouvelles_variables_revenu.doc
+        kind: file
+        size: 2667008
+      - id: 68d814888f3c392144432c44
+        name: ESCC_Nouvelles_variables_revenu.pdf
+        path: 2003/2.1/Master/Docs/ESCC_Nouvelles_variables_revenu.pdf
+        kind: file
+        size: 40370
+      - id: 68d8148a23cbffecf3d4e8f3
+        name: French Data Dictionary (Freqs).pdf
+        path: 2003/2.1/Master/Docs/French Data Dictionary (Freqs).pdf
+        kind: file
+        size: 2525454
+      - id: 68d8148c6960147905b8f76f
+        name: French DD Alpha Index.pdf
+        path: 2003/2.1/Master/Docs/French DD Alpha Index.pdf
+        kind: file
+        size: 247585
+      - id: 68d8148d272bae9829432b93
+        name: French DD Topical Index.pdf
+        path: 2003/2.1/Master/Docs/French DD Topical Index.pdf
+        kind: file
+        size: 240614
+      - id: 68d8148ee334323854604138
+        name: French Questionnaire.doc
+        path: 2003/2.1/Master/Docs/French Questionnaire.doc
+        kind: file
+        size: 1849856
+      - id: 68d81490c7bf51a888604174
+        name: French Questionnaire.pdf
+        path: 2003/2.1/Master/Docs/French Questionnaire.pdf
+        kind: file
+        size: 1468018
+      - id: 68d8149023cbffecf3d4e8f7
+        name: French Record Layout.pdf
+        path: 2003/2.1/Master/Docs/French Record Layout.pdf
+        kind: file
+        size: 269959
+      - id: 68d8149423cbffecf3d4e8f9
+        name: French_Household questionnaire.pdf
+        path: 2003/2.1/Master/Docs/French_Household questionnaire.pdf
+        kind: file
+        size: 21860
+      - id: 68d81494272bae9829432b98
+        name: metadata_metadonnées.mdb
+        path: 2003/2.1/Master/Docs/metadata_metadonnées.mdb
+        kind: file
+        size: 3928064
+      - id: 68d81496c7bf51a888604176
+        name: mode study_french.pdf
+        path: 2003/2.1/Master/Docs/mode study_french.pdf
+        kind: file
+        size: 141301
+      - id: 68d81496081a4f1ace6040e3
+        name: mode study-english.pdf
+        path: 2003/2.1/Master/Docs/mode study-english.pdf
+        kind: file
+        size: 138503
+      - id: 68d81499d0d3229ffb432d40
+        name: Usage des sous-échantillons - fichier maître.pdf
+        path: 2003/2.1/Master/Docs/Usage des sous-échantillons - fichier maître.pdf
+        kind: file
+        size: 85956
+      - id: 68d81499b2dbb4e8a01b9f24
+        name: Use of sub-samples - master.pdf
+        path: 2003/2.1/Master/Docs/Use of sub-samples - master.pdf
+        kind: file
+        size: 81946
+      - id: 68d8149c272bae9829432b9a
+        name: User_Guide_Fra.pdf
+        path: 2003/2.1/Master/Docs/User_Guide_Fra.pdf
+        kind: file
+        size: 672367
+      - id: 68d8149d94ecca0ba1432b61
+        name: User_guide_Eng.pdf
+        path: 2003/2.1/Master/Docs/User_guide_Eng.pdf
+        kind: file
+        size: 642148
+      - id: 68d814b894ecca0ba1432b66
+        name: Group
+        path: 2003/2.1/Master/Docs/Group
+        kind: folder
+        children:
+        - id: 68d814e523cbffecf3d4e911
+          name: English DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Group/English DD Alpha Index.pdf
+          kind: file
+          size: 19648
+        - id: 68d814e699c6cc74afd4eaf0
+          name: English Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Group/English Data Dictionary (Freqs).pdf
+          kind: file
+          size: 166871
+        - id: 68d814e999ed20093bd4e8d7
+          name: English DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Group/English DD Topical Index.pdf
+          kind: file
+          size: 19990
+        - id: 68d814ea272bae9829432bab
+          name: English Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Group/English Record Layout.pdf
+          kind: file
+          size: 19297
+        - id: 68d814ebc7bf51a888604180
+          name: French Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Group/French Data Dictionary (Freqs).pdf
+          kind: file
+          size: 169713
+        - id: 68d814ed8e53b866b06041a5
+          name: French DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Group/French DD Alpha Index.pdf
+          kind: file
+          size: 19977
+        - id: 68d814ed07ff2cf197432bf8
+          name: French DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Group/French DD Topical Index.pdf
+          kind: file
+          size: 21899
+        - id: 68d814ef23cbffecf3d4e914
+          name: French Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Group/French Record Layout.pdf
+          kind: file
+          size: 21901
+        - id: 68d814f13fba57ee181b9f51
+          name: Group_metadata_metadonnées.mdb
+          path: 2003/2.1/Master/Docs/Group/Group_metadata_metadonnées.mdb
+          kind: file
+          size: 5210112
+      - id: 68d8152c23cbffecf3d4e924
+        name: Sub-sample 1
+        path: 2003/2.1/Master/Docs/Sub-sample 1
+        kind: folder
+        children:
+        - id: 68d81553ce2c4387126041aa
+          name: English Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/English Data Dictionary (Freqs).pdf
+          kind: file
+          size: 1237708
+        - id: 68d815547a3abaa7291b9fc1
+          name: English DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/English DD Alpha Index.pdf
+          kind: file
+          size: 156404
+        - id: 68d815565999d949dfb8f72c
+          name: English DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/English DD Topical Index.pdf
+          kind: file
+          size: 165967
+        - id: 68d8155799c6cc74afd4eb01
+          name: English Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/English Record Layout.pdf
+          kind: file
+          size: 161119
+        - id: 68d8155994ecca0ba1432b74
+          name: French Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/French Data Dictionary (Freqs).pdf
+          kind: file
+          size: 1325990
+        - id: 68d81559272bae9829432bc3
+          name: French DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/French DD Alpha Index.pdf
+          kind: file
+          size: 169448
+        - id: 68d8155b5999d949dfb8f72f
+          name: French DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/French DD Topical Index.pdf
+          kind: file
+          size: 167403
+        - id: 68d8155d5999d949dfb8f731
+          name: French Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 1/French Record Layout.pdf
+          kind: file
+          size: 181923
+        - id: 68d8155e12a11f8f9e432c65
+          name: SS1_metadata_metadonnées.mdb
+          path: 2003/2.1/Master/Docs/Sub-sample 1/SS1_metadata_metadonnées.mdb
+          kind: file
+          size: 3928064
+      - id: 68d81578ce2c4387126041b0
+        name: Sub-sample 2
+        path: 2003/2.1/Master/Docs/Sub-sample 2
+        kind: folder
+        children:
+        - id: 68d8158d8e53b866b06041b3
+          name: English Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/English Data Dictionary (Freqs).pdf
+          kind: file
+          size: 1155663
+        - id: 68d8158db2dbb4e8a01b9f55
+          name: English DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/English DD Alpha Index.pdf
+          kind: file
+          size: 150427
+        - id: 68d8159123cbffecf3d4e937
+          name: English Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/English Record Layout.pdf
+          kind: file
+          size: 154400
+        - id: 68d81591ce2c4387126041b4
+          name: English DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/English DD Topical Index.pdf
+          kind: file
+          size: 158942
+        - id: 68d81593ce2c4387126041b7
+          name: French Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/French Data Dictionary (Freqs).pdf
+          kind: file
+          size: 1233679
+        - id: 68d815933fba57ee181b9f69
+          name: French DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/French DD Alpha Index.pdf
+          kind: file
+          size: 162049
+        - id: 68d81595272bae9829432bd4
+          name: French DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/French DD Topical Index.pdf
+          kind: file
+          size: 160572
+        - id: 68d815956960147905b8f7a4
+          name: French Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 2/French Record Layout.pdf
+          kind: file
+          size: 174276
+        - id: 68d81598e2632e4165b8f9d0
+          name: SS2_metadata_metadonnées.mdb
+          path: 2003/2.1/Master/Docs/Sub-sample 2/SS2_metadata_metadonnées.mdb
+          kind: file
+          size: 3928064
+      - id: 68d815ba94ecca0ba1432b87
+        name: Sub-sample 3
+        path: 2003/2.1/Master/Docs/Sub-sample 3
+        kind: folder
+        children:
+        - id: 68d815ca17b0e9a536d4ea6d
+          name: French DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/French DD Alpha Index.pdf
+          kind: file
+          size: 174799
+        - id: 68d815cb17b0e9a536d4ea6f
+          name: French Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/French Data Dictionary (Freqs).pdf
+          kind: file
+          size: 1408399
+        - id: 68d815cd99c6cc74afd4eb10
+          name: French DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/French DD Topical Index.pdf
+          kind: file
+          size: 171106
+        - id: 68d815cd5999d949dfb8f756
+          name: French Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/French Record Layout.pdf
+          kind: file
+          size: 189126
+        - id: 68d815cf8f3c392144432c5d
+          name: English Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/English Data Dictionary (Freqs).pdf
+          kind: file
+          size: 1316849
+        - id: 68d815cfb2dbb4e8a01b9f61
+          name: SS3_metadata_metadonnées.mdb
+          path: 2003/2.1/Master/Docs/Sub-sample 3/SS3_metadata_metadonnées.mdb
+          kind: file
+          size: 3928064
+        - id: 68d815d1ce2c4387126041c2
+          name: English DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/English DD Alpha Index.pdf
+          kind: file
+          size: 161547
+        - id: 68d815d2ce5e1c9382d4eaf9
+          name: English DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/English DD Topical Index.pdf
+          kind: file
+          size: 170429
+        - id: 68d815d494ecca0ba1432b8c
+          name: English Record Layout.pdf
+          path: 2003/2.1/Master/Docs/Sub-sample 3/English Record Layout.pdf
+          kind: file
+          size: 166538
+      - id: 68d81699ce2c438712604208
+        name: June 2004
+        path: 2003/2.1/Master/Docs/June 2004
+        kind: folder
+        children:
+        - id: 68d816b523cbffecf3d4e984
+          name: CCHS 2.1 household questionnaire_e.pdf
+          path: 2003/2.1/Master/Docs/June 2004/CCHS 2.1 household questionnaire_e.pdf
+          kind: file
+          size: 19541
+        - id: 68d816b6ce2c438712604211
+          name: CCHS 2.1 household questionnaire_f.pdf
+          path: 2003/2.1/Master/Docs/June 2004/CCHS 2.1 household questionnaire_f.pdf
+          kind: file
+          size: 21860
+        - id: 68d816b607ff2cf197432c2d
+          name: CCHS 2.1 household questionnaire_f.doc
+          path: 2003/2.1/Master/Docs/June 2004/CCHS 2.1 household questionnaire_f.doc
+          kind: file
+          size: 47616
+        - id: 68d816b7030a8d70a71b9f90
+          name: CCHS_2000-2014_Errata.pdf
+          path: 2003/2.1/Master/Docs/June 2004/CCHS_2000-2014_Errata.pdf
+          kind: file
+          size: 1261029
+        - id: 68d816b9593d37057fb8f6bc
+          name: DvDoc_English.pdf
+          path: 2003/2.1/Master/Docs/June 2004/DvDoc_English.pdf
+          kind: file
+          size: 2396463
+        - id: 68d816b9272bae9829432c16
+          name: Data_quality_all_tables.doc
+          path: 2003/2.1/Master/Docs/June 2004/Data_quality_all_tables.doc
+          kind: file
+          size: 13237248
+        - id: 68d816bcc7bf51a8886041cd
+          name: DvDoc_French.pdf
+          path: 2003/2.1/Master/Docs/June 2004/DvDoc_French.pdf
+          kind: file
+          size: 4579409
+        - id: 68d816bc6bd97c48fdb8f9c7
+          name: English Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/June 2004/English Data Dictionary (Freqs).pdf
+          kind: file
+          size: 2565758
+        - id: 68d816c09dfacd9c7a432da8
+          name: English DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/June 2004/English DD Alpha Index.pdf
+          kind: file
+          size: 194899
+        - id: 68d816c07a3abaa7291b9fe8
+          name: English DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/June 2004/English DD Topical Index.pdf
+          kind: file
+          size: 161629
+        - id: 68d816c2272bae9829432c1b
+          name: English Questionnaire.pdf
+          path: 2003/2.1/Master/Docs/June 2004/English Questionnaire.pdf
+          kind: file
+          size: 1453431
+        - id: 68d816c23fba57ee181b9fac
+          name: English Questionnaire.doc
+          path: 2003/2.1/Master/Docs/June 2004/English Questionnaire.doc
+          kind: file
+          size: 1816064
+        - id: 68d816c512a11f8f9e432c7b
+          name: English Record Layout.pdf
+          path: 2003/2.1/Master/Docs/June 2004/English Record Layout.pdf
+          kind: file
+          size: 182310
+        - id: 68d816c53fba57ee181b9fae
+          name: English_Household questionnaire.pdf
+          path: 2003/2.1/Master/Docs/June 2004/English_Household questionnaire.pdf
+          kind: file
+          size: 19541
+        - id: 68d816c7593d37057fb8f6c6
+          name: ESCC_2000-2014_Errata.pdf
+          path: 2003/2.1/Master/Docs/June 2004/ESCC_2000-2014_Errata.pdf
+          kind: file
+          size: 1306068
+        - id: 68d816c78e53b866b06041dc
+          name: French Data Dictionary (Freqs).pdf
+          path: 2003/2.1/Master/Docs/June 2004/French Data Dictionary (Freqs).pdf
+          kind: file
+          size: 2703915
+        - id: 68d816c917b0e9a536d4ea9f
+          name: French DD Alpha Index.pdf
+          path: 2003/2.1/Master/Docs/June 2004/French DD Alpha Index.pdf
+          kind: file
+          size: 173484
+        - id: 68d816c9e33432385460416c
+          name: French DD Topical Index.pdf
+          path: 2003/2.1/Master/Docs/June 2004/French DD Topical Index.pdf
+          kind: file
+          size: 189173
+        - id: 68d816cb5999d949dfb8f797
+          name: French Questionnaire.doc
+          path: 2003/2.1/Master/Docs/June 2004/French Questionnaire.doc
+          kind: file
+          size: 1849856
+        - id: 68d816cc07ff2cf197432c32
+          name: French Questionnaire.pdf
+          path: 2003/2.1/Master/Docs/June 2004/French Questionnaire.pdf
+          kind: file
+          size: 1468018
+        - id: 68d816cf8e53b866b06041de
+          name: French_Household questionnaire.pdf
+          path: 2003/2.1/Master/Docs/June 2004/French_Household questionnaire.pdf
+          kind: file
+          size: 21860
+        - id: 68d816cf272bae9829432c23
+          name: French Record Layout.pdf
+          path: 2003/2.1/Master/Docs/June 2004/French Record Layout.pdf
+          kind: file
+          size: 223901
+        - id: 68d816d1b2dbb4e8a01b9fa1
+          name: Modestudy.pdf
+          path: 2003/2.1/Master/Docs/June 2004/Modestudy.pdf
+          kind: file
+          size: 138503
+        - id: 68d816d2593d37057fb8f6cb
+          name: metadata_metadonnées.mdb
+          path: 2003/2.1/Master/Docs/June 2004/metadata_metadonnées.mdb
+          kind: file
+          size: 4120576
+        - id: 68d816d4593d37057fb8f6cd
+          name: Sous-échantillons et EASS - maître.DOC
+          path: 2003/2.1/Master/Docs/June 2004/Sous-échantillons et EASS - maître.DOC
+          kind: file
+          size: 107520
+        - id: 68d816d623cbffecf3d4e990
+          name: Sous-échantillons et EASS - maître.pdf
+          path: 2003/2.1/Master/Docs/June 2004/Sous-échantillons et EASS - maître.pdf
+          kind: file
+          size: 108545
+        - id: 68d816d76960147905b8f7da
+          name: Sub_Samples and HSAS - master.doc
+          path: 2003/2.1/Master/Docs/June 2004/Sub_Samples and HSAS - master.doc
+          kind: file
+          size: 110080
+        - id: 68d816d9b2dbb4e8a01b9fa9
+          name: CCHS 2.1 household questionnaire_e.doc
+          path: 2003/2.1/Master/Docs/June 2004/CCHS 2.1 household questionnaire_e.doc
+          kind: file
+          size: 42496
+        - id: 68d816d907d64e9301b8f9c5
+          name: Sub_Samples and HSAS - master.pdf
+          path: 2003/2.1/Master/Docs/June 2004/Sub_Samples and HSAS - master.pdf
+          kind: file
+          size: 97896
+    - id: 68d7321c9b7a52efd31b9eb7
+      name: Layout
+      path: 2003/2.1/Master/Layout
+      kind: folder
+      children:
+      - id: 68d815f2272bae9829432be3
+        name: HS_fmt.sas
+        path: 2003/2.1/Master/Layout/HS_fmt.sas
+        kind: file
+        size: 48176
+      - id: 68d815f217b0e9a536d4ea74
+        name: HS_i.sas
+        path: 2003/2.1/Master/Layout/HS_i.sas
+        kind: file
+        size: 113198
+      - id: 68d815f523cbffecf3d4e943
+        name: HS_i.sps
+        path: 2003/2.1/Master/Layout/HS_i.sps
+        kind: file
+        size: 46737
+      - id: 68d815f5c7bf51a8886041a4
+        name: HS_lbe.sas
+        path: 2003/2.1/Master/Layout/HS_lbe.sas
+        kind: file
+        size: 156426
+      - id: 68d815f7b2dbb4e8a01b9f68
+        name: HS_lbf.sas
+        path: 2003/2.1/Master/Layout/HS_lbf.sas
+        kind: file
+        size: 156426
+      - id: 68d815f85999d949dfb8f762
+        name: HS_pfe.sas
+        path: 2003/2.1/Master/Layout/HS_pfe.sas
+        kind: file
+        size: 295528
+      - id: 68d815f96960147905b8f7af
+        name: HS_pff.sas
+        path: 2003/2.1/Master/Layout/HS_pff.sas
+        kind: file
+        size: 295528
+      - id: 68d815fab2dbb4e8a01b9f6a
+        name: HSG_fmt.sas
+        path: 2003/2.1/Master/Layout/HSG_fmt.sas
+        kind: file
+        size: 2681
+      - id: 68d815fc23cbffecf3d4e945
+        name: HSG_i.sas
+        path: 2003/2.1/Master/Layout/HSG_i.sas
+        kind: file
+        size: 6412
+      - id: 68d815fc2e440a07731ba079
+        name: HSG_i.sps
+        path: 2003/2.1/Master/Layout/HSG_i.sps
+        kind: file
+        size: 2667
+      - id: 68d815ff23cbffecf3d4e947
+        name: HSG_lbe.sas
+        path: 2003/2.1/Master/Layout/HSG_lbe.sas
+        kind: file
+        size: 8961
+      - id: 68d816006960147905b8f7b1
+        name: HSG_lbf.sas
+        path: 2003/2.1/Master/Layout/HSG_lbf.sas
+        kind: file
+        size: 8961
+      - id: 68d816026960147905b8f7b3
+        name: HSG_pfe.sas
+        path: 2003/2.1/Master/Layout/HSG_pfe.sas
+        kind: file
+        size: 59614
+      - id: 68d816038f3c392144432c63
+        name: HSG_pff.sas
+        path: 2003/2.1/Master/Layout/HSG_pff.sas
+        kind: file
+        size: 59614
+      - id: 68d816056960147905b8f7b6
+        name: HSGmiss.sps
+        path: 2003/2.1/Master/Layout/HSGmiss.sps
+        kind: file
+        size: 8282
+      - id: 68d816063fba57ee181b9f80
+        name: HSGvale.sps
+        path: 2003/2.1/Master/Layout/HSGvale.sps
+        kind: file
+        size: 91512
+      - id: 68d816083fba57ee181b9f83
+        name: HSGvalf.sps
+        path: 2003/2.1/Master/Layout/HSGvalf.sps
+        kind: file
+        size: 91512
+      - id: 68d81609593d37057fb8f67e
+        name: HSGvare.sps
+        path: 2003/2.1/Master/Layout/HSGvare.sps
+        kind: file
+        size: 8446
+      - id: 68d8160ae334323854604158
+        name: HSGvarf.sps
+        path: 2003/2.1/Master/Layout/HSGvarf.sps
+        kind: file
+        size: 8446
+      - id: 68d8160bc7bf51a8886041aa
+        name: HSmiss.sps
+        path: 2003/2.1/Master/Layout/HSmiss.sps
+        kind: file
+        size: 144402
+      - id: 68d8160d99c6cc74afd4eb15
+        name: HSS1_fmt.sas
+        path: 2003/2.1/Master/Layout/HSS1_fmt.sas
+        kind: file
+        size: 26063
+      - id: 68d8160e7078e85448d4e9b5
+        name: HSS1_i.sas
+        path: 2003/2.1/Master/Layout/HSS1_i.sas
+        kind: file
+        size: 61538
+      - id: 68d8161099c6cc74afd4eb18
+        name: HSS1_i.sps
+        path: 2003/2.1/Master/Layout/HSS1_i.sps
+        kind: file
+        size: 25417
+      - id: 68d816125999d949dfb8f76d
+        name: HSS1_lbe.sas
+        path: 2003/2.1/Master/Layout/HSS1_lbe.sas
+        kind: file
+        size: 85086
+      - id: 68d8161323cbffecf3d4e94d
+        name: HSS1_lbf.sas
+        path: 2003/2.1/Master/Layout/HSS1_lbf.sas
+        kind: file
+        size: 85086
+      - id: 68d81614ce2c4387126041d7
+        name: HSS1_pfe.sas
+        path: 2003/2.1/Master/Layout/HSS1_pfe.sas
+        kind: file
+        size: 220170
+      - id: 68d81615b2dbb4e8a01b9f72
+        name: HSS1_pff.sas
+        path: 2003/2.1/Master/Layout/HSS1_pff.sas
+        kind: file
+        size: 220170
+      - id: 68d816176960147905b8f7ba
+        name: HSS1miss.sps
+        path: 2003/2.1/Master/Layout/HSS1miss.sps
+        kind: file
+        size: 78884
+      - id: 68d81618c7bf51a8886041ac
+        name: HSS1vale.sps
+        path: 2003/2.1/Master/Layout/HSS1vale.sps
+        kind: file
+        size: 732342
+      - id: 68d816197a3abaa7291b9fce
+        name: HSS1valf.sps
+        path: 2003/2.1/Master/Layout/HSS1valf.sps
+        kind: file
+        size: 732342
+      - id: 68d8161bce2c4387126041dd
+        name: HSS1vare.sps
+        path: 2003/2.1/Master/Layout/HSS1vare.sps
+        kind: file
+        size: 80196
+      - id: 68d8161c3fba57ee181b9f8a
+        name: HSS1varf.sps
+        path: 2003/2.1/Master/Layout/HSS1varf.sps
+        kind: file
+        size: 80196
+      - id: 68d8161e6960147905b8f7bc
+        name: HSS2_fmt.sas
+        path: 2003/2.1/Master/Layout/HSS2_fmt.sas
+        kind: file
+        size: 23930
+      - id: 68d8161f7a3abaa7291b9fd1
+        name: HSS2_i.sas
+        path: 2003/2.1/Master/Layout/HSS2_i.sas
+        kind: file
+        size: 56561
+      - id: 68d8162107ff2cf197432c0b
+        name: HSS2_i.sps
+        path: 2003/2.1/Master/Layout/HSS2_i.sps
+        kind: file
+        size: 23363
+      - id: 68d816225999d949dfb8f772
+        name: HSS2_lbe.sas
+        path: 2003/2.1/Master/Layout/HSS2_lbe.sas
+        kind: file
+        size: 78213
+      - id: 68d816236960147905b8f7be
+        name: HSS2_lbf.sas
+        path: 2003/2.1/Master/Layout/HSS2_lbf.sas
+        kind: file
+        size: 78213
+      - id: 68d816247a3abaa7291b9fd3
+        name: HSS2_pfe.sas
+        path: 2003/2.1/Master/Layout/HSS2_pfe.sas
+        kind: file
+        size: 208034
+      - id: 68d8162523cbffecf3d4e954
+        name: HSS2_pff.sas
+        path: 2003/2.1/Master/Layout/HSS2_pff.sas
+        kind: file
+        size: 208034
+      - id: 68d8162794ecca0ba1432b97
+        name: HSS2vale.sps
+        path: 2003/2.1/Master/Layout/HSS2vale.sps
+        kind: file
+        size: 677074
+      - id: 68d816297a3abaa7291b9fd6
+        name: HSS2miss.sps
+        path: 2003/2.1/Master/Layout/HSS2miss.sps
+        kind: file
+        size: 72406
+      - id: 68d816296bd97c48fdb8f9bb
+        name: HSS2valf.sps
+        path: 2003/2.1/Master/Layout/HSS2valf.sps
+        kind: file
+        size: 677074
+      - id: 68d8162cce2c4387126041df
+        name: HSS2varf.sps
+        path: 2003/2.1/Master/Layout/HSS2varf.sps
+        kind: file
+        size: 73718
+      - id: 68d8162c593d37057fb8f687
+        name: HSS2vare.sps
+        path: 2003/2.1/Master/Layout/HSS2vare.sps
+        kind: file
+        size: 73718
+      - id: 68d8162f96df53c6d81ba00d
+        name: HSS3_fmt.sas
+        path: 2003/2.1/Master/Layout/HSS3_fmt.sas
+        kind: file
+        size: 28196
+      - id: 68d8162f5999d949dfb8f779
+        name: HSS3_i.sas
+        path: 2003/2.1/Master/Layout/HSS3_i.sas
+        kind: file
+        size: 66515
+      - id: 68d8163285137c5eab1ba161
+        name: HSS3_i.sps
+        path: 2003/2.1/Master/Layout/HSS3_i.sps
+        kind: file
+        size: 27471
+      - id: 68d81633b2dbb4e8a01b9f7b
+        name: HSS3_lbe.sas
+        path: 2003/2.1/Master/Layout/HSS3_lbe.sas
+        kind: file
+        size: 91959
+      - id: 68d81635ce2c4387126041e3
+        name: HSS3_lbf.sas
+        path: 2003/2.1/Master/Layout/HSS3_lbf.sas
+        kind: file
+        size: 91959
+      - id: 68d8163607ff2cf197432c10
+        name: HSS3_pfe.sas
+        path: 2003/2.1/Master/Layout/HSS3_pfe.sas
+        kind: file
+        size: 204262
+      - id: 68d8163707ff2cf197432c12
+        name: HSS3_pff.sas
+        path: 2003/2.1/Master/Layout/HSS3_pff.sas
+        kind: file
+        size: 204262
+      - id: 68d8163894ecca0ba1432b9d
+        name: HSS3miss.sps
+        path: 2003/2.1/Master/Layout/HSS3miss.sps
+        kind: file
+        size: 85362
+      - id: 68d8163ace2c4387126041e7
+        name: HSS3valf.sps
+        path: 2003/2.1/Master/Layout/HSS3valf.sps
+        kind: file
+        size: 782280
+      - id: 68d8163bce2c4387126041e9
+        name: HSS3vale.sps
+        path: 2003/2.1/Master/Layout/HSS3vale.sps
+        kind: file
+        size: 782280
+      - id: 68d8163e94ecca0ba1432b9f
+        name: HSS3vare.sps
+        path: 2003/2.1/Master/Layout/HSS3vare.sps
+        kind: file
+        size: 86674
+      - id: 68d8163e8f3c392144432c67
+        name: HSS3varf.sps
+        path: 2003/2.1/Master/Layout/HSS3varf.sps
+        kind: file
+        size: 86674
+      - id: 68d816416bd97c48fdb8f9bf
+        name: HSvalf.sps
+        path: 2003/2.1/Master/Layout/HSvalf.sps
+        kind: file
+        size: 1346850
+      - id: 68d816417a3abaa7291b9fdb
+        name: HSvale.sps
+        path: 2003/2.1/Master/Layout/HSvale.sps
+        kind: file
+        size: 1346850
+      - id: 68d8164317b0e9a536d4ea82
+        name: HSvare.sps
+        path: 2003/2.1/Master/Layout/HSvare.sps
+        kind: file
+        size: 147436
+      - id: 68d816446bd97c48fdb8f9c1
+        name: HSvarf.sps
+        path: 2003/2.1/Master/Layout/HSvarf.sps
+        kind: file
+        size: 147436
+      - id: 68d8164694ecca0ba1432ba2
+        name: INC_i.sas
+        path: 2003/2.1/Master/Layout/INC_i.sas
+        kind: file
+        size: 552
+      - id: 68d816485999d949dfb8f77e
+        name: INC_i.sps
+        path: 2003/2.1/Master/Layout/INC_i.sps
+        kind: file
+        size: 249
+      - id: 68d816498f3c392144432c6a
+        name: INC_RATIO_i.sas
+        path: 2003/2.1/Master/Layout/INC_RATIO_i.sas
+        kind: file
+        size: 300
+      - id: 68d8164b07d64e9301b8f9bd
+        name: INC_RATIO_i.sps
+        path: 2003/2.1/Master/Layout/INC_RATIO_i.sps
+        kind: file
+        size: 145
+      - id: 68d8164b17b0e9a536d4ea85
+        name: INCS1_i.sas
+        path: 2003/2.1/Master/Layout/INCS1_i.sas
+        kind: file
+        size: 552
+      - id: 68d8164c8e53b866b06041ca
+        name: INCS1_RATIO_i.sas
+        path: 2003/2.1/Master/Layout/INCS1_RATIO_i.sas
+        kind: file
+        size: 300
+      - id: 68d8164d272bae9829432bfa
+        name: INCS1_i.sps
+        path: 2003/2.1/Master/Layout/INCS1_i.sps
+        kind: file
+        size: 249
+      - id: 68d8164e3fba57ee181b9f96
+        name: INCS1_RATIO_i.sps
+        path: 2003/2.1/Master/Layout/INCS1_RATIO_i.sps
+        kind: file
+        size: 145
+      - id: 68d81650272bae9829432bfd
+        name: INCS2_i.sas
+        path: 2003/2.1/Master/Layout/INCS2_i.sas
+        kind: file
+        size: 552
+      - id: 68d8165096df53c6d81ba012
+        name: INCS2_i.sps
+        path: 2003/2.1/Master/Layout/INCS2_i.sps
+        kind: file
+        size: 249
+      - id: 68d816526960147905b8f7cb
+        name: INCS2_RATIO_i.sas
+        path: 2003/2.1/Master/Layout/INCS2_RATIO_i.sas
+        kind: file
+        size: 300
+      - id: 68d8165385137c5eab1ba163
+        name: INCS2_RATIO_i.sps
+        path: 2003/2.1/Master/Layout/INCS2_RATIO_i.sps
+        kind: file
+        size: 145
+      - id: 68d8165517b0e9a536d4ea89
+        name: INCS3_i.sas
+        path: 2003/2.1/Master/Layout/INCS3_i.sas
+        kind: file
+        size: 552
+      - id: 68d8165599c6cc74afd4eb1f
+        name: INCS3_i.sps
+        path: 2003/2.1/Master/Layout/INCS3_i.sps
+        kind: file
+        size: 249
+      - id: 68d81658b2dbb4e8a01b9f85
+        name: INCS3_RATIO_i.sas
+        path: 2003/2.1/Master/Layout/INCS3_RATIO_i.sas
+        kind: file
+        size: 300
+      - id: 68d81659fdbbb306591ba147
+        name: INCS3_RATIO_i.sps
+        path: 2003/2.1/Master/Layout/INCS3_RATIO_i.sps
+        kind: file
+        size: 145
+      - id: 68d8165bc7bf51a8886041b4
+        name: readmstr.sas
+        path: 2003/2.1/Master/Layout/readmstr.sas
+        kind: file
+        size: 10629
+      - id: 68d8165e94ecca0ba1432ba9
+        name: readmstr.sps
+        path: 2003/2.1/Master/Layout/readmstr.sps
+        kind: file
+        size: 6526
+      - id: 68d8165e272bae9829432c01
+        name: WST_fmt.sas
+        path: 2003/2.1/Master/Layout/WST_fmt.sas
+        kind: file
+        size: 62
+      - id: 68d8166217b0e9a536d4ea8d
+        name: WST_i.sps
+        path: 2003/2.1/Master/Layout/WST_i.sps
+        kind: file
+        size: 119
+      - id: 68d8166223cbffecf3d4e965
+        name: wst_i.sas
+        path: 2003/2.1/Master/Layout/wst_i.sas
+        kind: file
+        size: 241
+      - id: 68d8166599c6cc74afd4eb22
+        name: WST_lbf.sas
+        path: 2003/2.1/Master/Layout/WST_lbf.sas
+        kind: file
+        size: 435
+      - id: 68d816658e53b866b06041cd
+        name: WST_lbe.sas
+        path: 2003/2.1/Master/Layout/WST_lbe.sas
+        kind: file
+        size: 435
+      - id: 68d8166707ff2cf197432c1e
+        name: wst_o.sas
+        path: 2003/2.1/Master/Layout/wst_o.sas
+        kind: file
+        size: 237
+      - id: 68d81669c7bf51a8886041b7
+        name: WST_pfe.sas
+        path: 2003/2.1/Master/Layout/WST_pfe.sas
+        kind: file
+        size: 574
+      - id: 68d8166ab2dbb4e8a01b9f8a
+        name: WST_pff.sas
+        path: 2003/2.1/Master/Layout/WST_pff.sas
+        kind: file
+        size: 574
+      - id: 68d8166b3fba57ee181b9f9e
+        name: WSTmiss.sps
+        path: 2003/2.1/Master/Layout/WSTmiss.sps
+        kind: file
+        size: 328
+      - id: 68d8166eb2dbb4e8a01b9f8c
+        name: WSTvale.sps
+        path: 2003/2.1/Master/Layout/WSTvale.sps
+        kind: file
+        size: 656
+      - id: 68d8166e081a4f1ace6040f7
+        name: WSTvalf.sps
+        path: 2003/2.1/Master/Layout/WSTvalf.sps
+        kind: file
+        size: 656
+      - id: 68d8167223cbffecf3d4e96c
+        name: WSTvare.sps
+        path: 2003/2.1/Master/Layout/WSTvare.sps
+        kind: file
+        size: 410
+      - id: 68d81672593d37057fb8f6a6
+        name: WSTvarf.sps
+        path: 2003/2.1/Master/Layout/WSTvarf.sps
+        kind: file
+        size: 410

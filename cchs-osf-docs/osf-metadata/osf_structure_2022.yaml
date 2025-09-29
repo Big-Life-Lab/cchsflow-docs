@@ -1,0 +1,98 @@
+created: 1.759086e+09
+year: 2022.0
+source: OSF.io API (recursive)
+purpose: Complete OSF structure for year 2022
+base_directory: cchs-osf-docs
+folder_id: 68d724945d66d3ed9ed4e948
+total_items: 18.0
+structure:
+- id: 68d724aea0d859ae61d4e98b
+  name: 12-Month
+  path: 2022/12-Month
+  kind: folder
+  children:
+  - id: 68d724c3f0c494b838b8f973
+    name: Master
+    path: 2022/12-Month/Master
+    kind: folder
+    children:
+    - id: 68d724ec9caf86128d1b9e7f
+      name: Docs
+      path: 2022/12-Month/Master/Docs
+      kind: folder
+      children:
+      - id: 68d727671f5499c9301b9feb
+        name: CCHS_2022_DataDictionary_Freqs.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_DataDictionary_Freqs.pdf
+        kind: file
+        size: 2509219
+      - id: 68d72768d306dd45521b9fc4
+        name: CCHS_2022_CV_Tables_Share.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_CV_Tables_Share.pdf
+        kind: file
+        size: 18882238
+      - id: 68d7276b6853e231f81b9ef0
+        name: CCHS_2022_Derived_Variables.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Derived_Variables.pdf
+        kind: file
+        size: 605683
+      - id: 68d7276b552b517034d4e9f7
+        name: CCHS_2022_Household_Weights.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Household_Weights.pdf
+        kind: file
+        size: 410638
+      - id: 68d7276f2757efb4c9b8f6b3
+        name: CCHS_2022_Income_Master File.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Income_Master File.pdf
+        kind: file
+        size: 389291
+      - id: 68d7276ff0c494b838b8f97f
+        name: CCHS_2022_Questionnaire.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Questionnaire.pdf
+        kind: file
+        size: 2638895
+      - id: 68d7277127a555cb08432bd4
+        name: CCHS_2022_User_Guide.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_User_Guide.pdf
+        kind: file
+        size: 1100557
+      - id: 68d72773197918f542d4e9bf
+        name: ESCC_2022_CV_Tables_Partagé.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_CV_Tables_Partagé.pdf
+        kind: file
+        size: 9481529
+      - id: 68d7277407d65e2111b8f7b4
+        name: ESCC_2022_DictionnaireDonnées_Fréq.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_DictionnaireDonnées_Fréq.pdf
+        kind: file
+        size: 2540087
+      - id: 68d72776197918f542d4e9c1
+        name: ESCC_2022_Guide_Utilisateur.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Guide_Utilisateur.pdf
+        kind: file
+        size: 1508188
+      - id: 68d727773adab2f8ba6041c7
+        name: ESCC_2022_Poids_Ménages.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Poids_Ménages.pdf
+        kind: file
+        size: 412586
+      - id: 68d7277849dd359efd432bda
+        name: ESCC_2022_Questionnaire.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Questionnaire.pdf
+        kind: file
+        size: 2825843
+      - id: 68d72779f3da59001ab8f858
+        name: ESCC_2022_Revenu_Fichier Maître.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Revenu_Fichier Maître.pdf
+        kind: file
+        size: 388619
+      - id: 68d7277b70c48b1e83604226
+        name: ESCC_2022_Variables_Dérivées.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Variables_Dérivées.pdf
+        kind: file
+        size: 635966
+    - id: 68d72504de6315d316432b74
+      name: Layout
+      path: 2022/12-Month/Master/Layout
+      kind: folder
+      children: []
