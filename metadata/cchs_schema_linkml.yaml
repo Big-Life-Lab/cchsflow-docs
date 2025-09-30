@@ -35,6 +35,8 @@ classes:
       - temporal_type
       - doc_type
       - category
+      - secondary_categories
+      - content_tags
       - language
       - version
       - sequence
@@ -62,6 +64,12 @@ classes:
         required: true
       category:
         required: true
+      secondary_categories:
+        required: false
+        description: Optional additional categories for multi-purpose documents
+      content_tags:
+        required: false
+        description: Optional semantic tags for enhanced searchability
       language:
         required: true
       version:
@@ -146,8 +154,17 @@ slots:
     range: DocTypeEnum
 
   category:
-    description: Full document category name
+    description: Primary document category name
     range: DocumentCategoryEnum
+
+  secondary_categories:
+    description: Additional content categories for multi-purpose documents
+    multivalued: true
+    range: DocumentCategoryEnum
+
+  content_tags:
+    description: Semantic content classification tags
+    multivalued: true
 
   language:
     description: ISO 639-1 language code
@@ -272,7 +289,10 @@ slots:
 
   # Documentation
   field_descriptions:
-    description: Field descriptions for documentation
+    description: Field descriptions for documentation including enhanced categorization fields
+    examples:
+      - "secondary_categories: Additional content types found in multi-purpose documents"
+      - "content_tags: Semantic classification for improved searchability"
 
   generation_formulas:
     description: Generation formulas for computed fields

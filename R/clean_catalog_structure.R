@@ -233,7 +233,7 @@ split_version <- function(version_string) {
   
   list(
     sequence = sequence_num,
-    version = paste0("v", sequence_num)  # Convert '01' -> 'v1'
+    version = "v1"  # All OSF downloads are version 1 (first version)
   )
 }
 
@@ -341,16 +341,8 @@ clean_catalog <- function(input_file, output_file = NULL) {
       uid_lang <- get_language_iso(file_entry$uid_components$id_language)
       file_entry$language <- filename_lang  # Prioritize filename detection
       
-      # Convert version to v1, v2, v3 format
-      original_version <- file_entry$uid_components$version
-      if (is.null(original_version) || original_version == "") {
-        file_entry$version <- "v1"
-      } else {
-        # Convert '01' -> 'v1', '02' -> 'v2', etc.
-        version_num <- as.integer(gsub("^0+", "", original_version))
-        if (is.na(version_num) || version_num < 1) version_num <- 1
-        file_entry$version <- paste0("v", version_num)
-      }
+      # Set version to v1 for all OSF downloads (first version)
+      file_entry$version <- "v1"
       file_entry$sequence <- if (is.null(file_entry$uid_components$sequence)) 1L else as.integer(file_entry$uid_components$sequence)
       
       # Update cchs_uid with enhanced format including file extension
@@ -390,6 +382,9 @@ clean_catalog <- function(input_file, output_file = NULL) {
     
     # Remove any old field names that might conflict
     file_entry$id_type <- NULL  # Replace with doc_type
+    
+    # FORCE all files to version v1 (OSF downloads are first version)
+    file_entry$version <- "v1"
     
     # Apply namespace approach - strip local namespace prefix from local_path
     if (!is.null(file_entry$local_path)) {
