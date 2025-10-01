@@ -1,16 +1,2 @@
-# Ignore large data files but track structure
-*.pdf
-*.doc
-*.docx
-*.mdb
-*.sas
-*.sps
-*.do
-*.dct
-*.log
 
-# Keep metadata and documentation
-!osf-metadata/
-!README.md
-!CHANGELOG.md
 

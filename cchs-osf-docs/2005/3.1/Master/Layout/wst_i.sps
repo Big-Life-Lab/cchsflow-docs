@@ -1,0 +1,4 @@
+DATA LIST FILE = INFILE NOTABLE/
+ SAMPLEID     1-  20 (A)
+ WSTEDJST    21-  24 (2)
+    .

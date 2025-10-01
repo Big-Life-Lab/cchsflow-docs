@@ -1,0 +1,106 @@
+1                                                          The SAS System                            15:54 Monday, December 14, 2015
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2002-2010 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.3 (TS1M1) 
+      Licensed to STATISTICS CANADA - PC/SERVER, Site 70186445.
+NOTE: This session is executing on the X64_7PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+
+SAS/STAT 9.3_M1, SAS/ETS 9.3_M1, SAS/OR 9.3_M1
+
+NOTE: SAS initialization used:
+      real time           1.40 seconds
+      cpu time            0.42 seconds
+      
+1          /**********************************************/
+2          /*   CCHS Master file                          */
+3          /* Use this for English labels and format     */
+4          /*
+5          /* Where pathnames correspond to the directory */
+6          /* structure on the original CD-ROM, where D: is*/
+7          /* the CD-ROM drive (modify as necessary to suit*/
+8          /* your directory structure).                   */
+9          /************************************************/
+10         
+11         %include "D:\Layout\hs_pfe.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_pfe.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_pfe.sas.
+12         
+13         data HS;
+14                 %let datafid="D:\Data\hs.txt";
+15                 %include "D:\Layout\hs_i.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_i.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_i.sas.
+16                 %include "D:\Layout\hs_fmt.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_fmt.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_fmt.sas.
+17                 %include "D:\Layout\hs_lbe.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_lbe.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_lbe.sas.
+18         run;
+
+NOTE: The data set WORK.HS has 1 observations and 0 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.30 seconds
+      cpu time            0.10 seconds
+2                                        The SAS System           15:54 Monday, December 14, 2015
+
+      
+
+19         
+20         
+21         
+22         
+23         /************************************************/
+24         /* Fichier maître de l'ESCC                     */
+25         /* Utiliser pour les étiquettes et le formattage*/
+26         /*  des données                                 */
+27         /* Où les noms de répertoires correspondent à la structure*/
+28         /* des répertoires du CD-ROM originel, où D: est le lecteur*/
+29         /* de CR-DOM (modifiez tel que nécessaire pour refléter*/
+30         /* la structure de vos répertoires).			*/
+31         /************************************************/
+32         
+33         %include "D:\Layout\hs_pff.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_pff.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_pff.sas.
+34         
+35         data HS;
+36                 %let datafid="D:\Data\hs.txt";
+37                 %include "D:\Layout\hs_i.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_i.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_i.sas.
+38                 %include "D:\Layout\hs_fmt.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_fmt.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_fmt.sas.
+39                 %include "D:\Layout\hs_lbf.sas";
+WARNING: Physical file does not exist, D:\Layout\hs_lbf.sas.
+ERROR: Cannot open %INCLUDE file D:\Layout\hs_lbf.sas.
+40         run;
+
+NOTE: The data set WORK.HS has 1 observations and 0 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+41         
+42         
+
+ERROR: Errors printed on pages 1,2.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           3.02 seconds
+      cpu time            0.54 seconds
+      
