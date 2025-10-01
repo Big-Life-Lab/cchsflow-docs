@@ -5,6 +5,37 @@ All notable changes to the CCHS Documentation Catalog will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- **Collections distribution system** via GitHub releases
+  - Manifest files for collection metadata tracking (`data/manifests/`)
+  - Core Master Collection v1.1.0: 129 English master files (2001-2023)
+  - Build directory for temporary collection artifacts (`build/`)
+  - Collection generation script (`R/extract_collection.R`)
+- **GitHub infrastructure** for releases and collaboration
+  - Release template for consistent collection releases
+  - GitHub workflow for automated collection releases
+  - Issue templates for bug reports, collection requests, and documentation
+- **Structured documentation** in `docs/` directory
+  - Architecture documentation with system design
+  - Collections guide for creating and using collections
+  - OSF sync guide for synchronization workflows
+  - CCHS glossary for terminology clarification
+
+### Changed
+- **Repository architecture**: Shifted from single monolithic catalog to OSF mirror → Collections workflow
+- **Distribution model**: Collections distributed via GitHub releases (not stored in Git repository)
+- **File organization**: Separated source files (`cchs-osf-docs/`) from build artifacts (`build/`)
+- Updated README.md with collections architecture and accurate file counts
+- Updated CLAUDE.md with current system architecture and workflows
+- Renamed collection from "rag-collection" to "core-master-collection" for clarity
+
+### Technical
+- Collections are reproducible from OSF mirror
+- Manifests tracked in Git, collection ZIPs in releases
+- Build artifacts properly gitignored
+
 ## [1.1.0] - 2025-09-29
 
 ### Fixed

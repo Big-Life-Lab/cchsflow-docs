@@ -16,3 +16,7 @@ osf_credentials.R
 # Temporary files
 *~
 .DS_Store
+
+# Build artifacts (collections as release assets)
+build/
+*.zip

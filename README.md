@@ -8,14 +8,35 @@ This repository provides:
 - **Comprehensive metadata catalog** for 1,262 CCHS files (2001-2023)
 - **Unique identifier system** with file extension awareness
 - **LinkML schema validation** for data consistency
-- **OSF.io synchronization** infrastructure
+- **OSF.io synchronization** infrastructure (read-only mirror)
+- **Curated collections** with canonical filenames distributed via GitHub releases
 - **Automated reporting** and workflow management
 
 ## 📋 Quick Start
 
-### View the Catalog
+### Download a Collection
+
+Download curated collections from [GitHub Releases](../../releases):
+
+**Core Master Collection (v1.1.0)** - Essential English master documentation
+- 129 files: Questionnaires, data dictionaries, user guides, derived variables
+- English only, Master files only
+- Years 2001-2023 (complete coverage)
+- Canonical filenames for easy sharing
+
 ```r
-# Load and explore the production catalog
+# After downloading and extracting, load the manifest
+library(readr)
+manifest <- read_csv("cchs-core-master-collection-v1.1.0/manifest.csv")
+
+# Find files by category
+questionnaires <- manifest %>% filter(category == "questionnaire")
+```
+
+### View the Full Catalog
+
+```r
+# Load and explore the complete production catalog (1,262 files)
 library(yaml)
 catalog <- yaml::read_yaml("data/catalog/cchs_catalog.yaml")
 
@@ -46,7 +67,14 @@ validation_results <- validate_cchs_catalog("data/catalog/cchs_catalog.yaml")
 - **`R/clean_catalog_structure.R`** - Catalog generation with smart UID assignment
 - **`R/validate_catalog.R`** - Comprehensive validation system
 
-#### 🔗 **OSF.io Infrastructure** 
+#### 📦 **Collections & Distribution**
+- **`data/manifests/`** - Collection manifests (tracked in Git)
+- **`R/extract_collection.R`** - Collection generation from OSF mirror
+- **`build/`** - Temporary build artifacts (gitignored)
+- **GitHub Releases** - Distribution platform for collection ZIP files
+
+#### 🔗 **OSF.io Infrastructure**
+- **`cchs-osf-docs/`** - Read-only mirror of OSF.io (original filenames)
 - **`R/osf_api_client.R`** - Production OSF API client (replaces broken `osfr`)
 - **`R/osf_sync_system.R`** - Comprehensive synchronization system
 - **`R/osf_versioning_system.R`** - Git-based change tracking and automation
@@ -56,7 +84,35 @@ validation_results <- validate_cchs_catalog("data/catalog/cchs_catalog.yaml")
 - **`sync_workflow.qmd`** - Executable workflow documentation and pipeline
 
 #### 📚 **Documentation**
-- **`UID_SYSTEM_V2_DOCUMENTATION.md`** - UID system reference and examples
+- **`docs/`** - Technical documentation directory
+  - [UID System](docs/uid-system.md) - UID reference and examples
+  - [Architecture](docs/architecture.md) - System design and data flow
+  - [Collections Guide](docs/collections-guide.md) - Creating and using collections
+  - [OSF Sync Guide](docs/osf-sync-guide.md) - Synchronization workflows
+  - [Glossary](docs/glossary.md) - CCHS terminology
+- **`data/manifests/README.md`** - Collection manifests documentation
+
+## 📖 CCHS Terminology
+
+Understanding key CCHS concepts:
+
+**Master vs Share Files**
+- **Master Files**: Full survey documentation distributed to Research Data Centres (RDCs). Contains complete questionnaires, full data dictionaries, and unrestricted variables. Used by researchers with secure data access.
+- **Share Files**: Public-use subset files with enhanced privacy protection. Contains subset of variables, some aggregated or suppressed. Available for public access with fewer restrictions.
+- **When to use**: Download Master collections for comprehensive research at RDCs. Use Share collections for public analyses or preliminary exploration.
+
+**Temporal Types**
+- **Single-year (s)**: Standard annual surveys (most common after 2007)
+- **Dual-year (d)**: Two-year combined data collections (2007-2008, 2009-2010, etc.)
+- **Multi-year (m)**: Multi-year pooled surveys (less common)
+
+**Document Categories**
+- **Questionnaires (qu)**: Survey instruments with all questions asked
+- **Data Dictionaries (dd)**: Variable definitions, codes, and frequencies
+- **User Guides (ug)**: Methodology, sampling, weighting instructions
+- **Derived Variables (dv)**: Documentation of calculated/constructed variables
+- **Record Layouts (rl)**: File structure and variable positions
+- **Syntax Files (various)**: SAS/SPSS/Stata code for data processing
 
 ## 🆔 UID System
 
@@ -84,14 +140,23 @@ cchs-2007d-m-ss-e-sas-01    # 2007 dual-year, master SAS syntax, English
 
 ## 💻 Usage Examples
 
-### Generate New Catalog
+### Create a Collection
 ```r
-# Clean and regenerate catalog from source data
-source("R/clean_catalog_structure.R")
-cleaned_catalog <- clean_catalog(
-  input_file = "metadata/legacy/source_catalog.yaml",
-  output_file = "data/catalog/cchs_catalog_new.yaml"
+# Generate a new collection from OSF mirror
+source("R/extract_collection.R")
+
+# Core master collection (English master files only)
+core_master <- extract_collection(
+  collection_name = "cchs-core-master-collection",
+  version = "v1.1.0",
+  doc_type = "master",
+  language = "EN",
+  exclude_syntax = TRUE
 )
+
+# This creates:
+# - build/cchs-core-master-collection-v1.1.0.zip
+# - data/manifests/cchs-core-master-collection-manifest-v1.1.0.csv
 ```
 
 ### OSF Synchronization
@@ -133,9 +198,9 @@ french_docs <- catalog$files[sapply(catalog$files, function(x) {
   x$language == "FR"
 })]
 
-# Find SAS syntax files
-sas_files <- catalog$files[sapply(catalog$files, function(x) {
-  x$file_extension == "sas"
+# Find master files only
+master_files <- catalog$files[sapply(catalog$files, function(x) {
+  x$doc_type == "master"
 })]
 ```
 
@@ -171,19 +236,30 @@ default:
 ├── R/                              # Core R scripts
 │   ├── clean_catalog_structure.R      # Catalog generation
 │   ├── validate_catalog.R             # Validation system
+│   ├── extract_collection.R           # Collection generation
 │   ├── osf_api_client.R               # OSF API client
 │   ├── osf_sync_system.R              # Sync infrastructure
 │   └── osf_versioning_system.R        # Change tracking
 ├── data/
-│   └── catalog/
-│       └── cchs_catalog.yaml          # Production catalog
+│   ├── catalog/
+│   │   └── cchs_catalog.yaml          # Production catalog (1,262 files)
+│   └── manifests/                     # Collection manifests (Git-tracked)
+│       ├── README.md                  # Manifests documentation
+│       └── cchs-core-master-collection-manifest-v1.1.0.csv
 ├── metadata/
 │   ├── cchs_schema_linkml.yaml        # LinkML schema
 │   └── legacy/                        # Historical artifacts
-├── cchs-osf-docs/                     # Synced OSF content
+├── cchs-osf-docs/                     # OSF.io mirror (original filenames)
+├── build/                             # Temporary artifacts (gitignored)
+│   └── *.zip                          # Collection builds
+├── docs/                              # Technical documentation
+│   ├── architecture.md                # System design
+│   ├── collections-guide.md           # Collections usage
+│   ├── osf-sync-guide.md             # OSF synchronization
+│   ├── uid-system.md                 # UID specification
+│   └── glossary.md                   # CCHS terminology
 ├── cchs_osf_download_report.qmd       # Status reporting
-├── sync_workflow.qmd                  # Workflow pipeline
-└── UID_SYSTEM_V2_DOCUMENTATION.md    # System documentation
+└── sync_workflow.qmd                  # Workflow pipeline
 ```
 
 ## 🔬 Technical Details
