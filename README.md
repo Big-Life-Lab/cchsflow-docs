@@ -80,8 +80,10 @@ validation_results <- validate_cchs_catalog("data/catalog/cchs_catalog.yaml")
 - **`R/osf_versioning_system.R`** - Git-based change tracking and automation
 
 #### 📈 **Reporting & Workflows**
-- **`cchs_osf_download_report.qmd`** - Download status and completion tracking
-- **`sync_workflow.qmd`** - Executable workflow documentation and pipeline
+- **`reports/`** - Quarto-based analysis and reporting
+  - [Catalog Browser](reports/catalog-browser.qmd) - Interactive catalog exploration
+  - [Download Status](reports/download-status.qmd) - OSF sync status and verification
+  - [Sync Workflow](reports/sync-workflow.qmd) - Executable workflow documentation
 
 #### 📚 **Documentation**
 - **`docs/`** - Technical documentation directory
@@ -258,8 +260,10 @@ default:
 │   ├── osf-sync-guide.md             # OSF synchronization
 │   ├── uid-system.md                 # UID specification
 │   └── glossary.md                   # CCHS terminology
-├── cchs_osf_download_report.qmd       # Status reporting
-└── sync_workflow.qmd                  # Workflow pipeline
+└── reports/                           # Quarto reports
+    ├── catalog-browser.qmd            # Catalog exploration
+    ├── download-status.qmd            # Sync status
+    └── sync-workflow.qmd              # Workflow pipeline
 ```
 
 ## 🔬 Technical Details

@@ -17,6 +17,9 @@ osf_credentials.R
 *~
 .DS_Store
 
+# AI context (local development)
+CLAUDE.md
+
 # Build artifacts (collections as release assets)
 build/
 *.zip
