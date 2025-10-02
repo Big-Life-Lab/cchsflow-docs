@@ -29,6 +29,8 @@ Collections make it easy to download and work with specific sets of CCHS documen
 
 **Download**: [Releases](https://github.com/YOUR_USERNAME/cchsflow-docs/releases)
 
+**🤖 AI Assistant**: [CCHS Documentation NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) - Interactive AI assistant with this collection plus PUMF documentation for instant answers and exploration
+
 ### Future Collections
 
 Coming soon:
