@@ -14,6 +14,14 @@ This repository provides:
 
 ## 📋 Quick Start
 
+### 🤖 AI-Powered Documentation Assistant
+
+**NEW**: [CCHS Documentation NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) 🔗
+
+Interactive AI assistant powered by Google NotebookLM with the complete CCHS Core Master Collection plus PUMF documentation. Ask questions, explore documentation, and get instant answers about CCHS surveys.
+
+---
+
 ### Download a Collection
 
 Download curated collections from [GitHub Releases](../../releases):
@@ -23,6 +31,7 @@ Download curated collections from [GitHub Releases](../../releases):
 - English only, Master files only
 - Years 2001-2023 (complete coverage)
 - Canonical filenames for easy sharing
+- **Also available in**: [NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) for AI-assisted exploration
 
 ```r
 # After downloading and extracting, load the manifest
