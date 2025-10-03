@@ -1,10 +1,14 @@
-id: https://github.com/Big-Life-Lab/cchs-documentation/schema/v2
-name: cchs-documentation-schema-v2
-title: CCHS Documentation Metadata Schema v2
+id: https://github.com/Big-Life-Lab/cchs-documentation/schema/v3
+name: cchs-documentation-schema-v3
+title: CCHS Documentation Metadata Schema v3
 description: >-
   LinkML schema for Canadian Community Health Survey (CCHS) documentation
-  metadata with enhanced UID system, namespace support, and ISO compliance
-version: "2.0.0"
+  metadata with enhanced UID system, namespace support, ISO compliance,
+  multi-source support (OSF + PUMF), and subcategory differentiation.
+
+  BREAKING CHANGE in v3.0.0: UID format now includes optional subcategory code
+  for differentiating file variants (main, simplified, sub-sample, etc.)
+version: "3.0.0"
 license: MIT
 
 prefixes:
@@ -25,6 +29,52 @@ imports:
 
 classes:
 
+  Namespace:
+    description: >-
+      Defines a source location namespace for URL reconstruction and provenance tracking.
+      Each namespace represents a specific source (OSF project, Google Drive folder, local mirror, etc.)
+    attributes:
+      name:
+        description: Human-readable name for this namespace
+        required: true
+        examples:
+          - "CCHS Docs - Documentation Component"
+          - "PUMF Collection"
+          - "OSF Local Mirror"
+      description:
+        description: Optional detailed description of this namespace
+        required: false
+        examples:
+          - "OSF project containing CCHS master documentation files"
+          - "Google Drive folder with PUMF files from Statistics Canada"
+      type:
+        description: Type of source
+        required: true
+        range: NamespaceTypeEnum
+      project_id:
+        description: Project identifier (for OSF, Google Drive, etc.)
+        required: false
+        examples:
+          - "6p3n9"
+          - "1BWtYYCU6XKbOAiZYvr_znFQK5ORO2AzW"
+      component_id:
+        description: Component identifier (for OSF components)
+        required: false
+        examples:
+          - "jm8bx"
+      base_url:
+        description: Base URL for reconstructing full file URLs
+        required: false
+        examples:
+          - "https://osf.io/6p3n9/files/osfstorage/jm8bx"
+          - "https://drive.google.com/drive/folders/1BWtYYCU6XKbOAiZYvr_znFQK5ORO2AzW"
+      base_path:
+        description: Base filesystem path (for local namespaces)
+        required: false
+        examples:
+          - "cchs-osf-docs/"
+          - "cchs-pumf-docs/"
+
   CCHSFile:
     description: >-
       A single CCHS documentation file with unique identifier and metadata
@@ -35,6 +85,7 @@ classes:
       - temporal_type
       - doc_type
       - category
+      - subcategory
       - secondary_categories
       - content_tags
       - language
@@ -42,8 +93,12 @@ classes:
       - sequence
       - filename
       - canonical_filename
+      - source
+      - source_namespace
+      - source_filepath
       - local_path
       - osf_path
+      - pumf_path
       - file_extension
       - file_size
       - checksum
@@ -64,6 +119,9 @@ classes:
         required: true
       category:
         required: true
+      subcategory:
+        required: false
+        description: Subcategory code for differentiating file variants (main, simp, subs, etc.)
       secondary_categories:
         required: false
         description: Optional additional categories for multi-purpose documents
@@ -80,6 +138,12 @@ classes:
         required: true
       canonical_filename:
         required: true
+      source:
+        required: true
+        description: Data source identifier (osf, pumf, other)
+      pumf_path:
+        required: false
+        description: Relative path in PUMF repository (for PUMF files only)
 
   CCHSCatalog:
     description: >-
@@ -120,13 +184,19 @@ slots:
   # Enhanced primary identifiers
   cchs_uid:
     description: >-
-      Unique identifier with temporal awareness including file extension:
-      cchs-{year}{temporal}-{doc_type}-{category}-{language}-{extension}-{sequence:02d}
-    pattern: "^cchs-[0-9]{4}[sdm]-[ms]-[a-z]{2}-[ef]-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log)-[0-9]{2}$"
+      Unique identifier with temporal awareness, optional subcategory, and file extension.
+
+      Format v3.0: cchs-{year}{temporal}-{doc_type}-{category}-[{subcategory}-]{language}-{extension}-{sequence:02d}
+
+      Subcategory is optional but recommended when multiple files of same type exist.
+      Common subcategories: main, simp, subs, freq, rev, alt, comp, synt, spec
+    pattern: "^cchs-[0-9]{4}[sdm]-[msp]-[a-z-]+(-[a-z]{4})?-(e|f)-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log|xml|webarchive|html)-[0-9]{2}$"
     examples:
       - cchs-2009d-m-qu-e-pdf-01
-      - cchs-2001s-m-ug-f-doc-01
-      - cchs-2015s-s-dd-e-docx-02
+      - cchs-2005s-p-dd-main-e-pdf-01
+      - cchs-2005s-p-dd-simp-e-pdf-02
+      - cchs-2001s-p-questionnaire-rev-e-pdf-01
+      - cchs-2015d-p-ddi-metadata-main-e-xml-01
 
   catalog_id:
     description: 6-character alphanumeric unique identifier for referencing
@@ -156,6 +226,11 @@ slots:
   category:
     description: Primary document category name
     range: DocumentCategoryEnum
+
+  subcategory:
+    description: Optional subcategory code for differentiating file variants
+    range: SubcategoryEnum
+    required: false
 
   secondary_categories:
     description: Additional content categories for multi-purpose documents
@@ -189,22 +264,66 @@ slots:
     required: true
 
   canonical_filename:
-    description: Standardized filename following Jenny Bryan conventions
-    pattern: "^cchs_[0-9]{4}[sdm]_[a-z-]+_[ms]_[ef][nr]_[0-9]+_v[0-9]+\\.[a-z]+$"
+    description: Standardized filename following Jenny Bryan conventions with optional subcategory
+    pattern: "^cchs_[0-9]{4}[sdm]_[a-z-]+(_[a-z]{4})?_[msp]_[ef][nr]_[0-9]+_v[0-9]+\\.[a-z]+$"
     examples:
       - cchs_2001s_questionnaire_m_en_1_v1.doc
+      - cchs_2005s_data-dictionary_main_p_en_1_v1.pdf
+      - cchs_2005s_data-dictionary_simp_p_en_2_v1.pdf
       - cchs_2009d_user-guide_m_fr_1_v2.pdf
+      - cchs_2015d_bootstrap_p_en_1_v1.pdf
+
+  source:
+    description: Data source identifier
+    range: DataSourceEnum
+    required: true
+
+  source_namespace:
+    description: >-
+      Reference to namespace in catalog metadata that defines the source location.
+      Links to namespaces defined in catalog_metadata for URL reconstruction and provenance tracking.
+    required: true
+    examples:
+      - "osf_cchs_docs"
+      - "gdrive_pumf_collection"
+      - "local_osf_mirror"
+
+  source_filepath:
+    description: >-
+      Original filepath (path + filename) from the source location.
+      Combined with source_namespace, this allows full URL reconstruction.
+      Preserves original file location for provenance and traceability.
+    required: true
+    examples:
+      - "2001/1.1/Master/Docs/CCHS 1.1 household questionnaire_e.doc"
+      - "CCHS-PUMF/Bootstrap/Bootstrap_weights.pdf"
+      - "2009/12-Month/Master/Layout/hs_fmt.sas"
 
   local_path:
-    description: Relative path in local repository (namespace prefix removed)
+    description: >-
+      DEPRECATED: Use source_filepath with local namespace instead.
+      Relative path in local repository (namespace prefix removed).
+    required: false
     examples:
       - "2001/1.1/Master/Docs/CCHS 1.1 household questionnaire_e.doc"
       - "2009/12-Month/Master/Layout/hs_fmt.sas"
 
   osf_path:
-    description: Relative OSF repository path
+    description: >-
+      DEPRECATED: Use source_filepath with OSF namespace instead.
+      Relative OSF repository path.
+    required: false
     examples:
       - "2001/1.1/Master/Docs/CCHS 1.1 household questionnaire_e.doc"
+
+  pumf_path:
+    description: >-
+      DEPRECATED: Use source_filepath with PUMF namespace instead.
+      Relative PUMF repository path (for PUMF files only).
+    required: false
+    examples:
+      - "CCHS-PUMF/Bootstrap/Bootstrap_E.pdf"
+      - "CCHS-PUMF/CCHS_DDI/cchs-82M0013-E-2001-c1-1-general-file.xml"
 
   file_extension:
     description: File extension type
@@ -317,9 +436,33 @@ enums:
     description: Document type classification
     permissible_values:
       master:
-        description: Master files
+        description: Master files (RDC)
       share:
-        description: Share files
+        description: Share files (synthetic/subset)
+      pumf:
+        description: Public Use Microdata Files
+
+  SubcategoryEnum:
+    description: Optional subcategory codes for differentiating file variants
+    permissible_values:
+      main:
+        description: Main/primary version (typically full format from Statistics Canada)
+      simp:
+        description: Simplified format (typically user-friendly tabular format)
+      subs:
+        description: Sub-sample or subset version
+      freq:
+        description: Frequency distribution version
+      rev:
+        description: Revised or updated version
+      alt:
+        description: Alternative format or version
+      comp:
+        description: Companion or supplementary document
+      synt:
+        description: Synthetic data version
+      spec:
+        description: Special topic or focused subset
 
   DocumentCategoryEnum:
     description: Enhanced document category classification
@@ -352,6 +495,14 @@ enums:
         description: Income imputation documentation
       errata:
         description: Error corrections and updates
+      ddi-metadata:
+        description: DDI (Data Documentation Initiative) metadata XML files
+      bootstrap:
+        description: Bootstrap variance estimation documentation
+      quality-assurance:
+        description: Quality assurance guidelines for survey usage
+      study-documentation:
+        description: Study methodology documentation (Statistics Canada PUMF format)
       format-file:
         description: SAS format files
       frequency-file:
@@ -401,6 +552,32 @@ enums:
       FR:
         description: French
 
+  NamespaceTypeEnum:
+    description: Namespace type classification for source locations
+    permissible_values:
+      osf:
+        description: Open Science Framework (OSF.io) project or component
+      gdrive:
+        description: Google Drive folder
+      local:
+        description: Local filesystem mirror
+      odesi:
+        description: ODESI (Ontario Data Documentation, Extraction Service and Infrastructure)
+      statcan:
+        description: Statistics Canada repository
+      other:
+        description: Other source type
+
+  DataSourceEnum:
+    description: Data source classification
+    permissible_values:
+      osf:
+        description: OSF.io StatCan RDC documentation
+      pumf:
+        description: Google Drive PUMF documentation
+      other:
+        description: Other sources
+
   FileExtensionEnum:
     description: File extension types
     permissible_values:
@@ -428,3 +605,9 @@ enums:
         description: Microsoft Access database
       log:
         description: Log file
+      xml:
+        description: XML metadata file (DDI/metadata)
+      webarchive:
+        description: Web archive file (macOS Safari webarchive format)
+      html:
+        description: HTML web page
