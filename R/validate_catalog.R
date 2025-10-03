@@ -1,28 +1,50 @@
 # CCHS Catalog Validator
 # Validates catalog structure against business rules and format requirements
+#
+# Schema Version: 3.0.0
+# Updated: 2025-10-03
+# Changes: BREAKING CHANGE - Added optional subcategory support in UID
+#          UID format now: cchs-{year}{temporal}-{doc_type}-{category}-[{subcategory}-]{lang}-{ext}-{seq}
+#          Canonical filename: cchs_{year}{temporal}_{category}[_{subcategory}]_{doc}_{lang}_{seq}_v{ver}.{ext}
 
 library(yaml)
 
 # Validation functions
 validate_cchs_uid <- function(uid, file_entry) {
   errors <- c()
-  
-  # Check format: cchs-{year}{temporal}-{doc_type}-{category}-{language}-{ext}-{sequence:02d}
-  pattern <- "^cchs-[0-9]{4}[sdm]-[ms]-[a-z]{2}-[ef]-[a-z]{1,3}-[0-9]{2}$"
+
+  # Check format v3.0.0: cchs-{year}{temporal}-{doc_type}-{category}-[{subcategory}-]{language}-{ext}-{sequence:02d}
+  # Subcategory is optional 4-letter code
+  pattern <- "^cchs-[0-9]{4}[sdm]-[msp]-[a-z-]+(-[a-z]{4})?-(e|f)-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log|xml|webarchive|html)-[0-9]{2}$"
   if (!grepl(pattern, uid)) {
     errors <- c(errors, paste("Invalid UID format:", uid))
   }
-  
+
   # Extract components and validate consistency
   if (grepl(pattern, uid)) {
     parts <- strsplit(uid, "-")[[1]]
-    if (length(parts) == 7) {
+    # Note: Category and subcategory can have hyphens, so parts length varies
+    if (length(parts) >= 7) {
       year_temporal <- parts[2]
       doc_type <- parts[3]
-      category <- parts[4]
-      language <- parts[5]
-      ext_code <- parts[6]
-      sequence <- parts[7]
+
+      # Language is 3rd from end, extension is 2nd from end, sequence is last
+      sequence <- parts[length(parts)]
+      ext_code <- parts[length(parts) - 1]
+      language <- parts[length(parts) - 2]
+
+      # Check if subcategory exists (4-letter code before language)
+      # Subcategory would be at position length(parts) - 3 if it's exactly 4 letters
+      potential_subcat <- parts[length(parts) - 3]
+      has_subcategory <- nchar(potential_subcat) == 4 && grepl("^[a-z]{4}$", potential_subcat)
+
+      if (has_subcategory) {
+        subcategory <- potential_subcat
+        category <- paste(parts[4:(length(parts) - 4)], collapse = "-")
+      } else {
+        subcategory <- NULL
+        category <- paste(parts[4:(length(parts) - 3)], collapse = "-")
+      }
       
       # Validate year matches year
       expected_year <- paste0(file_entry$year, 
@@ -44,7 +66,8 @@ validate_cchs_uid <- function(uid, file_entry) {
       }
       
       # Validate file extension matches
-      expected_ext <- tolower(substr(file_entry$file_extension %||% "unk", 1, 3))
+      # Handle longer extensions like "webarchive"
+      expected_ext <- tolower(file_entry$file_extension %||% "unk")
       if (ext_code != expected_ext) {
         errors <- c(errors, paste("Extension mismatch in UID:", uid, "expected:", expected_ext))
       }
@@ -53,68 +76,101 @@ validate_cchs_uid <- function(uid, file_entry) {
       if (!grepl("^[0-9]{2}$", sequence)) {
         errors <- c(errors, paste("Invalid sequence format in UID:", uid))
       }
+
+      # Validate subcategory matches (if present in either UID or file_entry)
+      file_has_subcat <- !is.null(file_entry$subcategory) &&
+                         file_entry$subcategory != "" &&
+                         !is.na(file_entry$subcategory)
+      if (has_subcategory && !file_has_subcat) {
+        errors <- c(errors, paste("UID has subcategory but file entry does not:", uid))
+      }
+      if (!has_subcategory && file_has_subcat) {
+        errors <- c(errors, paste("File entry has subcategory but UID does not:", uid))
+      }
+      if (has_subcategory && file_has_subcat && subcategory != file_entry$subcategory) {
+        errors <- c(errors, paste("Subcategory mismatch in UID:", uid,
+                                 "expected:", file_entry$subcategory))
+      }
     }
   }
-  
+
   return(errors)
 }
 
 validate_canonical_filename <- function(filename, file_entry) {
   errors <- c()
-  
-  # Check Jenny Bryan format: cchs_{year}{temporal}_{category}_{doc_type}_{language}_{sequence}_{version}.{ext}
-  pattern <- "^cchs_[0-9]{4}[sdm]_[a-z-]+_[ms]_[a-z]{2}_[0-9]+_v[0-9]+\\.[a-z]+$"
+
+  # Check Jenny Bryan format v3.0.0: cchs_{year}{temporal}_{category}[_{subcategory}]_{doc_type}_{language}_{sequence}_{version}.{ext}
+  # Subcategory is optional 4-letter code
+  pattern <- "^cchs_[0-9]{4}[sdm]_[a-z-]+(_[a-z]{4})?_[msp]_[a-z]{2}_[0-9]+_v[0-9]+\\.[a-z]+$"
   if (!grepl(pattern, filename)) {
     errors <- c(errors, paste("Invalid canonical filename format:", filename))
   }
-  
+
   return(errors)
 }
 
 validate_required_fields <- function(file_entry) {
   errors <- c()
-  
+
+  # Updated for schema v3.0.0: added source_namespace and source_filepath as required
   required_fields <- c(
-    "cchs_uid", "catalog_id", "year", "temporal_type", 
-    "doc_type", "category", "language", "version", 
-    "sequence", "filename", "canonical_filename"
+    "cchs_uid", "catalog_id", "year", "temporal_type",
+    "doc_type", "category", "language", "version",
+    "sequence", "filename", "canonical_filename", "source",
+    "source_namespace", "source_filepath"
   )
-  
+
   for (field in required_fields) {
     if (is.null(file_entry[[field]]) || is.na(file_entry[[field]]) || file_entry[[field]] == "") {
       errors <- c(errors, paste("Missing required field:", field))
     }
   }
-  
+
   return(errors)
 }
 
 validate_enum_values <- function(file_entry) {
   errors <- c()
-  
+
   # Validate temporal_type
   valid_temporal <- c("single", "dual", "multi")
   if (!file_entry$temporal_type %in% valid_temporal) {
     errors <- c(errors, paste("Invalid temporal_type:", file_entry$temporal_type))
   }
-  
-  # Validate doc_type
-  valid_doc_type <- c("master", "share")
+
+  # Validate doc_type (updated for schema v2.1.0: added pumf)
+  valid_doc_type <- c("master", "share", "pumf")
   if (!file_entry$doc_type %in% valid_doc_type) {
     errors <- c(errors, paste("Invalid doc_type:", file_entry$doc_type))
   }
-  
+
+  # Validate source (new in schema v2.1.0)
+  valid_sources <- c("osf", "pumf", "other")
+  if (!is.null(file_entry$source) && !file_entry$source %in% valid_sources) {
+    errors <- c(errors, paste("Invalid source:", file_entry$source))
+  }
+
+  # Validate subcategory (new in schema v3.0.0, optional)
+  valid_subcategories <- c("main", "simp", "subs", "freq", "rev", "alt", "comp", "synt", "spec")
+  if (!is.null(file_entry$subcategory) && file_entry$subcategory != "" && !is.na(file_entry$subcategory)) {
+    if (!file_entry$subcategory %in% valid_subcategories) {
+      errors <- c(errors, paste("Invalid subcategory:", file_entry$subcategory,
+                               "- must be one of:", paste(valid_subcategories, collapse = ", ")))
+    }
+  }
+
   # Validate language
   valid_languages <- c("EN", "FR")
   if (!file_entry$language %in% valid_languages) {
     errors <- c(errors, paste("Invalid language:", file_entry$language))
   }
-  
+
   # Validate version format
   if (!grepl("^v[0-9]+$", file_entry$version)) {
     errors <- c(errors, paste("Invalid version format:", file_entry$version))
   }
-  
+
   return(errors)
 }
 

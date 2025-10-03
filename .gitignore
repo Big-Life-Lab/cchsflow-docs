@@ -5,21 +5,32 @@
 .Ruserdata
 *.Rproj
 
+# renv - track lockfile, settings, and activate.R but not library
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/sandbox/
+renv/staging/
+!renv/settings.json
+!renv/activate.R
+!renv/.gitignore
 # Environment variables
 .env
 .env.local
 .Renviron
-
 # OSF credentials (security)
 osf_credentials.R
-
+# Google Drive credentials (security)
+.secrets/
 # Temporary files
 *~
 .DS_Store
-
 # AI context (local development)
 CLAUDE.md
-
 # Build artifacts (collections as release assets)
 build/
 *.zip
+
+.secrets

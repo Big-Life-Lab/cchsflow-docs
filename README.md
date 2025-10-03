@@ -5,14 +5,33 @@ A production metadata catalog system for Canadian Community Health Survey (CCHS)
 ## 🎯 Overview
 
 This repository provides:
-- **Comprehensive metadata catalog** for 1,262 CCHS files (2001-2023)
-- **Unique identifier system** with file extension awareness
-- **LinkML schema validation** for data consistency
+- **Comprehensive metadata catalog** for 1,262+ CCHS files (2001-2023)
+- **Enhanced unique identifier system (v3.0)** with subcategory support for file variants
+- **LinkML schema validation** for data consistency and quality assurance
+- **Multi-source integration** (OSF.io mirror + PUMF files)
 - **OSF.io synchronization** infrastructure (read-only mirror)
 - **Curated collections** with canonical filenames distributed via GitHub releases
 - **Automated reporting** and workflow management
 
 ## 📋 Quick Start
+
+### ⚙️ Setup R Environment
+
+This project uses **renv** for reproducible package management:
+
+```r
+# Install renv if not already installed
+install.packages("renv")
+
+# Restore project packages
+renv::restore()
+```
+
+**R Version Requirement**: R 4.2+ (development on R 4.4.3)
+
+See [ENVIRONMENT.md](ENVIRONMENT.md) for complete setup instructions, including using **rig** for R version management and **pak** for faster package installation.
+
+---
 
 ### 🤖 AI-Powered Documentation Assistant
 
@@ -125,29 +144,62 @@ Understanding key CCHS concepts:
 - **Record Layouts (rl)**: File structure and variable positions
 - **Syntax Files (various)**: SAS/SPSS/Stata code for data processing
 
-## 🆔 UID System
+## 🆔 UID System (v3.0)
 
-Our enhanced UID system provides unique identifiers with temporal and format awareness:
+Our enhanced UID system provides unique identifiers with temporal awareness, format differentiation, and optional subcategories for file variants.
 
 ### Format
 ```
-cchs-{year}{temporal}-{doc_type}-{category}-{language}-{extension}-{sequence:02d}
+cchs-{year}{temporal}-{doc_type}-{category}-[{subcategory}-]{language}-{extension}-{sequence:02d}
 ```
 
+**Note**: Subcategory is optional and only used when semantically meaningful (e.g., differentiating main vs simplified formats).
+
 ### Examples
+
+**Without subcategory** (most files):
 ```bash
-cchs-2009d-m-qu-e-pdf-01    # 2009 dual-year, master questionnaire, English PDF
-cchs-2015s-s-dd-f-docx-02   # 2015 single-year, share data dictionary, French Word doc
-cchs-2007d-m-ss-e-sas-01    # 2007 dual-year, master SAS syntax, English
+cchs-2009d-m-questionnaire-e-pdf-01   # 2009 dual-year, master questionnaire, English PDF
+cchs-2015s-s-data-dictionary-f-docx-01   # 2015 single-year, share data dictionary, French Word
+cchs-2007d-m-syntax-setvalue-e-sas-01    # 2007 dual-year, master SAS syntax, English
+```
+
+**With subcategory** (file variants):
+```bash
+cchs-2005s-p-data-dictionary-main-e-pdf-01    # Main/official Statistics Canada format
+cchs-2005s-p-data-dictionary-simp-e-pdf-02    # Simplified user-friendly format
+cchs-2005s-p-data-dictionary-subs-e-pdf-03    # Sub-sample specific version
+cchs-2010s-p-ddi-metadata-synt-e-xml-01       # Synthetic data DDI metadata
 ```
 
 ### Components
 - **Year + Temporal**: `2009d` (dual-year), `2015s` (single-year), `2013m` (multi-year)
-- **Document Type**: `m` (master), `s` (share)
-- **Category Codes**: `qu` (questionnaire), `dd` (data-dictionary), `ug` (user-guide), etc.
+- **Document Type**: `m` (master), `s` (share), `p` (pumf - Public Use Microdata File)
+- **Category**: `questionnaire`, `data-dictionary`, `user-guide`, `derived-variables`, etc.
+- **Subcategory** (optional): `main`, `simp`, `subs`, `freq`, `alt`, `comp`, `synt`, `spec`
 - **Language**: `e` (English), `f` (French)
-- **Extension**: `pdf`, `doc`, `docx`, `sas`, `sps`, etc.
+- **Extension**: `pdf`, `doc`, `docx`, `sas`, `sps`, `xml`, `html`, `webarchive`, etc.
 - **Sequence**: `01`, `02`, `03` (for multiple versions)
+
+### Subcategory Codes
+
+Use subcategories to differentiate file **types**, not **versions**:
+
+| Code | Meaning | Use Case | Example |
+|------|---------|----------|---------|
+| `main` | Main/primary version | Official Statistics Canada format | Full data dictionary |
+| `simp` | Simplified format | User-friendly tabular layout | Condensed data dictionary |
+| `subs` | Sub-sample | Specific subset of data | HUI sub-sample documentation |
+| `freq` | Frequency distribution | Summary statistics | Frequency tables |
+| `alt` | Alternative format | Different file format of same content | Webarchive vs PDF |
+| `comp` | Companion document | Supplementary guide | Complement user guide |
+| `synt` | Synthetic data | Synthetic/simulated data | Synthetic file DDI |
+| `spec` | Special topic | Focused subset | Income variables only |
+
+**When NOT to use subcategories:**
+- Revision numbers (V1, V2, V3) → Use sequence numbers instead
+- Minor updates → Use sequence numbers
+- Same content, different years → Use year component
 
 ## 💻 Usage Examples
 

@@ -1,0 +1,8 @@
+# Ignore large data directories and documentation
+cchs-osf-docs/
+cchs-pumf-docs/
+build/
+docs/
+.git/
+.github/
+reports/output/
