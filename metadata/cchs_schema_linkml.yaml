@@ -190,13 +190,15 @@ slots:
 
       Subcategory is optional but recommended when multiple files of same type exist.
       Common subcategories: main, simp, subs, freq, rev, alt, comp, synt, spec
-    pattern: "^cchs-[0-9]{4}[sdm]-[msp]-[a-z-]+(-[a-z]{4})?-(e|f)-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log|xml|webarchive|html)-[0-9]{2}$"
+    pattern: "^cchs-[0-9]{4}[sdm]-[msp]-[a-z0-9-]+(-[a-z]{4})?-(e|f)-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log|xml|webarchive|html)-[0-9]{2}$"
     examples:
       - cchs-2009d-m-qu-e-pdf-01
       - cchs-2005s-p-dd-main-e-pdf-01
       - cchs-2005s-p-dd-simp-e-pdf-02
       - cchs-2001s-p-questionnaire-rev-e-pdf-01
       - cchs-2015d-p-ddi-metadata-main-e-xml-01
+      - cchs-2020s-p-questionnaire-alt-e-webarchive-02
+      - cchs-2021s-p-questionnaire-alt-e-html-02
 
   catalog_id:
     description: 6-character alphanumeric unique identifier for referencing
@@ -265,13 +267,15 @@ slots:
 
   canonical_filename:
     description: Standardized filename following Jenny Bryan conventions with optional subcategory
-    pattern: "^cchs_[0-9]{4}[sdm]_[a-z-]+(_[a-z]{4})?_[msp]_[ef][nr]_[0-9]+_v[0-9]+\\.[a-z]+$"
+    pattern: "^cchs_[0-9]{4}[sdm]_([a-z0-9-]+_){1,2}[msp]_[a-z]+_[0-9]+_v[0-9]+\\.[a-z0-9]+$"
     examples:
       - cchs_2001s_questionnaire_m_en_1_v1.doc
       - cchs_2005s_data-dictionary_main_p_en_1_v1.pdf
       - cchs_2005s_data-dictionary_simp_p_en_2_v1.pdf
       - cchs_2009d_user-guide_m_fr_1_v2.pdf
       - cchs_2015d_bootstrap_p_en_1_v1.pdf
+      - cchs_2020s_questionnaire_alt_p_en_2_v1.webarchive
+      - cchs_2021s_questionnaire_alt_p_en_2_v1.html
 
   source:
     description: Data source identifier

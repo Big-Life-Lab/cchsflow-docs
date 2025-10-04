@@ -408,24 +408,38 @@ clean_catalog <- function(input_file, output_file = NULL) {
     # 9. Remove redundant base_id field (now redundant with cchs_uid)
     file_entry$base_id <- NULL
     
-    # 10. Add lowercase Jenny Bryan style canonical_filename with 2-character codes
+    # 10. Add lowercase Jenny Bryan style canonical_filename with full category names
     if (!is.null(file_entry$cchs_uid) && !is.null(file_entry$file_extension)) {
-      # cchs_{year}{temporal}_{category_code}_{doc_type}_{language_code}_{sequence}_{version}.{ext}
+      # cchs_{year}{temporal}_{category}[_{subcategory}]_{doc_type}_{language_code}_{sequence}_{version}.{ext}
       temporal_abbrev <- substr(file_entry$temporal_type, 1, 1)  # s, d, m
-      doc_type_abbrev <- substr(file_entry$doc_type, 1, 1)       # m, s  
-      category_code <- get_category_code(category_name)          # 2-char codes: qu, ot, etc.
+      doc_type_abbrev <- substr(file_entry$doc_type, 1, 1)       # m, s, p
       lang_code <- tolower(file_entry$language)                 # en, fr
-      
+
       year_temporal <- paste0(file_entry$year, temporal_abbrev)
-      canonical_parts <- c(
-        "cchs",
-        year_temporal,
-        category_code,
-        doc_type_abbrev,
-        lang_code,
-        file_entry$sequence,
-        file_entry$version  # Now properly v1, v2, v3
-      )
+
+      # Build canonical parts with optional subcategory
+      if (!is.null(file_entry$subcategory) && file_entry$subcategory != "" && !is.na(file_entry$subcategory)) {
+        canonical_parts <- c(
+          "cchs",
+          year_temporal,
+          category_name,
+          file_entry$subcategory,
+          doc_type_abbrev,
+          lang_code,
+          file_entry$sequence,
+          file_entry$version
+        )
+      } else {
+        canonical_parts <- c(
+          "cchs",
+          year_temporal,
+          category_name,
+          doc_type_abbrev,
+          lang_code,
+          file_entry$sequence,
+          file_entry$version
+        )
+      }
       canonical_base <- paste(canonical_parts, collapse = "_")
       file_entry$canonical_filename <- paste0(canonical_base, ".", file_entry$file_extension)
     }
