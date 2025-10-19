@@ -23,7 +23,7 @@ detect_chms_component <- function(filename) {
   if (grepl("clinic|clc", filename_lower)) return("clc")
 
   # Activity Monitor
-  if (grepl("^am_|ams|activity", filename_lower)) return("ams")
+  if (grepl("^am_|_am_|ams|activity", filename_lower)) return("ams")
 
   # Fasting
   if (grepl("fast", filename_lower)) return("fast")
@@ -143,10 +143,8 @@ build_chms_catalog_entry <- function(file_info, cycle_num, local_path) {
   list(
     uid = uid,
     survey = "CHMS",
-    cycle = paste0("Cycle", cycle_num),
-    cycle_num = as.integer(cycle_num),
-    component = component,
-    doc_type = doc_type,
+    chms_cycle = paste0("cycle", cycle_num),
+    chms_component = component,
     category = category,
     secondary_category = secondary_category,
     language = language,

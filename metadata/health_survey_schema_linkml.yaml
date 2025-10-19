@@ -1,23 +1,29 @@
-id: https://github.com/Big-Life-Lab/cchs-documentation/schema/v3
-name: cchs-documentation-schema-v3
-title: CCHS Documentation Metadata Schema v3
+id: https://github.com/Big-Life-Lab/canadian-health-surveys/schema/v4
+name: canadian-health-surveys-schema-v4
+title: Canadian Health Surveys Documentation Metadata Schema v4
 description: >-
-  LinkML schema for Canadian Community Health Survey (CCHS) documentation
-  metadata with enhanced UID system, namespace support, ISO compliance,
-  multi-source support (OSF + PUMF), and subcategory differentiation.
+  LinkML schema for Canadian health survey documentation metadata including
+  Canadian Community Health Survey (CCHS) and Canadian Health Measures Survey (CHMS).
 
+  Features: enhanced UID system, namespace support, ISO compliance,
+  multi-source support (OSF + PUMF), subcategory differentiation, and
+  multi-survey support.
+
+  NEW in v4.0.0: Support for CHMS alongside CCHS with survey-specific fields
   BREAKING CHANGE in v3.0.0: UID format now includes optional subcategory code
   for differentiating file variants (main, simplified, sub-sample, etc.)
-version: "3.0.0"
+version: "4.0.0"
 license: MIT
 
 prefixes:
   linkml: https://w3id.org/linkml/
+  healthsurvey: https://github.com/Big-Life-Lab/canadian-health-surveys/
   cchs: https://github.com/Big-Life-Lab/cchs-documentation/
+  chms: https://github.com/Big-Life-Lab/chms-documentation/
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
-  
-default_prefix: cchs
+
+default_prefix: healthsurvey
 default_range: string
 
 imports:
@@ -77,12 +83,16 @@ classes:
 
   CCHSFile:
     description: >-
-      A single CCHS documentation file with unique identifier and metadata
+      A single health survey documentation file with unique identifier and metadata.
+      Supports both CCHS and CHMS surveys with survey-specific fields.
     slots:
       - cchs_uid
       - catalog_id
+      - survey
       - year
       - temporal_type
+      - chms_cycle
+      - chms_component
       - doc_type
       - category
       - subcategory
@@ -111,12 +121,24 @@ classes:
         required: true
       catalog_id:
         required: true
+      survey:
+        required: true
+        description: Survey type - CCHS or CHMS
       year:
-        required: true
+        required: false
+        description: Required for CCHS, not used for CHMS
       temporal_type:
-        required: true
+        required: false
+        description: Required for CCHS, not used for CHMS
+      chms_cycle:
+        required: false
+        description: Required for CHMS, not used for CCHS
+      chms_component:
+        required: false
+        description: Required for CHMS, not used for CCHS
       doc_type:
-        required: true
+        required: false
+        description: Required for CCHS (master/share/pumf), not used for CHMS
       category:
         required: true
       subcategory:
@@ -208,9 +230,15 @@ slots:
       - XYZ123
       - M5PAL5
 
-  # Core file components  
+  # Survey identification
+  survey:
+    description: Survey type (CCHS or CHMS)
+    range: SurveyEnum
+    required: true
+
+  # Core file components (CCHS-specific)
   year:
-    description: Survey year as string
+    description: Survey year as string (CCHS only)
     pattern: "^[0-9]{4}$"
     examples:
       - "2001"
@@ -218,11 +246,21 @@ slots:
       - "2023"
 
   temporal_type:
-    description: Temporal scope of survey
+    description: Temporal scope of survey (CCHS only)
     range: TemporalTypeEnum
 
+  # Core file components (CHMS-specific)
+  chms_cycle:
+    description: CHMS cycle (CHMS only)
+    range: CHMSCycleEnum
+
+  chms_component:
+    description: CHMS component/subsample (CHMS only)
+    range: CHMSComponentEnum
+
+  # Shared file components
   doc_type:
-    description: Document type classification
+    description: Document type classification (CCHS: master/share/pumf, CHMS: not applicable)
     range: DocTypeEnum
 
   category:
@@ -426,8 +464,16 @@ slots:
 
 enums:
 
+  SurveyEnum:
+    description: Canadian health survey classification
+    permissible_values:
+      CCHS:
+        description: Canadian Community Health Survey
+      CHMS:
+        description: Canadian Health Measures Survey
+
   TemporalTypeEnum:
-    description: Temporal scope classification
+    description: Temporal scope classification (CCHS-specific)
     permissible_values:
       single:
         description: Single year survey
@@ -435,6 +481,44 @@ enums:
         description: Two-year cycle survey
       multi:
         description: Multi-year survey
+
+  CHMSCycleEnum:
+    description: CHMS cycle classification
+    permissible_values:
+      cycle1:
+        description: CHMS Cycle 1
+      cycle2:
+        description: CHMS Cycle 2
+      cycle3:
+        description: CHMS Cycle 3
+      cycle4:
+        description: CHMS Cycle 4
+      cycle5:
+        description: CHMS Cycle 5
+      cycle6:
+        description: CHMS Cycle 6
+
+  CHMSComponentEnum:
+    description: CHMS component/subsample classification
+    permissible_values:
+      gen:
+        description: General documentation (user guides)
+      hhd:
+        description: Household questionnaire
+      clc:
+        description: Clinic questionnaire
+      ams:
+        description: Activity Monitor Subsample
+      fast:
+        description: Fasting subsample
+      nel:
+        description: Nutrition/Environmental subsample
+      med:
+        description: Medication data
+      inc:
+        description: Income-linked data
+      hcl:
+        description: Health Claims supplement
 
   DocTypeEnum:
     description: Document type classification
