@@ -2,17 +2,15 @@ metadata:
   survey: CHMS
   title: Canadian Health Measures Survey Documentation Catalog
   version: 1.0.0
-  generated: 1.7608968e+09
+  generated: 1.7608994e+09
   total_files: 52
   cycles: 6.0
   date_range: Cycle 1 - Cycle 6
 files:
 - uid: chms-c1-hcl-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: hcl
-  doc_type: dd
+  chms_cycle: cycle1
+  chms_component: hcl
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -26,10 +24,8 @@ files:
   local_path: chms-osf-docs/Cycle1/HCLSup_rounded_C1.pdf
 - uid: chms-c1-ams-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: ams
-  doc_type: dd
+  chms_cycle: cycle1
+  chms_component: ams
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -43,10 +39,8 @@ files:
   local_path: chms-osf-docs/Cycle1/AM_rounded_C1.pdf
 - uid: chms-c1-fast-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: fast
-  doc_type: dd
+  chms_cycle: cycle1
+  chms_component: fast
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -60,10 +54,8 @@ files:
   local_path: chms-osf-docs/Cycle1/Fasted_rounded_C1.pdf
 - uid: chms-c1-med-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: med
-  doc_type: dd
+  chms_cycle: cycle1
+  chms_component: med
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -77,10 +69,8 @@ files:
   local_path: chms-osf-docs/Cycle1/Medication_rounded_C1.pdf
 - uid: chms-c1-gen-ug-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: gen
-  doc_type: ug
+  chms_cycle: cycle1
+  chms_component: gen
   category: user-guide
   secondary_category: .na
   language: e
@@ -94,10 +84,8 @@ files:
   local_path: chms-osf-docs/Cycle1/CHMS_User_Guide_Cycle1_E.pdf
 - uid: chms-c1-clc-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: clc
-  doc_type: qu
+  chms_cycle: cycle1
+  chms_component: clc
   category: questionnaire
   secondary_category: .na
   language: e
@@ -111,10 +99,8 @@ files:
   local_path: chms-osf-docs/Cycle1/clinic_cycle1_E.pdf
 - uid: chms-c1-hhd-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle1
-  cycle_num: 1
-  component: hhd
-  doc_type: qu
+  chms_cycle: cycle1
+  chms_component: hhd
   category: questionnaire
   secondary_category: .na
   language: e
@@ -128,10 +114,8 @@ files:
   local_path: chms-osf-docs/Cycle1/hhld_cycle1_E.pdf
 - uid: chms-c2-gen-ug-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: gen
-  doc_type: ug
+  chms_cycle: cycle2
+  chms_component: gen
   category: user-guide
   secondary_category: .na
   language: e
@@ -145,10 +129,8 @@ files:
   local_path: chms-osf-docs/Cycle2/CHMS_User_Guide_Cycle2_E.pdf
 - uid: chms-c2-clc-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: clc
-  doc_type: qu
+  chms_cycle: cycle2
+  chms_component: clc
   category: questionnaire
   secondary_category: .na
   language: e
@@ -162,10 +144,8 @@ files:
   local_path: chms-osf-docs/Cycle2/clinic_cycle2_E.pdf
 - uid: chms-c2-hhd-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: hhd
-  doc_type: qu
+  chms_cycle: cycle2
+  chms_component: hhd
   category: questionnaire
   secondary_category: .na
   language: e
@@ -179,10 +159,8 @@ files:
   local_path: chms-osf-docs/Cycle2/hhld_cycle2_E.pdf
 - uid: chms-c2-ams-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: ams
-  doc_type: dd
+  chms_cycle: cycle2
+  chms_component: ams
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -196,10 +174,8 @@ files:
   local_path: chms-osf-docs/Cycle2/AM_rounded_C2.pdf
 - uid: chms-c2-fast-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: fast
-  doc_type: dd
+  chms_cycle: cycle2
+  chms_component: fast
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -213,10 +189,8 @@ files:
   local_path: chms-osf-docs/Cycle2/Fasted_rounded_C2.pdf
 - uid: chms-c2-hcl-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: hcl
-  doc_type: dd
+  chms_cycle: cycle2
+  chms_component: hcl
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -230,10 +204,8 @@ files:
   local_path: chms-osf-docs/Cycle2/HCL2_rounded_C2.pdf
 - uid: chms-c2-med-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle2
-  cycle_num: 2
-  component: med
-  doc_type: dd
+  chms_cycle: cycle2
+  chms_component: med
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -247,10 +219,8 @@ files:
   local_path: chms-osf-docs/Cycle2/Medication_rounded_C2.pdf
 - uid: chms-c3-ams-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: ams
-  doc_type: dd
+  chms_cycle: cycle3
+  chms_component: ams
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -264,10 +234,8 @@ files:
   local_path: chms-osf-docs/Cycle3/rounded_dd_ams_freq_c3_e.pdf
 - uid: chms-c3-clc-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: clc
-  doc_type: dd
+  chms_cycle: cycle3
+  chms_component: clc
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -281,10 +249,8 @@ files:
   local_path: chms-osf-docs/Cycle3/rounded_dd_clc_freq_c3_e.pdf
 - uid: chms-c3-fast-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: fast
-  doc_type: dd
+  chms_cycle: cycle3
+  chms_component: fast
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -298,10 +264,8 @@ files:
   local_path: chms-osf-docs/Cycle3/rounded_dd_fast_freq_c3_e.pdf
 - uid: chms-c3-hhd-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: hhd
-  doc_type: dd
+  chms_cycle: cycle3
+  chms_component: hhd
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -315,10 +279,8 @@ files:
   local_path: chms-osf-docs/Cycle3/rounded_dd_hhd_freq_c3_e.pdf
 - uid: chms-c3-nel-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: nel
-  doc_type: dd
+  chms_cycle: cycle3
+  chms_component: nel
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -332,10 +294,8 @@ files:
   local_path: chms-osf-docs/Cycle3/rounded_dd_nel_freq_c3_e.pdf
 - uid: chms-c3-gen-ug-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: gen
-  doc_type: ug
+  chms_cycle: cycle3
+  chms_component: gen
   category: user-guide
   secondary_category: .na
   language: e
@@ -349,10 +309,8 @@ files:
   local_path: chms-osf-docs/Cycle3/CHMS_User_Guide_Cycle3_E.pdf
 - uid: chms-c3-clc-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: clc
-  doc_type: qu
+  chms_cycle: cycle3
+  chms_component: clc
   category: questionnaire
   secondary_category: .na
   language: e
@@ -366,10 +324,8 @@ files:
   local_path: chms-osf-docs/Cycle3/quest_clc_c3_e.pdf
 - uid: chms-c3-hhd-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: hhd
-  doc_type: qu
+  chms_cycle: cycle3
+  chms_component: hhd
   category: questionnaire
   secondary_category: .na
   language: e
@@ -383,10 +339,8 @@ files:
   local_path: chms-osf-docs/Cycle3/quest_hhd_c3_e.pdf
 - uid: chms-c3-med-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle3
-  cycle_num: 3
-  component: med
-  doc_type: dd
+  chms_cycle: cycle3
+  chms_component: med
   category: data-dictionary
   secondary_category: unrounded
   language: e
@@ -400,10 +354,8 @@ files:
   local_path: chms-osf-docs/Cycle3/releasable_unrounded_dd_med_freq_c3_e.pdf
 - uid: chms-c4-gen-ug-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: gen
-  doc_type: ug
+  chms_cycle: cycle4
+  chms_component: gen
   category: user-guide
   secondary_category: .na
   language: e
@@ -417,10 +369,8 @@ files:
   local_path: chms-osf-docs/Cycle4/CHMS_User_Guide_Cycle4_E.pdf
 - uid: chms-c4-clc-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: clc
-  doc_type: qu
+  chms_cycle: cycle4
+  chms_component: clc
   category: questionnaire
   secondary_category: .na
   language: e
@@ -434,10 +384,8 @@ files:
   local_path: chms-osf-docs/Cycle4/quest_clc_c4_e.pdf
 - uid: chms-c4-hhd-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: hhd
-  doc_type: qu
+  chms_cycle: cycle4
+  chms_component: hhd
   category: questionnaire
   secondary_category: .na
   language: e
@@ -451,10 +399,8 @@ files:
   local_path: chms-osf-docs/Cycle4/quest_hhd_c4_e.pdf
 - uid: chms-c4-ams-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: ams
-  doc_type: dd
+  chms_cycle: cycle4
+  chms_component: ams
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -468,10 +414,8 @@ files:
   local_path: chms-osf-docs/Cycle4/rounded_dd_ams_freq_c4_e.pdf
 - uid: chms-c4-clc-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: clc
-  doc_type: dd
+  chms_cycle: cycle4
+  chms_component: clc
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -485,10 +429,8 @@ files:
   local_path: chms-osf-docs/Cycle4/rounded_dd_clc_freq_c4_e.pdf
 - uid: chms-c4-fast-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: fast
-  doc_type: dd
+  chms_cycle: cycle4
+  chms_component: fast
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -502,10 +444,8 @@ files:
   local_path: chms-osf-docs/Cycle4/rounded_dd_fast_freq_c4_e.pdf
 - uid: chms-c4-hhd-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: hhd
-  doc_type: dd
+  chms_cycle: cycle4
+  chms_component: hhd
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -519,10 +459,8 @@ files:
   local_path: chms-osf-docs/Cycle4/rounded_dd_hhd_freq_c4_e.pdf
 - uid: chms-c4-nel-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: nel
-  doc_type: dd
+  chms_cycle: cycle4
+  chms_component: nel
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -536,10 +474,8 @@ files:
   local_path: chms-osf-docs/Cycle4/rounded_dd_nel_freq_c4_e.pdf
 - uid: chms-c4-med-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle4
-  cycle_num: 4
-  component: med
-  doc_type: dd
+  chms_cycle: cycle4
+  chms_component: med
   category: data-dictionary
   secondary_category: unrounded
   language: e
@@ -551,17 +487,15 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   local_path: chms-osf-docs/Cycle4/releasable_unrounded_dd_med_freq_c4_e.pdf
-- uid: chms-c5-unknown-dd-e-pdf-01
+- uid: chms-c5-ams-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: unknown
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: ams
   category: data-dictionary
   secondary_category: rounded
   language: e
   filename_original: rounded_dd_am_subsample_freq_c5_E.pdf
-  filename_canonical: chms-c5-unknown-dd-e-pdf-01.pdf
+  filename_canonical: chms-c5-ams-dd-e-pdf-01.pdf
   extension: pdf
   osf_file_id: 64ad804b4eade9049dfa7026
   osf_component_id: 5pxdn
@@ -570,10 +504,8 @@ files:
   local_path: chms-osf-docs/Cycle5/rounded_dd_am_subsample_freq_c5_E.pdf
 - uid: chms-c5-clc-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: clc
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: clc
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -587,10 +519,8 @@ files:
   local_path: chms-osf-docs/Cycle5/rounded_dd_clc_freq_c5_E.pdf
 - uid: chms-c5-fast-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: fast
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: fast
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -604,10 +534,8 @@ files:
   local_path: chms-osf-docs/Cycle5/rounded_dd_fast_freq_c5_E.pdf
 - uid: chms-c5-hhd-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: hhd
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: hhd
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -621,10 +549,8 @@ files:
   local_path: chms-osf-docs/Cycle5/rounded_dd_hhd_freq_c5_E.pdf
 - uid: chms-c5-inc-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: inc
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: inc
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -638,10 +564,8 @@ files:
   local_path: chms-osf-docs/Cycle5/rounded_dd_inc_linked_freq_c5_e.pdf
 - uid: chms-c5-nel-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: nel
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: nel
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -655,10 +579,8 @@ files:
   local_path: chms-osf-docs/Cycle5/rounded_dd_nel_freq_c5_E.pdf
 - uid: chms-c5-med-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: med
-  doc_type: dd
+  chms_cycle: cycle5
+  chms_component: med
   category: data-dictionary
   secondary_category: .na
   language: e
@@ -672,10 +594,8 @@ files:
   local_path: chms-osf-docs/Cycle5/dd_med_freq_c5_E.pdf
 - uid: chms-c5-gen-ug-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: gen
-  doc_type: ug
+  chms_cycle: cycle5
+  chms_component: gen
   category: user-guide
   secondary_category: .na
   language: e
@@ -689,10 +609,8 @@ files:
   local_path: chms-osf-docs/Cycle5/ug_c5_e_december_2021.pdf
 - uid: chms-c5-clc-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: clc
-  doc_type: qu
+  chms_cycle: cycle5
+  chms_component: clc
   category: questionnaire
   secondary_category: .na
   language: e
@@ -706,10 +624,8 @@ files:
   local_path: chms-osf-docs/Cycle5/quest_clc_c5_e.pdf
 - uid: chms-c5-hhd-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle5
-  cycle_num: 5
-  component: hhd
-  doc_type: qu
+  chms_cycle: cycle5
+  chms_component: hhd
   category: questionnaire
   secondary_category: .na
   language: e
@@ -723,10 +639,8 @@ files:
   local_path: chms-osf-docs/Cycle5/quest_hhd_c5_e.pdf
 - uid: chms-c6-gen-ug-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: gen
-  doc_type: ug
+  chms_cycle: cycle6
+  chms_component: gen
   category: user-guide
   secondary_category: .na
   language: e
@@ -740,10 +654,8 @@ files:
   local_path: chms-osf-docs/Cycle6/ug_c6_e_december_2021.pdf
 - uid: chms-c6-hhd-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: hhd
-  doc_type: qu
+  chms_cycle: cycle6
+  chms_component: hhd
   category: questionnaire
   secondary_category: .na
   language: e
@@ -757,10 +669,8 @@ files:
   local_path: chms-osf-docs/Cycle6/quest_hhd_c6_e.pdf
 - uid: chms-c6-ams-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: ams
-  doc_type: dd
+  chms_cycle: cycle6
+  chms_component: ams
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -774,10 +684,8 @@ files:
   local_path: chms-osf-docs/Cycle6/rounded_dd_ams_freq_c6_E.pdf
 - uid: chms-c6-clc-qu-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: clc
-  doc_type: qu
+  chms_cycle: cycle6
+  chms_component: clc
   category: questionnaire
   secondary_category: .na
   language: e
@@ -791,10 +699,8 @@ files:
   local_path: chms-osf-docs/Cycle6/quest_clc_c6_e.pdf
 - uid: chms-c6-clc-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: clc
-  doc_type: dd
+  chms_cycle: cycle6
+  chms_component: clc
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -808,10 +714,8 @@ files:
   local_path: chms-osf-docs/Cycle6/rounded_dd_clc_freq_c6_E.pdf
 - uid: chms-c6-nel-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: nel
-  doc_type: dd
+  chms_cycle: cycle6
+  chms_component: nel
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -825,10 +729,8 @@ files:
   local_path: chms-osf-docs/Cycle6/rounded_dd_nel_freq_c6_E.pdf
 - uid: chms-c6-hhd-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: hhd
-  doc_type: dd
+  chms_cycle: cycle6
+  chms_component: hhd
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -842,10 +744,8 @@ files:
   local_path: chms-osf-docs/Cycle6/rounded_dd_hhd_freq_c6_E.pdf
 - uid: chms-c6-fast-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: fast
-  doc_type: dd
+  chms_cycle: cycle6
+  chms_component: fast
   category: data-dictionary
   secondary_category: rounded
   language: e
@@ -859,10 +759,8 @@ files:
   local_path: chms-osf-docs/Cycle6/rounded_dd_fast_freq_c6_E.pdf
 - uid: chms-c6-med-dd-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: med
-  doc_type: dd
+  chms_cycle: cycle6
+  chms_component: med
   category: data-dictionary
   secondary_category: .na
   language: e
@@ -876,10 +774,8 @@ files:
   local_path: chms-osf-docs/Cycle6/dd_med_freq_c6_E.pdf
 - uid: chms-c6-clc-dv-e-pdf-01
   survey: CHMS
-  cycle: Cycle6
-  cycle_num: 6
-  component: clc
-  doc_type: dv
+  chms_cycle: cycle6
+  chms_component: clc
   category: derived-variables
   secondary_category: .na
   language: e
