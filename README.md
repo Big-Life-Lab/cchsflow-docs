@@ -1,15 +1,17 @@
-# CCHS Documentation Catalog System
+# Canadian Health Surveys Documentation System
 
-A production metadata catalog system for Canadian Community Health Survey (CCHS) documentation with enhanced UID generation, LinkML schema validation, and OSF.io synchronization capabilities.
+A production metadata catalog system for Canadian health survey documentation including the Canadian Community Health Survey (CCHS) and Canadian Health Measures Survey (CHMS), with enhanced UID generation, LinkML schema validation, and OSF.io synchronization capabilities.
 
 ## 🎯 Overview
 
 This repository provides:
-- **Comprehensive metadata catalog** for 1,262+ CCHS files (2001-2023)
-- **Enhanced unique identifier system (v3.0)** with subcategory support for file variants
+- **Comprehensive metadata catalogs** for Canadian health surveys:
+  - **CCHS**: 1,262+ files (2001-2023)
+  - **CHMS**: 52 files (6 cycles)
+- **Enhanced unique identifier systems** with survey-specific UID formats
 - **LinkML schema validation** for data consistency and quality assurance
-- **Multi-source integration** (OSF.io mirror + PUMF files)
-- **OSF.io synchronization** infrastructure (read-only mirror)
+- **Multi-source integration** (OSF.io mirrors + PUMF files)
+- **OSF.io synchronization** infrastructure (read-only mirrors)
 - **Curated collections** with canonical filenames distributed via GitHub releases
 - **Automated reporting** and workflow management
 
@@ -61,28 +63,39 @@ manifest <- read_csv("cchs-core-master-collection-v1.1.0/manifest.csv")
 questionnaires <- manifest %>% filter(category == "questionnaire")
 ```
 
-### View the Full Catalog
+### View the Full Catalogs
 
 ```r
-# Load and explore the complete production catalog (1,262 files)
+# Load and explore the CCHS catalog (1,262 files)
 library(yaml)
-catalog <- yaml::read_yaml("data/catalog/cchs_catalog.yaml")
+cchs_catalog <- yaml::read_yaml("data/catalog/cchs_catalog.yaml")
 
 # View catalog metadata
-catalog$catalog_metadata
+cchs_catalog$catalog_metadata
 
 # Search files by year
-files_2009 <- catalog$files[sapply(catalog$files, function(x) x$year == "2009")]
+files_2009 <- cchs_catalog$files[sapply(cchs_catalog$files, function(x) x$year == "2009")]
 
 # Find files by category
-questionnaires <- catalog$files[sapply(catalog$files, function(x) x$category == "questionnaire")]
+questionnaires <- cchs_catalog$files[sapply(cchs_catalog$files, function(x) x$category == "questionnaire")]
+
+# Load and explore the CHMS catalog (52 files)
+chms_catalog <- yaml::read_yaml("data/catalog/chms_catalog.yaml")
+
+# Search by cycle
+cycle3_files <- chms_catalog$files[sapply(chms_catalog$files, function(x) x$chms_cycle == "cycle3")]
 ```
 
-### Validate Catalog
+### Validate Catalogs
 ```r
-# Run comprehensive validation
-source("R/validate_catalog.R")
-validation_results <- validate_cchs_catalog("data/catalog/cchs_catalog.yaml")
+# Run comprehensive validation for both surveys
+source("R/validate_health_survey_catalog.R")
+
+# Validate CCHS catalog
+cchs_validation <- validate_health_survey_catalog("data/catalog/cchs_catalog.yaml")
+
+# Validate CHMS catalog
+chms_validation <- validate_health_survey_catalog("data/catalog/chms_catalog.yaml")
 ```
 
 ## 🏗️ System Architecture
@@ -90,21 +103,25 @@ validation_results <- validate_cchs_catalog("data/catalog/cchs_catalog.yaml")
 ### Core Components
 
 #### 📊 **Metadata Catalog System**
-- **`data/catalog/cchs_catalog.yaml`** - Production catalog (1,262 files)
-- **`metadata/cchs_schema_linkml.yaml`** - LinkML schema definition
-- **`R/clean_catalog_structure.R`** - Catalog generation with smart UID assignment
-- **`R/validate_catalog.R`** - Comprehensive validation system
+- **`data/catalog/cchs_catalog.yaml`** - CCHS production catalog (1,262 files)
+- **`data/catalog/chms_catalog.yaml`** - CHMS production catalog (52 files)
+- **`metadata/health_survey_schema_linkml.yaml`** - Unified LinkML schema for both surveys
+- **`R/clean_catalog_structure.R`** - CCHS catalog generation
+- **`R/build_chms_catalog.R`** - CHMS catalog generation
+- **`R/validate_health_survey_catalog.R`** - Comprehensive validation for both surveys
 
 #### 📦 **Collections & Distribution**
 - **`data/manifests/`** - Collection manifests (tracked in Git)
-- **`R/extract_collection.R`** - Collection generation from OSF mirror
+- **`R/extract_collection.R`** - Survey-aware collection generation from OSF mirrors
 - **`build/`** - Temporary build artifacts (gitignored)
 - **GitHub Releases** - Distribution platform for collection ZIP files
 
 #### 🔗 **OSF.io Infrastructure**
-- **`cchs-osf-docs/`** - Read-only mirror of OSF.io (original filenames)
-- **`R/osf_api_client.R`** - Production OSF API client (replaces broken `osfr`)
-- **`R/osf_sync_system.R`** - Comprehensive synchronization system
+- **`cchs-osf-docs/`** - CCHS read-only mirror (original filenames)
+- **`chms-osf-docs/`** - CHMS read-only mirror (original filenames)
+- **`R/osf_api_client.R`** - Production OSF API client for both surveys
+- **`R/osf_sync_system.R`** - CCHS synchronization system
+- **`R/chms_sync_system.R`** - CHMS synchronization system
 - **`R/osf_versioning_system.R`** - Git-based change tracking and automation
 
 #### 📈 **Reporting & Workflows**
@@ -144,18 +161,43 @@ Understanding key CCHS concepts:
 - **Record Layouts (rl)**: File structure and variable positions
 - **Syntax Files (various)**: SAS/SPSS/Stata code for data processing
 
-## 🆔 UID System (v3.0)
+## 📖 CHMS Terminology
 
-Our enhanced UID system provides unique identifiers with temporal awareness, format differentiation, and optional subcategories for file variants.
+Understanding key CHMS concepts:
 
-### Format
+**Survey Structure**
+- **Cycles**: CHMS collects data in cycles (Cycle 1-6), each representing a distinct data collection period
+- **Components**: Each cycle contains multiple components organized by measurement type:
+  - **General (gen)**: User guides and general documentation
+  - **Household (hhd)**: Household questionnaire data
+  - **Clinic (clc)**: Clinical measurements and questionnaires
+  - **Activity Monitor Subsample (ams)**: Physical activity monitoring data
+  - **Fasting Subsample (fast)**: Fasting blood sample measurements
+  - **Environmental (nel)**: Environmental contaminants data
+  - **Medication (med)**: Medication usage information
+  - **Income (inc)**: Income-related variables
+  - **Health Clinic (hcl)**: Health clinic supplementary data
+
+**Document Types**
+- **User Guides (ug)**: Methodology, sampling, and data usage instructions
+- **Questionnaires (qu)**: Survey instruments and questions
+- **Data Dictionaries (dd)**: Variable definitions, codes, and frequencies
+- **Derived Variables (dv)**: Documentation of calculated/constructed variables
+
+## 🆔 UID Systems
+
+### CCHS UID System (v3.0)
+
+The CCHS UID system provides unique identifiers with temporal awareness, format differentiation, and optional subcategories for file variants.
+
+#### Format
 ```
 cchs-{year}{temporal}-{doc_type}-{category}-[{subcategory}-]{language}-{extension}-{sequence:02d}
 ```
 
 **Note**: Subcategory is optional and only used when semantically meaningful (e.g., differentiating main vs simplified formats).
 
-### Examples
+#### Examples
 
 **Without subcategory** (most files):
 ```bash
@@ -172,7 +214,7 @@ cchs-2005s-p-data-dictionary-subs-e-pdf-03    # Sub-sample specific version
 cchs-2010s-p-ddi-metadata-synt-e-xml-01       # Synthetic data DDI metadata
 ```
 
-### Components
+#### Components
 - **Year + Temporal**: `2009d` (dual-year), `2015s` (single-year), `2013m` (multi-year)
 - **Document Type**: `m` (master), `s` (share), `p` (pumf - Public Use Microdata File)
 - **Category**: `questionnaire`, `data-dictionary`, `user-guide`, `derived-variables`, etc.
@@ -181,7 +223,7 @@ cchs-2010s-p-ddi-metadata-synt-e-xml-01       # Synthetic data DDI metadata
 - **Extension**: `pdf`, `doc`, `docx`, `sas`, `sps`, `xml`, `html`, `webarchive`, etc.
 - **Sequence**: `01`, `02`, `03` (for multiple versions)
 
-### Subcategory Codes
+#### Subcategory Codes
 
 Use subcategories to differentiate file **types**, not **versions**:
 
@@ -201,15 +243,41 @@ Use subcategories to differentiate file **types**, not **versions**:
 - Minor updates → Use sequence numbers
 - Same content, different years → Use year component
 
+### CHMS UID System
+
+The CHMS UID system identifies files by cycle and component rather than year and temporal type.
+
+#### Format
+```
+chms-c{cycle}-{component}-{doc_type}-{language}-{extension}-{sequence:02d}
+```
+
+#### Examples
+```bash
+chms-c1-gen-ug-e-pdf-01        # Cycle 1, general user guide, English PDF
+chms-c3-clc-dd-e-pdf-01        # Cycle 3, clinic data dictionary, English PDF
+chms-c5-ams-dd-e-pdf-01        # Cycle 5, activity monitor subsample data dict, English PDF
+chms-c6-hcl-dd-f-pdf-01        # Cycle 6, health clinic data dictionary, French PDF
+```
+
+#### Components
+- **Cycle**: `c1`, `c2`, `c3`, `c4`, `c5`, `c6`
+- **Component**: `gen`, `hhd`, `clc`, `ams`, `fast`, `nel`, `med`, `inc`, `hcl`
+- **Document Type**: `ug` (user-guide), `qu` (questionnaire), `dd` (data-dictionary), `dv` (derived-variables)
+- **Language**: `e` (English), `f` (French)
+- **Extension**: `pdf`, `doc`, `docx`
+- **Sequence**: `01`, `02`, `03` (for multiple versions)
+
 ## 💻 Usage Examples
 
 ### Create a Collection
 ```r
-# Generate a new collection from OSF mirror
+# Generate collections from OSF mirrors
 source("R/extract_collection.R")
 
-# Core master collection (English master files only)
-core_master <- extract_collection(
+# CCHS: Core master collection (English master files only)
+cchs_core <- extract_collection(
+  survey = "CCHS",
   collection_name = "cchs-core-master-collection",
   version = "v1.1.0",
   doc_type = "master",
@@ -217,21 +285,36 @@ core_master <- extract_collection(
   exclude_syntax = TRUE
 )
 
+# CHMS: Cycle 3 collection (example)
+chms_c3 <- extract_collection(
+  survey = "CHMS",
+  collection_name = "chms-cycle3-collection",
+  version = "v1.0.0",
+  cycles = "cycle3",
+  language = "EN"
+)
+
 # This creates:
-# - build/cchs-core-master-collection-v1.1.0.zip
-# - data/manifests/cchs-core-master-collection-manifest-v1.1.0.csv
+# - build/{collection-name}-{version}.zip
+# - data/manifests/{collection-name}-manifest-{version}.csv
 ```
 
 ### OSF Synchronization
 ```r
 # Set up OSF credentials in .env file:
 # OSF_PAT=your_personal_access_token
-# OSF_PROJECT_ID=your_project_id
 
-# Sync with OSF.io
+# Sync CCHS with OSF.io
 source("R/osf_sync_system.R")
-sync_results <- sync_osf_structure(
+cchs_sync <- sync_osf_structure(
   target_dir = "cchs-osf-docs",
+  dry_run = FALSE
+)
+
+# Sync CHMS with OSF.io
+source("R/chms_sync_system.R")
+chms_sync <- sync_chms_structure(
+  target_dir = "chms-osf-docs",
   dry_run = FALSE
 )
 ```
@@ -297,22 +380,27 @@ default:
 
 ```
 ├── R/                              # Core R scripts
-│   ├── clean_catalog_structure.R      # Catalog generation
-│   ├── validate_catalog.R             # Validation system
-│   ├── extract_collection.R           # Collection generation
-│   ├── osf_api_client.R               # OSF API client
-│   ├── osf_sync_system.R              # Sync infrastructure
+│   ├── clean_catalog_structure.R      # CCHS catalog generation
+│   ├── build_chms_catalog.R           # CHMS catalog generation
+│   ├── validate_health_survey_catalog.R  # Unified validation
+│   ├── extract_collection.R           # Survey-aware collection generation
+│   ├── osf_api_client.R               # OSF API client (both surveys)
+│   ├── osf_sync_system.R              # CCHS sync infrastructure
+│   ├── chms_sync_system.R             # CHMS sync infrastructure
 │   └── osf_versioning_system.R        # Change tracking
 ├── data/
 │   ├── catalog/
-│   │   └── cchs_catalog.yaml          # Production catalog (1,262 files)
+│   │   ├── cchs_catalog.yaml          # CCHS catalog (1,262 files)
+│   │   └── chms_catalog.yaml          # CHMS catalog (52 files)
 │   └── manifests/                     # Collection manifests (Git-tracked)
 │       ├── README.md                  # Manifests documentation
 │       └── cchs-core-master-collection-manifest-v1.1.0.csv
 ├── metadata/
-│   ├── cchs_schema_linkml.yaml        # LinkML schema
+│   ├── health_survey_schema_linkml.yaml  # Unified LinkML schema
+│   ├── chms_uid_design.md             # CHMS UID documentation
 │   └── legacy/                        # Historical artifacts
-├── cchs-osf-docs/                     # OSF.io mirror (original filenames)
+├── cchs-osf-docs/                     # CCHS OSF.io mirror (original filenames)
+├── chms-osf-docs/                     # CHMS OSF.io mirror (original filenames)
 ├── build/                             # Temporary artifacts (gitignored)
 │   └── *.zip                          # Collection builds
 ├── docs/                              # Technical documentation
@@ -351,13 +439,21 @@ The catalog uses LinkML for structured validation:
 
 ## 🚀 Production Status
 
-✅ **Production Ready**: 1,262 files cataloged with 100% unique UIDs  
-✅ **Validated**: Comprehensive schema and pattern validation  
-✅ **Documented**: Complete system documentation and examples  
-✅ **Maintained**: Active OSF synchronization and change tracking  
+### CCHS
+✅ **Production Ready**: 1,262 files cataloged with 100% unique UIDs
+✅ **Validated**: Comprehensive schema and pattern validation
+✅ **Documented**: Complete system documentation and examples
+✅ **Maintained**: Active OSF synchronization and change tracking
+
+### CHMS
+✅ **Production Ready**: 52 files cataloged with 100% unique UIDs
+✅ **Validated**: Schema-compliant with unified validation system
+✅ **Documented**: UID system and component detection documented
+✅ **Synchronized**: Complete OSF.io mirror downloaded and cataloged
 
 ## 📊 Catalog Statistics
 
+### CCHS
 - **Total Files**: 1,262 documented files
 - **Years Covered**: 2001-2023 (23 survey years)
 - **Languages**: English and French documents
@@ -365,6 +461,14 @@ The catalog uses LinkML for structured validation:
 - **Categories**: 34 document categories from questionnaires to syntax files
 - **UID Uniqueness**: 100% unique identifiers across all files
 
+### CHMS
+- **Total Files**: 52 documented files
+- **Cycles Covered**: Cycle 1-6 (complete coverage)
+- **Languages**: English and French documents
+- **File Types**: PDF
+- **Components**: 9 component types (gen, hhd, clc, ams, fast, nel, med, inc, hcl)
+- **UID Uniqueness**: 100% unique identifiers across all files
+
 ---
 
-🤖 *Enhanced metadata catalog system for comprehensive CCHS documentation management*
+🤖 *Enhanced metadata catalog system for comprehensive Canadian health survey documentation management*

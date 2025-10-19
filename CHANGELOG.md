@@ -1,11 +1,65 @@
 # Changelog
 
-All notable changes to the CCHS Documentation Catalog will be documented in this file.
+All notable changes to the Canadian Health Surveys Documentation System will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+**Note on Versioning**: This project uses separate version numbers for:
+- **Infrastructure/Schema** (this CHANGELOG): Overall system capabilities and schema
+- **Individual Catalogs**: CCHS catalog (v3.0.0), CHMS catalog (v1.0.0)
+- **UID Systems**: CCHS UIDs (v3.0), CHMS UIDs (v1.0)
+
 ## [Unreleased]
+
+## [4.0.0] - 2025-01-19
+
+### Major Changes
+
+**Multi-Survey Support**: Extended infrastructure to support Canadian Health Measures Survey (CHMS) alongside CCHS.
+
+### Added
+
+- **CHMS Integration**:
+  - Complete CHMS documentation catalog (52 files across 6 cycles)
+  - CHMS-specific UID system: `chms-c{cycle}-{component}-{doc_type}-{language}-{extension}-{seq}`
+  - CHMS sync system ([R/chms_sync_system.R](R/chms_sync_system.R))
+  - CHMS catalog builder ([R/build_chms_catalog.R](R/build_chms_catalog.R))
+  - CHMS OSF mirror ([chms-osf-docs/](chms-osf-docs/))
+  - Component detection logic for 9 CHMS components (gen, hhd, clc, ams, fast, nel, med, inc, hcl)
+
+- **Unified Schema** (v4.0.0):
+  - Renamed `cchs_schema_linkml.yaml` to `health_survey_schema_linkml.yaml`
+  - Added `SurveyEnum` (CCHS/CHMS)
+  - Added `CHMSCycleEnum` (cycle1-6)
+  - Added `CHMSComponentEnum` (9 component types)
+  - Survey-specific conditional fields (year/temporal_type for CCHS, chms_cycle/chms_component for CHMS)
+  - Unified validation supporting both UID formats
+
+- **Survey-Aware Infrastructure**:
+  - Extended [R/osf_api_client.R](R/osf_api_client.R) with CHMS functions
+  - Unified validation script ([R/validate_health_survey_catalog.R](R/validate_health_survey_catalog.R))
+  - Survey-aware collection extraction ([R/extract_collection.R](R/extract_collection.R))
+  - Auto-detection of survey type from catalog files
+
+- **Documentation**:
+  - Updated README.md with CHMS sections (terminology, UID system, usage examples)
+  - Added CHMS UID design documentation ([metadata/chms_uid_design.md](metadata/chms_uid_design.md))
+  - Updated repository title to "Canadian Health Surveys Documentation System"
+
+### Changed
+
+- **Schema**: v3.0.0 → v4.0.0 (multi-survey support)
+- **Repository scope**: CCHS-only → CCHS + CHMS
+- **Validation**: Survey-specific UID pattern validation
+- **Configuration**: Added CHMS project and cycle component IDs to [config.yml](config.yml)
+
+### Technical Details
+
+- **CHMS OSF Project**: buva4
+- **CHMS Cycles**: 6 OSF components (cycle1-6)
+- **CHMS Files**: 52 PDFs cataloged with 100% unique UIDs
+- **Catalog Versions**: CCHS catalog remains at v3.0.0, CHMS catalog at v1.0.0
 
 ## [3.0.0] - 2025-10-03
 
