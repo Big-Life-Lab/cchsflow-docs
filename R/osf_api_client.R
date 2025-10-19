@@ -1,11 +1,13 @@
 # Production OSF API Client
 # A clean, reliable replacement for the osfr package that handles pagination properly
-# 
+#
 # Key advantages over osfr:
 # - No pagination limitations (osfr only shows first 10 items)
-# - Direct HTTP control with proper error handling  
+# - Direct HTTP control with proper error handling
 # - Consistent JSON:API parsing
 # - Lighter dependencies (only httr, jsonlite, config)
+#
+# Supports both CCHS and CHMS survey documentation
 
 library(httr)
 library(jsonlite)
@@ -165,37 +167,43 @@ osf_folder_contents <- function(folder_id, page_size = 100) {
 #' @param file_id OSF file ID
 #' @param output_path Local file path to save
 #' @param overwrite Whether to overwrite existing files
+#' @param component_id OSF component ID (optional, for waterbutler URLs)
 #' @return logical indicating success
-osf_download_file <- function(file_id, output_path, overwrite = TRUE) {
-  
+osf_download_file <- function(file_id, output_path, overwrite = TRUE, component_id = NULL) {
+
   creds <- get_osf_credentials()
-  
-  # Get file metadata first
-  url <- paste0("https://api.osf.io/v2/files/", file_id, "/")
-  
+
+  # Create directory if needed
+  dir.create(dirname(output_path), recursive = TRUE, showWarnings = FALSE)
+
   tryCatch({
-    data <- osf_api_request(url, creds$token)
-    download_url <- data$data$links$download
-    
-    if (is.null(download_url)) {
-      warning("No download URL found for file ", file_id)
-      return(FALSE)
+    # Try waterbutler URL format if component_id provided
+    if (!is.null(component_id)) {
+      download_url <- paste0("https://files.osf.io/v1/resources/", component_id,
+                            "/providers/osfstorage/", file_id)
+    } else {
+      # Fallback: get download URL from API metadata
+      url <- paste0("https://api.osf.io/v2/files/", file_id, "/")
+      data <- osf_api_request(url, creds$token)
+      download_url <- data$data$links$download
+
+      if (is.null(download_url)) {
+        warning("No download URL found for file ", file_id)
+        return(FALSE)
+      }
     }
-    
-    # Create directory if needed
-    dir.create(dirname(output_path), recursive = TRUE, showWarnings = FALSE)
-    
+
     # Download file
     headers <- add_headers("Authorization" = paste("Bearer", creds$token))
     response <- GET(download_url, headers, write_disk(output_path, overwrite = overwrite))
-    
+
     if (status_code(response) == 200) {
       return(TRUE)
     } else {
       warning("Download failed: ", status_code(response))
       return(FALSE)
     }
-    
+
   }, error = function(e) {
     warning("Error downloading file ", file_id, ": ", e$message)
     return(FALSE)
@@ -386,9 +394,165 @@ test_osf_connection <- function() {
   })
 }
 
+# CHMS-Specific Functions ----
+
+#' Get CHMS cycle information
+#' @return data.frame with cycle names and component IDs
+get_chms_cycles <- function() {
+  config <- config::get()
+
+  if (is.null(config$chms) || is.null(config$chms$cycles)) {
+    stop("CHMS configuration not found in config.yml")
+  }
+
+  cycles_list <- config$chms$cycles
+
+  data.frame(
+    cycle = names(cycles_list),
+    component_id = unlist(cycles_list, use.names = FALSE),
+    cycle_num = gsub("cycle", "", names(cycles_list)),
+    stringsAsFactors = FALSE
+  )
+}
+
+#' Get all files from a CHMS cycle
+#' @param cycle_num Cycle number (1-6) or cycle name ("cycle1", "Cycle1", etc.)
+#' @return data.frame with file information
+get_chms_cycle_files <- function(cycle_num) {
+
+  cycles <- get_chms_cycles()
+
+  # Normalize input
+  cycle_name <- tolower(as.character(cycle_num))
+  if (!grepl("^cycle", cycle_name)) {
+    cycle_name <- paste0("cycle", cycle_name)
+  }
+
+  cycle_info <- cycles[cycles$cycle == cycle_name, ]
+
+  if (nrow(cycle_info) == 0) {
+    stop("Cycle not found: ", cycle_num, ". Available cycles: ",
+         paste(cycles$cycle_num, collapse = ", "))
+  }
+
+  # Get files from the cycle component
+  files <- osf_list_files(component_id = cycle_info$component_id[1])
+
+  # Add cycle context
+  files$cycle <- cycle_info$cycle[1]
+  files$cycle_num <- cycle_info$cycle_num[1]
+
+  return(files)
+}
+
+#' Get all CHMS files across all cycles
+#' @return data.frame with all CHMS files
+get_all_chms_files <- function() {
+
+  cycles <- get_chms_cycles()
+  all_files <- data.frame()
+
+  for (i in 1:nrow(cycles)) {
+    cat("Fetching files for", cycles$cycle[i], "...\n")
+
+    cycle_files <- get_chms_cycle_files(cycles$cycle_num[i])
+    all_files <- rbind(all_files, cycle_files)
+
+    Sys.sleep(0.2)  # Rate limiting
+  }
+
+  return(all_files)
+}
+
+#' Download a CHMS cycle
+#' @param cycle_num Cycle number (1-6)
+#' @param output_dir Output directory
+#' @return list with download results
+download_chms_cycle <- function(cycle_num, output_dir = "chms-osf-docs") {
+
+  cycle_files <- get_chms_cycle_files(cycle_num)
+
+  # Filter for files only
+  files <- cycle_files[cycle_files$kind == "file", ]
+
+  if (nrow(files) == 0) {
+    return(list(
+      success = FALSE,
+      error = "No files found in cycle",
+      files_downloaded = 0
+    ))
+  }
+
+  # Create cycle directory
+  cycle_dir <- file.path(output_dir, paste0("Cycle", cycle_files$cycle_num[1]))
+  dir.create(cycle_dir, recursive = TRUE, showWarnings = FALSE)
+
+  total_downloaded <- 0
+
+  # Get component ID for this cycle
+  cycles <- get_chms_cycles()
+  cycle_info <- cycles[cycles$cycle_num == as.character(cycle_num), ]
+  component_id <- cycle_info$component_id[1]
+
+  for (i in 1:nrow(files)) {
+    file_path <- file.path(cycle_dir, files$name[i])
+
+    cat("Downloading:", files$name[i], "...\n")
+
+    if (osf_download_file(files$id[i], file_path, component_id = component_id)) {
+      total_downloaded <- total_downloaded + 1
+    } else {
+      warning("Failed to download: ", files$name[i])
+    }
+
+    Sys.sleep(0.2)  # Rate limiting
+  }
+
+  return(list(
+    success = total_downloaded > 0,
+    cycle = paste0("Cycle", cycle_files$cycle_num[1]),
+    files_downloaded = total_downloaded,
+    total_files = nrow(files)
+  ))
+}
+
+#' Test CHMS API connection
+test_chms_connection <- function() {
+  cat("=== TESTING CHMS API CONNECTION ===\n")
+
+  tryCatch({
+    config <- config::get()
+    cat("✓ Config loaded\n")
+
+    cycles <- get_chms_cycles()
+    cat("✓ Found", nrow(cycles), "CHMS cycles:", paste(cycles$cycle_num, collapse = ", "), "\n")
+
+    # Test getting files from Cycle 1
+    cycle1_files <- get_chms_cycle_files(1)
+    cat("✓ API connection successful\n")
+    cat("✓ Cycle 1 contains", nrow(cycle1_files), "items\n")
+
+    return(TRUE)
+
+  }, error = function(e) {
+    cat("✗ Connection failed:", e$message, "\n")
+    return(FALSE)
+  })
+}
+
 cat("OSF API Client loaded.\n")
 cat("Available functions:\n")
-cat("- test_osf_connection(): Test API connection\n")
-cat("- get_cchs_years(): List all available years\n") 
+cat("\nCCHS:\n")
+cat("- test_osf_connection(): Test CCHS API connection\n")
+cat("- get_cchs_years(): List all available years\n")
 cat("- download_cchs_year(year): Download specific year\n")
-cat("- osf_list_files(): List files in component\n")
+cat("\nCHMS:\n")
+cat("- test_chms_connection(): Test CHMS API connection\n")
+cat("- get_chms_cycles(): List all CHMS cycles\n")
+cat("- get_chms_cycle_files(cycle_num): Get files for a cycle\n")
+cat("- get_all_chms_files(): Get all CHMS files\n")
+cat("- download_chms_cycle(cycle_num): Download specific cycle\n")
+cat("\nShared:\n")
+cat("- osf_list_files(component_id): List files in any component\n")
+cat("- osf_folder_contents(folder_id): Get folder contents\n")
+cat("- osf_download_file(file_id, output_path): Download a file\n")
