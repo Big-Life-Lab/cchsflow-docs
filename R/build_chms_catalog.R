@@ -107,8 +107,9 @@ generate_chms_uid <- function(cycle_num, component, doc_type, language, extensio
 #' @param file_info Row from file listing
 #' @param cycle_num Cycle number
 #' @param local_path Local file path
+#' @param mirror_dir Base mirror directory
 #' @return List with catalog entry
-build_chms_catalog_entry <- function(file_info, cycle_num, local_path) {
+build_chms_catalog_entry <- function(file_info, cycle_num, local_path, mirror_dir = "chms-osf-docs") {
 
   filename <- file_info$name
   component <- detect_chms_component(filename)
@@ -140,6 +141,9 @@ build_chms_catalog_entry <- function(file_info, cycle_num, local_path) {
   # Generate UID (sequence handling comes later for duplicates)
   uid <- generate_chms_uid(cycle_num, component, doc_type, language, extension, 1)
 
+  # Calculate relative path (without base mirror_dir prefix)
+  relative_path <- sub(paste0("^", mirror_dir, "/?"), "", local_path)
+
   list(
     uid = uid,
     survey = "CHMS",
@@ -155,7 +159,7 @@ build_chms_catalog_entry <- function(file_info, cycle_num, local_path) {
     osf_component_id = file_info$component_id,
     file_size = file_info$size,
     date_modified = file_info$modified,
-    local_path = local_path
+    source_filepath = relative_path
   )
 }
 
@@ -191,7 +195,7 @@ build_chms_catalog <- function(mirror_dir = "chms-osf-docs") {
     for (j in 1:nrow(files)) {
       local_path <- file.path(mirror_dir, cycle_name, files$name[j])
 
-      entry <- build_chms_catalog_entry(files[j, ], cycle_num, local_path)
+      entry <- build_chms_catalog_entry(files[j, ], cycle_num, local_path, mirror_dir)
 
       entry_count <- entry_count + 1
       all_entries[[entry_count]] <- entry
