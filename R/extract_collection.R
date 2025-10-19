@@ -184,15 +184,15 @@ extract_files <- function(selected_files, source_dir, output_dir) {
     relative_path <- file_entry$source_filepath %||% file_entry$local_path
     source_path <- file.path(source_dir, relative_path)
 
-    # Use canonical_filename as extraction name (maintains catalog schema)
-    target_filename <- file_entry$canonical_filename
+    # Use canonical_filename/filename_canonical as extraction name (maintains catalog schema)
+    target_filename <- file_entry$canonical_filename %||% file_entry$filename_canonical
     target_path <- file.path(output_dir, target_filename)
 
     # Track the mapping for traceability with enhanced metadata (survey-aware)
     file_mapping <- list(
       uid = file_entry$uid %||% file_entry$cchs_uid,  # Support both UID formats
       original_filename = file_entry$filename_original %||% file_entry$filename,
-      canonical_filename = file_entry$canonical_filename,
+      canonical_filename = file_entry$canonical_filename %||% file_entry$filename_canonical,
       source_path = source_path,
       target_path = target_path,
       category = file_entry$category,
@@ -222,26 +222,26 @@ extract_files <- function(selected_files, source_dir, output_dir) {
           results$successful[[length(results$successful) + 1]] <- file_mapping
           results$total_size <- results$total_size + file_mapping$extracted_size
           
-          cat("  ✅", file_entry$cchs_uid, "→", target_filename, "\n")
+          cat("  ✅", file_entry$uid %||% file_entry$cchs_uid, "→", target_filename, "\n")
         } else {
           file_mapping$status <- "copy_failed"
           file_mapping$error <- "File copy failed verification"
           results$failed[[length(results$failed) + 1]] <- file_mapping
-          cat("  ❌", file_entry$cchs_uid, "→ Copy failed verification\n")
+          cat("  ❌", file_entry$uid %||% file_entry$cchs_uid, "→ Copy failed verification\n")
         }
         
       }, error = function(e) {
         file_mapping$status <- "error"
         file_mapping$error <- e$message
         results$failed[[length(results$failed) + 1]] <- file_mapping
-        cat("  ❌", file_entry$cchs_uid, "→ Error:", e$message, "\n")
+        cat("  ❌", file_entry$uid %||% file_entry$cchs_uid, "→ Error:", e$message, "\n")
       })
-      
+
     } else {
       file_mapping$status <- "source_missing"
       file_mapping$error <- paste("Source file not found:", source_path)
       results$failed[[length(results$failed) + 1]] <- file_mapping
-      cat("  ❌", file_entry$cchs_uid, "→ Source file missing\n")
+      cat("  ❌", file_entry$uid %||% file_entry$cchs_uid, "→ Source file missing\n")
     }
   }
   
@@ -251,9 +251,9 @@ extract_files <- function(selected_files, source_dir, output_dir) {
 #' Create inventory files for the collection
 create_collection_inventory <- function(extraction_results, output_dir, target_categories) {
   
-  # Create detailed inventory CSV with enhanced metadata
+  # Create detailed inventory CSV with enhanced metadata (survey-aware)
   inventory_data <- data.frame(
-    cchs_uid = character(),
+    uid = character(),
     original_filename = character(),
     canonical_filename = character(),
     category = character(),
@@ -261,6 +261,8 @@ create_collection_inventory <- function(extraction_results, output_dir, target_c
     content_tags = character(),
     year = character(),
     temporal_type = character(),
+    chms_cycle = character(),
+    chms_component = character(),
     doc_type = character(),
     language = character(),
     file_extension = character(),
@@ -274,20 +276,22 @@ create_collection_inventory <- function(extraction_results, output_dir, target_c
   # Add successful extractions
   for (file_info in extraction_results$successful) {
     inventory_data <- rbind(inventory_data, data.frame(
-      cchs_uid = file_info$cchs_uid,
+      uid = file_info$uid,
       original_filename = file_info$original_filename,
       canonical_filename = file_info$canonical_filename,
       category = file_info$category,
       secondary_categories = paste(file_info$secondary_categories %||% character(0), collapse = "; "),
       content_tags = paste(file_info$content_tags %||% character(0), collapse = "; "),
-      year = file_info$year,
+      year = file_info$year %||% "",
       temporal_type = file_info$temporal_type %||% "",
+      chms_cycle = file_info$chms_cycle %||% "",
+      chms_component = file_info$chms_component %||% "",
       doc_type = file_info$doc_type %||% "",
       language = file_info$language,
       file_extension = file_info$file_extension %||% "",
       version = file_info$version %||% "",
       sequence = file_info$sequence %||% 0,
-      file_size = file_info$file_size,
+      file_size = file_info$file_size %||% 0,
       status = "extracted",
       stringsAsFactors = FALSE
     ))
@@ -296,14 +300,16 @@ create_collection_inventory <- function(extraction_results, output_dir, target_c
   # Add failed extractions for reference
   for (file_info in extraction_results$failed) {
     inventory_data <- rbind(inventory_data, data.frame(
-      cchs_uid = file_info$cchs_uid,
+      uid = file_info$uid,
       original_filename = file_info$original_filename,
       canonical_filename = file_info$canonical_filename %||% "N/A",
       category = file_info$category,
       secondary_categories = paste(file_info$secondary_categories %||% character(0), collapse = "; "),
       content_tags = paste(file_info$content_tags %||% character(0), collapse = "; "),
-      year = file_info$year,
+      year = file_info$year %||% "",
       temporal_type = file_info$temporal_type %||% "",
+      chms_cycle = file_info$chms_cycle %||% "",
+      chms_component = file_info$chms_component %||% "",
       doc_type = file_info$doc_type %||% "",
       language = file_info$language,
       file_extension = file_info$file_extension %||% "",
