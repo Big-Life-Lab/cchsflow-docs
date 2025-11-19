@@ -24,6 +24,9 @@ renv/staging/
 osf_credentials.R
 # Google Drive credentials (security)
 .secrets/
+# Downloaded data directories
+odesi-data/
+cchs-data-docs/
 # Temporary files
 *~
 .DS_Store
