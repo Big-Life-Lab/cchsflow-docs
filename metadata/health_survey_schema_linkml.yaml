@@ -115,57 +115,90 @@ classes:
       - created_date
       - last_modified
       - tags
-    slot_usage:
+      - extracted
+
+  ExtractedData:
+    description: >-
+      Metadata about machine-readable data extracted from PDF documentation.
+      Used in PDF catalog entries to link to their extracted YAML/QMD outputs.
+    attributes:
       cchs_uid:
-        identifier: true
+        description: Unique identifier for the extracted file
         required: true
-      catalog_id:
+        examples:
+          - "cchs-2015d-p-dd-e-yaml-01"
+      path:
+        description: Relative path to extracted file from repository root
         required: true
-      survey:
+        examples:
+          - "cchs-extracted/data-dictionary/2015-2016/cchs_2015d_dd_p_en_1_v1.yaml"
+          - "cchs-extracted/user-guide/2015-2016/cchs_2015d_ug_p_en_1_v1.qmd"
+      format:
+        description: Format of extracted file
+        range: ExtractedFormatEnum
         required: true
-        description: Survey type - CCHS or CHMS
-      year:
+      extraction_date:
+        description: Date when extraction was performed (ISO 8601)
+        range: date
+        required: true
+      extraction_script:
+        description: Name of extraction script used
+        examples:
+          - "extract_data_dictionary.R"
+          - "extract_user_guide.R"
+          - "extract_derived_variables.R"
+      extraction_version:
+        description: Version of extraction script used
+        pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        examples:
+          - "1.0.0"
+          - "1.1.0"
+      variables_count:
+        description: Number of variables extracted (for data dictionaries, derived variables)
+        range: integer
         required: false
-        description: Required for CCHS, not used for CHMS
-      temporal_type:
+      sections_count:
+        description: Number of sections extracted (for user guides)
+        range: integer
         required: false
-        description: Required for CCHS, not used for CHMS
-      chms_cycle:
+      modules_count:
+        description: Number of modules extracted (for derived variables)
+        range: integer
         required: false
-        description: Required for CHMS, not used for CCHS
-      chms_component:
-        required: false
-        description: Required for CHMS, not used for CCHS
-      doc_type:
-        required: false
-        description: Required for CCHS (master/share/pumf), not used for CHMS
-      category:
+
+  ExtractedFile:
+    description: >-
+      A machine-readable file extracted from a source PDF.
+      First-class catalog entry with bidirectional link to source.
+    is_a: CCHSFile
+    attributes:
+      derived_from:
+        description: cchs_uid of the source PDF this was extracted from
         required: true
-      subcategory:
-        required: false
-        description: Subcategory code for differentiating file variants (main, simp, subs, etc.)
-      secondary_categories:
-        required: false
-        description: Optional additional categories for multi-purpose documents
-      content_tags:
-        required: false
-        description: Optional semantic tags for enhanced searchability
-      language:
+        examples:
+          - "cchs-2015d-p-dd-en-pdf-01"
+      extraction_date:
+        description: Date when extraction was performed (ISO 8601)
+        range: date
         required: true
-      version:
+      extraction_script:
+        description: Name of extraction script used
         required: true
-      sequence:
-        required: true
-      filename:
-        required: true
-      canonical_filename:
-        required: true
-      source:
-        required: true
-        description: Data source identifier (osf, pumf, other)
-      pumf_path:
-        required: false
-        description: Relative path in PUMF repository (for PUMF files only)
+      extraction_version:
+        description: Version of extraction script used
+        pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+      source_checksum:
+        description: SHA-256 checksum of source PDF at extraction time
+        pattern: "^[a-f0-9]{64}$"
+      variables_count:
+        description: Number of variables extracted
+        range: integer
+      sections_count:
+        description: Number of sections extracted
+        range: integer
+      modules_count:
+        description: Number of modules extracted
+        range: integer
 
   CCHSCatalog:
     description: >-
@@ -212,7 +245,7 @@ slots:
 
       Subcategory is optional but recommended when multiple files of same type exist.
       Common subcategories: main, simp, subs, freq, rev, alt, comp, synt, spec
-    pattern: "^cchs-[0-9]{4}[sdm]-[msp]-[a-z0-9-]+(-[a-z]{4})?-(e|f)-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log|xml|webarchive|html)-[0-9]{2}$"
+    pattern: "^cchs-[0-9]{4}[sdm]-[msp]-[a-z0-9-]+(-[a-z]{4})?-(e|f)-(pdf|doc|docx|sas|sps|do|dct|txt|csv|xlsx|mdb|log|xml|webarchive|html|yaml|qmd|md)-[0-9]{2}$"
     examples:
       - cchs-2009d-m-qu-e-pdf-01
       - cchs-2005s-p-dd-main-e-pdf-01
@@ -221,6 +254,9 @@ slots:
       - cchs-2015d-p-ddi-metadata-main-e-xml-01
       - cchs-2020s-p-questionnaire-alt-e-webarchive-02
       - cchs-2021s-p-questionnaire-alt-e-html-02
+      - cchs-2015d-p-dd-e-yaml-01
+      - cchs-2015d-p-ug-e-qmd-01
+      - cchs-2015d-p-dv-e-yaml-01
 
   catalog_id:
     description: 6-character alphanumeric unique identifier for referencing
@@ -260,7 +296,7 @@ slots:
 
   # Shared file components
   doc_type:
-    description: Document type classification (CCHS: master/share/pumf, CHMS: not applicable)
+    description: "Document type classification (CCHS: master/share/pumf, CHMS: not applicable)"
     range: DocTypeEnum
 
   category:
@@ -392,6 +428,14 @@ slots:
   tags:
     description: Additional metadata tags (derivable tags removed)
     multivalued: true
+
+  # Extracted data slot
+  extracted:
+    description: >-
+      Metadata about machine-readable data extracted from this PDF file.
+      Links to YAML/JSON/Markdown files in cchs-extracted/ folder.
+    range: ExtractedData
+    required: false
 
   # Catalog-level slots
   catalog_metadata:
@@ -666,6 +710,16 @@ enums:
       other:
         description: Other sources
 
+  ExtractedFormatEnum:
+    description: Format of extracted machine-readable data
+    permissible_values:
+      yaml:
+        description: YAML structured data (for data dictionaries, derived variables)
+      json:
+        description: JSON structured data
+      md:
+        description: Markdown with YAML frontmatter (for user guides, prose documents)
+
   FileExtensionEnum:
     description: File extension types
     permissible_values:
@@ -675,6 +729,12 @@ enums:
         description: Word document (old format)
       docx:
         description: Word document (new format)
+      yaml:
+        description: YAML structured data (extracted from PDF)
+      qmd:
+        description: Quarto markdown (extracted from PDF)
+      md:
+        description: Markdown document
       sas:
         description: SAS syntax file
       sps:

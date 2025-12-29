@@ -1,0 +1,214 @@
+extraction_date: '2025-12-28'
+extraction_script_version: 1.0.0
+source_type: master
+category: derived-variables
+total_files: 29
+successful: 29
+failed: 0
+total_variables: 3783
+total_modules: 452
+files:
+  - cchs_uid: cchs-2001s-m-dv-en-pdf-01
+    year: 2001
+    canonical_filename: cchs_2001s_dv_m_en_1_v1.yaml
+    variables_count: 7
+    modules_count: 0
+    source_checksum: 756c8d8c6a792214dfed265762d9f6b53e396fbfe9b2501a566e55780e85349c
+    status: success
+  - cchs_uid: cchs-2001s-m-dv-en-pdf-02
+    year: 2001
+    canonical_filename: cchs_2001s_dv_m_en_1_v1.yaml
+    variables_count: 121
+    modules_count: 0
+    source_checksum: 851d671d48f45112a8ac02d303c4248cb63e368fc7ea738a581d510dd415de5e
+    status: success
+  - cchs_uid: cchs-2001s-m-dv-en-pdf-03
+    year: 2001
+    canonical_filename: cchs_2001s_dv_m_en_1_v1.yaml
+    variables_count: 0
+    modules_count: 0
+    source_checksum: 1b8e5e20e2c3fad75fa8eb9b9ef228aa0b125b62dd30f83718019eac42b04da6
+    status: success
+  - cchs_uid: cchs-2003s-m-dv-en-pdf-01
+    year: 2003
+    canonical_filename: cchs_2003s_dv_m_en_1_v1.yaml
+    variables_count: 7
+    modules_count: 0
+    source_checksum: 465ddf2a3f32dc4f6b07a35323c12b60d0c48b5b7d7cf4c04c8fe326998d4cd3
+    status: success
+  - cchs_uid: cchs-2003s-m-dv-en-pdf-02
+    year: 2003
+    canonical_filename: cchs_2003s_dv_m_en_1_v1.yaml
+    variables_count: 178
+    modules_count: 0
+    source_checksum: aa5b1965708738c7221a08baa13708d30a0ea85e68149a62914048d90a3e08bf
+    status: success
+  - cchs_uid: cchs-2003s-m-dv-en-pdf-03
+    year: 2003
+    canonical_filename: cchs_2003s_dv_m_en_1_v1.yaml
+    variables_count: 0
+    modules_count: 0
+    source_checksum: 53cef4cd939f48acaaf21b1e46372c2a7c036d7cf60de024ddadeec33e60788f
+    status: success
+  - cchs_uid: cchs-2003s-m-dv-en-pdf-04
+    year: 2003
+    canonical_filename: cchs_2003s_dv_m_en_1_v1.yaml
+    variables_count: 178
+    modules_count: 0
+    source_checksum: be0705fecb09de59e00ca94bc60200158c5db20de72dbcae1da6fa6d642466a7
+    status: success
+  - cchs_uid: cchs-2003s-m-dv-en-pdf-05
+    year: 2003
+    canonical_filename: cchs_2003s_dv_m_en_1_v1.yaml
+    variables_count: 0
+    modules_count: 0
+    source_checksum: 7bd3f6813b3b64c1ab859016823406d6efb2db086f3a882288eae624ec07dfef
+    status: success
+  - cchs_uid: cchs-2005s-m-dv-en-pdf-01
+    year: 2005
+    canonical_filename: cchs_2005s_dv_m_en_1_v1.yaml
+    variables_count: 184
+    modules_count: 0
+    source_checksum: 4f267de5056911b69c97a841ed9886a6e795403d6cd96797477f40128638acf4
+    status: success
+  - cchs_uid: cchs-2005s-m-dv-en-pdf-02
+    year: 2005
+    canonical_filename: cchs_2005s_dv_m_en_1_v1.yaml
+    variables_count: 0
+    modules_count: 0
+    source_checksum: 929eeac8bfff6fec3b85b524d937dc2affe252a4396425672513222772888870
+    status: success
+  - cchs_uid: cchs-2005s-m-dv-en-pdf-03
+    year: 2005
+    canonical_filename: cchs_2005s_dv_m_en_1_v1.yaml
+    variables_count: 3
+    modules_count: 0
+    source_checksum: a3cf346199a22bf8f9d6dc7ecc5f4cc65c720d39ecef3e453b605a7084cffc50
+    status: success
+  - cchs_uid: cchs-2007d-m-dv-en-pdf-01
+    year: 2007
+    canonical_filename: cchs_2007d_dv_m_en_1_v1.yaml
+    variables_count: 182
+    modules_count: 10
+    source_checksum: 94ff67d33ccb9bbc8adf31d449184e8570e1f90a2e357c5180dc1753d665b1c0
+    status: success
+  - cchs_uid: cchs-2009s-m-dv-en-pdf-01
+    year: 2009
+    canonical_filename: cchs_2009s_dv_m_en_1_v1.yaml
+    variables_count: 118
+    modules_count: 4
+    source_checksum: b773899e79d97918bc4f3ac9683d783625e04c5394df2bbf368d2534bcb0bffd
+    status: success
+  - cchs_uid: cchs-2009s-m-dv-en-pdf-02
+    year: 2009
+    canonical_filename: cchs_2009s_dv_m_en_1_v1.yaml
+    variables_count: 186
+    modules_count: 11
+    source_checksum: 7c4d48083a8a9390428befb687ee3dd707470de02302547ed25298a61339bea6
+    status: success
+  - cchs_uid: cchs-2010s-m-dv-en-pdf-01
+    year: 2010
+    canonical_filename: cchs_2010s_dv_m_en_1_v1.yaml
+    variables_count: 226
+    modules_count: 11
+    source_checksum: 587fe078be440fc96089f3af6e7e0aac8a255dc0ebe38f5664ba5e607c2c96ce
+    status: success
+  - cchs_uid: cchs-2011s-m-dv-en-pdf-01
+    year: 2011
+    canonical_filename: cchs_2011s_dv_m_en_1_v1.yaml
+    variables_count: 215
+    modules_count: 41
+    source_checksum: 10c3f48c9f6a1eac24d9164eb3a87d0158a88680319bf45888bd059d2838820e
+    status: success
+  - cchs_uid: cchs-2012s-m-dv-en-pdf-01
+    year: 2012
+    canonical_filename: cchs_2012s_dv_m_en_1_v1.yaml
+    variables_count: 177
+    modules_count: 40
+    source_checksum: 16aa5ab9989a4f1b33223327ecec7f46f4a77cd67213e51b46f300b6f24193d6
+    status: success
+  - cchs_uid: cchs-2013s-m-dv-en-pdf-01
+    year: 2013
+    canonical_filename: cchs_2013s_dv_m_en_1_v1.yaml
+    variables_count: 181
+    modules_count: 42
+    source_checksum: c4822e5d7cdafbc49d586bf9b1ff0003dc9db39249bbb001fbb4f10922da5c06
+    status: success
+  - cchs_uid: cchs-2013s-m-dv-en-pdf-02
+    year: 2013
+    canonical_filename: cchs_2013s_dv_m_en_1_v1.yaml
+    variables_count: 116
+    modules_count: 22
+    source_checksum: 007d1edface33264557cf73f491653673a8480122516cb0f4ddc233e70c9ad93
+    status: success
+  - cchs_uid: cchs-2014s-m-dv-en-pdf-01
+    year: 2014
+    canonical_filename: cchs_2014s_dv_m_en_1_v1.yaml
+    variables_count: 188
+    modules_count: 41
+    source_checksum: bbebc6a9248970e7ac351c99476fe5725911a3e951633f9d3c278a13e67ee666
+    status: success
+  - cchs_uid: cchs-2015s-m-dv-en-pdf-01
+    year: 2015
+    canonical_filename: cchs_2015s_dv_m_en_1_v1.yaml
+    variables_count: 211
+    modules_count: 37
+    source_checksum: cc4472a167950070be43a87609455b1a6dfb49464a1b2f0c9eb31a9d91da6b01
+    status: success
+  - cchs_uid: cchs-2016s-m-dv-en-pdf-01
+    year: 2016
+    canonical_filename: cchs_2016s_dv_m_en_1_v1.yaml
+    variables_count: 196
+    modules_count: 34
+    source_checksum: 6c48396d4abe6c519e9818211ee6e18c8a56c3750d56bc9e1c0688705d71533c
+    status: success
+  - cchs_uid: cchs-2017s-m-dv-en-pdf-01
+    year: 2017
+    canonical_filename: cchs_2017s_dv_m_en_1_v1.yaml
+    variables_count: 176
+    modules_count: 28
+    source_checksum: 375338f193f2328beb990bffd5371d0c53a479d773e12d0e5a88f07f32220365
+    status: success
+  - cchs_uid: cchs-2018s-m-dv-en-pdf-01
+    year: 2018
+    canonical_filename: cchs_2018s_dv_m_en_1_v1.yaml
+    variables_count: 176
+    modules_count: 29
+    source_checksum: c0da71cf78e9af68f0bb656023c27c66735ba0077605d2a0a20481af6c696e74
+    status: success
+  - cchs_uid: cchs-2019s-m-dv-en-pdf-01
+    year: 2019
+    canonical_filename: cchs_2019s_dv_m_en_1_v1.yaml
+    variables_count: 181
+    modules_count: 28
+    source_checksum: 5da0e180bf826e204da790842bf19af59418482bbd982c49fc9821ff6c159a3c
+    status: success
+  - cchs_uid: cchs-2020s-m-dv-en-pdf-01
+    year: 2020
+    canonical_filename: cchs_2020s_dv_m_en_1_v1.yaml
+    variables_count: 184
+    modules_count: 28
+    source_checksum: 977d13fe9ba017b1412fbfa3f7d956936baee546c01ef2f67bcf6623602b9c56
+    status: success
+  - cchs_uid: cchs-2021s-m-dv-en-pdf-01
+    year: 2021
+    canonical_filename: cchs_2021s_dv_m_en_1_v1.yaml
+    variables_count: 157
+    modules_count: 21
+    source_checksum: d5532f989d276d81f68059f0fcc4d027547e58503ef7ceb9ea070880d085c3aa
+    status: success
+  - cchs_uid: cchs-2022s-m-dv-en-pdf-01
+    year: 2022
+    canonical_filename: cchs_2022s_dv_m_en_1_v1.yaml
+    variables_count: 106
+    modules_count: 19
+    source_checksum: 92784fb731f735cfd3b4e187dff39fd2e5a1d5f6681be2e30931f4f498ba07a8
+    status: success
+  - cchs_uid: cchs-2023s-m-dv-en-pdf-01
+    year: 2023
+    canonical_filename: cchs_2023s_dv_m_en_1_v1.yaml
+    variables_count: 129
+    modules_count: 6
+    source_checksum: 3a442a84064a8f9ae3dbaf8e125168f56c3269b2179ea61ebc11a241b2c9b9a5
+    status: success
+
