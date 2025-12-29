@@ -1,0 +1,179 @@
+extraction_date: '2025-12-28'
+extraction_script_version: 1.0.0
+source_type: master
+category: questionnaire
+total_files: 24
+successful: 24
+failed: 0
+total_questions: 45311
+total_sections: 2235
+files:
+  - cchs_uid: cchs-2001s-m-qu-en-pdf-01
+    year: 2001
+    canonical_filename: cchs_2001s_qu_m_en_1_v1.yaml
+    questions_count: 17
+    sections_count: 0
+    source_checksum: e9bb37219b5bdd4eafcc24ca85b66379aed2a528a984a50c0a37e01cee3bc8a8
+    status: success
+  - cchs_uid: cchs-2003s-m-qu-en-pdf-01
+    year: 2003
+    canonical_filename: cchs_2003s_qu_m_en_1_v1.yaml
+    questions_count: 2088
+    sections_count: 0
+    source_checksum: 19dc786809b3e057ce8767ab5441643b6effafdfb2450cc97dfde352518cc208
+    status: success
+  - cchs_uid: cchs-2003s-m-qu-en-pdf-02
+    year: 2003
+    canonical_filename: cchs_2003s_qu_m_en_1_v1.yaml
+    questions_count: 17
+    sections_count: 0
+    source_checksum: ad2fb125e89cca9f97c737e38e0825fa22d0ac79bd8b6a6de2ce9c17b1ad69a1
+    status: success
+  - cchs_uid: cchs-2003s-m-qu-en-pdf-03
+    year: 2003
+    canonical_filename: cchs_2003s_qu_m_en_1_v1.yaml
+    questions_count: 17
+    sections_count: 0
+    source_checksum: ad2fb125e89cca9f97c737e38e0825fa22d0ac79bd8b6a6de2ce9c17b1ad69a1
+    status: success
+  - cchs_uid: cchs-2003s-m-qu-en-pdf-04
+    year: 2003
+    canonical_filename: cchs_2003s_qu_m_en_1_v1.yaml
+    questions_count: 2088
+    sections_count: 0
+    source_checksum: 19dc786809b3e057ce8767ab5441643b6effafdfb2450cc97dfde352518cc208
+    status: success
+  - cchs_uid: cchs-2003s-m-qu-en-pdf-05
+    year: 2003
+    canonical_filename: cchs_2003s_qu_m_en_1_v1.yaml
+    questions_count: 17
+    sections_count: 0
+    source_checksum: ad2fb125e89cca9f97c737e38e0825fa22d0ac79bd8b6a6de2ce9c17b1ad69a1
+    status: success
+  - cchs_uid: cchs-2005s-m-qu-en-pdf-01
+    year: 2005
+    canonical_filename: cchs_2005s_qu_m_en_1_v1.yaml
+    questions_count: 2212
+    sections_count: 0
+    source_checksum: ae04bf8698778a53ca2a1ec80e7c075d54d114d8c8a9b706b10c190101a16e9f
+    status: success
+  - cchs_uid: cchs-2005s-m-qu-en-pdf-02
+    year: 2005
+    canonical_filename: cchs_2005s_qu_m_en_1_v1.yaml
+    questions_count: 2210
+    sections_count: 0
+    source_checksum: 62a9918ead7297aecd82bad6bfd7fc1f1988d84ef807dd5a8c9235fa9d1c051e
+    status: success
+  - cchs_uid: cchs-2007d-m-qu-en-pdf-01
+    year: 2007
+    canonical_filename: cchs_2007d_qu_m_en_1_v1.yaml
+    questions_count: 1927
+    sections_count: 50
+    source_checksum: b1d3233579d6efc64cff13329f922c288202759fa3c9bcd4a4bd29a88ff62519
+    status: success
+  - cchs_uid: cchs-2009s-m-qu-en-pdf-01
+    year: 2009
+    canonical_filename: cchs_2009s_qu_m_en_1_v1.yaml
+    questions_count: 2249
+    sections_count: 92
+    source_checksum: 77d898be759b829e32e2bf78caca65d53456816382f84d82dcedc9ed074e096d
+    status: success
+  - cchs_uid: cchs-2010s-m-qu-en-pdf-01
+    year: 2010
+    canonical_filename: cchs_2010s_qu_m_en_1_v1.yaml
+    questions_count: 2862
+    sections_count: 98
+    source_checksum: 15352a6551d6f306a354e58f974ba3b2c06725ae401147f3278625784f002861
+    status: success
+  - cchs_uid: cchs-2011s-m-qu-en-pdf-01
+    year: 2011
+    canonical_filename: cchs_2011s_qu_m_en_1_v1.yaml
+    questions_count: 2720
+    sections_count: 103
+    source_checksum: 2098f11ee2d1f5533463736f41cdf8ef2b4a46c221fa083bffd3276e7778a46e
+    status: success
+  - cchs_uid: cchs-2012s-m-qu-en-pdf-01
+    year: 2012
+    canonical_filename: cchs_2012s_qu_m_en_1_v1.yaml
+    questions_count: 2338
+    sections_count: 134
+    source_checksum: bab6adb274d91397eed85f5a6adf82237175b5f0604a326ead23b835b907a9a4
+    status: success
+  - cchs_uid: cchs-2013s-m-qu-en-pdf-01
+    year: 2013
+    canonical_filename: cchs_2013s_qu_m_en_1_v1.yaml
+    questions_count: 2367
+    sections_count: 129
+    source_checksum: 755e3de2290f987140e346537dfc2eb81fc08fa9976c9fcafe929d07ed03c53d
+    status: success
+  - cchs_uid: cchs-2014s-m-qu-en-pdf-01
+    year: 2014
+    canonical_filename: cchs_2014s_qu_m_en_1_v1.yaml
+    questions_count: 2320
+    sections_count: 129
+    source_checksum: fe47e18559cafa81e4bb2893c78f4ab27b70fec45907d95cc8b774ae359babfc
+    status: success
+  - cchs_uid: cchs-2015s-m-qu-en-pdf-01
+    year: 2015
+    canonical_filename: cchs_2015s_qu_m_en_1_v1.yaml
+    questions_count: 3328
+    sections_count: 143
+    source_checksum: d8cc30ebd783db26160088ad6bb103a5f54a7716edd9bf8f1671f24449f08f18
+    status: success
+  - cchs_uid: cchs-2016s-m-qu-en-pdf-01
+    year: 2016
+    canonical_filename: cchs_2016s_qu_m_en_1_v1.yaml
+    questions_count: 3307
+    sections_count: 141
+    source_checksum: f8792239b8da16d6d5fee892cab9757126c811768114c80e299a5dd8b1a721bb
+    status: success
+  - cchs_uid: cchs-2017s-m-qu-en-pdf-01
+    year: 2017
+    canonical_filename: cchs_2017s_qu_m_en_1_v1.yaml
+    questions_count: 2540
+    sections_count: 128
+    source_checksum: fcbde4486b960a5bdb0544e2ba863c1c78794f0a38fca5cfb91ae9d40f83ba30
+    status: success
+  - cchs_uid: cchs-2018s-m-qu-en-pdf-01
+    year: 2018
+    canonical_filename: cchs_2018s_qu_m_en_1_v1.yaml
+    questions_count: 2604
+    sections_count: 132
+    source_checksum: d12ed9a860911d6d151a596ec748e61eba8cbf9cab8139de2e5bdc9682305fd3
+    status: success
+  - cchs_uid: cchs-2019s-m-qu-en-pdf-01
+    year: 2019
+    canonical_filename: cchs_2019s_qu_m_en_1_v1.yaml
+    questions_count: 2421
+    sections_count: 129
+    source_checksum: e6af4c7da8adc9db7ff8cc753f677ec6af4984eb777a0728be4bd76d4dd288be
+    status: success
+  - cchs_uid: cchs-2020s-m-qu-en-pdf-01
+    year: 2020
+    canonical_filename: cchs_2020s_qu_m_en_1_v1.yaml
+    questions_count: 2483
+    sections_count: 129
+    source_checksum: 87823201025f1bcd853f1c3cd14ab3a02a8df0124e46468b53af84ecb3cbe317
+    status: success
+  - cchs_uid: cchs-2021s-m-qu-en-pdf-01
+    year: 2021
+    canonical_filename: cchs_2021s_qu_m_en_1_v1.yaml
+    questions_count: 903
+    sections_count: 321
+    source_checksum: 25acfa39e4a510789b55654b66b1e17b126719fcc97821abe2e0c155abda8722
+    status: success
+  - cchs_uid: cchs-2022s-m-qu-en-pdf-01
+    year: 2022
+    canonical_filename: cchs_2022s_qu_m_en_1_v1.yaml
+    questions_count: 1021
+    sections_count: 281
+    source_checksum: 56304c9ee67552aaea237558f8ecfc173f431953c39b786cad265d1c2550978c
+    status: success
+  - cchs_uid: cchs-2023s-m-qu-en-pdf-01
+    year: 2023
+    canonical_filename: cchs_2023s_qu_m_en_1_v1.yaml
+    questions_count: 1255
+    sections_count: 96
+    source_checksum: 7c6f27087016fbee45850b59cc5757ebe5ce474e06eb2d42ba6b655df0289668
+    status: success
+

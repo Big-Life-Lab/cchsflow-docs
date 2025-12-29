@@ -1,0 +1,111 @@
+cchs_uid: cchs-2005s-m-dv-e-yaml-03
+derived_from: cchs-2005s-m-dv-en-pdf-03
+survey: CCHS
+year: 2005
+temporal_type: single
+category: derived-variables
+doc_type: master
+language: EN
+canonical_filename: cchs_2005s_dv_m_en_1_v1.yaml
+source:
+  filename: DV-INC_E.pdf
+  path: cchs-osf-docs/2005/3.1/Master/Docs/DV-INC_E.pdf
+  checksum_sha256: a3cf346199a22bf8f9d6dc7ecc5f4cc65c720d39ecef3e453b605a7084cffc50
+  file_size_bytes: 33345.0
+extraction:
+  date: '2025-12-28'
+  script: extract_derived_variables.R
+  script_version: 1.0.0
+  output_format: yaml
+  variables_count: 3
+  modules_count: 0
+modules: []
+variables:
+  INCnDIA2:
+    name: INCnDIA2
+    label: ~
+    based_on:
+      - DHHnDHSZ
+      - INCn_3A
+      - INCn_3B
+      - INCn_3C
+      - INCn_3D
+      - INCn_3E
+      - INCn_3F
+    description: This variable classifies the total household income into 2 categories
+      based on total household income and the number of people living in the household.
+      9 (NS) (INCn_3A = DK, R, NS) None of the income question were answered (don’t
+      know, refusal, not stated) 1 (DHHnDHSZ = 1, 2) and Low income (INCn_3A = 3 or
+      < $15,000 if 1 or 2 people; INCn_3B = 1 or < $20,000 if 3 or 4 people; INCn_3D
+      = 1) < $30,000 if 5+ people or (DHHnDHSZ = 3, 4) and (INCn_3A = 1, 3) or DHHnDHSZ
+      >= 5 and [(INCn_3A = 1, 3) or INCn_3F = 1] 2 (DHHnDHSZ = 1, 2) and Middle or
+      High Income (INCn_3A = 2 or >= $15,000 if 1 or 2 people; (INCn_3D = 2) >= $20,000
+      if 3 or 4 people; or >= $30,000 if 5+ people (DHHnDHSZ = 3, 4) and INCn_3A =
+      2 or DHHnDHSZ >= 5 and (INCn_3E = 2 or INCn_3F = 2) 9 (NS) Else Not enough information
+      for the classification
+    note: ''
+    specifications: []
+    end_idx: 47.0
+  INCnDIA4:
+    name: INCnDIA4
+    label: ~
+    based_on:
+      - DHHnDHSZ
+      - INCn_3A
+      - INCn_3B
+      - INCn_3C
+      - INCn_3D
+      - INCn_3E
+      - INCn_3F
+      - INCn_3G
+    description: This variable classifies the total household income into 4 categories
+      based on total household income and the number of people living in the household.
+      9 (NS) (INCn_3A = DK, R, NS) None of the income question were answered (don’t
+      know, refusal, not stated) 1 (DHHnDHSZ= 1, 2) and Lowest income (INCn_3A = 3
+      or < $15,000 if 1 or 2 people; INCn_3B = 1 or < $20,000 if 3 or 4 people; INCn_3D
+      = 1) < $30,000 if 5+ people or (DHHnDHSZ = 3, 4) and (INCn_3A = 1, 3) or DHHnDHSZ
+      >= 5 and [(INCn_3A = 1, 3) or INCn_3F = 1] 2 (DHHnDHSZ = 1, 2) and Lower middle
+      income (INCn_3D = 2 or $15,000 to $29,999 if 1 or 2; INCn_3F = 1) $20,000 to
+      $39,999 if 3 or 4; or $30,000 to $59,999 if 5+ (DHHnDHSZ = 3, 4) and INCn_3E
+      = 1 or DHHnDHSZ >= 5 and [INCn_3F = 2 or (INCn_3G = 1, 2)] 3 (DHHnDHSZ = 1,
+      2) and Upper middle income [INCn_3F = 2 or $30,000 to $59,999 if 1 or 2; (INCn_3G
+      = 1, 2)] $40,000 to $79,999 if 3 or 4; or $60,000 to $79,999 if 5+ (DHHnDHSZ
+      = 3, 4) and (INCn_3G = 1, 2, 3) or DHHnDHSZ >= 5 and INCn_3G = 3 (INCn_3G =
+      3, 4, 5) > $60,000 if 1 or 2; or > $80,000 if 3+ DHHnDHSZ >= 3 and (INCn_3G
+      = 4, 5) 9 (NS) Else Not enough information for the classification
+    note: ''
+    specifications: []
+    end_idx: 104.0
+  INCnDIA5:
+    name: INCnDIA5
+    label: ~
+    based_on:
+      - DHHnDHSZ
+      - INCn_3A
+      - INCn_3B
+      - INCn_3C
+      - INCn_3D
+      - INCn_3E
+      - INCn_3F
+      - INCn_3G
+    description: This variable classifies the total household income into 5 categories
+      based on total household income and the number of people living in the household.
+      9 (NS) (INCn_3A = DK, R,NS) None of the income question were answered (don’t
+      know, refusal, not stated) 1 DHHnDHSZ < 5 and Lowest Income (INCn_3A = 3 or
+      < $10,000 if 1 to 4 people; INCn_3B = 1) < $15,000 if 5+ people or DHHnDHSZ
+      >= 5 and (INCn_3A = 3 or INCn_3B = 1 or INCn_3D = 1) 2 (DHHnDHSZ = 1, 2) and
+      Lower Middle Income INCn_3D = 1 $10,000 to $14,999 if 1 or 2; or $10,000 to
+      $19,999 if 3 or 4; (DHHnDHSZ = 3, 4) and $15,000 to $29,999 if 5+ INCn_3B =
+      2 or DHHnDHSZ >= 5 and (INCn_3D = 2 or INCn_3F = 1) (INCn_3D = 2 or $15,000
+      to $29,999 if 1 or 2; INCn_3F = 1) $20,000 to $39,999 if 3 or 4; or $30,000
+      to $59,999 if 5+ (DHHnDHSZ = 3, 4) and INCn_3E = 1 or DHHnDHSZ >= 5 and [INCn_3F
+      = 2 or (INCn_3G = 1, 2)] 4 (DHHnDHSZ = 1, 2) and Upper Middle Income [INCn_3F
+      = 2 or $30,000 to $59,999 if 1 or 2; (INCn_3G = 1, 2)] $40,000 to $79,999 if
+      3 or 4; or $60,000 to $79,999 if 5+ (DHHnDHSZ = 3, 4) and (INCn_3G = 1, 2, 3)
+      or DHHnDHSZ >= 5 and INCn_3G = 3 5 (DHHnDHSZ = 1, 2) and Highest Income (INCn_3G
+      = 3, 4, 5) > $60,000 if 1 or 2; or > $80,000 if 3+ DHHnDHSZ >= 3 and (INCn_3G
+      = 4 , 5) 9 (NS) Else Not enough information for the classification
+    note: ''
+    specifications: []
+    end_idx: 169.0
+

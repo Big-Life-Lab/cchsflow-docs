@@ -1,0 +1,3306 @@
+---
+title: Canadian Community Health Survey (CCHS)
+subtitle: 2014 and 2013-20 14 Microdata files
+date: June 2015
+cchs_uid: cchs-2014s-m-ug-e-qmd-01
+derived_from: cchs-2014s-m-ug-en-pdf-01
+survey: CCHS
+year: '2014'
+temporal_type: single
+category: user-guide
+doc_type: master
+language: EN
+source:
+  filename: CCHS_2014_User_Guide.pdf
+  path: cchs-osf-docs/2014/12-Month/Master/Docs/CCHS_2014_User_Guide.pdf
+  checksum_sha256: f5a92ea1525bafc5227b021a5bbc463367bcffbb3248c9f813164f2359fea02f
+extraction:
+  date: '2025-12-28'
+  script: extract_user_guide.py
+  script_version: 1.0.0
+  sections_count: 94
+  tables_count: 11
+---
+
+
+## AC Available geography in the master and share files and their corresponding codes: canada,
+
+PROVINCES/TERRITORIES, HEALTH REGIONS AND PEER GROUPS ................................................................................................. 71
+
+
+## AD (2014) sample allocation by health region and frame and sample allocation by local health integrated
+
+NETWORK (LHIN) AND FRAME IN ONTARIO ......................................................................................................................... 75
+
+
+## AE (2014) - response rates by health region and frame and response rates by local health integrated network
+
+(LHIN) AND FRAME IN ONTARIO ........................................................................................................................................ 80
+
+
+## AF (2013-2014) - sample allocation by health region and frame and sample allocation by local health
+
+INTEGRATED NETWORK (LHIN) AND FRAME IN ONTARIO ........................................................................................................ 87
+
+
+## AG (2013-2014) - response rates by health region and frame and response rates by local health integrated
+
+NETWORK (LHIN) AND FRAME IN ONTARIO ......................................................................................................................... 92
+WHAT’S NEW IN THE 2014 CANADIAN COMMUNITY HEALTH SURVEY?
+Content
+The following modifications were made to Canadian Community Health Survey (CCHS) – Annual
+component questionnaire in 2014:
+Changes
+ The modules Expanded Restriction of Activities – Activities of Daily Living (ADL),
+Health Utility Index (HUI), Injuries/Workplace Injuries/Repetitive Strain
+(INJ/INW/REP), Use of Protective Equipment (UPE) and Sexual Behaviours (SXB)
+were offered as optional modules in 2012. In 2013 they were reintroduced in the 2 year
+common content on Injuries and Functional Health and Sexual Behaviours (see
+
+
+## AA For details).
+
+ The maximum value for income in the Income (INC) module has been changed from
+$9,000,000 to $90,000,000. As well, personal income will no longer be asked of any
+respondent under the age of 18. Note that the change to the age was made partway into
+the 2013 collection year. Any data that had been collected before the application
+changed was set to ‘not applicable’ to ensure a stable universe for the whole year.
+ In 2013, the definition of ‘heavy drinker’ for females in Alcohol Use (ALC) and
+Alcohol Use During the Past Week (ALW) was changed from 5 to 4 drinks on one
+occasion, at least once a month in the past year. This change was not reflected in the
+2013 questionnaire (in ALW verification edits) but has been updated in the 2014
+questionnaire.
+ There is no sub-sample component in 2014
+ The condition, DIS_C01K has been corrected so that, in the cases where all relevant
+DIS questions are ‘None of the time’, the case will skip to the end of the module.
+ Chronic Conditions – Fibromyalgia (CC3) and Chronic Conditions – Chronic
+Fatique Syndrome and Multiple Chemical Sensitivities (MCS) (CC4) have been
+included in the CCC module in 2014 as one-year common content for all health regions.
+They were last asked in 2010.
+ As well, the following modules are being asked as one-year common content for 2014:
+Contacts with Health Professionals – Part 2 (CP2); Loss of Productivity at Work
+(LOP); and Unmet Health Care Needs (UCN)
+New modules
+ No new modules for 2014
+Geography
+ In 2013, the geography derived variables that were based on the 2006 Census
+geography have been updated based on the 2011 Census definitions. The derived
+variables that have been updated are:
+o GEODCD – 2011 Census Division (CD)
+o GEODCMAA – 2011 Census Metropolitan Area (CMA)
+o GEODCSD – 2011 Census Subdivision (CSD)
+o GEODDA11 – 2011 Census Dissemination Area (DA). The GEODDA06
+variable is included on the file for concordance
+o GEODFED – 2011 Census Federal Electoral District (FED)
+o GEODHR4 – Health Region
+o GEODDHA – Nova Scotia District Health Authority (DHA)
+o GEODLHN – Ontario Local Health Integration Network
+o GEODSUBZ – Alberta Sub-zone
+o GEODBCHA – British Columbia Health Authority
+Collection
+In 2014, a new collection management approach was implemented to improve the efficiency of the
+CATI data collection: Responsive Collection Design (see Chapter 6 for details).
+Documentation
+ Errata: Errors that are discovered in the CCHS data files and products after
+dissemination are communicated to users in a cumulative error log called “CCHS
+Errata". The errata provides details on:
+o the products affected (e.g. master or share files or PUMF);
+o the years affected;
+o suggested corrections (if possible); and
+o steps to carry out to apply the correction
+Since the release of the 2013 CCHS, there have been ten additional entries to the errata
+document. The subjects of these entries are:
+o INC_6K and INC_6J - Reversed variable labels
+o INC_Q6 and INC_Q1 sources of income inconsistent
+o SUI_3, SUI_5, SUI_6A-SUI_6H concepts are inaccurate
+o Labeling error in SDCDLHM
+o PCU_152 – category labels incorrect
+o Insurance, Personal income, and Health number may not be accurate for 12-17 year olds
+o Modifications to WST DVs
+o Issue with SPSDATT in data dictionary and DV specs
+o UPE_Q1A – flow error
+o Labelling error in EDUDR04
+For your convenience, the errata document now has an index on the first page. It lists modules
+affected and the years affected. To see if a particular variable is affected, follow the hyperlinks on
+the associated errata item numbers.
+An up to date copy of the CCHS Errata can be obtained by contacting Health Statistics Division at
+613-951-1746 or hd-ds@statcan.gc.ca.
+
+
+## 1 Introduction
+
+The Canadian Community Health Survey (CCHS) is a cross-sectional survey that collects
+information related to health status, health care utilization and health determinants for the Canadian
+population. It surveys a large sample of respondents and is designed to provide reliable estimates at
+the health region level. In 2007, major changes were made to the CCHS design. Data is now
+collected on an ongoing basis with annual releases, rather than every two years as was the case prior
+to 2007. The survey’s objectives were also revised and are as follows:
+ support health surveillance programs by providing health data at the national,
+provincial and intra-provincial levels;
+ provide a single data source for health research on small populations and rare
+characteristics;
+ timely release of information easily accessible to a diverse community of users; and
+ create a flexible survey instrument that includes a rapid response option to address
+emerging issues related to the health of the population.
+Details of the other redesign changes are provided in section 3.
+The CCHS data is always collected from persons aged 12 and over living in private dwellings in the
+110 health regions covering all provinces and territories. Excluded from the sampling frame are
+individuals living on Indian Reserves and on Crown Lands, institutional residents, full-time
+members of the Canadian Forces, and residents of certain remote regions. The CCHS covers
+approximately 98% of the Canadian population aged 12 and over.
+The purpose of this document is to facilitate the manipulation of the CCHS microdata files and to
+describe the methodology used. The CCHS produces three types of microdata files: master files,
+share files and public use microdata files (PUMF). The characteristics of each of these files are
+presented in this guide. The PUMF is released every two years and contains two years of data. The
+next PUMF file will be released in the fall of 2015 and will include the data collected for the years
+2013and 2014.
+Any questions about the data sets or their use should be directed to:
+Electronic Products Help Line: 1-800-949-9491
+For custom tabulations or general data support:
+Client Custom Services, Health Statistics Division: 613-951-1746
+E-mail: hd-ds@statcan.gc.ca
+For remote access support: 613-951-1746
+E-mail: cchs-escc@statcan.gc.ca
+Fax: 613-951-0792
+
+
+## 2 Background
+
+In 1991, the National Task Force on Health Information cited a number of issues and problems with
+the health information system. The members felt that data was fragmented; incomplete, could not be
+easily shared, was not being analysed to the fullest extent, and the results of research were not
+consistently reaching Canadians.1
+In responding to these issues, the Canadian Institute for Health Information (CIHI), Statistics
+Canada and Health Canada joined forces to create a Health Information Roadmap. From this
+mandate, the Canadian Community Health Survey (CCHS) was conceived. The format, content and
+objectives of the CCHS evolved through extensive consultation with key experts and federal,
+provincial and community health region stakeholders to determine their data requirements.2
+To meet many data requirements, the CCHS had a two-year data collection cycle. Until the redesign
+in 2007, the first year of the survey cycle, designated by ".1", was a general population health
+survey, designed to provide reliable estimates at the health region level. The second year of the
+survey cycle, designated by ".2", had a smaller sample and was designed to provide provincial level
+results on specific health topics.
+New designations for Cycles .1 and .2
+As of 2007, the regional component of the CCHS program began being collected on an ongoing
+basis. To avoid confusion with the health focused surveys, the two components stopped using the
+“.1” and “.2” designations to distinguish them. Henceforth, the x.1 cycles of the CCHS are
+designated as "the annual component" of the CCHS. The full title is "The Canadian Community
+Health Survey – Annual component, 2011" and the short title is simply "CCHS –2011". The
+focused content component of the survey remains unchanged. It will continue to examine in greater
+detail more specific topics or populations. It will be designated by the name of the survey followed
+by the topic of the themes covered by each survey (e.g., “Canadian Community Health Survey on
+Healthy Aging” or “CCHS – Healthy Aging”).
+1999. Health Information Roadmap: Responding to Needs, Health Canada, Statistics Canada. p. 3.
+1999. Health Information Roadmap: Beginning the Journey. Canadian Institute for Health Information/Statistics
+Canada. ISBN 1-895581-70-2. p. 19.
+3. CCHS REDESIGN IN 2007
+Until 2005, the CCHS data were collected every two years over a one year period and released
+every two years, about six months after the end of the collection period. There were two main
+objectives for the 2007 CCHS redesign: to address the needs of partners to increase the survey’s
+content and the frequency of data releases, and to ensure better use of operational resources. For
+these reasons, the proposed changes to the CCHS design focused on improving the survey’s
+efficiency and flexibility through ongoing data collection.
+Extensive consultations were held across Canada with key experts and federal, provincial and health
+region stakeholders to gather input on the proposed changes and detailed information on the data
+requirements and products of the various partners.
+Below are the main changes arising from the CCHS redesign:
+ In the past, the CCHS data were collected from 130,000 respondents over a 12-month
+period. Now, data collection takes place on an ongoing basis. The sample, which retains the
+same size, is divided into 12 two-month collection periods. Each collection period is
+representative of the population living in the ten Canadian provinces during the two months.
+For operational reasons, the sample in the territories is representative of their population
+after 12 months.
+ The common content component is divided into three: the annual common content
+(previously referred to as core content), the one year and two-year common content
+(previously referred to as theme content). The one year common content is asked for one
+year and re-introduced every two or four years. The two year common content is asked for
+two years and re-introduced every four years. The two year and one year common content
+was created to take advantage of the continuous collection approach. The data collection
+time for this component can be adjusted based on the prevalence of the desired estimates and
+their geographic level. The annual common content will remain relatively stable over time.
+At the discretion of the provinces and regions, the optional content can also be adjusted on
+an annual basis, rather than every two years.
+ Content and collection changes inevitably impact the dissemination strategy. Previously,
+data were released every two years. Since 2008, CCHS data are released annually. Every
+two years, a file combining the two years’ sample (130,000 respondents) is also released. In
+addition to these regular files, other special files will be made available when additional
+content has been collected during collection periods that do not correspond to the standard
+annual periods, which is January to December.
+ The annual data collection is divided into six two-month periods. Unlike the previous
+collection strategy, these periods no longer overlap, which provides more efficient oversight
+of collection and offers the possibility of changing the collection interface every two
+months, if necessary.
+
+
+## 4 Content structure of the cchs
+
+In addition to socio-demographic and administrative data, the content of the CCHS includes three
+components, each of which addresses a different need: the common content component comprising
+the annual common content, the two year and one year common content, the optional content
+component, and the rapid response component. Appendix A lists the modules included in the 2014
+questionnaire by component.
+The average length of a CCHS interview is estimated at 40 to 45 minutes.
+
+```{yaml}
+#| label: tbl-4-1
+id: '4.1'
+title: Length of survey by component
+columns:
+- CCHS component
+- Average interview time
+data:
+- CCHS component: Common content  Annual  One and two-year
+  Average interview time: 30 minutes (20 minutes) (10 minutes)
+- CCHS component: Optional content
+  Average interview time: 10 minutes
+- CCHS component: Rapid response content (As requested on a cost recovery basis)
+  Average interview time: 2 minutes
+```
+
+
+CCHS component Average interview
+time
+Common content 30 minutes
+ Annual (20 minutes)
+ One and two-year (10 minutes)
+Optional content 10 minutes
+Rapid response content (As requested 2 minutes
+on a cost recovery basis)
+
+
+### 4.1 Common content
+
+The CCHS common content component includes questions asked of respondents in all provinces
+and territories (unless otherwise specified). It is divided into three components: the annual common
+content, one-year and two year common content.
+The annual common content consists of questions asked of all survey respondents. These questions
+will remain relatively stable in the questionnaire for a period of about six years up to 2014, unless a
+major concern is raised about quality.
+The one year and two-year common content (previously called theme content) comprises
+questions related to a specific topic. Combined, the two-year and one year common content take
+about 10 minutes of the interview time. Modules comprising this content type could be reintroduced
+in the survey every two, four or six years, if required. This component enables CCHS to better plan
+its content in the medium term.
+Some of the modules in the one year common content may be asked of a sub-sample of respondents
+if the objective of these questions is to provide reliable data at the national or provincial level, rather
+than at the health region level. This approach is used to minimize the related response burden and
+costs.
+
+
+### 4.2 Optional content
+
+The optional content component gives health regions the opportunity to select content that addresses
+their provincial or regional public health priorities. The optional content is selected from a long list
+of modules available for inclusion in the CCHS. The content modules selected by a region are asked
+only of residents in the regions that selected these modules. In reality, since 2005 (cycle 3.1), the
+regions and provinces have opted to coordinate the optional content selected in order to ensure a
+uniform selection of optional modules provincially. The optional content may vary annually
+depending on needs and must be reviewed every two years.
+It should be noted that, unlike the modules included in the common content, the resulting data from
+the optional content modules is not easily generalized across Canada3.
+
+
+## AB Presents the selection results of the optional content for the current year and two year
+
+combined by province of residence.
+
+
+### 4.3 Rapid response content
+
+The rapid response component is offered on a cost-recovery basis to organizations interested in
+obtaining national estimates on an emerging or specific topic related to the health of the population.
+The rapid response content takes a maximum of two minutes of interview time. The questions
+appear in the questionnaire for a single collection period (two months) and are asked of all CCHS
+respondents during that period, excluding the Territories.
+
+
+### 4.4 Content included in data files
+
+The survey produces different data files:
+ one year reference period
+ combined two years reference periods and
+ one year sub-sample data files.
+
+One year data files
+The survey produces data files every year. In June 2015, an annual file based on the 2014 reference
+period has been released. It includes respondents from the 2014 data collection and variables from
+the common annual content, common one year content, common two year content as well as optional
+content.
+Two year data files
+Every two years, a file combining the most recent two years is released. The next two year file is
+scheduled to be released in 2015, and will include both the 2013 and 2014 reference years.
+Unless all provinces and territories in Canada select an optional module in the same collection period, which has never
+happened to date.
+The two-year data file includes all respondents and the questions that were in the survey over the
+two year reference period. Unless otherwise specified, it is the question component from the
+common annual and two-year content and selected optional content over the two year period. The
+one-year common content and optional content selected for one year only are not available in the
+two-year data file.
+Sub-sample data files
+Any modules collected from a sub-sample of the population will continue to be disseminated in
+separate files. These files include the annual and one year common content collected from a sub-
+sample of respondents. Sub-sample files have been released as follows:
+Year Modules
+2000 Waiting times and Access to health care services
+2003 Dental visits, Driving and safety, Health utility index, Medication use, Oral health 2
+2005 Waiting times, Access to health care services, Patient satisfaction, Health Utility
+Index, Measured height and weight, Fruit and vegetable consumption, Labour force
+– long form
+2007 Waiting times, Access to health care services and Patient satisfaction
+2008 Measured height and weight
+2009 Waiting times, Access to health care services
+2011 Waiting times, Access to health care services
+2013 Waiting times, Access to health care services
+
+```{yaml}
+#| label: tbl-4-2
+id: '4.2'
+title: Content components for the 2013 and 2014 data files
+columns:
+- Files
+- Annual common content
+- 2013 one year common content1
+- 2014 one year common content
+- 2013-2014 two-year common content
+- Optional content2
+data:
+- Files: '2013'
+  Annual common content: Yes Yes
+  2013 one year common content1: No Yes
+  2014 one year common content: N/A N/A
+  2013-2014 two-year common content: Yes No
+  Optional content2: Yes No
+- Files: '2014'
+  Annual common content: 'Yes'
+  2013 one year common content1: N/A
+  2014 one year common content: 'Yes'
+  2013-2014 two-year common content: 'Yes'
+  Optional content2: 'Yes'
+- Files: 2013- 2014
+  Annual common content: 'Yes'
+  2013 one year common content1: 'No'
+  2014 one year common content: 'No'
+  2013-2014 two-year common content: 'Yes'
+  Optional content2: 'Yes'
+```
+
+
+Files Annual 2013 one 2014 one 2013-2014 Optional
+common year year two-year content2
+content common common common
+content1 content content
+2013 Main Yes No N/A Yes Yes
+Sub-sample Yes Yes N/A No No
+(2 modules)
+2014 Main Yes N/A Yes Yes Yes
+2013-
+2014 Main Yes No No Yes Yes
+1 The 2013 annual common content was comprised of two modules (Access to health care services and Waiting
+times) which were all asked to a sub-sample of respondents.
+2 Optional content will be included in the 2013-2014 data file if it is asked of respondents in a jurisdiction
+during the two year period. Otherwise, it will only be included in the file of the year in which it was collected.
+Note that if an annual common content module from one year is selected for the optional content of a
+jurisdiction during the second year, the module will be included in the two-year data file and will be processed
+as optional content.
+
+
+### 5.1 Target population
+
+The CCHS covers the population 12 years of age and over living in the ten provinces and the three
+territories. Excluded from the survey's coverage are: persons living on reserves and other Aboriginal
+settlements in the provinces; full-time members of the Canadian Forces; the institutionalized
+population and persons living in the Quebec health regions of Région du Nunavik and Région des
+Terres-Cries-de-la-Baie-James. Altogether, these exclusions represent less than 3% of the target
+population.
+
+
+### 5.2 Health regions
+
+For administrative purposes, each province is divided into health regions (HR) and each territory is
+designated as a single HR. Statistics Canada is sometimes asked to make minor changes to the
+boundaries of some of the HRs to correspond to the geography of the Census, or to better account
+for the health data needs determined by the new geographic boundaries. For CCHS 2014, data was
+collected in 107 HRs in the ten provinces, as well as to one HR per territory, totalling 110 HRs
+(Appendix C).
+The definition of HRs was modified between the time of sampling and the creation of the data files
+for Prince Edward Island. The 3 HRs defined at the time of sampling (1101, 1102 and 1103) have
+been aggregated into a single HR (1100). The current chapter on sample design, as well as the
+figures on sample sizes provided in Appendix D and Appendix F, refer to the HRs as they were
+defined at the time of sampling.
+
+
+### 5.3 Sample size and allocation
+
+To provide reliable estimates for each HR given the budget allocated to the CCHS component, it
+was determined that the survey should consist of a sample of nearly 130,000 respondents over a
+period of 2 years. Although producing reliable estimates for each HR was a primary objective, the
+quality of the estimates for certain key characteristics at the provincial level was also deemed
+important. Therefore, the sample allocation strategy, consisting of three steps, gave relatively equal
+importance to the HRs and the provinces. In the first step, a minimum size of 500 respondents per
+HR was imposed. This is considered the minimum for obtaining a reasonable level of data quality.
+However, due to response burden, a maximum sampling fraction of 1 out of 20 dwellings was
+imposed to avoid sampling too many dwellings in smaller regions also targeted by other surveys.
+Note that very few HRs have a size lower than 500 due to limit of the sampling fraction. In this
+first step, 60,350 units were allocated in total. The second step involves allocating the rest of the
+available sample by using an allocation proportional to the population size by province. The total
+sample size by province is therefore the sum of the sizes established by the two first steps. This
+sample allocation strategy was used for CCHS 2005 and the sample sizes have remained mainly the
+same since then. The sample was then divided evenly between the 2 collection years. Table 5.1
+gives the targeted sample sizes for 2014 and 2013-2014.
+
+```{yaml}
+#| label: tbl-5-1
+id: '5.1'
+title: Number of health regions and targeted sample sizes by province/territory, 2014
+  and
+columns:
+- Province
+- Number of HRs
+- Targeted sample size 2014
+- Targeted sample size 2013-2014
+data:
+- Province: Newfoundland and Labrador Prince Edward Island Nova Scotia New Brunswick
+    Quebec Ontario1 Manitoba Saskatchewan Alberta British Columbia Yukon Northwest
+    Territories Nunavut
+  Number of HRs: 4 3 6 7 16 36 5 11 5 16 1 1 1
+  Targeted sample size 2014: 2,005 1,001 2,521 2,575 12,146 22,288 3,750 3,860 6,097
+    8,045 600 600 350
+  Targeted sample size 2013-2014: 4,010 2,002 5,042 5,150 24,317 44,576 7,500 7,720
+    12,250 16,090 1,200 1,200 700
+- Province: Canada
+  Number of HRs: '112'
+  Targeted sample size 2014: 65,838
+  Targeted sample size 2013-2014: 131,757
+```
+
+
+2013-2014
+Targeted Targeted
+Number
+Province sample size sample size
+of HRs
+2014 2013-2014
+Newfoundland and Labrador 4 2,005 4,010
+Prince Edward Island 3 1,001 2,002
+Nova Scotia 6 2,521 5,042
+New Brunswick 7 2,575 5,150
+Quebec 16 12,146 24,317
+Ontario1 36 22,288 44,576
+Manitoba 5 3,750 7,500
+Saskatchewan 11 3,860 7,720
+Alberta 5 6,097 12,250
+British Columbia 16 8,045 16,090
+Yukon 1 600 1,200
+Northwest Territories 1 600 1,200
+Nunavut 1 350 700
+Canada 112 65,838 131,757
+1 The sample size for Ontario includes the buy-in extra sample by LHIN. The initial annual sample size for Ontario
+before the buy-in was 20,880 units (refer to section 5.7 for further details).
+In the third step, the provincial sample was allocated among its HRs proportionally to the square
+root of the estimated population in each HR4. This three-step approach gives sufficient sample for
+each HR with minimal disturbance to the proportionality of the allocation by province.
+Note that the three territories were not part of the above allocation strategy as they were dealt with
+separately. Each year, 600 sample units were allocated to the Yukon, 600 to the Northwest
+Territories and 350 to Nunavut. These sizes are determined according to the available budget. The
+sample allocation for the territories is done proportionally to the population sizes of the strata. The
+strata used were the same as those defined by the Labour Force Survey (LFS), which group together
+communities (for more details, see section 5.4.1).
+The sample was then divided between the area frame and the list frame5, as described in the next
+section. It should be mentioned that the number of units taken from each frame was increased in
+order to account for the anticipated out-of-scope and non-response rates based on the rates obtained
+in previous CCHS cycles. These adjusted sample sizes are called the raw sample sizes, and
+correspond to the number of units that have to be selected in order to obtain the targeted sample
+sizes. The sample sizes by HR and frame are provided in Appendix D for 2014 and Appendix F for
+2013-2014.
+The allocation of the provincial sample among its HRs is based on the geographical boundaries and population counts
+of the HRs at the time of the 2007 redesign.
+Except for two regions which use a random digit dialing frame (RDD) only (section 5.4.3) and the three territories
+which use only area frame and random digit dialing frame (RDD) (sections 5.4.1 and 5.4.3).
+
+
+### 5.4 Frames, household sampling strategies
+
+The CCHS used three sampling frames to select the sample of households: 40.5% of the sample of
+households came from an area frame, 58.5% came from a list frame of telephone numbers and the
+remaining 1% came from a Random Digit Dialling (RDD) sampling frame.
+
+
+#### 5.4.1 Sampling of households from the area frame
+
+The CCHS used the area frame designed for the Canadian Labour Force Survey (LFS) as a
+sampling frame. The sampling plan of the LFS is a multistage stratified cluster design in which the
+dwelling is the final sampling unit6. In the first stage, homogeneous strata are formed and
+independent samples of clusters are drawn from each stratum. In the second stage, dwelling lists are
+prepared for each cluster and dwellings, or households, are selected from these lists.
+For the purpose of the LFS plan, each province is divided into three types of regions: major urban
+centres, cities, and rural regions. Geographic or socio-economic strata are created within each major
+urban centre. Within the strata, between 150 and 250 dwellings are grouped together to create
+clusters. Some urban centres have separate strata for apartments or for census Dissemination Areas
+(DA) to pinpoint households with high income, immigrants and aboriginals. In each stratum, six
+clusters or residential buildings (sometimes 12 or 18 apartments) are chosen by a random sampling
+method with a probability proportional to size (PPS), the size of which corresponds to the number
+of households. The number six is used throughout the sample design to allow for one sixth of the
+LFS sample to be rotated each month.
+The other cities and rural regions of each province are stratified first on a geographical basis, then
+according to socio-economic characteristics. In the majority of strata, six clusters (usually census
+DAs) are selected using the PPS method. Some geographically isolated urban centres are covered
+by a three-stage sampling design. This type of sampling plan is used for Quebec, Ontario, Alberta
+and British Columbia.
+Once the new clusters are listed, the sample is obtained using a systematic sampling of dwellings.
+The sample size for each systematic sample is called the “yield”. Table 5.2 gives an overview of
+the types of PSUs used in the LFS sample and the yield predicted by systematic sample. As the
+sampling rates are determined in advance, there is frequently a difference between the expected
+sample size and the numbers that are obtained. The yield of the sample, for example, is sometimes
+excessive. This can particularly happen in sectors where there is an increase in the number of
+dwellings due to new construction. To reduce the cost of collection, an excessive output is corrected
+by eliminating, from the beginning, a part of the units selected and by modifying the weight of the
+sample design. This change is dealt with during weighting.
+Statistics Canada (2008). Methodology of the Canadian Labour Force Survey. Statistics Canada. Cat. No. 71-526-
+XIE.
+
+```{yaml}
+#| label: tbl-5-2
+id: '5.2'
+title: Major first-stage units, sizes and yields
+columns:
+- Area
+- Primary Sampling Unit (PSU)
+- Size (households per PSU)
+- Yield (sampled households)
+data:
+- Area: Toronto, Montreal, Vancouver
+  Primary Sampling Unit (PSU): Cluster
+  Size (households per PSU): 150-250
+  Yield (sampled households): '6'
+- Area: Other cities
+  Primary Sampling Unit (PSU): Cluster
+  Size (households per PSU): 150-250
+  Yield (sampled households): '8'
+- Area: Most rural areas / small urban centres
+  Primary Sampling Unit (PSU): Cluster
+  Size (households per PSU): 100-250
+  Yield (sampled households): '10'
+```
+
+
+Primary
+Sampling Unit Size (households Yield (sampled
+Area (PSU) per PSU) households)
+Toronto, Montreal, Vancouver Cluster 150-250 6
+Other cities Cluster 150-250 8
+Most rural areas / small urban centres Cluster 100-250 10
+Due to the specific of the CCHS, some modifications had to be incorporated in this sampling
+strategy. To obtain an annual sample of about 26,000 respondents for a given year of CCHS, about
+40,000 dwellings had to be selected from the area frame to account for vacant dwellings and non-
+responding households. Each month, the LFS design provides approximately 60,000 dwellings
+distributed across the various economic regions in the ten provinces, whereas the CCHS required
+40,000 dwellings distributed across the HRs, which have different geographic boundaries from
+those of the LFS economic regions. Overall, the CCHS required a lower number of dwellings than
+those generated by the LFS selection mechanism, which corresponds to an average adjustment
+factor of 0.66 (40,000/60,000). . However, since the adjustment factors varied at the HR level,
+certain adjustments were required.
+The changes made to the selection mechanism in the regions varied depending on the size of the
+adjustment factors. For HRs that had a factor smaller than or equal to 1, the number of PSUs
+selected was reduced if necessary. For example, if the factor was 0.5 then only 3 PSUs were
+selected in each stratum instead of the usual number of 6 PSUs. For those HRs with a factor greater
+than 1 but smaller than or equal to 2, the sampling process of dwellings within a PSU was repeated
+for a subset of the selected PSUs that were part of the same HR. For example, if the factor was 1.6
+then the selection of dwellings within a PSU was repeated for 4 of the 6 PSUs in all strata of that
+HR. When it was necessary to have a repeated selection of dwellings within a PSU and there were
+no more dwellings available in that PSU, then another PSU was selected. When the factor was
+greater than 2, the sampling process of dwellings was repeated among other PSUs that were part of
+the same HR7.
+Finally, when the number of dwellings available in the selected PSUs was greater than the requested
+number of dwellings for a given HR, a sub-sample of dwellings was selected. This process is called
+stabilization.
+Sampling of households from the area frame in the three territories
+For operational reasons, the LFS area frame sample design for the three territories was different. For
+each territory, the larger communities each have their own stratum while smaller communities are
+grouped into strata based on various characteristics (population, geographical information,
+proportion of Inuit and/or Aboriginal persons, and median household income). The LFS defined six
+To reduce listing costs, the sampling process of dwellings was repeated up to 3 times within PSUs already selected in
+urban areas only. These cases were exceptions, however.
+design strata in the Yukon, ten in the Northwest Territories and ten in Nunavut. For strata consisting
+of a group of communities, the first stage of selection consisted of randomly selecting one
+community with a probability proportional to population size within each design stratum. Then,
+within the selected community, the second stage consisted of selecting households using the same
+sampling strategy as the one described above. The CCHS selected its sample from the same
+communities sampled by the LFS, while ensuring that different dwellings were selected. If too
+many or too few dwellings were available for a community within a stratum, another community
+was selected for the CCHS. For larger communities with their own stratum, only one stage design
+was necessary where households were selected directly using the same sampling strategy described
+above.
+It is worth mentioning that the frame for the CCHS covered 92% of the targeted population in the
+Yukon, 96% in the Northwest Territories and 92% in Nunavut8.
+
+
+#### 5.4.2 Sampling of households from the list frame of telephone numbers
+
+With the exception of 5 HRs (the two RDD-only HRs and the three territories), the list frame of
+telephone numbers was used in all HRs to complement the area frame. The list frame consists of the
+Canada Phone directory which is an external administrative database of names, addresses and
+telephone numbers from telephone directories in Canada updated every six months. It was linked to
+administrative postal code conversion files to map each telephone number to a stratum. Within each
+stratum, the required number of telephone numbers was selected using a simple random sampling
+process from the list. As for the RDD frame, additional telephone numbers were selected to account
+for the numbers not in service or out-of-scope.
+It is important to mention that the undercoverage of the list frame is higher than the one for the
+RDD as unlisted numbers do not have a chance of being selected. Nevertheless, as the list frame is
+always used as a complement to the area frame, the impact of the undercoverage of the list frame is
+minimal and is dealt with during weighting.
+
+
+#### 5.4.3 Sampling of households from the random digit dialing frame of telephone numbers
+
+In four HRs, a Random Digit Dialling (RDD) sampling frame of telephone numbers was used to
+select a sample of households. The sampling of households from the RDD frame used the
+Elimination of Non-Working Banks (ENWB) method, a procedure adopted by the General Social
+Survey9. A bank of one hundred telephone numbers (the first eight digits of a ten-digit telephone
+number) is considered to be non-working if it does not contain any residential telephone numbers.
+At first, the frame consists of a list of all possible banks and, as non-working banks are identified,
+they are eliminated from the frame. It should be noted that these banks are eliminated only when
+there is evidence from various sources that they are non-working. When there is no information
+about a bank it is left on the frame. The Canada Phone Directory and telephone companies’ billing
+In Nunavut, starting in 2013, the coverage was expanded to represent 92% of the targeted population. Before 2013, the
+coverage was 71% since the survey covered only the 10 largest communities.
+Norris, D.A. and Paton, D.G. (1991). Canada’s General Social Survey: Five Years of Experience, Survey
+Methodology, 17, 227-240.
+address files were used in conjunction with various internal administrative files to eliminate non-
+working banks.
+Using available geographic information (postal codes), the banks on the frame were regrouped to
+create RDD strata to encompass, as closely as possible, the HR areas. Within each RDD stratum, a
+bank was randomly chosen and a number between 00 and 99 was generated at random to create a
+complete, ten-digit telephone number. This procedure was repeated until the required number of
+telephone numbers within the RDD stratum was reached. Frequently, the number generated is not in
+service or is out-of-scope, and therefore, many additional numbers must be generated to reach the
+targeted sample size. This success rate varies from region to region. Within the CCHS, the success
+rates ranged from 25% to 50% among the four HRs which required the use of the RDD frame.
+
+
+### 5.5 Sample allocation over the collection periods
+
+In order to balance interviewer workload and to minimize possible seasonal effects on estimates, the
+initial sample size for each frame is allocated equally over the six 2-month collection periods.
+In the area frame, each PSU selected within each HR was randomly assigned to a collection period
+accounting for a number of constraints related to field operations or weighting, while maintaining a
+uniform size for each period. For example, a sample that is representative of the Canadian
+population is ensured every six months by ensuring that the dwelling sample covers all LFS strata
+during this period.
+For the lists of telephone numbers, independent samples were selected in each collection period.
+This strategy ensures that each sample is representative of the in scope Canadian population for
+each two-month period.
+
+
+### 5.6 Sampling of interviewees
+
+As was done for the previous cycles, the selection of individual respondents was designed to ensure
+over-representation of youths (12 to 19). The selection strategy that was adopted accounted for user
+needs, cost, design efficiency, response burden and operational constraints. One person is selected
+per household using varying probabilities taking into account the age and the household
+composition. The selection probabilities resulted from simulations using various parameters in order
+to determine the optimal approach without causing extreme sampling weights.
+
+selection of individuals in sampled households by age group. For example, for a three-person
+household formed of two adults of age 45 to 64 and one 15-year-old, the teenager would have a 7/9
+chance of being selected (i.e., 70/(70+10+10)) while each of the adults would have a 1/9 chance of
+being selected. To avoid extreme sampling weights, there is one exception to this rule: if the size of
+the household is greater than or equal to 5 or if the number of 12-19 year olds is greater than or
+equal to 3 then the selection weight multiplicative factor equals 1 for each individual in the
+household. Consequently, all people in that household have the same probability of being selected.
+
+```{yaml}
+#| label: tbl-5-3
+id: '5.3'
+title: Selection weight multiplicative factors for the person-level sampling strategy
+  by
+columns:
+- Selection Weight Multiplicative Factors
+data:
+- Selection Weight Multiplicative Factors: Age
+- Selection Weight Multiplicative Factors: Factors
+```
+
+
+age
+Selection Weight Multiplicative Factors
+Age 12-19 20-29 30-44 45-64 65+
+Factors 70 50 20 10 10
+
+
+### 5.7 Supplementary buy-in sample in ontario
+
+The province of Ontario requested a sample increase in order to produce estimates at the Local
+Health Integrated Network (LHIN) geography level. Ontario contains 14 LHIN. The CCHS
+sample was increased in order to obtain a minimum size of 2,000 respondents per LHIN over a
+period of 2 years. As the HR and LHIN boundaries intersect each other, the stratification level used
+was the HR-LHIN overlap. The preliminary sample sizes allotted by HR are therefore preserved.
+In cases where the HR allocation prevented the sample from reaching sizes of 2,000 respondents per
+LHIN, the sample was then increased, and was allocated proportionally to the size of the population
+within the HR-LHIN overlap. Table 5.4 provides the targeted sample sizes by LHIN for 2014 and
+2013-2014.
+
+```{yaml}
+#| label: tbl-5-4
+id: '5.4'
+title: Targeted sample sizes by Local Health Integrated Network (LHIN), CCHS 2014
+  and
+columns:
+- LHIN
+- Targeted sample size 2014
+- Targeted sample size 2013-2014
+data:
+- LHIN: 01-Erie St. Clair 02-South West 03-Waterloo Wellington 04-Hamilton Niagara
+    Haldimand Brant 05-Central West 06-Mississauga Halton 07-Toronto Central 08-Central
+    09-Central East 10-South East 11-Champlain 12-North Simcoe Muskoka 13-North East
+    14-North West
+  Targeted sample size 2014: 1,550 2,604 1,206 2,597 1,088 1,115 1,134 1,411 2,108
+    1,313 2,057 1,047 1,990 1,068
+  Targeted sample size 2013-2014: 3,100 5,208 2,412 5,194 2,176 2,230 2,268 2,822
+    4,216 2,626 4,114 2,094 3,980 2,136
+- LHIN: Ontario
+  Targeted sample size 2014: 22,288
+  Targeted sample size 2013-2014: 44,576
+```
+
+
+2013-2014
+LHIN Targeted Targeted
+sample size sample size
+2014 2013-2014
+01-Erie St. Clair 1,550 3,100
+02-South West 2,604 5,208
+03-Waterloo Wellington 1,206 2,412
+04-Hamilton Niagara Haldimand Brant 2,597 5,194
+05-Central West 1,088 2,176
+06-Mississauga Halton 1,115 2,230
+07-Toronto Central 1,134 2,268
+08-Central 1,411 2,822
+09-Central East 2,108 4,216
+10-South East 1,313 2,626
+11-Champlain 2,057 4,114
+12-North Simcoe Muskoka 1,047 2,094
+13-North East 1,990 3,980
+14-North West 1,068 2,136
+Ontario 22,288 44,576
+The total sample size of the HR-LHIN overlapping areas was then allocated between the two
+frames, with 59% going to the list frame and the 41% to area frame. The usual sample selection
+procedures within each frame were then applied to the total sample. The additional sample was
+included as part of the full CCHS sample. Sample sizes by Local Health Integrated Network and
+frame are given in Appendix D for 2014 and Appendix F for 2013-2014.
+
+
+### 6.1 Computer-assisted interviewing
+
+Between January and December 2014, over 60,000 valid interviews were conducted using computer
+assisted interviewing (CAI). Approximately 40% of the interviews were conducted in person using
+computer assisted personal interviewing (CAPI) and the other 60% were conducted over the phone
+using computer assisted telephone interviewing (CATI).
+CAI offers two main advantages over other collection methods. First, CAI offers a case
+management system and data transmission functionality. This case management system
+automatically records important management information for each attempt on a case and provides
+reports for the management of the collection process. CAI also provides an automated call
+scheduler, i.e. a central system to optimise the timing of call-backs and the scheduling of
+appointments used to support CATI collection.
+The case management system routes the questionnaire applications and sample files from Statistics
+Canada’s main office to regional collection offices (in the case of CATI) and from the regional
+offices to the interviewers laptops (for CAPI). Data returning to the main office takes the reverse
+route. To ensure confidentiality, the data is encrypted before transmission. The data are then
+unencrypted when they are on a separate secure computer with no remote access.
+Second, CAI allows for custom interviews for every respondent based on their individual
+characteristics and survey responses. This includes:
+ questions that are not applicable to the respondent are skipped automatically
+ edits to check for inconsistent answers or out-of-range responses are applied automatically
+and on-screen prompts are shown when an invalid entry is recorded. Immediate feedback is
+given to the respondent and the interviewer is able to correct any inconsistencies.
+ question text, including reference periods and pronouns, is customised automatically based
+on factors such as the age and sex of the respondent, the date of the interview and answers to
+previous questions.
+
+
+### 6.2 Cchs application development
+
+The CCHS uses two separate CAI applications to collect data, one for telephone interviews (CATI)
+and one for personal interviews (CAPI). This was done in order to customise each application’s
+functionality to the type of interview being conducted. Each application consisted of entry, health
+content, and exit components.
+Entry and exit components contain standard sets of questions designed to guide the interviewer
+through contact initiation, collection of important sample information, respondent selection and
+determination of cases status. The health content consists of the health modules themselves and
+made up the bulk of the applications. This includes common modules asked of all respondents and
+optional modules which differed by provinces and territories. Each application underwent three
+stages of testing: block, integrated and end to end.
+Block level testing consists of independently testing each content module or “block” to ensure skip
+patterns, logic flows and text, in both official languages, are specified correctly. Skip patterns or
+logic flows across modules are not tested at this stage as each module is treated as a standalone
+questionnaire. Once all blocks are verified by several testers they are added together along with
+entry and exit components into integrated applications. These newly integrated applications are then
+ready for the next stage of testing.
+Integrated testing occurs when all of the tested modules are added together, along with the entry and
+exit components, into an integrated application. This second stage of testing ensures that key
+information such as age and gender are passed from the entry to the health content and exit
+components of the applications. It also ensures that variables affecting skip patterns and logic flows
+are correctly passed between modules within the health content. Since, at this stage the applications
+essentially function as they will in the field, all possible scenarios faced by interviewers are
+simulated to ensure proper functionality. These scenarios test various aspects of the entry and exit
+components including, establishing contact, collecting contact information, determining whether a
+case is in scope, rostering households, creating appointments and selecting respondents. The
+applications are also tested to ensure that during an interview, correct modules are triggered
+reflecting health region optional content selections.
+End to end testing occurs when the fully integrated applications are placed in simulated collection
+environment. The applications are loaded onto computers that are connected to a test server. Data is
+then collected, transmitted and extracted in real time, exactly as it would be done in the field. This
+last stage of testing allows for the testing of all technical aspects of data input, transmission and
+extraction for each of the CCHS applications. It also provided a final chance of finding errors within
+the entry, health content and exit components.
+
+
+### 6.3 Interviewer training
+
+Project managers, senior interviewers and interviewers from regional collection offices were sent
+self study training packages before the start of collection. These packages were prepared by the
+CCHS project team and were used by existing experienced CCHS interviewers to reinforce their
+previous training. Project managers and senior interviewers also conducted customised training
+sessions for new CCHS interviewing staff as needed. There were also specific training sessions to
+deal with various topics related to CCHS collection on a monthly basis. The focus of the training
+sessions were to get interviewers comfortable using the CCHS 2014 applications, and familiarise
+interviewers with survey content and to introduce interviewers to interviewing procedures specific
+to the CCHS. The training focused on:
+ goals and objectives of the survey including a focus on the survey redesign
+ survey methodology
+ application functionality
+ review of the questionnaire content and exercises with an emphasis on significant content
+changes
+ interviewer techniques for maintaining response - complete exercises to minimise non-response
+ use of mock interviews to simulate difficult situations and practise potential non-response
+situations
+ survey management
+ transmission procedures
+One of the key aspects of the training was a focus on minimizing non-response. Exercises to
+minimise non-response were prepared for interviewers. The purpose of these exercises was to have
+the interviewers practice convincing reluctant respondents to participate in the survey. There was
+also a series of refusal avoidance workshops given to the senior interviewers responsible for refusal
+conversion in each regional collection office.
+
+
+### 6.4 The interview
+
+Sample units selected from the telephone list and RDD (Random Digit Dialling) frames were
+interviewed from centralised call centres using CATI. Starting in May 2014, 20% of cases selected
+from the area frame were interviewed using CATI for collection cost constraint. The CATI
+interviewers were supervised by a senior interviewer located in the same call centre. Units selected
+from the area frame were interviewed by decentralised field interviewers using CAPI. While in
+some situations field interviewers were permitted to complete some or part of an interview by
+telephone, roughly three quarters of these interviews were conducted exclusively in person. CAPI
+interviewers worked independently from their homes using laptop computers and were supervised
+from a distance by senior interviewers. The variable CASETYPE on the microdata files indicates
+whether a case was selected from the area frame and completed using CAPI (CAPI -
+CASETYPE=1), from area frame and completed using CATI (CATI Dwelling - CASETYPE=2), or
+from the telephone or RDD frame (CATI - CASETYPE=1).
+In all selected dwellings, a knowledgeable household member was asked to supply basic
+demographic information on all residents of the dwelling. One member of the household was then
+selected for a more in-depth interview, which is referred to as the health content Interview.
+CAPI interviewers were trained to make an initial personal contact with each sampled dwelling. In
+cases where this initial visit resulted in non-response, telephone follow-ups were permitted. The
+variable ADM_N09 on the microdata files indicates whether the CAPI interview (CASETYPE=0)
+was completed face-to-face, by telephone or using a combination of the two techniques.
+To ensure the quality of the data collected, interviewers were instructed to make every effort to
+conduct the interview with the selected respondent in privacy. In situations where this was
+unavoidable, the respondent was interviewed with another person present. Flags on the microdata
+files indicate whether somebody other than the respondent was present during the interview
+(ADM_N10) and whether the interviewer felt that the respondent’s answers were influenced by the
+presence of the other person (ADM_N11).
+To ensure the best possible response rate attainable, many practices were used to minimise non-
+response, including:
+a) Introductory letters
+Before the start of each collection period, introductory letters and brochures explaining the purpose
+of the survey were sent to the sampled households. These explained the importance of the survey
+and provided examples of how CCHS data would be used.
+b) Initiating contact
+Interviewers were instructed to make all reasonable attempts to obtain interviews. When the timing
+of the interviewer's call (or visit) was inconvenient, an appointment was made to call back at a more
+convenient time. If requests for appointments were unsuccessful over the telephone, interviewers
+were instructed to follow-up with a personal visit. If no one was home on first visit, a brochure with
+information about the survey and intention to make contact was left at the door. Numerous call-
+backs were made at different times on different days.
+c) Refusal conversion
+For individuals who at first refused to participate in the survey, a letter was sent from the nearest
+Statistics Canada Regional Office to the respondent, stressing the importance of the survey and the
+household's collaboration. This was followed by a second call (or visit) from a senior interviewer, a
+project supervisor or another interviewer to try to convince respondent of the importance of
+participating in the survey.
+d) Language barriers
+To remove language as a barrier to conducting interviews, each of the Statistics Canada Regional
+Offices recruited interviewers with a wide range of language competencies. When necessary, cases
+were transferred to an interviewer with the language competency needed to complete an interview.
+e) Youth interviews
+In 2014, interviewers needed to obtain verbal permission from parents/guardians to interview
+youths between the ages of 12 to 15 who were selected for interviews. This information was
+collected in the Parental/Guardian Consent (PGC) block. Several procedures were followed by
+interviewers to alleviate potential parental concerns and to ensure a completed interview.
+Interviewers carried with them a card entitled “Note to parents / guardians about interviewing
+youths for the Canadian Community Health Survey”. This card explained the purpose of collecting
+information from youth, lists the subjects to be covered in the survey, asks for permission to share
+and link the obtained information and explains the need to respect a child's right to privacy and
+confidentiality.
+If a parent/guardian asked to see the actual questions; interviewers were instructed to either show
+the survey questions, or if the interviewer was being conducted by phone, to immediately have the
+regional office send a copy of the questionnaire.
+If privacy could not be obtained to interview the selected youth either in person or over the phone
+(another person listening in) the interview was coded a refusal. However, for CAPI interviews, if
+privacy could not be obtained to interview the selected youth, the interviewer was able to propose to
+the parent/guardian that the interviewer read the questions out loud and the youth enter their
+answers directly on the computer.
+The Person Most Knowledgeable (PMK) block collected household level information found at the
+end of the survey (Home Safety, Insurance coverage, Food Security, Income and Administration)
+from the most knowledgeable person in the household. In 2014, this block is initiated when the
+selected respondent is between the ages of 12 to 17. The block formalizes the process of identifying
+a person in the household who is likely better able to answer these household level questions than
+the young selected respondent. If a PMK is found, then the interview moves from the younger
+selected respondent between the ages of 12 and 17, to a household member who finishes the rest of
+the interview after the PMK block.
+f) Proxy interviews
+In cases where the selected respondent was, for reasons of physical or mental health, incapable of
+completing an interview, another knowledgeable member of the household supplied information
+about the selected respondent. This is known as a proxy interview. While proxy interviewees were
+able to provide accurate answers to most of the survey questions, the more sensitive or personal
+questions were beyond the scope of knowledge of a proxy respondent. This resulted in some
+questions from the proxy interview being unanswered. Every effort was taken to keep proxy
+interviews to a minimum.
+In 2010, the Proxy interview (GR) block was modified to prompt the interviewer to specifically
+identify whether the proxy interview is being conducted due to a physical or mental condition.
+Interviewers are then asked to record the specific condition for either case. The variable
+ADM_PRX indicates whether a case was completed by proxy.
+
+
+### 6.5 Field operations
+
+The majority of the 2014 sample was divided on a yearly basis into six non-overlapping two-month
+collection periods. Regional collection offices were instructed to use the first 4 weeks of each
+collection period to resolve the majority of the sample, with next 4 weeks being used finalise the
+remaining sample and to follow up on outstanding non-response cases. All cases were to have been
+attempted by the second week of each collection period. Sample files were sent approximately two
+weeks before the start of each collection period to centralised collection offices. A series of dummy
+cases were included with each CAPI sample. These cases were completed by senior interviewers for
+the purposes of ensuring that all data transmission procedures were working through the collection
+cycle. Once, the samples were received, project supervisors were responsible for planning CAPI
+interviewer assignments. Wherever possible, assignments were generally no larger than 15 cases per
+interviewer.
+Transmission of cases from each of the CATI offices to head office was the responsibility of the
+regional office project supervisor, senior interviewer and the technical support team. These
+transmissions were performed nightly and sent all completed cases to Statistics Canada’s head
+office. Completed CAPI interviews were transmitted daily from the interviewer’s home directly to
+Statistics Canada’s head office using a secure telephone transmission.
+For final response rates, refer to Appendix E.
+
+
+### 6.6 Quality control and collection management
+
+During the collection year, several methods are used to ensure data quality and to optimize
+collection. These included using internal measures to verify interviewer performance and the use of
+a series of ongoing reports to monitor various collection targets and data quality.
+A system of validation was used for CAPI cases whereby interviewers had their work validated on a
+regular basis by the Regional Office. Each collection period, randomly selected cases were flagged
+in the sample. Regional office managers and supervisors created lists of cases to be validated. These
+cases were handed to the validation team who then contacted households to verify that a legitimate
+interview took place. Validation procedures generally occurred during the first few weeks of a
+collection period to ensure that any issues were detected promptly. Interviewers were provided
+feedback by their supervisors on a regular basis.
+In 2011, an additional quality control system was introduced for CAPI interviews. Upon obtaining
+consent from the respondents, specific sections of the CAPI interviews were recorded. These
+recordings were transmitted back to the regional offices, and then randomly chosen for analysis.
+CATI interviewers were also randomly chosen for validation. Validation in the CATI collection
+offices consisted of senior interviewers monitoring interviews to ensure proper techniques and
+procedures (reading the questions as worded in the applications, not prompting respondents for
+answers, etc.) were followed by the interviewer.
+A series of reports were produced to effectively track and manage collection targets and to assist in
+identifying other collection issues.
+Cumulative reports were generated at the end of each collection period, showing response, link,
+share and proxy rates for both the CATI and CAPI samples by individual health region. The reports
+were useful in identifying health regions that were below collection target levels, allowing the
+regional offices to focus efforts in these regions.
+Using information obtained from the CAI applications, further analysis was done in head office in
+order to identify interviews that were completed below acceptable time frames. These short
+interviews were flagged, removed from the microdata and treated as non-response.
+In 2014, a new collection management approach was implemented to improve the efficiency of the
+CATI data collection: Responsive Collection Design. Responsive Collection Design (RCD) is a
+new collection strategy that allows the Regional Offices (ROs) to adjust data collection approaches
+throughout the collection period. In basic terms, it allows the Regional Offices to group cases
+according to a number of factors, and then target the groups that we are interested in. In an ordinary
+CATI survey, the interviewer groups remain constant throughout collection. However, during
+Responsive Collection Design, these groups change during each phase of collection in order to
+maximize response rates, productivity and the representativeness of the collected sample.
+
+
+### 7.1 Editing
+
+Most editing of the data was performed at the time of the interview by the computer-assisted
+interviewing (CAI) application. It was not possible for interviewers to enter out-of-range values and
+flow errors were controlled through programmed skip patterns. For example, CAI ensured that
+questions that did not apply to the respondent were not asked.
+In response to some types of inconsistent or unusual reporting, warning messages were invoked but
+no corrective action was taken at the time of the interview. Where appropriate, edits were instead
+developed to be performed after data collection at Head Office. Inconsistencies were usually
+corrected by setting one or both of the variables in question to "not stated".
+
+
+### 7.2 Coding
+
+Pre-coded answer categories were supplied for all suitable variables. Interviewers were trained to
+assign the respondent’s answers to the appropriate category.
+In the event that a respondent’s answer could not be easily assigned to an existing category, several
+questions also allowed the interviewer to enter a long-answer text in the “Other-specify” category.
+All such questions were closely examined in head office processing. For some of these questions,
+write-in responses were coded into one of the existing listed categories if the write-in information
+duplicated a listed category. For all questions, the ‘Other-specify’ responses are taken into account
+when refining the answer categories for future cycles.
+When write-in responses (“Other-specify”) are coded into an existing category during head office
+processing, it is possible that other questions in the questionnaire would become in scope to the
+respondent. Since those questions were never asked during the interview, the missing answers were
+set to ‘Not Stated’ in processing. For example, in the Injuries (INJ) module, a question asks what
+the respondent was doing at the time of their injury (INJ_Q09). If the interviewer collected an
+answer in the other specify that indicated the respondent was working, then the variable INJ_09
+would be coded to the category ‘Working at a job or business’. Had the interviewer used this
+category in the interview, the respondent would then get the Injury at work (INW) sub-block
+questions. Since this never occurred, but those questions are now valid for this case, all of the
+questions in INW will have been set to ‘Not Stated’.
+
+
+### 7.3 Creation of derived variables
+
+To facilitate data analysis and to minimize the risk of error, a number of variables on the file have
+been derived using items found on the CCHS questionnaire. Derived variables generally have a "D",
+"G" or “F” in the fourth character of the variable name. In some cases, the derived variables are
+straightforward, involving collapsing of response categories. In other cases, several variables have
+been combined to create a new variable. The Derived Variables Documentation (DV) provides
+details on how these more complex variables were derived. For more information on the naming
+convention, please go to Section 12.6.
+
+
+### 7.4 Weighting
+
+The principle behind estimation in a probability sample such as CCHS is that each person in the
+sample "represents", besides himself or herself, several other persons not in the sample. For
+example, in a simple random 2% sample of the population, each person in the sample represents 50
+persons in the population. In the terminology used here, it can be said that each person has a weight
+of 50.
+The weighting phase is a step that calculates, for each person, his or her associated sampling weight.
+This weight appears on the PUMF, and must be used to derive meaningful estimates from the
+survey. For example, if the number of individuals who smoke daily is to be estimated, it is done by
+selecting the records referring to those individuals in the sample having that characteristic and
+summing the weights entered on those records.
+
+
+### 7.5 Income imputation
+
+Beginning with the 2011 reference year, the household income variable will be imputed. Missing
+values due to either respondent refusal or respondent’s lack of knowledge of household income will
+be completed using statistical techniques. The main variable of interest is INC_3: ‘Total household
+income - best estimate’ but all variables that are derived based on income will also be affected. The
+income variables along with an imputation flag (INCFIMP in 2011; INCFIMP4 starting in 2012,
+including 2011-2012) indicating which values were imputed will be provided on the data file. For
+more information on the imputation process, please refer to the document ‘Income Imputation for
+the Canadian Community Health Survey’ available under the ‘Documentation’ section of the
+Definitions, data sources and methods page on the Statistics Canada website or contact Client
+Services (613-951-1746; fax: 613-951-0792; hd-ds@statcan.gc.ca).
+
+
+## 8 Weighting
+
+In order for estimates produced from survey data to be representative of the covered population, and
+not just the sample itself, users must incorporate the survey weights in their calculations. A survey
+weight is given to each respondent included in the final sample. This weight corresponds to the
+number of persons in the entire population that are represented by the respondent.
+As described in Section 5, the CCHS uses three sampling frames for its sample selection: an area
+frame acting as the primary frame and two frames made up of telephone numbers used to
+complement the area frame. Since only minor aspects differentiate the two telephone frames in
+terms of weighting, they are treated jointly and are collectively referred to as the telephone frame.
+Depending on the need, one or two frames are used for the selection of the sample within a given
+Health Region (HR). When two frames are used, the weighting strategy treats both the area and
+telephone frames independently to come up with separate household-level weights for each of the
+frames used. These household-level weights are then combined into a single set of household
+weights through a step called "integration". After applying person-level selection weights and some
+further adjustments, this integrated weight becomes the final person-level weight.
+
+
+### 8.1 Overview
+
+As mentioned earlier, units from both the area and telephone frames are treated separately up to the
+integration step. The following sections describe the weighting process for the provinces. Sub-
+section 8.2 provides details on the weighting strategy for the area frame, while sub-section 8.3 deals
+with the strategy for the telephone frame. The integration of the two frames is discussed in 8.4. This
+is followed by the last weighting steps including calibration, where the weights are adjusted to
+control for seasonality and to match known population totals. These steps are explained in sub-
+section 8.5.
+Although the two frames are used to cover the three territories, the sampling methods used are
+slightly different from those used in the provinces. These modifications affect the weighting of
+these three regions substantially, and they are reported in sub-section 8.6.
+
+A numbering system is used to identify each adjustment and will be used throughout the section.
+Letters A and T are used as prefixes to refer to adjustments applied to the units on the Area and
+Telephone frames respectively, while prefix I identifies adjustments applied from the Integration
+step onwards.
+
+```{yaml}
+#| label: tbl-DA
+id: DA
+title: Weighting strategy overview
+columns:
+- Area Frame
+data:
+- Area Frame: A0 – Initial weight A1 – Sub-cluster adjustment A2 – Stabilization A3
+    – Removal of out-of-scope units A4 – Household nonresponse
+```
+
+
+Area Frame Telephone Frame
+A0 – Initial weight T0 – Initial weight
+A1 – Sub-cluster adjustment T1 – Number of collection periods
+A2 – Stabilization T2 – Removal of out-of-scope units
+A3 – Removal of out-of-scope units T3 – Household nonresponse
+A4 – Household nonresponse T4 – Multiple phone lines
+Area Frame Household Weight Telephone Frame Household Weight
+I1 - Integration
+Combined Frame
+I2 – Person-level weight
+I3 – Person-level nonresponse
+I4 – Winsorization
+I5 – Calibration
+Final Person-level Weight
+
+
+### 8.2 Weighting of the area frame sample
+
+A0 – Initial weight
+The weighting on the area frame sample begins with a weight provided by the Labour Force Survey
+(LFS). This weight is based on the LFS design since the CCHS area frame sample design is based
+on the LFS. The LFS design consists of a sample of dwellings within clusters selected from LFS
+strata. In the initial adjustment A0, the LFS weight is adjusted to take into consideration the fact
+that the CCHS selects a sample to be representative of the Health Region. To do so, the CCHS
+selects a different number of clusters than the LFS and can repeat the sampling of dwellings within
+the selected clusters. The resulting weight is called weight A0. For more details about the selection
+mechanism, as well as a more complete definition of LFS strata and clusters, refer to Statistics
+Canada (2008)10.
+A1 – Sub-cluster adjustment
+In clusters that experience significant growth, a sub-sampling methodology is used to ensure that
+the workload of the interviewers is kept at a reasonable level. This can consist of sub-sampling
+from the selected dwellings, dividing the cluster into sub-clusters, or reclassifying the cluster as a
+stratum and creating new clusters within the stratum. In all these cases, a sub-sample adjustment is
+calculated and applied to the CCHS weight. This adjustment is applied to weight A0 to produce
+weight A1. Again, more information can be found in the LFS documentation (Statistics Canada
+(2008)).
+A2 – Stabilization
+In some HRs, the increase of the sample size, as described in section 5, results in a larger sample
+than necessary. Stabilization is used to bring the sample size back down to the desired level. The
+Statistics Canada. 2008. Methodology of the Canadian Labour Force Survey. Statistics Canada. Cat. No. 71-526-X.
+stabilization process consists of randomly sub-sampling dwellings at the HR level from the
+dwellings originally selected within each cluster. An adjustment factor representing the effect of
+this stabilization is calculated in order to adjust the probability of selection appropriately. This
+factor, multiplied by weight A1, produces weight A2.
+A3 – Removal of out-of-scope units
+Among all dwellings sampled, a certain proportion is identified during collection as being out-of-
+scope. Dwellings that are demolished or under construction, vacant, seasonal or secondary, and
+institutions are examples of out-of-scope cases for the CCHS. These dwellings and their associated
+weights are simply removed from the sample, as it is assumed that the weighted out-of-scope
+dwellings in the sample are representative of out-of-scope dwellings in the population. This leaves
+a sample that consists of, and is representative of, in-scope dwellings or households. These
+remaining in-scope dwellings maintain the same weight as in the previous step, which is now called
+weight A3.
+A4 – Household nonresponse
+During collection, a certain proportion of sampled households inevitably result in nonresponse. This
+usually occurs when a household refuses to participate in the survey, provides unusable data, or
+cannot be reached for an interview. Weights of the nonresponding households are redistributed to
+responding households within response homogeneity groups (RHGs). In order to create the response
+homogeneity groups, a scoring method based on logistic regression models is used to determine the
+propensity to respond and these response probabilities are used to divide the sample into groups
+with similar response properties. The information available for nonrespondents is limited so the
+regression model uses characteristics such as the collection period and geographic information, as
+well as paradata or process data, which includes the number of contact attempts, the time/day of
+attempt, and whether the household was called on a weekend or weekday. Starting in 2008, RHGs
+were formed within province to better control for provincial totals. An adjustment factor is
+calculated within each response group as follows:
+Sumof weight A3 for all households
+Sumof weight A3 for all responding households
+Weight A3 is multiplied by this adjustment factor to produce weight A4 for the responding
+households. Non-responding households are dropped from the process at this point.
+
+
+### 8.3 Weighting of the telephone frame sample
+
+As mentioned earlier, the telephone frame is composed of two frames: a Random Digit Dialling
+(RDD) frame and a list frame. Only one of the frames can be used within an HR. When the list
+frame is used, it is always used as a complement to the area frame within the HR. When the RDD
+frame is used, it is always used as the only frame within the HR. For the purposes of weighting,
+units coming from the two telephone frames are treated together and therefore are subject to the
+same adjustments.
+The geographical boundaries used to select the sample from the telephone frame do not always
+conform to the HR geography. Consequently, some units may have been sampled from one HR but
+the information collected at the time of the interview places them in a neighbouring HR. This is
+handled in the weighting by applying the first 3 telephone adjustments (T0, T1 and T2) relative to
+the HR assigned at the time of sample selection. The remaining 2 adjustments (T3 and T4) are
+applied to the HR based on information collected from the respondent to ensure that all units belong
+to their correct HR.
+T0 –Initial weight
+The initial design weight is defined as the inverse of the probability of selection and is computed
+separately for the RDD and list frame samples since the method of selection differs between these
+two frames. For the RDD frame, the selection of telephone numbers is done within each RDD
+stratum. An RDD stratum is an aggregation of area code prefixes (ACP: the first six digits of a 10-
+digit telephone number), with each ACP containing valid banks of one hundred numbers (see Norris
+and Paton11 for more details). Therefore, the probability of selection is the ratio between the number
+of sampled units and one hundred times the number of banks within the RDD stratum.
+For the list frame, telephone numbers are randomly selected among those assigned to the specific
+HR. The probability of selection corresponds to the ratio of the number of sampled units to the
+number of telephone numbers on the list within the HR. The ratio is based on the frame available
+and the number of units selected for the particular two-month collection period. The probability of
+selection can therefore change depending on sample allocation and frame updates. The inverse of
+these probabilities represents the initial weight T0.
+T1 – Number of collection periods
+On the area frame, the entire sample is selected at the beginning of the year. This is in contrast to
+the telephone frame, where samples are drawn every two months. Each of these samples comes with
+an initial weight that allows each sample to be representative of the population at the HR level. To
+ensure that the total sample represents the population only once, an adjustment factor is applied to
+reduce the weights of each two-month sample. The adjustment factor applied to each two-month
+sample is equal to the inverse of the number of samples being combined (i.e. the number of
+collection periods). Following this adjustment, the entire list frame sample corresponds to the
+average population over the entire combined collection period. The initial weights (T0) are
+multiplied by this adjustment factor to produce weight T1.
+T2 - Removal of out-of-scope numbers
+Telephone numbers associated with businesses, institutions or other out-of-scope dwellings, as well
+as numbers not in service or any other non-working numbers are all examples of out-of-scope cases
+for the telephone frame. Similar to the methods used on the area frame, these cases are simply
+Norris, D.A. and Paton, D.G. 1991. Canada’s General Social Survey: Five Years of Experience. Survey Methodology.
+17, 227-240.
+removed from the process, leaving only in-scope dwellings in the sample. These in-scope dwellings
+keep the same weight as in the previous step, now called weight T2.
+T3 – Household nonresponse
+The adjustment applied here to compensate for the effect of household nonresponse is identical to
+the one applied for the area frame (adjustment A4) although the paradata used does differ because
+of the differences in collection applications for personal and telephone interviews. The adjustment
+factor calculated within each response homogeneity group is obtained as follows:
+Sumof weightsT2 for all households
+Sumof weightsT2 for all responding households
+The weight T2 of responding households is multiplied by this adjustment factor to produce the
+weight T3. Nonresponding households are removed from the process at this point.
+T4 - Multiple phone lines
+Some households have more than one telephone number appearing on the frame. This has an impact
+on the weighting because these households have a higher probability of being selected. The weights
+for these households need to be adjusted for the number of residential telephone lines within the
+household. The adjustment factor represents the inverse of the number of lines in the household.
+The weight T4 is obtained by multiplying this factor by the weight T3.
+8.4 Integration of the telephone and area frames (I1)
+This step consists of integrating the weights for households common to the area and telephone
+frames into a single weight by applying a method of integration12. Those units on the area frame
+that are not on the telephone frame do not have their weights adjusted. For all others units, an
+adjustment factor α between 0 and 1 is applied to the weights. The weight of the area frame units is
+multiplied by this factor α, while the weight of the telephone frame units is multiplied by 1- α. Note
+that in the case where an HR is covered by only one frame, the adjustment factor is equal to 1.
+Starting in 2008, a fixed α of 0.4 has been used for those units on both frames to ensure greater
+comparability of estimates across years. The product between the factor derived here and the final
+household weight calculated earlier (A4 or T4, depending on which frame the unit belongs to),
+gives the integrated household weight I1.
+
+
+### 8.5 Post-integration weighting steps
+
+Skinner, C.J. and Rao, J.N.K. 1996. Estimation in Dual Frame Surveys with Complex Designs. Journal of the
+American Statistical Association. 91, 433, 349-356.
+I2 – Creation of person level weight
+Since persons are the desired sampling units, the household-level weights computed to this point
+need to be converted to the person level. This weight is obtained by multiplying the weight I1 by the
+inverse of the probability of selection of the person selected in the household. This gives the weight
+I2. As mentioned earlier, the probability of selection for an individual changes depending on the
+number of people in the household and the ages of those individuals (see Section 5.6 for more
+details).
+I3 – Person nonresponse
+A CCHS interview can be seen as a two-part process. First, the interviewer gets the complete roster
+of the people within the household. Second, the selected person is interviewed. In some cases,
+interviewers can only get through the first part, either because they cannot get in touch with the
+selected person, or because that selected person refuses to be interviewed. Such individuals are
+defined as person nonrespondents and an adjustment factor must be applied to the weights of person
+respondents to account for this nonresponse. Using the same methodology that is used in the
+treatment of household nonresponse, the adjustment is applied within response homogeneity groups.
+In this process, the scoring method is used to define a response probability based on characteristics
+available for both respondents and non-respondents. All characteristics collected when creating the
+roster of household members are available for the estimation of the response probabilities as well as
+geographic information and some paradata. The probabilities are grouped into response
+homogeneity groups and the following adjustment factor is calculated within each group:
+Sumof weight I2 forall selected persons
+Sumof weight I2 forallresponding selected persons
+Weight I2 for responding persons is multiplied by the above adjustment factor to produce weight I3.
+Nonresponding persons are dropped from the weighting process from this point onward.
+I4 – Winsorization
+Following the series of adjustments applied to the respondents, some units may come out with
+extreme weights compared to other units of the same domain of interest. These units could have a
+large impact on the variance. In order to prevent this, the weight of these outlier units is adjusted
+downward using a “winsorization” trimming approach.
+I5 – Calibration
+The last step necessary to obtain the final CCHS weight is calibration (I5). Calibration is done using
+CALMAR13 to ensure that the sum of the final weights corresponds to the population estimates
+defined at the HR level, for all 10 age-sex groups of interest. The five age groups are 12-19, 20-29,
+30-44, 45-64, 65+, for both males and females. Starting in 2009, additional controls at more detailed
+Sautory O. CALMAR 2: A New Version of the CALMAR Calibration Adjustment Program. Proceedings of
+Statistics Canada Symposium (Statistics Canada, Catalogue no. 11-522-XCB), 2003.
+geographic levels were introduced for HRs where additional information is available. A minimum
+size of 20 respondents is required to calibrate at the HR by age by sex level. When getting less than
+20 respondents, some collapsing is done within province and / or within gender. At the same time,
+weights are adjusted to ensure that each collection period (two-month period) is equally represented
+within the sample. Note that the calibration is done using the most up to date geography and may
+not match the geography used in sampling.
+The population estimates are based on the 2011 Census counts and counts of birth, death,
+immigration and emigration since that time. The average of these monthly estimates for each of the
+HR-age-sex post-strata by collection period is used to calibrate. The weight I4 is adjusted using
+CALMAR to obtain the final weight I5. Weight I5 corresponds to the final CCHS person-level
+weight and can be found on the data file with the variable name WTS_M for master or PUMF users.
+
+
+### 8.6 Particular aspects of the weighting in the three territories
+
+As described in Section 5, the sampling frame used in the three territories is somewhat different
+from the one used in the provinces. Therefore, the weighting strategy is adapted to comply with
+these differences. This subsection summarises the changes applied to the steps described in sub-
+sections 8.1 to 8.5.
+For the area frame, as mentioned in sub-section 5.4.1, an additional stage of selection is added in the
+territories where each territory is stratified into groupings of communities and one community is
+selected within each group. The capital of each territory forms a stratum on its own and is selected
+automatically at the first stage. This has an effect in the computation of the probability of selection,
+and therefore in the value of the initial weight (A0). Once the initial weight is calculated, the same
+series of adjustments (A1 to A4) is applied to the area frame units. Household-level and person-
+level nonresponse adjustment classes are built in the same way as for the provinces, using the same
+set of variables.
+For the weighting of the telephone frame units, it should be noted that only the RDD frame is used
+and its use is exclusive to the capitals of the Yukon and the Northwest Territories. All of the
+telephone frame adjustments are applied to derive a final weight for the telephone units.
+The two sets of weights (area and telephone) are subsequently integrated and calibration is applied
+in a similar way to what is done for the provinces, with two exceptions. First, the integration is
+applied only to units located in the Yukon and the Northwest Territories capitals since the other
+communities are covered only by the area frame. Second, starting with the 2008 and 2007-2008
+reference year products, controls have been put in place to ensure that the proportion of aboriginals
+and the proportion of individuals in the capital regions are controlled in the Northwest Territories
+and the Yukon. A similar control based on Inuit status was introduced for Nunavut. Starting in
+2009, the proportion of individuals in the capital regions is controlled in Nunavut. These controls
+ensure that the proportion of the estimates represented by these different groups is consistent with
+proportions indicated by the 2011Census.
+Prior to 2013, CCHS only covered the 10 largest communities in Nunavut. The population counts
+used in calibration were adjusted to take this undercoverage into consideration. Starting in 2013,
+CCHS increased its coverage to match the Labour Force Survey where 92% of the population is
+covered. Therefore, the population counts used for calibration are based on the total population and
+no longer adjusted for this undercoverage.
+
+
+### 8.7 Creation of a share weight
+
+Along with the master file and PUMF which contain all CCHS respondents, a share file is created
+which contains only a portion (>90%) of the original CCHS respondents. The individuals on this
+share file have agreed to share their data with certain partners. To compensate for the loss of some
+respondents from the file, the weights of these "sharers" must be adjusted by the factor:
+Sum of weight I3for all respondents
+Sum of weight I3for all respondents agreeing to share their data
+Similar to the nonresponse adjustments, this factor is calculated within homogeneity groups, where
+in this case, individuals with similar estimated propensity to share will be grouped together. Weight
+I3 for sharers is multiplied by the above adjustment factor to produce a share weight. Winsorization
+and calibration, similar to adjustments I4 and I5, are applied to the share units. The final weight
+after these adjustments is called WTS_S.
+
+
+### 8.8 Weighting for a two-year file
+
+When two years of data are combined to create a two-year file, new weights are calculated by
+halving the annual weights. This ensures that the sum of the final weights is equal to the average
+population size over the two years. For more information on combining multiple years, please
+refer to the article “Combining cycles of the Canadian Community Health Survey” published in the
+Statistics Canada Health Reports publication (82-003) at the following link:
+http://www.statcan.gc.ca/pub/82-003-x/2009001/article/10795-eng.pdf
+
+
+## 9 Data quality
+
+9.1 Response rates for 2014
+In total, 97,467 of the selected units in the CCHS 2014 were in-scope for the survey14. Out of these,
+73,190 households accepted to participate in the survey resulting in an overall household-level
+response rate of 75.1%. One individual was selected from each of these 73,190 responding
+households, out of which a response was obtained for 63,964 individuals, resulting in an overall
+person-level response rate of 87.4%. At the Canada level, this yields a combined response rate of
+65.6% for the CCHS 2014. Table 9.1 provides combined response rates as well as relevant
+information for their calculation by health region or group of health regions. Table 9.2 provides the
+same data by Local Health Integrated Network (LHIN).
+
+(see Appendix E)
+
+Ontario
+(see Appendix E)
+9.2 Response rates for 2013-2014
+In total, 193,813 of the selected units in the CCHS 2013-2014 were in-scope for the survey. Out of
+these, 147,009 households accepted to participate in the survey resulting in an overall household-
+level response rate of 75.9%. One individual was selected from each of these 147,009 responding
+households, out of which a response was obtained for 128,310 individuals, resulting in an overall
+person-level response rate of 87.3%. At the Canada level, this yields a combined response rate of
+66.2% for the CCHS 2013-2014. Table 9.3 provides combined response rates as well as relevant
+information for their calculation by health region or group of health regions. Table 9.4 provides the
+same data by Local Health Integrated Network (LHIN).
+
+(see Appendix G)
+Among the units selected, some are not in-scope for the survey. They are, for examples, vacant, demolished or non-
+residential dwellings or invalid phone numbers such as phone numbers without service or non-residential lines. These
+units are identified during the data collection, otherwise they would have been excluded before the sample selection.
+These units are not considered in the calculation of response rates.
+
+in Ontario
+(see Appendix G)
+Next, we describe how the various components of the equation should be handled to correctly
+compute combined response rates.
+Household-level response rate
+Number of responding households in both frames
+HHRR =
+All in-scope households in both frames
+Person-level response rate
+Number of responding persons in both frames
+PPRR =
+All selected persons in both frames
+Combined response rate = HHRR x PPRR
+Below is an example on how to calculate the combined response rate for Canada using the
+information found in Table 9.1. The same method applies to rates computed for smaller regions
+such as province or health region.
+29,718 + 43,472 73,190
+HHRR = = = 0.751
+37,985 + 59,482 97,467
+26,635 + 37,329 = 63,964 = 0.874
+PPRR =
+29,718 + 43,472 73,190
+Combined response rate = 0.751 x 0.874
+= 0.656
+= 65.6%
+
+
+### 9.3 Survey errors
+
+The estimates derived from this survey are based on a sample of individuals. Somewhat different
+figures might have been obtained if a complete census had been taken using the same questionnaire,
+interviewers, supervisors, processing methods, etc. than those actually used. The difference between
+the estimates obtained from the sample and the results from a complete count under similar
+conditions is called the sampling error of the estimate.
+Errors which are not related to sampling may occur at almost every phase of a survey operation.
+Interviewers may misunderstand instructions, respondents may make errors in answering questions,
+the answers may be incorrectly entered on the computer and errors may be introduced in the
+processing and tabulation of the data. These are all examples of non-sampling errors.
+
+
+#### 9.3.1 Non-sampling errors
+
+Over a large number of observations, randomly occurring errors will have little effect on estimates
+derived from the survey. However, errors occurring systematically will contribute to biases in the
+survey estimates. Considerable time and effort was made to reduce non-sampling errors in the
+CCHS. Quality assurance measures were implemented at each step of data collection and
+processing to monitor the quality of the data. These measures included the use of highly skilled
+interviewers, extensive training with respect to the survey procedures and questionnaire, and the
+observation of interviewers to detect problems. Testing of the CAI application and field tests were
+also essential procedures to ensure that data collection errors were minimized.
+A major source of non-sampling errors in surveys is the effect of non-response on the survey
+results. The extent of non-response varies from partial non-response (failure to answer just one or
+some questions) to total non-response. Partial non-response to the CCHS was minimal; once the
+questionnaire was started, it tended to be completed with very little non-response. Total non-
+response occurred either because a person refused to participate in the survey or because the
+interviewer was unable to contact the selected person. Total non-response was handled by adjusting
+the weight of persons who responded to the survey to compensate for those who did not respond.
+See section 8 for details on the weight adjustment for non-response.
+
+
+#### 9.3.2 Sampling errors
+
+Since it is an unavoidable fact that estimates from a sample survey are subject to sampling error,
+sound statistical practice calls for researchers to provide users with some indication of the
+magnitude of this sampling error. The basis for measuring the potential size of sampling errors is
+the standard deviation of the estimates derived from survey results. However, because of the large
+variety of estimates that can be produced from a survey, the standard deviation of an estimate is
+usually expressed relative to the estimate to which it pertains. This resulting measure, known as the
+coefficient of variation (CV) of an estimate, is obtained by dividing the standard deviation of the
+estimate by the estimate itself and is expressed as a percentage of the estimate.
+For example, suppose hypothetically that it is estimated that 25% of Canadians aged 12 and over are
+regular smokers and that this estimate is found to have a standard deviation of 0.003. Then the CV
+of the estimate is calculated as:
+(0.003/0.25) x 100% = 1.20%
+Statistics Canada commonly uses CV results when analyzing data and urges users producing
+estimates from the CCHS data files to also do so. For details on how to determine CVs, see Section
+11. For guidelines on how to interpret CV results, see the table at the end of sub-section 10.4.
+
+
+## 10 Guidelines for tabulation, analysis and release
+
+This section of the documentation offers guidelines to users for tabulating, analyzing, publishing or
+otherwise releasing any estimates derived from the survey files. With the aid of these guidelines,
+users of microdata should be able to produce figures that are in close agreement with those
+produced by Statistics Canada. They will also be able to develop currently unpublished figures in a
+manner consistent with these established guidelines. Methods to measure precision and quality are
+also described along with release guidelines to help decide when an estimate should be used in
+publication.
+
+
+### 10.1 Rounding guidelines
+
+In order that estimates for publication or other release derived from the data files (Master, Share or
+PUMF) correspond to those produced by Statistics Canada, users are urged to adhere to the
+following guidelines regarding the rounding of such estimates:
+a) Estimates in the main body of a statistical table are to be rounded to the nearest hundred
+units using the normal rounding technique. In normal rounding, if the first or only digit to be
+dropped is 0 to 4, the last digit to be retained is not changed. If the first or only digit to be
+dropped is 5 to 9, the last digit to be retained is raised by one. For example, in normal
+rounding to the nearest 100, if the last two digits are between 00 and 49, they are changed to
+00 and the preceding digit (the hundreds digit) is left unchanged. If the last digits are
+between 50 and 99 they are changed to 00 and the proceeding digit is incremented by 1;
+b) Marginal sub-totals and totals in statistical tables are to be derived from their corresponding
+unrounded components and then are to be rounded themselves to the nearest 100 units using
+normal rounding;
+c) Averages, proportions, rates and percentages are to be computed from unrounded
+components (i.e., numerators and/or denominators) and then are to be rounded themselves to
+one decimal using normal rounding. In normal rounding to a single digit, if the final or only
+digit to be dropped is 0 to 4, the last digit to be retained is not changed. If the first or only
+digit to be dropped is 5 to 9, the last digit to be retained is increased by 1;
+d) Sums and differences of aggregates (or ratios) are to be derived from their corresponding
+unrounded components and then are to be rounded themselves to the nearest 100 units (or
+the nearest one decimal) using normal rounding;
+e) In instances where, due to technical or other limitations, a rounding technique other than
+normal rounding is used resulting in estimates to be published or otherwise released that
+differ from corresponding estimates published by Statistics Canada, users are urged to note
+the reason for such differences in the publication or release document(s);
+f) Under no circumstances are unrounded estimates to be published or otherwise released by
+users. Unrounded estimates imply greater precision than actually exists.
+
+
+### 10.2 Sample weighting guidelines for tabulation
+
+The sample design used for this survey was not self-weighting. That is to say, the sampling weights
+are not identical for all individuals in the sample. When producing simple estimates, including the
+production of ordinary statistical tables, users must apply the proper sampling weight. If proper
+weights are not used, the estimates derived from the data file cannot be considered to be
+representative of the survey population, and will not correspond to those produced by Statistics
+Canada.
+Users should also note that some software packages might not allow the generation of estimates that
+exactly match those available from Statistics Canada, because of their treatment of the weight field.
+If options are available, users should ensure that they specify that the weight is a sample weight
+rather than a frequency weight.
+
+
+#### 10.2.1 Definitions: categorical estimates, quantitative estimates
+
+Before discussing how the survey data can be tabulated and analyzed, it is useful to describe the two
+main types of point estimates of population characteristics that can be generated from the data files.
+Categorical estimates:
+Categorical estimates are estimates of the number or percentage of the surveyed population
+possessing certain characteristics or falling into some defined category. The number of individuals
+who smoke daily is an example of such an estimate. An estimate of the number of persons
+possessing a certain characteristic may also be referred to as an estimate of an aggregate.
+Example of categorical question:
+At the present do/does ... smoke cigarettes daily, occasionally or not at all? (SMK_202)
+__ Daily
+__ Occasionally
+__ Not at all
+Quantitative estimates:
+Quantitative estimates are estimates of totals or of means, medians and other measures of central
+tendency of quantities based upon some or all of the members of the surveyed population.
+An example of a quantitative estimate is the average number of cigarettes smoked per day by
+individuals who smoke daily. The numerator is an estimate of the total number of cigarettes smoked
+per day by individuals who smoke daily, and its denominator is an estimate of the number of
+individuals who smoke daily.
+Example of quantitative question:
+How many cigarettes do/does you/he/she smoke each day now? (SMK_204)
+|_|_| Number of cigarettes
+
+
+#### 10.2.2 Tabulation of categorical estimates
+
+Estimates of the number of people with a certain characteristic can be obtained from the data file by
+summing the final weights of all records possessing the characteristic of interest.
+ˆ ˆ
+Proportions and ratios of the form X / Y are obtained by:
+a) summing the final weights of records having the characteristic of interest for the numerator (
+ˆ
+X );
+b) summing the final weights of records having the characteristic of interest for the
+ˆ
+denominator (Y ); then
+c) dividing the numerator estimate by the denominator estimate.
+
+
+#### 10.2.3 Tabulation of quantitative estimates
+
+Estimates of sums or averages for quantitative variables can be obtained using the following three
+steps (only step a) is necessary to obtain the estimate of a sum):
+a) multiplying the value of the variable of interest by the final weight and summing this
+ˆ
+quantity over all records of interest to obtain the numerator (X );
+b) summing the final weights of records having the characteristic of interest for the
+ˆ
+denominator (Y ); then
+c) dividing the numerator estimate by the denominator estimate.
+For example, to obtain the estimate of the average number of cigarettes smoked each day by
+ˆ
+individuals who smoke daily, first compute the numerator (X ) by summing the product between
+the value of variable SMK_204 and the weight WTS_M. Next, sum this value over those records
+ˆ
+with a value of "daily" to the variable SMK_202. The denominator (Y ) is obtained by summing the
+ˆ ˆ
+final weight of those records with a value of "daily" to the variable SMK_202. Divide (X ) by (Y )
+to obtain the average number of cigarettes smoked each day by daily smokers.
+
+
+### 10.3 Guidelines for statistical analysis
+
+The CCHS is based upon a complex design, with stratification and multiple stages of selection, and
+unequal probabilities of selection of respondents. Using data from such complex surveys presents
+problems to analysts because the survey design and the selection probabilities affect the estimation
+and variance calculation procedures that should be used. The use of the survey weights is the first
+step to ensuring that the proper results are obtained.
+While many analysis procedures found in statistical packages allow weights to be used, the meaning
+or definition of the weight in these procedures can differ from what is appropriate in a sample
+survey framework. The end result is that, while in many cases the estimates produced by the
+packages are correct, the variances and the statistics based on those variances are almost
+meaningless. To get the proper results, the weights must be correctly interpreted by the software
+package and the proper variance estimation techniques must be used.
+To ensure that results from this complex design are meaningful, there are several options. The first
+and most appropriate option is to use the variance calculation options outlined in chapter 11 based
+on the bootstrap methodology. Second, survey specific procedures exist in many packages that
+properly interpret the weight. For example, PROC SURVEYMEANS would provide results that
+are more appropriate in SAS than the results from PROC MEANS. Finally, for many analysis
+techniques (for example linear regression, logistic regression, analysis of variance), rescaling the
+weights so that the average weight is one (1) will ensure that the results obtained by standard
+packages will be more reasonable. The rescaling can be accomplished by using in the analysis a
+weight equal to the original weight divided by the average of the original weights for the sampled
+units (people) contributing to the estimator in question.
+The last two options have the advantage of taking the unequal sampling probabilities into account
+and properly treat the weights as sampling weights. However, only the options outlined in chapter
+11 based on the bootstrap methodology will take the stratification, clustering and multiple frame
+design into account when calculating the variance.
+
+
+### 10.4 Release guidelines
+
+Since the estimates obtained from the survey are based on a sample, there is variability in the values
+obtained in the sense that a different sample could result in different results. To take this into
+consideration, users should first ensure that there are enough observations to properly estimate the
+statistic and also to estimate the variance. Once the variance is obtained, users should ensure that
+the variance is reasonable enough that the estimate can properly be interpreted as being near the true
+population value. The number of observations as well as how to obtain the variance differs
+depending on if the user is accessing the PUMF or the Share / Master files.
+PUMF
+Before releasing and/or publishing any estimate from the data files, users must ensure that enough
+observations are available to calculate a quality estimate. i.e. They should determine the number of
+sampled respondents having the characteristic of interest (for example, the number of respondents
+who smoke when interested in the proportion of smokers for a given population) to determine if
+they have enough observations. For users of the PUMF, they should ensure that there are 30
+observations with the characteristic of interest. If there are less than 30 observations, the estimate
+should not be released regardless of the variance and the coefficient of variation for this estimate.
+With 30 observations, users should continue by estimating the variance of the estimate using the CV
+lookup provided with the PUMF using the methods described in chapter 11. Guidelines to
+determine if the resulting estimate should be released based on the CV are provided in Table 10.1.
+Master / Share
+For users of the master or share files, it is recommended to have at least 10 observations with the
+characteristic of interest and 20 in the domain if a proportion is being calculated. With enough
+observations, the user can proceed to calculating the variance and the coefficients of variation using
+the bootstrap weights provided with the data along with the appropriate software to do the analysis.
+The variances can be used to calculate the CVs and the estimates should be vetted using the
+guidelines in Table 10.1.
+
+```{yaml}
+#| label: tbl-10-1
+id: '10.1'
+title: Sampling variability guidelines
+columns:
+- Type of Estimate
+- CV (in %)
+- Guidelines
+data:
+- Type of Estimate: Acceptable
+  CV (in %): 0.0 ≤ CV ≤ 16.5
+  Guidelines: Estimates can be considered for general unrestricted release. Requires
+    no special notation.
+- Type of Estimate: Marginal
+  CV (in %): 16.6 ≤ CV ≤ 33.3
+  Guidelines: Estimates can be considered for general unrestricted release but should
+    be accompanied by a warning cautioning subsequent users of the high sampling variability
+    associated with the estimates. Such estimates should be identified by the letter
+    E (or in some other similar fashion).
+- Type of Estimate: Unacceptable
+  CV (in %): CV > 33.3
+  Guidelines: 'Statistics Canada recommends not to release estimates of unacceptable
+    quality. However, if the user chooses to do so then estimates should be flagged
+    with the letter F (or in some other fashion) and the following warning should
+    accompany the estimates: “The user is advised that . . .(specify the data) . .
+    . do not meet Statistics Canada’s quality standards for this statistical program.
+    Conclusions based on these data will be unreliable and most likely invalid. These
+    data and any consequent findings should not be published. If the user chooses
+    to publish these data or findings, then this disclaimer must be published with
+    the data.”'
+```
+
+
+Type of Estimate CV (in %) Guidelines
+Estimates can be considered for general
+Acceptable 0.0 ≤ CV ≤ 16.5 unrestricted release. Requires no special
+notation.
+Estimates can be considered for general
+unrestricted release but should be
+accompanied by a warning cautioning
+Marginal 16.6 ≤ CV ≤ 33.3 subsequent users of the high sampling
+variability associated with the estimates.
+Such estimates should be identified by the
+letter E (or in some other similar fashion).
+Statistics Canada recommends not to
+release estimates of unacceptable quality.
+However, if the user chooses to do so then
+estimates should be flagged with the letter
+F (or in some other fashion) and the
+following warning should accompany the
+estimates:
+“The user is advised that . . .(specify the
+Unacceptable CV > 33.3 data) . . . do not meet Statistics Canada’s
+quality standards for this statistical
+program. Conclusions based on these data
+will be unreliable and most likely invalid.
+These data and any consequent findings
+should not be published. If the user
+chooses to publish these data or findings,
+then this disclaimer must be published
+with the data.”
+
+
+## 11 Approximate sampling variability tables
+
+In order to supply coefficients of variation that will be applicable to a wide variety of categorical
+estimates produced from a PUMF and that could be readily accessed by the user, a set of
+Approximate Sampling Variability Tables will be produced with each PUMF. These "look-up"
+tables allow the user to obtain an approximate coefficient of variation based on the size of the
+estimate calculated from the survey data.
+The coefficients of variation (CV) are derived using the variance formula for simple random
+sampling and incorporating a factor which reflects the multi-stage, clustered nature of the sample
+design. This factor, known as the design effect, was determined by first calculating design effects
+for a wide range of characteristics and then choosing, for each table produced, a conservative value
+among all design effects relative to that table. The value chosen was then used to generate a table
+that applies to the entire set of characteristics.
+The Approximate Sampling Variability Tables, along with the design effects, the sample sizes and
+the population counts that were used to produce them, are provided in the document Approximate
+Sampling Variability Tables, which is available to the share file and PUMF users. All coefficients of
+variation in the Approximate Sampling Variability Tables are approximate and, therefore,
+unofficial. Options concerning the computation of exact coefficients of variation are discussed in
+sub-section 11.7.
+Remember: As indicated in Sampling Variability Guidelines in Section 10.4, if the number of
+observations on which an estimate is based is less than 30, the weighted estimate should not be
+released regardless of the value of the coefficient of variation. Coefficients of variation based on
+small sample sizes are too unpredictable to be adequately represented in the tables.
+
+
+### 11.1 How to use the cv tables for categorical estimates
+
+The following rules should enable the user to determine the approximate coefficients of variation
+from the Sampling Variability Tables for estimates of the number, proportion or percentage of the
+surveyed population possessing a certain characteristic and for ratios and differences between such
+estimates.
+Rule 1: Estimates of numbers possessing a characteristic (aggregates)
+The coefficient of variation depends only on the size of the estimate itself. On the appropriate
+Approximate Coefficients of Variations Table, locate the estimated number in the left-most column
+of the table (headed "Numerator of Percentage") and follow the asterisks (if any) across to the first
+figure encountered. Since not all the possible values for the estimate are available, the smallest
+value which is the closest must be taken (as an example, if the estimate is equal to 1,700 and the
+two closest available values are 1,000 and 2,000, the first has to be chosen). This figure is the
+approximate coefficient of variation.
+Rule 2: Estimates of proportions or percentages of people possessing a characteristic
+The coefficient of variation of an estimated proportion (or percentage) depends on both the size of
+the proportion and the size of the numerator upon which the proportion is based. Estimated
+proportions are relatively more reliable than the corresponding estimates of the numerator of the
+proportion when the proportion is based upon a sub-group of the population. This is due to the fact
+that the coefficients of variation of the latter type of estimates are based on the largest entry in a row
+of a particular table, whereas the coefficients of variation of the former type of estimators are based
+on some entry (not necessarily the largest) in that same row. (Note that in the tables the CVs decline
+in value reading across a row from left to right). For example, the estimated proportion of
+individuals who smoke daily out of those who smoke at all is more reliable than the estimated
+number who smoke daily.
+When the proportion (or percentage) is based upon the total population covered by each specific
+table, the CV of the proportion is the same as the CV of the numerator of the proportion. In this
+case, this is equivalent to applying Rule 1.
+When the proportion (or percentage) is based upon a subset of the total population (e.g., those who
+smoke at all), reference should be made to the proportion (across the top of the table) and to the
+numerator of the proportion (down the left side of the table). Since not all the possible values for the
+proportion are available, the smallest value which is the closest must be taken (for example, if the
+proportion is 23% and the two closest values available in the column are 20% and 25%, 20% must
+be chosen). The intersection of the appropriate row and column gives the coefficient of variation.
+Rule 3: Estimates of differences between aggregates or percentages
+The standard error of a difference between two estimates is approximately equal to the square root
+of the sum of squares of each standard error considered separately. That is, the standard error of a
+difference (d ˆ  X ˆ  X ˆ ) is:
+2 1
+ dˆ = (X ˆ 1  1 )2 + (X ˆ 2  2 )2
+where Xˆ is estimate 1, Xˆ is estimate 2, and  and  are the coefficients of variation of Xˆ and
+1 2 1 2 1
+X ˆ
+respectively. The coefficient of variation of d ˆ is given by  dˆ / d ˆ. This formula is accurate for
+the difference between independent populations or subgroups, but is only approximate otherwise. It
+will tend to overstate the error, if Xˆ and Xˆ are positively correlated and understate the error if
+1 2
+Xˆ and Xˆ are negatively correlated.
+1 2
+Rule 4: Estimates of ratios
+In the case where the numerator is a subset of the denominator, the ratio should be converted to a
+percentage and Rule 2 applied. This would apply, for example, to the case where the denominator is
+the number of individuals who smoke at all and the numerator is the number of individuals who
+smoke daily out of those who smoke at all.
+Consider the case where the numerator is not a subset of the denominator, as for example, the ratio
+of the number of individuals who smoke daily or occasionally as compared to the number of
+individuals who do not smoke at all. The standard deviation of the ratio of the estimates is
+approximately equal to the square root of the sum of squares of each coefficient of variation
+considered separately multiplied by Rˆ , where Rˆ is the ratio of the estimates (R ˆ = X ˆ / X ˆ ). That is,
+1 2
+the standard error of a ratio is:
+ Rˆ = R ˆ  1 2 +  2 2
+Where α 1 and α 2 are the coefficients of variation of X ˆ and Xˆ respectively.
+1 2
+The coefficient of variation of R ˆ is given by  Rˆ / R ˆ =  1 2 +  2 2. The formula will tend to
+overstate the error, if Xˆ and Xˆ are positively correlated and understate the error if Xˆ and Xˆ
+1 2 1 2
+are negatively correlated.
+Rule 5: Estimates of differences of ratios
+In this case, Rules 3 and 4 are combined. The CVs for the two ratios are first determined using Rule
+4, and then the CV of their difference is found using Rule 3.
+
+
+### 11.2 Examples of using the cv tables for categorical estimates
+
+The following "real life" examples are included to assist users in applying the foregoing rules.
+Example 1 : Estimates of numbers possessing a characteristic (aggregates)
+Suppose that a user estimates that 4,722,617 individuals smoke daily in Canada. How does the user
+determine the coefficient of variation of this estimate?
+1) Refer to the CANADA level CV table.
+2) The estimated aggregate (4,722,617) does not appear in the left-hand column (the "Numerator
+of Percentage" column), so it is necessary to use the smallest figure closest to it, namely
+4,000,000.
+3) The coefficient of variation for an estimated aggregate (expressed as a percentage) is found by
+referring to the first non-asterisk entry on that row, namely, 2.0%.
+4) So the approximate coefficient of variation of the estimate is 2.0%. According to the Sampling
+Variability Guidelines presented in Section 10.4, the finding that there were 4,722,617
+individuals who smoke daily is publishable with no qualifications.
+Example 2 : Estimates of proportions or percentages possessing a characteristic
+Suppose that the user estimates that 4,722,617/6,081,453=77.7% of individuals in Canada who
+smoke at all smoke daily. How does the user determine the coefficient of variation of this estimate?
+1) Refer to the CANADA level CV table.
+2) Because the estimate is a percentage which is based on a subset of the total population (i.e.,
+individuals who smoke at all, that is to say, daily or occasionally), it is necessary to use both
+the percentage (77.7%) and the numerator portion of the percentage (4,722,617) in
+determining the coefficient of variation.
+3) The numerator (4,722,617) does not appear in the left-hand column (the "Numerator of
+Percentage" column) so it is necessary to use the smallest figure closest to it, namely
+4,000,000. Similarly, the percentage estimate does not appear as any of the column
+headings, so it is necessary to use the smallest figure closest to it, 70.0%.
+4) The figure at the intersection of the row and column used, namely 1.1% is the coefficient of
+variation (expressed as a percentage) to be used.
+5) So the approximate coefficient of variation of the estimate is 1.1%. According to the
+Sampling Variability Guidelines presented in Section 10.4, the finding that 77.7% of
+individuals who smoke at all smoke daily can be published with no qualifications.
+Example 3 : Estimates of differences between aggregates or percentages
+Suppose that a user estimates that, among men, 2,535,367/13,078,499 = 19.4% smoke daily
+(estimate 1), while for women, this percentage is estimated at 2,187,250 / 13,476,931 = 16.2%
+(estimate 2). How does the user determine the coefficient of variation of the difference between
+these two estimates?
+1) Using the CANADA level CV table in the same manner as described in example 2 gives the
+CV for estimate 1 as 2.7% (expressed as a percentage), and the CV for estimate 2 as 2.7%
+(expressed as a percentage).
+2) Using rule 3, the standard error of a difference (d ˆ = Xˆ - Xˆ ) is :
+2 1
+ dˆ = (X ˆ 1  1 )2 + (X ˆ 2  2 )2
+Where Xˆ is estimate 1, Xˆ is estimate 2, and α
+and α
+are the coefficients of variation of Xˆ and
+1 2 1
+Xˆ respectively. The standard error of the difference d ˆ = (0.194 - 0.162) = 0.032 is :
+ dˆ = [(0.194)(0.027)]2 + [(0.162)(0.027)]2
+= 0.0068
+3) The coefficient of variation of d ˆ is given by  dˆ / d ˆ = 0.0068/0.032 = 0.212.
+4) So the approximate coefficient of variation of the difference between the estimates is 21.2%
+(expressed as a percentage). According to the Sampling Variability Guidelines presented in
+Section 10.4, this estimate can be published but a warning has to be issued.
+Example 4 : Estimates of ratios
+Suppose that the user estimates that 4,722,617 individuals smoke daily, while 1,358,836 individuals
+smoke occasionally. The user is interested in comparing the estimate of daily to occasional smokers
+in the form of a ratio. How does the user determine the coefficient of variation of this estimate?
+1) First of all, this estimate is a ratio estimate, where the numerator of the estimate (= ˆ ) is the
+number of individuals who smoke occasionally. The denominator of the estimate (= Xˆ ) is
+the number of individuals who smoke daily.
+2) Refer to the CANADA level CV table.
+3) The numerator of this ratio estimate is 1,358,836. The smallest figure closest to it is
+1,000,000. The coefficient of variation for this estimate (expressed as a percentage) is found
+by referring to the first non-asterisk entry on that row, namely, 4.1%.
+4) The denominator of this ratio estimate is 4,722,617. The figure closest to it is 4,000,000. The
+coefficient of variation for this estimate (expressed as a percentage) is found by referring to
+the first non-asterisk entry on that row, namely, 2.0%.
+5) So the approximate coefficient of variation of the ratio estimate is given by rule 4, which is,
+ Rˆ =  1 2 +  2 2,
+That is,
+ Rˆ = (.041)2 + (.020)2
+= 0.046
+where α
+and α
+are the coefficients of variation of Xˆ and Xˆ respectively. The obtained ratio of
+1 2
+occasional to daily smokers is 1,358,836/4,722,617 which is 0.29:1. The coefficient of variation of
+this estimate is 4.6% (expressed as a percentage), which is releasable with no qualifications,
+according to the Sampling Variability Guidelines presented in Section 10.4.
+
+
+### 11.3 How to use the cv tables to obtain confidence limits
+
+Although coefficients of variation are widely used, a more intuitively meaningful measure of
+sampling error is the confidence interval of an estimate. A confidence interval constitutes a
+statement on the level of confidence that the true value for the population lies within a specified
+range of values. For example a 95% confidence interval can be described as follows: if sampling of
+the population is repeated indefinitely, each sample leading to a new confidence interval for an
+estimate, then in 95% of the samples the interval will cover the true population value.
+Using the standard error of an estimate, confidence intervals for estimates may be obtained under
+the assumption that under repeated sampling of the population, the various estimates obtained for a
+population characteristic are normally distributed about the true population value. Under this
+assumption, the chances are about 68 out of 100 that the difference between a sample estimate and
+the true population value would be less than one standard error, about 95 out of 100 that the
+difference would be less than two standard errors, and about 99 out of 100 that the differences
+would be less than three standard errors. These different degrees of confidence are referred to as the
+confidence levels.
+ˆ
+Confidence intervals for an estimate, X , are generally expressed as two numbers, one below the
+ 
+estimate and one above the estimate, as X ˆ k, X ˆ k , where k is determined depending upon the
+level of confidence desired and the sampling error of the estimate.
+Confidence intervals for an estimate can be calculated directly from the Approximate Sampling
+Variability Tables by first determining from the appropriate table the coefficient of variation of the
+ˆ
+estimate X , and then using the following formula to convert to a confidence interval CI:
+CI X = [ X
+ˆ
+- z X
+ˆ
+ Xˆ , X
+ˆ
++ z X
+ˆ
+ Xˆ ]
+ˆ
+Where  Xˆ is determined coefficient of variation for X , and
+z  1 if a 68% confidence interval is desired
+z  1.6 if a 90% confidence interval is desired
+z  2 if a 95% confidence interval is desired
+z  3 if a 99% confidence interval is desired.
+Note: Release guidelines presented in section 10.4 which apply to the estimate also apply to the
+confidence interval. For example, if the estimate is not releasable, then the confidence interval is not
+releasable either.
+
+
+### 11.4 Example of using the cv tables to obtain confidence limits
+
+A 95% confidence interval for the estimated proportion of individuals who smoke daily from those
+who smoke at all (from example 2, sub-section 11.2) would be calculated as follows:
+ˆ
+X = 0.777
+z = 2
+ Xˆ = 0.011 is the coefficient of variation of this estimate as determined from the
+tables.
+CI = {0.777 - (2) (0.777) (0.011) , 0.777 + (2) (0.777) (0.011)}
+xˆ
+CI = {0.760, 0.794}
+xˆ
+
+
+### 11.5 How to use the cv tables to do a z-test
+
+Standard errors may also be used to perform hypothesis testing, a procedure for distinguishing
+between population parameters using sample estimates. The sample estimates can be numbers,
+averages, percentages, ratios, etc. Tests may be performed at various levels of significance, where a
+level of significance is the probability of concluding that the characteristics are different when, in
+fact, they are identical.
+Let Xˆ and Xˆ be sample estimates for 2 characteristics of interest. Let the standard error on the
+1 2
+difference X ˆ 1  X ˆ 2 be  dˆ . If the ratio of X ˆ 1  X ˆ 2 over  dˆ is between -2 and 2, then no conclusion
+about the difference between the characteristics is justified at the 5% level of significance. If
+however, this ratio is smaller than -2 or larger than +2, the observed difference is significant at the
+0.05 level.
+
+
+### 11.6 Example of using the cv tables to do a z-test
+
+Let us suppose we wish to test, at 5% level of significance, the hypothesis that there is no difference
+between the proportion of men who smoke daily AND the proportion of women who smoke daily.
+From example 3, sub-section 11.2, the standard error of the difference between these two estimates
+was found to be = 0.0068. Hence,
+X ˆ - X ˆ 0.194 - 0.162 0.032
+z = 1 2 = = = 4.71
+ dˆ 0.0068 0.0068
+Since z 4.71 is greater than 2, it must be concluded that there is a significant difference between
+the two estimates at the 0.05 level of significance. Note that the two sub-groups compared are
+considered as being independent, so the test is correct.
+11.7 Exact variances/coefficients of variation
+All coefficients of variation in the Approximate Sampling Variability Tables (CV Tables) are
+indeed approximate and, therefore, unofficial.
+The computation of exact coefficients of variation is not a straightforward task since there is no
+simple mathematical formula that would account for all CCHS sampling frame and weighting
+aspects. Therefore, other methods such as resampling methods must be used in order to estimate
+measures of precision. Among these methods, the bootstrap method is the one recommended for
+analysis of CCHS data.
+The computation of coefficients of variation (or any other measure of precision) with the use of the
+bootstrap method requires access to information that is considered confidential and not available on
+the PUMF. This computation must be done using the Master file. Access to the Master file is
+discussed in section 12.3.
+For the computation of coefficients of variation, the bootstrap method is advised. A macro program,
+called “Bootvar”, was developed in order to give users easy access to the bootstrap method. The
+Bootvar program is available in SAS and SPSS formats, and is made up of macros that calculate the
+variances of totals, ratios, differences between ratios, and linear and logistic regressions.
+There are a number of reasons why a user may require an exact variance. A few are given below.
+Firstly, if a user desires estimates at a geographic level other than those available in the tables (for
+example, at the rural/urban level), then the CV tables provided are not adequate. Coefficients of
+variation of these estimates may be obtained using "domain" estimation techniques through the
+exact variance program.
+Secondly, should a user require more sophisticated analyses such as estimates of parameters from
+linear regressions or logistic regressions, the CV tables will not provide correct associated
+coefficients of variation. Although some standard statistical packages allow sampling weights to be
+incorporated in the analyses, the variances that are produced often do not take into account the
+stratified and clustered nature of the design properly, whereas the exact variance program would do
+so.
+Thirdly, for estimates of quantitative variables, separate tables are required to determine their
+sampling error. Since most of the variables for the CCHS are primarily categorical in nature, this
+has not been done. Thus, users wishing to obtain coefficients of variation for quantitative variables
+can do so through the exact variance program. As a general rule, however, the coefficient of
+variation of a quantitative total will be larger than the coefficient of variation of the corresponding
+category estimate (i.e., the estimate of the number of persons contributing to the quantitative
+estimate). If the corresponding category estimate is not releasable, the quantitative estimate will not
+be either. For example, the coefficient of variation of the estimate of the total number of cigarettes
+smoked each day by individuals who smoke daily would be greater than the coefficient of variation
+of the corresponding estimate of the number of individuals who smoke daily. Hence if the
+coefficient of variation of the latter is not releasable, then the coefficient of variation of the
+corresponding quantitative estimate will also not be releasable.
+Lastly, should users find themselves in a position where they can use the CV tables, but this renders
+a coefficient of variation in the "marginal" range (16.6% - 33.3%), the user should release the
+associated estimate with a warning cautioning users of the high sampling variability associated with
+the estimate. This would be a good opportunity to recalculate the coefficient of variation through
+the exact variance program to find out if it is releasable without a qualifying note. The reason for
+this is that the coefficients of variation produced by the tables are based on a wide range of
+variables and are therefore considered crude, whereas the exact variance program would give an
+exact coefficient of variation associated with the variable in question.
+
+
+### 11.8 Release cut-offs for the cchs
+
+The document Approximate Sampling Variability Table, which is available to the share file and
+PUMF users, presents tables giving the minimum cut-offs for estimates of totals at the Canada,
+provincial, health region and CLSC levels and those for various age groups at the Canada level.
+Estimates smaller than the value given in the "Marginal" column may not be released under any
+circumstances.
+12. MICRODATA FILES: DESCRIPTION, ACCESS AND USE
+The CCHS produces three types of microdata files: master files, share files and public use
+microdata files (PUMF). Table 12.1 includes the list of all available 2013 data files.
+
+
+### 12.1 Master files
+
+The master files contain all variables and all records from the survey collected during a collection
+period. These files are accessible at Statistics Canada for internal use and in Statistics Canada’s
+Research Data Centres (RDC), and are also subject to custom tabulation requests.
+
+
+#### 12.1.1 Research data centre
+
+The RDC Program enables researchers to use the survey data in the master files in a secure
+environment in several universities across Canada. Researchers must submit research proposals that,
+once approved, give them access to the RDC. For more information, please consult the following
+web page: http://www.statcan.ca/english/rdc/index.htm
+
+
+#### 12.1.2 Custom tabulations
+
+Another way to access the master files is to offer all users the option of having staff in Client
+Services of the Health Statistics Division prepare custom tabulations. This service is offered on a
+cost-recovery basis. It allows users who do not possess knowledge of tabulation software products
+to get custom results. The results are screened for confidentiality and reliability concerns before
+release. For more information, please contact Client Services at 613-951-1746 or by e-mail at
+hd-ds@statcan.gc.ca.
+
+
+#### 12.1.3 Remote access
+
+Finally, the remote access service to the survey master files is another way to have access to these
+data if, for some reason, the user cannot access a Research Data Centre. Each purchaser of the
+microdata product can be supplied with a synthetic or ‘dummy’ master file and a corresponding
+record layout. With these tools, the researcher can develop his own set of analytical computer
+programs. The code for the custom tabulations is then sent via e-mail to cchs-escc@statcan.gc.ca.
+The code will then be transferred into Statistics Canada’s internal secured network and processed
+using the appropriate master file of CCHS data. Estimates generated will be released to the user,
+subject to meeting the guidelines for analysis and release outlined in Section 10 of this document.
+Results are screened for confidentiality and reliability concerns and then the output is returned to
+the client. There is no charge for this service.
+
+
+### 12.2 Share files
+
+The share files contain all variables and all records of CCHS respondents who agreed to share their
+data with Statistic Canada’s partners, which are the provincial and territorial health departments,
+Health Canada and the Public Health Agency of Canada. Statistics Canada also asks respondents
+living in Quebec for their permission to share their data with the Institut de la statistique du Québec.
+The share file is released only to these organizations. Personal identifiers are removed from the
+share files to respect respondent confidentiality. Users of these files must first certify that they will
+not disclose, at any time, any information that might identify a survey respondent.
+
+
+### 12.3 Public use microdata files
+
+The public use microdata files (PUMF) are developed from the master files using a technique that
+balances the need to ensure respondent confidentiality with the need to produce the most useful data
+possible at the health region level. The PUMF must meet stringent security and confidentiality
+standards required by the Statistics Act before they are released for public access. To ensure that
+these standards have been achieved, each PUMF goes through a formal review and approval process
+by an executive committee of Statistics Canada.
+Variables most likely to lead to identification of an individual are deleted from the data file or are
+collapsed to broader categories.
+The PUMF contains the data collected over two years. It includes questions that were asked over
+two years. Unless otherwise specified, these questions are usually those included in the annual
+common content and in the two-year common content as well as the optional content selected for
+two years by the provinces and territories.
+There is no charge to access the PUMF in a post-secondary educational institution that is part of the
+Data Liberation Initiative. They are also free of charge from Client Services on request at
+613-951-1746 or by e-mail at hd-ds@statcan.gc.ca.
+
+```{yaml}
+#| label: tbl-12-1
+id: '12.1'
+title: 2013 CCHS data files
+columns:
+- Reference Period
+- Files
+- File name
+- Sampling weight
+- Bootstrap weights file
+- Variables included
+- Records included
+data:
+- Reference Period: '2014'
+  Files: Main master file
+  File name: HS.txt
+  Sampling weight: WTS_M
+  Bootstrap weights file: b5.txt
+  Variables included: All common and all optional modules.
+  Records included: All respondent records
+- Reference Period: ''
+  Files: Share file
+  File name: HS.txt
+  Sampling weight: WTS_S
+  Bootstrap weights file: b5.txt
+  Variables included: All common and all optional modules.
+  Records included: Records of all respondents who agreed to share their data
+- Reference Period: 2013-2014
+  Files: Main master file
+  File name: HS.txt
+  Sampling weight: WTS_M
+  Bootstrap weights file: b5.txt
+  Variables included: All common and all optional modules (optional content selected
+    over the two year period).
+  Records included: All respondent records
+- Reference Period: ''
+  Files: Share file
+  File name: HS.txt
+  Sampling weight: WTS_S
+  Bootstrap weights file: b5.txt
+  Variables included: All common and all optional modules (optional content selected
+    over the two year period).
+  Records included: Records of all respondents who agreed to share their data
+```
+
+
+Reference
+File Sampling Bootstrap
+Period Files Variables included Records included
+name weight weights file
+Main master HS.txt WTS_M b5.txt All common and all All respondent records
+file optional modules.
+2014
+Share file HS.txt WTS_S b5.txt All common and all Records of all
+optional modules. respondents who agreed
+to share their data
+Main master HS.txt WTS_M b5.txt All common and all All respondent records
+file optional modules
+(optional content
+selected over the two
+year period).
+2013-2014
+Share file HS.txt WTS_S b5.txt All common and all Records of all
+optional modules respondents who agreed
+(optional content to share their data
+selected over the two
+year period).
+12.4 How to use the CCHS data files: annual data file or two-year data file?
+Since the 2008 and 2007-2008 data were released, users that have access to share files or master
+files have had the choice of using one-year or two-year data files. Decisions about which period to
+use in a given data analysis should be guided by the level of detail and the quality required. With a
+one-year file, estimates will not always be available because of the quality associated with limited
+sample sizes.
+Before interpreting and using a CCHS estimate, it is recommended to make sure that the estimates
+meets the following rules:
+ Coefficient of Variation 33.3% or less
+ a minimum of 10 respondents in the domain with the characteristic and
+ total domain of interest includes at least 20 respondents.
+This will not be possible for rare characteristics and detailed domains with one-year files. Instead,
+users will have to rely on two-year files or multi-year files.
+Where the use of either a one-year or two-year file is viable, the user should consider the trade-off
+between accuracy and currency. If it is important to reflect the current characteristics of a
+population as closely as possible, the one-year file would be preferable. However, with the
+increased sample size, more detailed estimates and analyses can be carried out with a two-year file.
+
+
+### 12.5 Use of weight variable
+
+The weight variable WTS_M represents the sampling weight for key survey files. For a given
+respondent, the sampling weight can be interpreted as the number of people the respondent
+represents in the Canadian population. This weight must always be used when computing statistical
+estimates in order to make inference at the population level possible. The production of unweighted
+estimates is not recommended. The sample allocation, as well as the survey design specifics can
+cause such results to not correctly represent the population. Refer to section 8 on weighting for a
+more detailed explanation on the creation of this weight. The weight variable WTS_M must be
+used for regional analyses.
+The Food Security module, included in certain reference period data files, measures concepts that
+apply not only to the respondent’s situation, but also to that of the respondent’s entire household.
+Depending on the level of analysis, the analysis of the variables may require use of a weight
+calculated to represent the number of Canadian households, rather than the number of persons. This
+weight variable WTS_HH is found in a separate file (HS_HHWT.txt). It can be used in place of the
+variable WTS_M for household analyses at the national and provincial levels.
+12.6 Variable naming convention beginning in 2007
+The variable naming convention adopted allows data users to easily use and identify the data based
+on the module and variable type. The CCHS variable naming convention fulfils two requirements:
+to restrict variable names to a maximum of eight characters for ease of use by analytical software
+products and to identify easily conceptually identical variables from one survey collection period to
+the next. Questions to which changes are made between two collection periods, and where the
+changes alter the concept measured by the question, are entirely renamed to avoid any confusion in
+the analysis.
+The CCHS variable naming convention was changed beginning with the data from the 2007
+collection period. The letter corresponding to the survey version (e.g., A = 2000 (cycle 1.1), C =
+2003 (cycle 2.1) and E = 2005 (3.1) is no longer used in the variable names. A new variable
+(REFPER, format = YYYYMM-YYYYMM) was added to the microdata files in order to identify
+the beginning and the end of the reference during which data included in the file were collected.
+This variable will be useful, notably for users wanting to use data from several collection periods at
+a time. Therefore, variable names for identical modules or questions from one collection year to the
+next (e.g., 2007 and 2008) will be the same.
+The naming convention used for variables beginning with the 2007 CCHS use up to eight
+characters. The variable names are structured as follows:
+Positions 1 to 3: Module/questionnaire section name
+Position 4: Variable type (underscore, C, D, F or G)
+Positions 5 to 8: Question number and answer option for multiple response questions
+Example 1 shows that the structure of the variable name for question 202, Smoking Module, is
+SMK_202 :
+Positions 1 to 3: SMK Smoking module
+Position 4 : _ ( underscore = collected data)
+Position 5 to 8: 202 Question number
+Example 2 shows the structure of the variable name for question 2 of the Health Care Utilization
+Module (HCU_02A), which is a multi-response question:
+Positions 1 to 3: HCU Health care utilization module
+Position 4 : _ ( underscore = collected data)
+Position 5 to 8: 02AA Corresponding question number and answer option
+Positions 1 to 3 contain the acronyms for each of the modules. These acronyms appear beside the
+module names given in the table in Appendix A.
+Position 4 designates the variable type based on whether it is a variable collected directly from a
+questionnaire question (“_”), from a coded (“C”), derived (“D”), grouped (“G”), or flag (“F”)
+variable.
+In general, the last four positions (5 to 8) follow the variable numbering used on the questionnaire.
+The letter "Q" used to represent the word "question" is removed, and all question numbers are
+presented in a two or three digit format. For example, question Q01A in the questionnaire becomes
+simply 01A, and question Q15 becomes simply 15.
+
+```{yaml}
+#| label: tbl-12-2
+id: '12.2'
+title: Designation of codes used in the 4th position of the CCHS variable names
+columns:
+- _
+- Collected variable
+- A variable that appears directly on the questionnaire
+data:
+- _: ''
+  Collected variable: Coded variable
+  A variable that appears directly on the questionnaire: A variable coded from one
+    or more collected variables (e.g., SIC, Standard Industrial Classification code)
+- _: C
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: Derived variable
+  A variable that appears directly on the questionnaire: A variable calculated from
+    one or more collected or coded variables, usually calculated during head office
+    processing (e.g., Health Utility Index)
+- _: D
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: Flag variable
+  A variable that appears directly on the questionnaire: A variable calculated from
+    one or more collected variables (like a derived variable), but usually calculated
+    by the data collection computer application for later use during the interview
+    (e.g., work flag)
+- _: F
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: Grouped variable
+  A variable that appears directly on the questionnaire: Collected, coded, suppressed
+    or derived variables collapsed into groups (e.g., age groups)
+- _: G
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+- _: ''
+  Collected variable: ''
+  A variable that appears directly on the questionnaire: ''
+```
+
+
+_ Collected variable A variable that appears directly on the questionnaire
+A variable coded from one or more collected variables
+C Coded variable
+(e.g., SIC, Standard Industrial Classification code)
+A variable calculated from one or more collected or
+D Derived variable coded variables, usually calculated during head office
+processing (e.g., Health Utility Index)
+A variable calculated from one or more collected
+variables (like a derived variable), but usually
+F Flag variable
+calculated by the data collection computer application
+for later use during the interview (e.g., work flag)
+Collected, coded, suppressed or derived variables
+G Grouped variable
+collapsed into groups (e.g., age groups)
+For questions that have more than one response option, the final position in the variable naming
+sequence is represented by a letter. For this type of question, new variables were created to
+differentiate between a "yes" or "no" answer for each response option. For example, if Q2 had 4
+response options, the new questions would be named Q2A for option 1, Q2B for option 2, Q2C for
+option 3, etc. If only options 2 and 3 were selected, then Q2A = No, Q2B = Yes, Q2C = Yes and
+Q2D = No.
+12.7 Variable naming convention before 2007
+As mentioned earlier, the variable naming convention was changed in 2007. The flag for the cycle
+in which the variables were collected was removed. This flag was found in the 4th position for 2000
+to 2005 data (cycles 1.1 to 3.1).
+Here is the list of letters used in the CCHS microdata files between cycles 1.1 and 3.1 and their
+corresponding cycle.
+Letter Cycle and cycle name
+A 2000 (Cycle 1.1) : Canadian Community Health Survey
+B 2002 (Cycle 1.2) : Canadian Community Health Survey - Mental Health and
+Well-Being
+C 2003 (Cycle 2.1) : Canadian Community Health Survey
+D 2004 (Cycle 2.2) : Canadian Community Health Survey - Nutrition
+E 2005 (Cycle 3.1) : Canadian Community Health Survey
+12.8 Guidelines for the use of sub-sample variables – Not applicable to 2014 and 2013-2014
+data files
+In 2013, a sub-sample of respondents was selected at random to answer questions from two
+modules about the performance of the Canadian health care system: Access to Health Care Services
+(ACC) and Waiting Times (WTM).15
+
+
+#### 12.8.1 Sub-sample modules as optional content
+
+Each of the sub-sample modules was also made available to health regions as optional content. The
+Nova Scotia health regions chose the Access to Health Care Services module. As such, only Nova
+Scotia will have data for this module on the master file. On the sub-sample file, respondents from
+all provinces who were randomly selected will have data for both the ACC and WTM modules.
+
+
+#### 12.8.2 Separate file
+
+15 In 2000-2001, this sub-sample was part of a follow-up survey to the CCHS known as the Health
+Services and Access Survey (HSAS). This survey was incorporated in the CCHS in 2003.
+To encourage appropriate use of CCHS data, sub-sample content is provided on a physically
+separate file. Each file has a corresponding sample weight and set of bootstrap weights that must be
+used to produce valid estimates for all variables on the file. The sampling weight for sub-sample 1
+(in which all modules apply to respondents aged 15 and older) is calibrated so that it represents the
+total Canadian population aged 15 and older. Table 12.1 describes the two data files released in
+2013.
+
+
+#### 12.8.3 Analysis combining sub-sample and optional content
+
+The aim of the CCHS sub-sample modules is to permit the calculation of estimates at the provincial
+and national levels. The territories are excluded from the sub-sample. The sub-sample file and the
+associated weights are not intended to support health region level estimates.
+As mentioned earlier, one of the two sub-sample modules was also selected by all health regions of
+at least one province as optional content. In these instances, it is possible to calculate health region
+and provincial estimates of the variables in that module using the main master file and the master
+sampling weight. This offers the advantage of a large sample size for the calculation and therefore
+smaller sampling error. The provincial estimate can then be compared to the estimate for other
+provinces calculated using the appropriate sub-sample file and sub-sample sampling weight.
+
+
+### 12.9 Data dictionaries
+
+Separate data dictionary reports, including universe statements and frequencies, are provided for the
+main master and share files and each of the sub-sample files.
+In the master file data dictionary reports, optional content modules are treated in the same way as
+previous CCHS cycles. For each module, a flag indicates whether a given respondent lives in a
+health region where the module was selected as optional content. When the flag is equal to 2 (No),
+all variables in the module have “not applicable” values. For example, the DOWST variable
+indicates if the Work stress module applies to a given respondent.
+
+
+### 12.10 Differences in calculation of common content variables using different files
+
+Variables from common content modules can be estimated using either of the two data files
+provided, when a one year and a two-year data file is available. Depending on which file is used,
+very small differences will be observed.
+All official Statistics Canada estimates of variables from common modules are based on the main
+master file sampling weight.
+
+
+## AA Canadian community health survey content overview (2013 - 2014)
+
+Annual common content (all health regions)i
+ Age of respondent (ANC)  General health (GEN)
+Administration and Socio-demographics
+ Alcohol use (ALC)  Health care utilization (HCU)
+ Administration information (ADM)
+ Chronic conditions (CCC)  Height and weight – Self –reported (HWT)
+ Contact with health professionals (CHP)iii  Pain and discomfort (HUP)  Education (EDU)
+ Income (INC)
+ Exposure to second-hand smoke (ETS)  Physical activities (PAC)
+ Labour force (LBS)
+ Fruit and vegetable consumption (FVC)  Restriction of activities (RAC)
+ Person most knowledgeable about the household
+ Flu shots (FLU)  Smoking (SMK)
+situation (PMK)
+ Socio-demographic characteristics (SDC)
+Two-year biennial common content (all health regions)
+2013-2014
+1) Injuries and Functional Health
+2) Sexual Behaviours
+ Injuries (INJ)
+ Health utilities index (HUI)
+ Expanded restriction of activities (RAC) and Activities of Daily
+Living (ADL)
+ Use of protective equipment (UPE)
+One-year biennial/quadrennial common content (all health regions)
+2013 2014
+1) Health Services Access Survey ii 1) Health Care Utilization
+ Access to health care services (ACC)  Contact with health professionals (CHP/CP2)
+ Waiting times (WTM)  Unmet health care needs (UCN)
+2) Economic Burden
+ Loss of productivity (LOP)
+ Chronic fatigue syndrome (CC3)
+ Fibromyalgia (CC4)
+ Multiple chemical sensitivities (CC4)
+Rapid Response (nationa l estimates only)
+2013 2014
+ Food skills - mechanical skills and food conceptualization (FS2) (January -  Tanning Equipment Use (TEU) (March - June)
+February)  Laser Beam Exposure (LBE) (March - June)
+ Access to health care services (ACC) (March - June)
+ Waiting times (WTM) (March - June)
+ Every day discrimination scale (EDS) (July - October)
+i RAC has been a core module throughout the years, with the exception of 2011 when it was asked only in the territories.
+ii Asked of a sub-sample of respondents. These theme modules were not asked of respondents in the territories.
+iii In 2011,CHP changed from being a common content module to an optional module. In 2012, CHP returned to being a common content module but was divided
+into two modules (CHP and CP2), CP2 is an optional module.
+
+
+## AC Available geography in the master and share files and their corresponding
+
+codes: Canada, provinces/territories, health regions and peer groups
+0 Canada
+10 Newfoundland and Labrador
+1011-C Eastern Regional Integrated Health Authority
+1012-I Central Regional Integrated Health Authority
+1013-I Western Regional Integrated Health Authority
+1014-H Labrador-Grenfell Regional Integrated Health Authority
+11 Prince Edward Island
+1100-A Prince Edward Island
+12 Nova Scotia
+1210-C South Shore -- South West Nova
+1223-C Annapolis Valley District Health Authority
+1230-C Colchester East Hants -- Cumberland
+1240-C Pictou County -- Guysborough Antigonish Strait
+1258-I Cape Breton District Health Authority
+1269-A Capital District Health Authority
+13 New Brunswick
+1301-C Zone 1 (Moncton area)
+1302-C Zone 2 (Saint John area)
+1303-C Zone 3 (Fredericton area)
+1304-C Zone 4 (Edmundston area)
+1305-I Zone 5 (Campbellton area)
+1306-I Zone 6 (Bathurst area)
+1307-I Zone 7 (Miramichi area)
+24 Quebec
+2401-C Région du Bas-Saint-Laurent
+2402-C Région du Saguenay - Lac-Saint-Jean
+2403-A Région de la Capitale-Nationale
+2404-C Région de la Mauricie et du Centre-du-Québec
+2405-A Région de l'Estrie
+2406-G Région de Montréal
+2407-A Région de l'Outaouais
+2408-C Région de l'Abitibi-Témiscamingue
+2409-H Région de la Côte-Nord
+2410-H Région du Nord-du-Québec
+2411-I Région de la Gaspésie - Îles-de-la-Madeleine
+2412-D Région de la Chaudière-Appalaches
+2413-A Région de Laval
+2414-A Région de Lanaudière
+2415-A Région des Laurentides
+2416-A Région de la Montérégie
+35 Ontario by Local Health Integration Network
+3501 Erie St. Clair Health Integration Network
+3502 South West Health Integration Network
+3503 Waterloo Wellington Health Integration Network
+3504 Hamilton Niagara Haldimand Brant Health Integration Network
+3505 Central West Health Integration Network
+3506 Mississauga Halton Health Integration Network
+3507 Toronto Central Health Integration Network
+3508 Central Health Integration Network
+3509 Central East Health Integration Network
+3510 South East Health Integration Network
+3511 Champlain Health Integration Network
+3512 North Simcoe Muskoka Health Integration Network
+3513 North East Health Integration Network
+3514 North West Health Integration Network
+35 Ontario by Health Unit
+3526-C District of Algoma Health Unit
+3527-A Brant County Health Unit
+3530-B Durham Regional Health Unit
+3531-A Elgin-St. Thomas Health Unit
+3533-D Grey Bruce Health Unit
+3534-A Haldimand-Norfolk Health Unit
+3535-A Haliburton, Kawartha, Pine Ridge District Health Unit
+3536-B Halton Regional Health Unit
+3537-A City of Hamilton Health Unit
+3538-A Hastings and Prince Edward Counties Health Unit
+3539-D Huron County Health Unit
+3540-C Chatham-Kent Health Unit
+3541-A Kingston, Frontenac and Lennox and Addington Health Unit
+3542-A Lambton Health Unit
+3543-A Leeds, Grenville and Lanark District Health Unit
+3544-A Middlesex-London Health Unit
+3546-A Niagara Regional Area Health Unit
+3547-C North Bay Parry Sound District Health Unit
+3549-H Northwestern Health Unit
+3551-B City of Ottawa Health Unit
+3552-A Oxford County Health Unit
+3553-J Peel Regional Health Unit
+3554-D Perth District Health Unit
+3555-A Peterborough County-City Health Unit
+3556-C Porcupine Health Unit
+3557-D Renfrew County and District Health Unit
+3558-A Eastern Ontario Health Unit
+3560-B Simcoe Muskoka District Health Unit
+3561-C Sudbury and District Health Unit
+3562-C Thunder Bay District Health Unit
+3563-C Timiskaming Health Unit
+3565-B Waterloo Health Unit
+3566-B Wellington-Dufferin-Guelph Health Unit
+3568-A Windsor-Essex County Health Unit
+3570-J York Regional Health Unit
+3595-G City of Toronto Health Unit
+46 Manitoba
+4601-A Winnipeg Regional Health Authority
+4602-D Prairie Mountain Health
+4603-E Interlake-Eastern Regional Health Authority
+4604-F Northern Regional Health Authority
+4605-D Southern Health
+47 Saskatchewan
+4701-D Sun Country Regional Health Authority
+4702-D Five Hills Regional Health Authority
+4703-D Cypress Regional Health Authority
+4704-A Regina Qu'Appelle Regional Health Authority
+4705-D Sunrise Regional Health Authority
+4706-A Saskatoon Regional Health Authority
+4707-D Heartland Regional Health Authority
+4708-D Kelsey Trail Regional Health Authority
+4709-H Prince Albert Parkland Regional Health Authority
+4710-H Prairie North Regional Health Authority
+4714-F Mamawetan/Keewatin/Athabasca
+48 Alberta
+4831-A South Zone
+4832-B Calgary Zone
+4833-E Central Zone
+4834-B Edmonton Zone
+4835-E North Zone
+59 British Columbia
+5911-D East Kootenay Health Service Delivery Area
+5912-D Kootenay-Boundary Health Service Delivery Area
+5913-A Okanagan Health Service Delivery Area
+5914-A Thompson/Cariboo Health Service Delivery Area
+5921-A Fraser East Health Service Delivery Area
+5922-J Fraser North Health Service Delivery Area
+5923-J Fraser South Health Service Delivery Area
+5931-J Richmond Health Service Delivery Area
+5932-G Vancouver Health Service Delivery Area
+5933-J North Shore/Coast Garibaldi Health Service Delivery Area
+5941-A South Vancouver Island Health Service Delivery Area
+5942-A Central Vancouver Island Health Service Delivery Area
+5943-A North Vancouver Island Health Service Delivery Area
+5951-H Northwest Health Service Delivery Area
+5952-H Northern Interior Health Service Delivery Area
+5953-E Northeast Health Service Delivery Area
+60 Yukon
+6001-E Yukon
+61 Northwest Territories
+6101-E Northwest Territories
+62 Nunavut
+6201-F Nunavut
+A Peer group A
+B Peer group B
+C Peer group C
+D Peer group D
+E Peer group E
+F Peer group F
+G Peer group G
+H Peer group H
+I Peer group I
+J Peer group J
+
+
+## AD (2014) sample allocation by health region and frame and sample allocation by
+
+Local Health Integrated Network (LHIN) and frame in Ontario
+
+Geography Area Frame Phone frames Combined
+Health expected # of expected # of expected # of
+Prov./Terr. Region respondents raw sample size respondents raw sample size respondents raw sample size
+Canada Total 27,434 46,084 38,404 74,777 65,838 120,861
+N.L. Total 822 1,401 1,183 2,324 2,005 3,725
+1011 332 608 478 926 810 1,534
+1012 193 313 277 548 470 861
+1013 174 288 251 490 425 778
+1014 123 192 177 360 300 552
+P.E.I. Total 411 747 590 1,420 1,001 2,167
+1101 73 128 105 270 178 398
+1102 189 327 271 668 460 995
+1103 149 292 214 482 363 774
+N.S. Total 1,035 1,861 1,486 2,864 2,521 4,725
+1210 163 284 233 454 396 738
+1223 131 268 189 348 320 616
+1230 148 236 212 418 360 654
+1240 144 260 206 394 350 654
+1258 172 326 248 508 420 834
+1269 277 487 398 742 675 1,229
+N.B. Total 1,057 1,789 1,518 2,687 2,575 4,476
+1301 205 356 295 511 500 867
+1302 199 374 286 476 485 850
+1303 193 325 277 488 470 813
+1304 111 156 159 294 270 450
+1305 103 170 147 264 250 434
+1306 141 210 204 372 345 582
+1307 105 198 150 282 255 480
+Que. Total 4,815 7,517 7,331 14,354 12,146 21,871
+2401 246 384 354 588 600 972
+2402 257 341 371 640 628 981
+2403 380 572 546 960 926 1,532
+2404 328 484 472 784 800 1,268
+2405 253 416 365 641 618 1,057
+2406 637 1,034 916 1,756 1,553 2,790
+2407 266 442 382 682 648 1,124
+2408 246 408 354 594 600 1,002
+2409 246 372 354 744 600 1,116
+2410 0 0 400 1,780 400 1,780
+2411 246 426 354 720 600 1,146
+2412 296 452 427 764 723 1,216
+2413 275 448 395 748 670 1,196
+2414 294 450 424 788 718 1,238
+2415 312 492 450 864 762 1,356
+As mentioned in section 5.2, the figures for Prince Edward Island are based on the definitions of health regions that
+were used at the time of sampling.
+Geography Area Frame Phone frames Combined
+Health expected # of expected # of expected # of
+Prov./Terr. Region respondents raw sample size respondents raw sample size respondents raw sample size
+2416 533 796 767 1,301 1,300 2,097
+Ont. Total 9,142 15,534 13,146 24,668 22,288 40,202
+3526 174 288 251 472 425 760
+3527 166 254 239 442 405 696
+3530 334 560 481 908 815 1,468
+3531 139 205 201 366 340 571
+3533 193 301 278 568 471 869
+3534 159 294 227 426 386 720
+3535 195 390 280 572 475 962
+3536 289 433 416 764 705 1,197
+3537 338 616 487 938 825 1,554
+3538 193 331 277 524 470 855
+3539 121 187 174 348 295 535
+3540 164 230 236 430 400 660
+3541 207 402 298 532 505 934
+3542 178 266 257 472 435 738
+3543 195 340 280 476 475 816
+3544 308 488 442 836 750 1,324
+3546 314 494 451 835 765 1,329
+3547 164 310 236 496 400 806
+3549 165 300 237 528 402 828
+3551 420 702 605 1,025 1,025 1,727
+3552 154 202 221 359 375 561
+3553 554 836 797 1,552 1,351 2,388
+3554 133 187 192 312 325 499
+3555 174 312 251 472 425 784
+3556 154 284 221 407 375 691
+3557 154 296 221 382 375 678
+3558 213 321 307 494 520 815
+3560 469 944 676 1,327 1,145 2,271
+3561 221 394 319 601 540 995
+3562 273 528 393 740 666 1,268
+3563 103 224 147 270 250 494
+3565 314 508 451 830 765 1,338
+3566 240 366 345 568 585 934
+3568 293 532 422 802 715 1,334
+3570 392 662 557 1,066 949 1,728
+3595 885 1,547 1,273 2,528 2,158 4,075
+Man. Total 1,538 2,540 2,212 4,326 3,750 6,866
+4601 439 709 631 1,106 1,070 1,815
+4602 369 615 531 1,002 900 1,617
+4603 244 406 351 768 595 1,174
+4604 199 362 286 726 485 1,088
+4605 287 448 413 724 700 1,172
+Sask. Total 1,481 2,408 2,379 5,214 3,860 7,622
+4701 123 177 177 312 300 489
+Geography Area Frame Phone frames Combined
+Health expected # of expected # of expected # of
+Prov./Terr. Region respondents raw sample size respondents raw sample size respondents raw sample size
+4702 123 192 177 330 300 522
+4703 109 176 156 306 265 482
+4704 254 388 366 690 620 1,078
+4705 127 176 183 330 310 506
+4706 271 500 389 676 660 1,176
+4707 111 186 159 306 270 492
+4708 107 179 153 276 260 455
+4709 133 254 192 372 325 626
+4710 123 180 177 354 300 534
+4714 0 0 250 1,262 250 1,262
+Alta. Total 2,500 4,229 3,597 7,152 6,097 11,381
+4831 379 628 546 1,110 925 1,738
+4832 571 980 823 1,577 1,394 2,557
+4833 469 780 675 1,346 1,144 2,126
+4834 537 872 772 1,495 1,309 2,367
+4835 544 969 781 1,624 1,325 2,593
+B.C. Total 3,298 5,628 4,747 9,195 8,045 14,823
+5911 125 214 180 342 305 556
+5912 127 212 183 324 310 536
+5913 242 358 348 678 590 1,036
+5914 205 349 295 609 500 958
+5921 213 342 307 602 520 944
+5922 312 534 448 866 760 1,400
+5923 328 524 472 938 800 1,462
+5931 174 252 251 490 425 742
+5932 328 578 472 992 800 1,570
+5933 223 440 322 656 545 1,096
+5941 277 451 398 706 675 1,157
+5942 215 364 310 548 525 912
+5943 109 218 156 282 265 500
+5951 133 236 192 432 325 668
+5952 174 330 251 430 425 760
+5953 113 226 162 300 275 526
+Y.T. 6001 475 886 125 291 600 1,177
+N.W.T. 6101 510 919 90 282 600 1,201
+Nvt. 6201 350 625 0 0 350 625
+
+frame in Ontario
+Geography Area Frame Phone frames Combined
+expected # of expected # of expected # of
+Province LHIN respondents raw sample size respondents raw sample size respondents raw sample size
+Ont. Total 9,142 15,534 13,146 24,668 22,288 40,202
+3501 635 1,028 915 1,704 1,550 2,732
+3502 1,068 1,598 1,536 2,835 2,604 4,433
+3503 495 768 711 1,264 1,206 2,032
+3504 1,065 1,810 1,532 2,877 2,597 4,687
+3505 449 705 639 1,248 1,088 1,953
+3506 458 669 657 1,234 1,115 1,903
+3507 465 828 669 1,326 1,134 2,154
+3508 578 990 833 1,600 1,411 2,590
+3509 864 1,542 1,244 2,410 2,108 3,952
+3510 539 975 774 1,388 1,313 2,363
+3511 843 1,417 1,214 2,045 2,057 3,462
+3512 429 876 618 1,223 1,047 2,099
+3513 816 1,500 1,174 2,246 1,990 3,746
+3514 438 828 630 1,268 1,068 2,096
+
+
+## AE (2014) - response rates by health region and frame and response rates by local
+
+Health Integrated Network (LHIN) and frame in Ontario
+
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+Canada Total 37,985 29,718 78.2 29,718 26,635 89.6 70.1 59,482 43,472 73.1 43,472 37,329 85.9 62.8 65.6
+N.L. Total 1,101 932 84.7 932 830 89.1 75.4 1,841 1,380 75.0 1,380 1,188 86.1 64.5 68.6
+1011 455 364 80.0 364 314 86.3 69.0 765 566 74.0 566 490 86.6 64.1 65.9
+1012 247 217 87.9 217 199 91.7 80.6 415 317 76.4 317 265 83.6 63.9 70.1
+1013 252 223 88.5 223 206 92.4 81.7 389 301 77.4 301 267 88.7 68.6 73.8
+1014 147 128 87.1 128 111 86.7 75.5 272 196 72.1 196 166 84.7 61.0 66.1
+P.E.I. Total 566 426 75.3 426 372 87.3 65.7 907 688 75.9 688 624 90.7 68.8 67.6
+1100 566 426 75.3 426 372 87.3 65.7 907 688 75.9 688 624 90.7 68.8 67.6
+N.S. Total 1,413 1,157 81.9 1,157 1,044 90.2 73.9 2,277 1,815 79.7 1,815 1,593 87.8 70.0 71.5
+1210 206 181 87.9 181 168 92.8 81.6 363 288 79.3 288 251 87.2 69.1 73.6
+1223 190 149 78.4 149 136 91.3 71.6 272 218 80.1 218 195 89.4 71.7 71.6
+1230 179 152 84.9 152 134 88.2 74.9 336 277 82.4 277 252 91.0 75.0 75.0
+1240 201 158 78.6 158 147 93.0 73.1 304 240 78.9 240 211 87.9 69.4 70.9
+1258 237 189 79.7 189 171 90.5 72.2 389 288 74.0 288 239 83.0 61.4 65.5
+1269 400 328 82.0 328 288 87.8 72.0 613 504 82.2 504 445 88.3 72.6 72.4
+N.B. Total 1,436 1,157 80.6 1,157 1,007 87.0 70.1 2,169 1,668 76.9 1,668 1,452 87.1 66.9 68.2
+1301 302 221 73.2 221 197 89.1 65.2 424 343 80.9 343 298 86.9 70.3 68.2
+1302 297 237 79.8 237 207 87.3 69.7 385 308 80.0 308 276 89.6 71.7 70.8
+1303 263 219 83.3 219 192 87.7 73.0 383 315 82.2 315 272 86.3 71.0 71.8
+1304 132 103 78.0 103 95 92.2 72.0 240 172 71.7 172 153 89.0 63.8 66.7
+1305 122 105 86.1 105 89 84.8 73.0 216 141 65.3 141 123 87.2 56.9 62.7
+1306 166 143 86.1 143 123 86.0 74.1 294 212 72.1 212 185 87.3 62.9 67.0
+1307 154 129 83.8 129 104 80.6 67.5 227 177 78.0 177 145 81.9 63.9 65.4
+Que. Total 6,327 5,110 80.8 5,110 4,697 91.9 74.2 11,433 8,507 74.4 8,507 7,344 86.3 64.2 67.8
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+2401 280 240 85.7 240 229 95.4 81.8 490 377 76.9 377 327 86.7 66.7 72.2
+2402 299 247 82.6 247 225 91.1 75.3 536 425 79.3 425 372 87.5 69.4 71.5
+2403 502 410 81.7 410 387 94.4 77.1 839 635 75.7 635 559 88.0 66.6 70.5
+2404 400 328 82.0 328 302 92.1 75.5 689 529 76.8 529 452 85.4 65.6 69.2
+2405 324 261 80.6 261 240 92.0 74.1 558 437 78.3 437 393 89.9 70.4 71.8
+2406 885 684 77.3 684 634 92.7 71.6 1,482 997 67.3 997 824 82.6 55.6 61.6
+2407 341 268 78.6 268 239 89.2 70.1 568 426 75.0 426 368 86.4 64.8 66.8
+2408 340 267 78.5 267 244 91.4 71.8 483 363 75.2 363 320 88.2 66.3 68.5
+2409 314 250 79.6 250 223 89.2 71.0 563 414 73.5 414 336 81.2 59.7 63.7
+2410 . . . . . . . 697 516 74.0 516 442 85.7 63.4 63.4
+2411 334 288 86.2 288 257 89.2 76.9 589 433 73.5 433 377 87.1 64.0 68.7
+2412 388 331 85.3 331 304 91.8 78.4 659 503 76.3 503 443 88.1 67.2 71.3
+2413 411 320 77.9 320 286 89.4 69.6 668 491 73.5 491 421 85.7 63.0 65.5
+2414 393 329 83.7 329 303 92.1 77.1 683 511 74.8 511 437 85.5 64.0 68.8
+2415 396 312 78.8 312 283 90.7 71.5 751 541 72.0 541 469 86.7 62.5 65.6
+2416 720 575 79.9 575 541 94.1 75.1 1,178 909 77.2 909 804 88.4 68.3 70.9
+Ont. Total 12,943 9,727 75.2 9,727 8,618 88.6 66.6 20,376 14,661 72.0 14,661 12,383 84.5 60.8 63.0
+3526 184 146 79.3 146 134 91.8 72.8 381 281 73.8 281 239 85.1 62.7 66.0
+3527 227 166 73.1 166 144 86.7 63.4 367 275 74.9 275 235 85.5 64.0 63.8
+3530 509 372 73.1 372 327 87.9 64.2 773 577 74.6 577 465 80.6 60.2 61.8
+3531 177 156 88.1 156 141 90.4 79.7 303 232 76.6 232 207 89.2 68.3 72.5
+3533 194 164 84.5 164 147 89.6 75.8 437 322 73.7 322 274 85.1 62.7 66.7
+3534 250 175 70.0 175 151 86.3 60.4 341 244 71.6 244 203 83.2 59.5 59.9
+3535 270 183 67.8 183 159 86.9 58.9 409 321 78.5 321 276 86.0 67.5 64.1
+3536 404 306 75.7 306 263 85.9 65.1 669 495 74.0 495 427 86.3 63.8 64.3
+3537 510 370 72.5 370 313 84.6 61.4 786 542 69.0 542 459 84.7 58.4 59.6
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+3538 260 197 75.8 197 179 90.9 68.8 427 314 73.5 314 267 85.0 62.5 64.9
+3539 152 124 81.6 124 118 95.2 77.6 253 190 75.1 190 170 89.5 67.2 71.1
+3540 177 146 82.5 146 137 93.8 77.4 328 248 75.6 248 210 84.7 64.0 68.7
+3541 329 232 70.5 232 193 83.2 58.7 433 341 78.8 341 297 87.1 68.6 64.3
+3542 242 196 81.0 196 188 95.9 77.7 394 297 75.4 297 260 87.5 66.0 70.4
+3543 277 214 77.3 214 192 89.7 69.3 375 279 74.4 279 239 85.7 63.7 66.1
+3544 427 337 78.9 337 309 91.7 72.4 720 542 75.3 542 451 83.2 62.6 66.3
+3546 434 317 73.0 317 281 88.6 64.7 711 517 72.7 517 417 80.7 58.6 61.0
+3547 177 141 79.7 141 117 83.0 66.1 375 271 72.3 271 229 84.5 61.1 62.7
+3549 250 179 71.6 179 160 89.4 64.0 368 259 70.4 259 229 88.4 62.2 62.9
+3551 616 488 79.2 488 423 86.7 68.7 878 676 77.0 676 582 86.1 66.3 67.3
+3552 141 101 71.6 101 97 96.0 68.8 309 241 78.0 241 205 85.1 66.3 67.1
+3553 759 592 78.0 592 533 90.0 70.2 1,322 870 65.8 870 698 80.2 52.8 59.2
+3554 178 156 87.6 156 148 94.9 83.1 259 195 75.3 195 170 87.2 65.6 72.8
+3555 250 194 77.6 194 176 90.7 70.4 369 262 71.0 262 229 87.4 62.1 65.4
+3556 228 183 80.3 183 168 91.8 73.7 334 243 72.8 243 220 90.5 65.9 69.0
+3557 227 164 72.2 164 146 89.0 64.3 325 255 78.5 255 224 87.8 68.9 67.0
+3558 272 219 80.5 219 187 85.4 68.8 424 339 80.0 339 283 83.5 66.7 67.5
+3560 732 527 72.0 527 456 86.5 62.3 1,041 752 72.2 752 635 84.4 61.0 61.5
+3561 301 224 74.4 224 184 82.1 61.1 503 388 77.1 388 350 90.2 69.6 66.4
+3562 430 302 70.2 302 266 88.1 61.9 599 447 74.6 447 388 86.8 64.8 63.6
+3563 151 119 78.8 119 104 87.4 68.9 225 173 76.9 173 147 85.0 65.3 66.8
+3565 454 345 76.0 345 306 88.7 67.4 715 527 73.7 527 448 85.0 62.7 64.5
+3566 323 253 78.3 253 232 91.7 71.8 492 363 73.8 363 315 86.8 64.0 67.1
+3568 455 334 73.4 334 309 92.5 67.9 707 515 72.8 515 437 84.9 61.8 64.2
+3570 608 479 78.8 479 419 87.5 68.9 936 608 65.0 608 488 80.3 52.1 58.7
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+3595 1,368 926 67.7 926 811 87.6 59.3 2,088 1,260 60.3 1,260 1,010 80.2 48.4 52.7
+Man. Total 2,085 1,689 81.0 1,689 1,516 89.8 72.7 3,219 2,507 77.9 2,507 2,248 89.7 69.8 71.0
+4601 644 496 77.0 496 434 87.5 67.4 929 749 80.6 749 680 90.8 73.2 70.8
+4602 497 407 81.9 407 383 94.1 77.1 811 622 76.7 622 553 88.9 68.2 71.6
+4603 280 236 84.3 236 218 92.4 77.9 538 400 74.3 400 349 87.3 64.9 69.3
+4604 288 239 83.0 239 216 90.4 75.0 384 286 74.5 286 258 90.2 67.2 70.5
+4605 376 311 82.7 311 265 85.2 70.5 557 450 80.8 450 408 90.7 73.2 72.1
+Sask. Total 1,962 1,513 77.1 1,513 1,376 90.9 70.1 3,529 2,572 72.9 2,572 2,278 88.6 64.6 66.5
+4701 147 132 89.8 132 126 95.5 85.7 250 197 78.8 197 179 90.9 71.6 76.8
+4702 158 119 75.3 119 112 94.1 70.9 276 198 71.7 198 184 92.9 66.7 68.2
+4703 139 118 84.9 118 97 82.2 69.8 241 199 82.6 199 181 91.0 75.1 73.2
+4704 312 231 74.0 231 204 88.3 65.4 555 420 75.7 420 370 88.1 66.7 66.2
+4705 136 114 83.8 114 104 91.2 76.5 267 193 72.3 193 175 90.7 65.5 69.2
+4706 430 317 73.7 317 295 93.1 68.6 550 418 76.0 418 366 87.6 66.5 67.4
+4707 139 104 74.8 104 95 91.3 68.3 224 165 73.7 165 149 90.3 66.5 67.2
+4708 138 104 75.4 104 94 90.4 68.1 222 168 75.7 168 157 93.5 70.7 69.7
+4709 221 161 72.9 161 147 91.3 66.5 274 199 72.6 199 176 88.4 64.2 65.3
+4710 142 113 79.6 113 102 90.3 71.8 260 194 74.6 194 171 88.1 65.8 67.9
+4714 . . . . . . . 410 221 53.9 221 170 76.9 41.5 41.5
+Alta. Total 3,526 2,793 79.2 2,793 2,484 88.9 70.4 5,880 4,132 70.3 4,132 3,577 86.6 60.8 64.4
+4831 477 394 82.6 394 348 88.3 73.0 924 655 70.9 655 582 88.9 63.0 66.4
+4832 886 694 78.3 694 612 88.2 69.1 1,330 922 69.3 922 795 86.2 59.8 63.5
+4833 643 519 80.7 519 472 90.9 73.4 1,082 780 72.1 780 680 87.2 62.8 66.8
+4834 787 628 79.8 628 564 89.8 71.7 1,285 922 71.8 922 784 85.0 61.0 65.1
+4835 733 558 76.1 558 488 87.5 66.6 1,259 853 67.8 853 736 86.3 58.5 61.4
+B.C. Total 4,662 3,595 77.1 3,595 3,216 89.5 69.0 7,613 5,367 70.5 5,367 4,487 83.6 58.9 62.8
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+5911 182 143 78.6 143 125 87.4 68.7 286 203 71.0 203 180 88.7 62.9 65.2
+5912 170 139 81.8 139 129 92.8 75.9 273 212 77.7 212 182 85.8 66.7 70.2
+5913 297 247 83.2 247 228 92.3 76.8 572 417 72.9 417 363 87.1 63.5 68.0
+5914 293 225 76.8 225 202 89.8 68.9 510 378 74.1 378 320 84.7 62.7 65.0
+5921 297 216 72.7 216 191 88.4 64.3 486 348 71.6 348 289 83.0 59.5 61.3
+5922 455 349 76.7 349 314 90.0 69.0 737 517 70.1 517 424 82.0 57.5 61.9
+5923 464 378 81.5 378 328 86.8 70.7 789 536 67.9 536 439 81.9 55.6 61.2
+5931 224 179 79.9 179 171 95.5 76.3 410 258 62.9 258 212 82.2 51.7 60.4
+5932 455 330 72.5 330 293 88.8 64.4 818 507 62.0 507 382 75.3 46.7 53.0
+5933 355 287 80.8 287 254 88.5 71.5 552 383 69.4 383 318 83.0 57.6 63.1
+5941 385 303 78.7 303 266 87.8 69.1 581 428 73.7 428 366 85.5 63.0 65.4
+5942 293 229 78.2 229 203 88.6 69.3 448 339 75.7 339 294 86.7 65.6 67.1
+5943 157 108 68.8 108 100 92.6 63.7 226 181 80.1 181 167 92.3 73.9 69.7
+5951 177 133 75.1 133 120 90.2 67.8 331 229 69.2 229 190 83.0 57.4 61.0
+5952 281 189 67.3 189 164 86.8 58.4 348 260 74.7 260 212 81.5 60.9 59.8
+5953 177 140 79.1 140 128 91.4 72.3 246 171 69.5 171 149 87.1 60.6 65.5
+Y.T. 6001 737 615 83.4 615 563 91.5 76.4 141 101 71.6 101 89 88.1 63.1 74.3
+N.W.T. 6101 731 612 83.7 612 556 90.8 76.1 97 74 76.3 74 66 89.2 68.0 75.1
+Nvt. 6201 496 392 79.0 392 356 90.8 71.8 . . . . . . . 71.8
+
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Province LHIN HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+Ont. Total 12,943 9,727 75.2 9,727 8,618 88.6 66.6 20,376 14,661 72.0 14,661 12,383 84.5 60.8 63.0
+3501 874 676 77.3 676 634 93.8 72.5 1,429 1,060 74.2 1,060 907 85.6 63.5 66.9
+3502 1,281 1,049 81.9 1,049 967 92.2 75.5 2,268 1,715 75.6 1,715 1,470 85.7 64.8 68.7
+3503 692 541 78.2 541 486 89.8 70.2 1,136 837 73.7 837 715 85.4 62.9 65.7
+3504 1,570 1,139 72.5 1,139 987 86.7 62.9 2,409 1,740 72.2 1,740 1,454 83.6 60.4 61.3
+3505 620 453 73.1 453 416 91.8 67.1 1,052 669 63.6 669 537 80.3 51.0 57.0
+3506 622 486 78.1 486 421 86.6 67.7 1,070 733 68.5 733 615 83.9 57.5 61.2
+3507 710 461 64.9 461 408 88.5 57.5 1,063 666 62.7 666 557 83.6 52.4 54.4
+3508 906 699 77.2 699 611 87.4 67.4 1,393 881 63.2 881 688 78.1 49.4 56.5
+3509 1,292 942 72.9 942 826 87.7 63.9 1,925 1,386 72.0 1,386 1,143 82.5 59.4 61.2
+3510 788 582 73.9 582 511 87.8 64.8 1,145 865 75.5 865 741 85.7 64.7 64.8
+3511 1,193 932 78.1 932 809 86.8 67.8 1,737 1,354 78.0 1,354 1,165 86.0 67.1 67.4
+3512 674 473 70.2 473 409 86.5 60.7 964 693 71.9 693 589 85.0 61.1 60.9
+3513 1,041 813 78.1 813 707 87.0 67.9 1,818 1,356 74.6 1,356 1,185 87.4 65.2 66.2
+3514 680 481 70.7 481 426 88.6 62.6 967 706 73.0 706 617 87.4 63.8 63.3
+
+
+## AF (2013-2014) - sample allocation by health region and frame and sample allocation
+
+by Local Health Integrated Network (LHIN) and frame in Ontario
+
+Geography Area Frame Phone frames Combined
+Health expected # of expected # of expected # of
+Prov./Terr. Region respondents raw sample size respondents raw sample size respondents raw sample size
+Canada Total 54,949 91,362 76,808 149,538 131,757 240,900
+N.L. Total 1,644 2,706 2,366 4,650 4,010 7,356
+1011 664 1,146 956 1,848 1,620 2,994
+1012 386 633 554 1,096 940 1,729
+1013 348 558 502 986 850 1,544
+1014 246 369 354 720 600 1,089
+P.E.I. Total 822 1,521 1,180 2,792 2,002 4,313
+1101 146 256 210 540 356 796
+1102 378 711 542 1,306 920 2,017
+1103 298 554 428 946 726 1,500
+N.S. Total 2,070 3,613 2,972 5,735 5,042 9,348
+1201 326 544 466 914 792 1,458
+1202 262 470 378 702 640 1,172
+1203 296 492 424 833 720 1,325
+1204 288 528 412 800 700 1,328
+1205 344 598 496 1,004 840 1,602
+1206 554 981 796 1,482 1,350 2,463
+N.B. Total 2,114 3,632 3,036 5,386 5,150 9,018
+1301 410 736 590 1,016 1,000 1,752
+1302 398 760 572 946 970 1,706
+1303 386 657 554 970 940 1,627
+1304 222 318 318 600 540 918
+1305 206 357 294 528 500 885
+1306 282 408 408 750 690 1,158
+1307 210 396 300 576 510 972
+Que. Total 9,653 14,996 14,664 28,725 24,317 43,721
+2401 492 762 708 1,176 1,200 1,938
+2402 514 687 742 1,268 1,256 1,955
+2403 760 1,162 1,092 1,914 1,852 3,076
+2404 656 996 944 1,584 1,600 2,580
+2405 531 853 730 1,269 1,261 2,122
+2406 1,274 2,086 1,832 3,492 3,106 5,578
+2407 530 874 766 1,354 1,296 2,228
+2408 492 792 708 1,176 1,200 1,968
+2409 492 732 708 1,500 1,200 2,232
+2410 0 0 800 3,654 800 3,654
+2411 492 768 708 1,434 1,200 2,202
+2412 592 912 854 1,527 1,446 2,439
+2413 550 896 790 1,490 1,340 2,386
+2414 588 888 848 1,552 1,436 2,440
+As mentioned in section 5.2, the figures for Prince Edward Island are based on the definitions of HRs that were used
+at the time of sampling.
+Geography Area Frame Phone frames Combined
+Health expected # of expected # of expected # of
+Prov./Terr. Region respondents raw sample size respondents raw sample size respondents raw sample size
+2415 624 1,014 900 1,716 1,524 2,730
+2416 1,066 1,574 1,534 2,619 2,600 4,193
+Ont. Total 18,284 30,764 26,292 49,280 44,576 80,044
+3526 348 540 502 944 850 1,484
+3527 332 546 478 867 810 1,413
+3530 668 1,072 962 1,822 1,630 2,894
+3531 278 423 402 738 680 1,161
+3533 386 626 556 1,148 942 1,774
+3534 318 575 454 856 772 1,431
+3535 390 822 560 1,144 950 1,966
+3536 578 878 832 1,530 1,410 2,408
+3537 676 1,220 974 1,882 1,650 3,102
+3538 386 656 554 1,036 940 1,692
+3539 242 368 348 702 590 1,070
+3540 328 478 472 848 800 1,326
+3541 414 798 596 1,062 1,010 1,860
+3542 356 534 514 956 870 1,490
+3543 390 651 560 940 950 1,591
+3544 616 978 884 1,656 1,500 2,634
+3546 628 954 902 1,659 1,530 2,613
+3547 328 638 472 998 800 1,636
+3549 330 660 474 1,053 804 1,713
+3551 840 1,422 1,210 2,055 2,050 3,477
+3552 308 410 442 723 750 1,133
+3553 1,108 1,656 1,594 3,092 2,702 4,748
+3554 266 399 384 624 650 1,023
+3555 348 594 502 944 850 1,538
+3556 308 556 442 813 750 1,369
+3557 308 550 442 758 750 1,308
+3558 426 636 614 988 1,040 1,624
+3560 938 1,848 1,352 2,649 2,290 4,497
+3561 442 800 638 1,197 1,080 1,997
+3562 546 1,026 786 1,478 1,332 2,504
+3563 206 430 294 534 500 964
+3565 628 1,038 902 1,672 1,530 2,710
+3566 480 715 690 1,126 1,170 1,841
+3568 586 987 844 1,604 1,430 2,591
+3570 784 1,269 1,114 2,126 1,898 3,395
+3595 1,770 3,011 2,546 5,056 4,316 8,067
+Man. Total 3,078 5,055 4,422 8,683 7,500 13,738
+4601 872 1,436 1,253 2,206 2,125 3,642
+4602 739 1,222 1,061 2,026 1,800 3,248
+4603 488 804 702 1,536 1,190 2,340
+4604 405 738 580 1,455 985 2,193
+4605 574 855 826 1,460 1,400 2,315
+Geography Area Frame Phone frames Combined
+Health expected # of expected # of expected # of
+Prov./Terr. Region respondents raw sample size respondents raw sample size respondents raw sample size
+Sask. Total 2,962 4,700 4,758 10,542 7,720 15,242
+4701 246 360 354 636 600 996
+4702 246 357 354 660 600 1,017
+4703 218 333 312 618 530 951
+4704 508 750 732 1,392 1,240 2,142
+4705 254 357 366 672 620 1,029
+4706 542 994 778 1,364 1,320 2,358
+4707 222 378 318 618 540 996
+4708 214 334 306 552 520 886
+4709 266 447 384 756 650 1,203
+4710 246 390 354 714 600 1,104
+4714 0 0 500 2,560 500 2,560
+Alta. Total 5,056 8,490 7,194 14,293 12,250 22,783
+4831 758 1,220 1,092 2,214 1,850 3,434
+4832 1,198 1,948 1,646 3,151 2,844 5,099
+4833 938 1,652 1,350 2,696 2,288 4,348
+4834 1,074 1,718 1,544 2,984 2,618 4,702
+4835 1,088 1,952 1,562 3,248 2,650 5,200
+B.C. Total 6,596 11,151 9,494 18,300 16,090 29,451
+5911 250 411 360 684 610 1,095
+5912 254 418 366 639 620 1,057
+5913 484 684 696 1,326 1,180 2,010
+5914 410 681 590 1,229 1,000 1,910
+5921 426 708 614 1,192 1,040 1,900
+5922 624 972 896 1,738 1,520 2,710
+5923 656 1,048 944 1,870 1,600 2,918
+5931 348 510 502 980 850 1,490
+5932 656 1,146 944 1,978 1,600 3,124
+5933 446 940 644 1,312 1,090 2,252
+5941 554 915 796 1,404 1,350 2,319
+5942 430 698 620 1,084 1,050 1,782
+5943 218 424 312 570 530 994
+5951 266 508 384 864 650 1,372
+5952 348 648 502 836 850 1,484
+5903 226 440 324 594 550 1,034
+Y.T. 6001 950 1,652 250 582 1,200 2,234
+N.W.T. 6101 1,020 1,838 180 570 1,200 2,408
+Nvt. 6201 700 1,244 0 0 700 1,244
+
+frame in Ontario
+Geography Area Frame Phone frames Combined
+expected # of expected # of expected # of
+Province LHIN respondents raw sample size respondents raw sample size respondents raw sample size
+Ont. Total 18,284 30,764 26,292 49,280 44,576 80,044
+3501 1,270 1,999 1,830 3,408 3,100 5,407
+3502 2,136 3,266 3,072 5,681 5,208 8,947
+3503 990 1,552 1,422 2,530 2,412 4,082
+3504 2,130 3,587 3,064 5,744 5,194 9,331
+3505 898 1,424 1,278 2,484 2,176 3,908
+3506 916 1,332 1,314 2,464 2,230 3,796
+3507 930 1,602 1,338 2,646 2,268 4,248
+3508 1,156 1,875 1,666 3,200 2,822 5,075
+3509 1,728 3,042 2,488 4,826 4,216 7,868
+3510 1,078 1,919 1,548 2,756 2,626 4,675
+3511 1,686 2,794 2,428 4,083 4,114 6,877
+3512 858 1,722 1,236 2,441 2,094 4,163
+3513 1,632 2,964 2,348 4,486 3,980 7,450
+3514 876 1,686 1,260 2,531 2,136 4,217
+
+
+## AG (2013-2014) - response rates by health region and frame and response rates by
+
+Local Health Integrated Network (LHIN) and frame in Ontario
+
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+Canada Total 75,610 60,245 79.7 60,245 54,009 89.6 71.4 118,203 86,764 73.4 86,764 74,301 85.6 62.9 66.2
+N.L. Total 2,127 1,811 85.1 1,811 1,600 88.3 75.2 3,680 2,791 75.8 2,791 2,379 85.2 64.6 68.5
+1011 891 711 79.8 711 613 86.2 68.8 1,530 1,128 73.7 1,128 965 85.5 63.1 65.2
+1012 489 436 89.2 436 397 91.1 81.2 818 634 77.5 634 533 84.1 65.2 71.2
+1013 472 417 88.3 417 379 90.9 80.3 802 640 79.8 640 563 88.0 70.2 73.9
+1014 275 247 89.8 247 211 85.4 76.7 530 389 73.4 389 318 81.7 60.0 65.7
+P.E.I. Total 1,152 919 79.8 919 796 86.6 69.1 1,787 1,341 75.0 1,341 1,189 88.7 66.5 67.5
+1100 1,152 919 79.8 919 796 86.6 69.1 1,787 1,341 75.0 1,341 1,189 88.7 66.5 67.5
+N.S. Total 2,793 2,291 82.0 2,291 2,057 89.8 73.6 4,510 3,635 80.6 3,635 3,186 87.6 70.6 71.8
+1201 400 349 87.3 349 320 91.7 80.0 732 582 79.5 582 511 87.8 69.8 73.4
+1202 347 279 80.4 279 257 92.1 74.1 536 438 81.7 438 395 90.2 73.7 73.8
+1203 368 313 85.1 313 275 87.9 74.7 648 542 83.6 542 476 87.8 73.5 73.9
+1204 408 329 80.6 329 301 91.5 73.8 630 510 81.0 510 441 86.5 70.0 71.5
+1205 446 359 80.5 359 326 90.8 73.1 763 566 74.2 566 478 84.5 62.6 66.5
+1206 824 662 80.3 662 578 87.3 70.1 1,201 997 83.0 997 885 88.8 73.7 72.2
+N.B. Total 2,893 2,401 83.0 2,401 2,116 88.1 73.1 4,291 3,280 76.4 3,280 2,825 86.1 65.8 68.8
+1301 598 467 78.1 467 419 89.7 70.1 832 641 77.0 641 561 87.5 67.4 68.5
+1302 611 506 82.8 506 444 87.7 72.7 752 604 80.3 604 523 86.6 69.5 70.9
+1303 531 442 83.2 442 391 88.5 73.6 768 625 81.4 625 548 87.7 71.4 72.3
+1304 262 221 84.4 221 205 92.8 78.2 479 342 71.4 342 289 84.5 60.3 66.7
+1305 271 232 85.6 232 201 86.6 74.2 422 285 67.5 285 244 85.6 57.8 64.2
+1306 320 284 88.8 284 246 86.6 76.9 590 432 73.2 432 370 85.6 62.7 67.7
+1307 300 249 83.0 249 210 84.3 70.0 448 351 78.3 351 290 82.6 64.7 66.8
+Que. Total 12,776 10,504 82.2 10,504 9,634 91.7 75.4 22,524 16,769 74.4 16,769 14,512 86.5 64.4 68.4
+2401 570 501 87.9 501 477 95.2 83.7 1,001 775 77.4 775 680 87.7 67.9 73.6
+2402 612 524 85.6 524 475 90.6 77.6 1,060 847 79.9 847 757 89.4 71.4 73.7
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+2403 1,023 842 82.3 842 784 93.1 76.6 1,679 1,255 74.7 1,255 1,097 87.4 65.3 69.6
+2404 901 764 84.8 764 713 93.3 79.1 1,362 1,058 77.7 1,058 925 87.4 67.9 72.4
+2405 664 515 77.6 515 477 92.6 71.8 1,074 845 78.7 845 755 89.3 70.3 70.9
+2406 1,789 1,420 79.4 1,420 1,302 91.7 72.8 2,951 1,991 67.5 1,991 1,668 83.8 56.5 62.7
+2407 736 586 79.6 586 524 89.4 71.2 1,083 814 75.2 814 712 87.5 65.7 67.9
+2408 665 541 81.4 541 494 91.3 74.3 965 739 76.6 739 650 88.0 67.4 70.2
+2409 619 515 83.2 515 463 89.9 74.8 1,119 799 71.4 799 650 81.4 58.1 64.0
+2410 . . . . . . . 1,298 991 76.3 991 848 85.6 65.3 65.3
+2411 599 523 87.3 523 471 90.1 78.6 1,177 856 72.7 856 734 85.7 62.4 67.8
+2412 796 678 85.2 678 630 92.9 79.1 1,324 1,014 76.6 1,014 906 89.3 68.4 72.5
+2413 815 635 77.9 635 565 89.0 69.3 1,317 941 71.5 941 791 84.1 60.1 63.6
+2414 750 640 85.3 640 586 91.6 78.1 1,332 986 74.0 986 834 84.6 62.6 68.2
+2415 801 656 81.9 656 593 90.4 74.0 1,445 1,059 73.3 1,059 921 87.0 63.7 67.4
+2416 1,436 1,164 81.1 1,164 1,080 92.8 75.2 2,337 1,799 77.0 1,799 1,584 88.0 67.8 70.6
+Ont. Total 25,621 19,626 76.6 19,626 17,478 89.1 68.2 40,458 29,641 73.3 29,641 25,075 84.6 62.0 64.4
+3526 351 272 77.5 272 254 93.4 72.4 776 584 75.3 584 501 85.8 64.6 67.0
+3527 494 383 77.5 383 320 83.6 64.8 706 532 75.4 532 455 85.5 64.4 64.6
+3530 956 707 74.0 707 628 88.8 65.7 1,539 1,150 74.7 1,150 943 82.0 61.3 63.0
+3531 361 310 85.9 310 286 92.3 79.2 624 467 74.8 467 407 87.2 65.2 70.4
+3533 422 363 86.0 363 329 90.6 78.0 867 659 76.0 659 581 88.2 67.0 70.6
+3534 490 367 74.9 367 317 86.4 64.7 687 507 73.8 507 427 84.2 62.2 63.2
+3535 568 388 68.3 388 326 84.0 57.4 835 637 76.3 637 554 87.0 66.3 62.7
+3536 818 654 80.0 654 572 87.5 69.9 1,351 1,011 74.8 1,011 857 84.8 63.4 65.9
+3537 1,034 762 73.7 762 659 86.5 63.7 1,579 1,099 69.6 1,099 915 83.3 57.9 60.2
+3538 521 419 80.4 419 379 90.5 72.7 823 630 76.5 630 543 86.2 66.0 68.6
+3539 289 249 86.2 249 237 95.2 82.0 513 396 77.2 396 342 86.4 66.7 72.2
+3540 343 280 81.6 280 257 91.8 74.9 615 464 75.4 464 399 86.0 64.9 68.5
+3541 634 462 72.9 462 394 85.3 62.1 845 653 77.3 653 566 86.7 67.0 64.9
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+3542 483 407 84.3 407 391 96.1 81.0 807 613 76.0 613 534 87.1 66.2 71.7
+3543 548 428 78.1 428 388 90.7 70.8 751 572 76.2 572 504 88.1 67.1 68.7
+3544 829 651 78.5 651 590 90.6 71.2 1,425 1,068 74.9 1,068 890 83.3 62.5 65.7
+3546 830 638 76.9 638 570 89.3 68.7 1,404 1,043 74.3 1,043 865 82.9 61.6 64.2
+3547 367 290 79.0 290 255 87.9 69.5 738 561 76.0 561 486 86.6 65.9 67.1
+3549 520 377 72.5 377 336 89.1 64.6 701 516 73.6 516 452 87.6 64.5 64.5
+3551 1,256 984 78.3 984 868 88.2 69.1 1,756 1,370 78.0 1,370 1,185 86.5 67.5 68.2
+3552 302 227 75.2 227 214 94.3 70.9 624 486 77.9 486 420 86.4 67.3 68.5
+3553 1,514 1,215 80.3 1,215 1,095 90.1 72.3 2,599 1,775 68.3 1,775 1,395 78.6 53.7 60.5
+3554 368 333 90.5 333 314 94.3 85.3 509 405 79.6 405 352 86.9 69.2 75.9
+3555 474 364 76.8 364 338 92.9 71.3 737 539 73.1 539 464 86.1 63.0 66.2
+3556 465 384 82.6 384 354 92.2 76.1 674 515 76.4 515 459 89.1 68.1 71.4
+3557 419 325 77.6 325 294 90.5 70.2 661 519 78.5 519 458 88.2 69.3 69.6
+3558 545 444 81.5 444 381 85.8 69.9 839 671 80.0 671 581 86.6 69.2 69.5
+3560 1,411 1,041 73.8 1,041 909 87.3 64.4 2,005 1,507 75.2 1,507 1,279 84.9 63.8 64.1
+3561 628 464 73.9 464 395 85.1 62.9 986 784 79.5 784 700 89.3 71.0 67.8
+3562 826 584 70.7 584 504 86.3 61.0 1,191 904 75.9 904 785 86.8 65.9 63.9
+3563 278 210 75.5 210 173 82.4 62.2 440 341 77.5 341 296 86.8 67.3 65.3
+3565 915 707 77.3 707 630 89.1 68.9 1,452 1,099 75.7 1,099 924 84.1 63.6 65.7
+3566 633 499 78.8 499 461 92.4 72.8 971 750 77.2 750 648 86.4 66.7 69.1
+3568 868 637 73.4 637 584 91.7 67.3 1,440 1,046 72.6 1,046 870 83.2 60.4 63.0
+3570 1,168 927 79.4 927 817 88.1 69.9 1,842 1,220 66.2 1,220 973 79.8 52.8 59.5
+3595 2,693 1,874 69.6 1,874 1,659 88.5 61.6 4,146 2,548 61.5 2,548 2,065 81.0 49.8 54.5
+Man. Total 4,144 3,397 82.0 3,397 3,063 90.2 73.9 6,413 4,915 76.6 4,915 4,375 89.0 68.2 70.5
+4601 1,307 1,016 77.7 1,016 902 88.8 69.0 1,874 1,486 79.3 1,486 1,328 89.4 70.9 70.1
+4602 971 811 83.5 811 758 93.5 78.1 1,596 1,197 75.0 1,197 1,055 88.1 66.1 70.6
+4603 580 495 85.3 495 454 91.7 78.3 1,059 795 75.1 795 701 88.2 66.2 70.5
+4604 567 466 82.2 466 419 89.9 73.9 752 551 73.3 551 489 88.7 65.0 68.8
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+4605 719 609 84.7 609 530 87.0 73.7 1,132 886 78.3 886 802 90.5 70.8 72.0
+Sask. Total 3,826 3,037 79.4 3,037 2,744 90.4 71.7 7,253 5,210 71.8 5,210 4,627 88.8 63.8 66.5
+4701 298 269 90.3 269 254 94.4 85.2 521 402 77.2 402 365 90.8 70.1 75.6
+4702 293 226 77.1 226 211 93.4 72.0 535 402 75.1 402 371 92.3 69.3 70.3
+4703 250 224 89.6 224 194 86.6 77.6 502 385 76.7 385 347 90.1 69.1 71.9
+4704 620 478 77.1 478 421 88.1 67.9 1,146 865 75.5 865 765 88.4 66.8 67.2
+4705 271 228 84.1 228 211 92.5 77.9 548 388 70.8 388 345 88.9 63.0 67.9
+4706 855 645 75.4 645 588 91.2 68.8 1,145 854 74.6 854 754 88.3 65.9 67.1
+4707 295 240 81.4 240 217 90.4 73.6 466 343 73.6 343 313 91.3 67.2 69.6
+4708 258 199 77.1 199 174 87.4 67.4 442 324 73.3 324 297 91.7 67.2 67.3
+4709 381 270 70.9 270 240 88.9 63.0 559 407 72.8 407 358 88.0 64.0 63.6
+4710 305 258 84.6 258 234 90.7 76.7 519 389 75.0 389 346 88.9 66.7 70.4
+4714 . . . . . . . 870 451 51.8 451 366 81.2 42.1 42.1
+Alta. Total 7,223 5,820 80.6 5,820 5,165 88.7 71.5 11,672 8,065 69.1 8,065 6,907 85.6 59.2 63.9
+4831 956 815 85.3 815 740 90.8 77.4 1,807 1,288 71.3 1,288 1,103 85.6 61.0 66.7
+4832 1,784 1,379 77.3 1,379 1,204 87.3 67.5 2,647 1,801 68.0 1,801 1,541 85.6 58.2 61.9
+4833 1,387 1,136 81.9 1,136 1,025 90.2 73.9 2,146 1,511 70.4 1,511 1,300 86.0 60.6 65.8
+4834 1,557 1,266 81.3 1,266 1,130 89.3 72.6 2,574 1,799 69.9 1,799 1,543 85.8 59.9 64.7
+4835 1,539 1,224 79.5 1,224 1,066 87.1 69.3 2,498 1,666 66.7 1,666 1,420 85.2 56.8 61.6
+B.C. Total 9,200 7,217 78.4 7,217 6,462 89.5 70.2 15,104 10,726 71.0 10,726 8,878 82.8 58.8 63.1
+5911 337 266 78.9 266 230 86.5 68.2 558 417 74.7 417 361 86.6 64.7 66.0
+5912 336 273 81.3 273 253 92.7 75.3 535 405 75.7 405 332 82.0 62.1 67.2
+5913 576 485 84.2 485 454 93.6 78.8 1,114 823 73.9 823 706 85.8 63.4 68.6
+5914 560 431 77.0 431 389 90.3 69.5 1,020 754 73.9 754 646 85.7 63.3 65.5
+5921 616 473 76.8 473 419 88.6 68.0 988 712 72.1 712 591 83.0 59.8 63.0
+5922 854 678 79.4 678 598 88.2 70.0 1,485 1,029 69.3 1,029 822 79.9 55.4 60.7
+5923 916 769 84.0 769 666 86.6 72.7 1,570 1,103 70.3 1,103 887 80.4 56.5 62.5
+5931 456 372 81.6 372 353 94.9 77.4 825 537 65.1 537 429 79.9 52.0 61.0
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+5932 892 631 70.7 631 564 89.4 63.2 1,598 1,009 63.1 1,009 769 76.2 48.1 53.5
+5933 732 613 83.7 613 555 90.5 75.8 1,091 771 70.7 771 642 83.3 58.8 65.7
+5941 772 624 80.8 624 550 88.1 71.2 1,177 862 73.2 862 737 85.5 62.6 66.0
+5942 566 452 79.9 452 401 88.7 70.8 905 677 74.8 677 594 87.7 65.6 67.6
+5943 303 208 68.6 208 194 93.3 64.0 465 351 75.5 351 314 89.5 67.5 66.1
+5951 408 315 77.2 315 279 88.6 68.4 625 443 70.9 443 363 81.9 58.1 62.1
+5952 544 370 68.0 370 322 87.0 59.2 674 500 74.2 500 406 81.2 60.2 59.8
+5953 332 257 77.4 257 235 91.4 70.8 474 333 70.3 333 279 83.8 58.9 63.8
+Y.T. 6001 1,382 1,157 83.7 1,157 1,039 89.8 75.2 285 208 73.0 208 182 87.5 63.9 73.2
+N.W.T. 6101 1,478 1,245 84.2 1,245 1,107 88.9 74.9 226 183 81.0 183 166 90.7 73.5 74.7
+Nvt. 6201 995 820 82.4 820 748 91.2 75.2 . . . . . . . 75.2
+
+Geography Area frame Phone frames Combined
+# in HH Pers. # in HH Pers. Combined
+Prov. Health scope # resp. resp. # pers. resp. Resp. scope # resp. resp. # pers. resp. Resp. resp.
+Terr. Region HH HH rates select. # resp. rates rates HH HH rates select. # resp. rates rates rates
+Ont. Total 25,621 19,626 76.6 19,626 17,478 89.1 68.2 40,458 29,641 73.3 29,641 25,075 84.6 62.0 64.4
+3501 1,694 1,324 78.2 1,324 1,232 93.1 72.7 2,862 2,123 74.2 2,123 1,803 84.9 63.0 66.6
+3502 2,598 2,159 83.1 2,159 1,988 92.1 76.5 4,538 3,465 76.4 3,465 2,978 85.9 65.6 69.6
+3503 1,390 1,098 79.0 1,098 989 90.1 71.2 2,272 1,733 76.3 1,733 1,471 84.9 64.7 67.2
+3504 3,139 2,372 75.6 2,372 2,066 87.1 65.8 4,800 3,500 72.9 3,500 2,933 83.8 61.1 63.0
+3505 1,258 966 76.8 966 885 91.6 70.3 2,086 1,385 66.4 1,385 1,087 78.5 52.1 59.0
+3506 1,253 1,023 81.6 1,023 900 88.0 71.8 2,117 1,496 70.7 1,496 1,224 81.8 57.8 63.0
+3507 1,392 931 66.9 931 833 89.5 59.8 2,104 1,311 62.3 1,311 1,108 84.5 52.7 55.5
+3508 1,728 1,353 78.3 1,353 1,192 88.1 69.0 2,757 1,801 65.3 1,801 1,425 79.1 51.7 58.4
+3509 2,509 1,812 72.2 1,812 1,594 88.0 63.5 3,847 2,790 72.5 2,790 2,324 83.3 60.4 61.6
+3510 1,543 1,188 77.0 1,188 1,055 88.8 68.4 2,246 1,717 76.4 1,717 1,488 86.7 66.3 67.1
+3511 2,380 1,874 78.7 1,874 1,649 88.0 69.3 3,474 2,732 78.6 2,732 2,380 87.1 68.5 68.8
+3512 1,302 945 72.6 945 824 87.2 63.3 1,849 1,383 74.8 1,383 1,175 85.0 63.5 63.4
+3513 2,089 1,620 77.5 1,620 1,431 88.3 68.5 3,614 2,785 77.1 2,785 2,442 87.7 67.6 67.9
+3514 1,346 961 71.4 961 840 87.4 62.4 1,892 1,420 75.1 1,420 1,237 87.1 65.4 64.1
