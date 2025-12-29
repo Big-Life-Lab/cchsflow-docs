@@ -1,273 +1,107 @@
 # Changelog
 
-All notable changes to the Canadian Health Surveys Documentation System will be documented in this file.
+All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-**Note on Versioning**: This project uses separate version numbers for:
-- **Infrastructure/Schema** (this CHANGELOG): Overall system capabilities and schema
-- **Individual Catalogs**: CCHS catalog (v3.0.0), CHMS catalog (v1.0.0)
-- **UID Systems**: CCHS UIDs (v3.0), CHMS UIDs (v1.0)
-
-## [Unreleased]
-
-## [4.0.0] - 2025-01-19
-
-### Major Changes
-
-**Multi-Survey Support**: Extended infrastructure to support Canadian Health Measures Survey (CHMS) alongside CCHS.
+## [4.0.0] - 2025-12-29
 
 ### Added
 
-- **CHMS Integration**:
-  - Complete CHMS documentation catalog (52 files across 6 cycles)
-  - CHMS-specific UID system: `chms-c{cycle}-{component}-{doc_type}-{language}-{extension}-{seq}`
-  - CHMS sync system ([R/chms_sync_system.R](R/chms_sync_system.R))
-  - CHMS catalog builder ([R/build_chms_catalog.R](R/build_chms_catalog.R))
-  - CHMS OSF mirror ([chms-osf-docs/](chms-osf-docs/))
-  - Component detection logic for 9 CHMS components (gen, hhd, clc, ams, fast, nel, med, inc, hcl)
+#### Multi-survey support
+- **CHMS integration**: Added Canadian Health Measures Survey (CHMS) support alongside CCHS
+- **Unified schema v4.0.0**: Extended LinkML schema to support both CCHS and CHMS surveys
+- **CHMS OSF sync**: Complete mirror of 52 CHMS files across 6 cycles
+- **CHMS catalog**: Full metadata catalog with CHMS-specific fields (cycle, component)
+- **CHMS UID system**: Survey-specific identifiers (e.g., `chms-c1-hhd-qu-e-pdf-01`)
 
-- **Unified Schema** (v4.0.0):
-  - Renamed `cchs_schema_linkml.yaml` to `health_survey_schema_linkml.yaml`
-  - Added `SurveyEnum` (CCHS/CHMS)
-  - Added `CHMSCycleEnum` (cycle1-6)
-  - Added `CHMSComponentEnum` (9 component types)
-  - Survey-specific conditional fields (year/temporal_type for CCHS, chms_cycle/chms_component for CHMS)
-  - Unified validation supporting both UID formats
+#### Extracted files collection
+- **137 extracted files** from CCHS Master and PUMF documentation:
+  - 35 data dictionary files (YAML + QMD) - 2001-2023
+  - 31 derived variables files - 2007-2023
+  - 19 questionnaire files - 2009-2023
+  - 30 user guide files - 2001-2023 (including PUMF)
+- **Full provenance tracking**: Each extracted file includes `cchs_uid` and `derived_from` fields
+- **Bidirectional traceability**: Source PDFs linked to extracted files via UID system
 
-- **Survey-Aware Infrastructure**:
-  - Extended [R/osf_api_client.R](R/osf_api_client.R) with CHMS functions
-  - Unified validation script ([R/validate_health_survey_catalog.R](R/validate_health_survey_catalog.R))
-  - Survey-aware collection extraction ([R/extract_collection.R](R/extract_collection.R))
-  - Auto-detection of survey type from catalog files
+#### PUMF documentation
+- **PUMF data dictionaries**: Extracted from Google Drive PUMF collection
+- **PUMF user guides**: 2003, 2005, 2017-2018 PUMF user guides extracted
+- **Share file support**: Added share file extractions for dual-year surveys
 
-- **Documentation**:
-  - Updated README.md with CHMS sections (terminology, UID system, usage examples)
-  - Added CHMS UID design documentation ([metadata/chms_uid_design.md](metadata/chms_uid_design.md))
-  - Updated repository title to "Canadian Health Surveys Documentation System"
+#### Extraction infrastructure
+- **18 extraction scripts** in `scripts/` directory
+- **5 manifests** tracking all extractions with checksums and metadata
+- **Catalog-aligned metadata**: All extracted files include full catalog metadata in headers
 
 ### Changed
 
-- **Schema**: v3.0.0 → v4.0.0 (multi-survey support)
-- **Repository scope**: CCHS-only → CCHS + CHMS
-- **Validation**: Survey-specific UID pattern validation
-- **Configuration**: Added CHMS project and cycle component IDs to [config.yml](config.yml)
+- **Schema version**: Upgraded from v3.1.0 to v4.0.0 (breaking change for CHMS support)
+- **UID format**: Extended to support survey-specific identifiers
+- **Canonical filename format**: Standardised across all document types
 
-### Technical Details
+### Technical details
 
-- **CHMS OSF Project**: buva4
-- **CHMS Cycles**: 6 OSF components (cycle1-6)
-- **CHMS Files**: 52 PDFs cataloged with 100% unique UIDs
-- **Catalog Versions**: CCHS catalog remains at v3.0.0, CHMS catalog at v1.0.0
+#### Schema changes (v4.0.0)
+- Added `survey` field to distinguish CCHS from CHMS
+- Added `chms_cycle` and `chms_component` fields for CHMS-specific metadata
+- Extended `NamespaceTypeEnum` to include CHMS OSF project
+- Updated validation rules for survey-specific patterns
 
-## [3.0.0] - 2025-10-03
-
-### BREAKING CHANGES ⚠️
-
-**UID Format Change**: UID system updated to v3.0 with optional subcategory support for differentiating file variants.
-
-**Previous format (v2.0)**:
-```
-cchs-{year}{temporal}-{doc_type}-{category}-{language}-{extension}-{sequence:02d}
-Example: cchs-2005s-p-data-dictionary-e-pdf-02
-```
-
-**New format (v3.0)**:
-```
-cchs-{year}{temporal}-{doc_type}-{category}-[{subcategory}-]{language}-{extension}-{sequence:02d}
-Example: cchs-2005s-p-data-dictionary-simp-e-pdf-02
-```
-
-**Canonical Filename Change**: Filenames updated to include optional subcategory.
-
-**Previous format**:
-```
-cchs_{year}{temporal}_{category}_{doc_type}_{language}_{sequence}_v{version}.{ext}
-Example: cchs_2005s_data-dictionary_p_en_2_v1.pdf
+#### Extraction metadata format
+Each extracted YAML file includes:
+```yaml
+cchs_uid: cchs-2015s-m-dd-en-yaml-01
+derived_from: cchs-2015s-m-dd-en-pdf-01
+survey: CCHS
+year: '2015'
+temporal_type: single
+doc_type: master
+category: data-dictionary
+language: EN
+version: v1
+sequence: 1
+canonical_filename: cchs_2015s_dd_m_en_1_v1.yaml
+source:
+  cchs_uid: cchs-2015s-m-dd-en-pdf-01
+  filename: CCHS_2015_DataDictionary_Freqs.pdf
+  checksum: <sha256>
+extraction:
+  date: 2025-12-28
+  script: extract_data_dictionary.R
+  script_version: 1.1.0
 ```
 
-**New format**:
-```
-cchs_{year}{temporal}_{category}[_{subcategory}]_{doc_type}_{language}_{sequence}_v{version}.{ext}
-Example: cchs_2005s_data-dictionary_simp_p_en_2_v1.pdf
-```
+## [3.1.0] - 2025-10-01
 
 ### Added
-- **Namespace system** for multi-source provenance tracking:
-  - `Namespace` class defines source locations (OSF projects, Google Drive folders, local mirrors)
-  - `source_namespace` field links files to namespace definitions
-  - `source_filepath` preserves original path+filename from source
-  - Supports URL reconstruction: `base_url + "/" + source_filepath`
-  - `NamespaceTypeEnum` with values: osf, gdrive, local, odesi, statcan, other
-  - Catalog metadata contains namespace definitions with project_id, component_id, base_url, base_path
+- PUMF integration with Google Drive download scripts
+- Canonical filename fixes for consistent naming
+- Namespace system for multi-source support
 
-- **Subcategory support** for differentiating file variants:
-  - `main` - Main/primary version (typically Statistics Canada official format)
-  - `simp` - Simplified format (user-friendly tabular format)
-  - `subs` - Sub-sample or subset version
-  - `freq` - Frequency distribution version
-  - `rev` - Revised or updated version (use sparingly - prefer sequence numbers)
-  - `alt` - Alternative format or version
-  - `comp` - Companion or supplementary document
-  - `synt` - Synthetic data version
-  - `spec` - Special topic or focused subset
-
-- **Multi-source catalog support**:
-  - `source` field tracks file origin (osf, pumf, other)
-  - DataSourceEnum in schema for validation
-  - Infrastructure for integrating PUMF (Public Use Microdata Files)
-
-- **Enhanced schema validation** (v3.0.0):
-  - SubcategoryEnum with 9 permissible values
-  - Optional subcategory field in CCHSFile class
-  - Updated UID and canonical filename patterns
-  - Subcategory consistency validation between UID and metadata
-  - Required fields: source_namespace and source_filepath
-
-- **New file extensions** for PUMF integration:
-  - `xml` - DDI metadata files
-  - `webarchive` - Archived web questionnaires
-  - `html` - HTML format questionnaires
-
-- **New document categories** for PUMF:
-  - `ddi-metadata` - Data Documentation Initiative files
-  - `bootstrap` - Bootstrap weight documentation
-  - `quality-assurance` - Quality assurance reports
-  - `study-documentation` - Study-level documentation
-
-- **Reproducible environment management**:
-  - `renv` for package version locking and reproducibility
-  - `renv.lock` tracks all package dependencies with exact versions
-  - `.Rprofile` activates renv automatically on project load
-  - `ENVIRONMENT.md` documents R version requirements, package management workflow, and IDE setup
-  - `.renvignore` excludes data directories from dependency scanning
-  - R version compatibility floor: R 4.2+ (development on R 4.5.1)
-  - Support for `rig` (R version management) and `pak` (fast package installation)
-
-- **Documentation**:
-  - `docs/future-improvements.md` - Roadmap for schema-driven validation
-  - `docs/pumf-subcategory-proposal.md` - Subcategory design rationale
-  - `ENVIRONMENT.md` - Complete environment setup and package management guide
-  - Updated README.md with v3.0 UID format examples and renv setup instructions
-
-### Changed
-- **Schema version**: 2.1.0 → 3.0.0 (BREAKING CHANGE)
-- **UID system version**: 2.0 → 3.0
-- **Catalog metadata**: Now includes `schema_version` and `uid_system_version` fields
-- **Validation scripts**: Updated for v3.0 patterns and subcategory validation
-
-### Technical Details
-- LinkML schema ID: `https://github.com/Big-Life-Lab/cchs-documentation/schema/v3`
-- Subcategory is optional - only used when semantically meaningful
-- Files without subcategory use sequence numbers for differentiation
-- Backward compatible for files without subcategories (UIDs remain valid)
-
-### Migration Notes
-**For OSF Catalog Users**:
-- OSF catalog (1,262 files) will be updated to v3.0 format
-- Add `source: osf` field to all entries
-- No subcategories needed for most OSF files (use sequence numbers)
-- UIDs remain stable for files without subcategories
-
-**For New PUMF Integration**:
-- PUMF files will use v3.0 format from initial cataloging
-- Subcategories differentiate file variants (main vs simplified vs sub-sample)
-- Original filenames preserved in metadata alongside canonical names
-
-### Removed
-- **Deprecated path fields** removed from catalog (breaking change, but project is new):
-  - `local_path` - Replaced by `source_filepath` with local namespace
-  - `osf_path` - Replaced by `source_filepath` with OSF namespace
-  - `pumf_path` - Replaced by `source_filepath` with PUMF namespace
-  - Fields still marked as deprecated in schema for reference, but removed from catalog entries
-  - Cleaner catalog structure with namespace-based approach from the start
+## [3.0.0] - 2025-10-01
 
 ### Added
-- **Collections distribution system** via GitHub releases
-  - Manifest files for collection metadata tracking (`data/manifests/`)
-  - Core Master Collection v1.1.0: 129 English master files (2001-2023)
-  - Build directory for temporary collection artifacts (`build/`)
-  - Collection generation script (`R/extract_collection.R`)
-- **GitHub infrastructure** for releases and collaboration
-  - Release template for consistent collection releases
-  - GitHub workflow for automated collection releases
-  - Issue templates for bug reports, collection requests, and documentation
-- **Structured documentation** in `docs/` directory
-  - Architecture documentation with system design
-  - Collections guide for creating and using collections
-  - OSF sync guide for synchronization workflows
-  - CCHS glossary for terminology clarification
+- Namespace system for URL reconstruction and provenance tracking
+- Reproducible R environment with renv
+- UID format extended with optional subcategory code
 
-### Changed
-- **Repository architecture**: Shifted from single monolithic catalog to OSF mirror → Collections workflow
-- **Distribution model**: Collections distributed via GitHub releases (not stored in Git repository)
-- **File organization**: Separated source files (`cchs-osf-docs/`) from build artifacts (`build/`)
-- Updated README.md with collections architecture and accurate file counts
-- Updated CLAUDE.md with current system architecture and workflows
-- Renamed collection from "rag-collection" to "core-master-collection" for clarity
+### Breaking changes
+- UID format now includes optional subcategory for differentiating file variants
 
-### Technical
-- Collections are reproducible from OSF mirror
-- Manifests tracked in Git, collection ZIPs in releases
-- Build artifacts properly gitignored
-
-## [1.1.0] - 2025-09-29
-
-### Fixed
-- **BREAKING CHANGE**: Corrected version numbering for all files to v1 (was incorrectly using global sequence numbers)
-- Fixed canonical filename generation to use correct v1 version numbers
-- Corrected extract_collection() to use enhanced catalog by default
+## [1.1.0] - 2025-10-01
 
 ### Added
-- Enhanced categorization system with secondary categories and content tags
-- Secondary categories for multi-purpose documents (e.g., data dictionaries containing derived variables)
-- Content tags for semantic classification (income-variables, health-variables, etc.)
-- Enhanced inventory CSV with additional metadata fields:
-  - `secondary_categories`: Additional content types found in documents
-  - `content_tags`: Semantic classification tags  
-  - `temporal_type`: Single vs dual year surveys
-  - `doc_type`: Master vs share files
-  - `file_extension`: Document format
-  - `version`: Document version (now correctly v1 for all OSF downloads)
-  - `sequence`: Ordering within document versions
-- Automatic exclusion of redundant syntax files (variable-labels-english category) from RAG collections
-- Enhanced LinkML schema support for multivalued secondary_categories and content_tags
+- CCHS Core Master Collection v1.1.0 (129 files)
+- Enhanced categorisation with 34 document types
+- UID system v2 with temporal awareness
+- Collections distribution via GitHub releases
 
-### Changed
-- **BREAKING CHANGE**: All file versions now correctly set to v1 (first version from OSF)
-- Canonical filenames now use v1 instead of incremental version numbers
-- RAG document collections exclude 37 syntax files by default (redundant with data dictionaries)
-- Enhanced catalog is now the default catalog (cchs_catalog.yaml)
-- extract_collection() function updated with exclude_syntax parameter
-
-### Technical Details
-- Updated clean_catalog_structure.R to force v1 version assignment
-- Modified enhance_categorization.R to detect derived variables content in data dictionaries
-- Enhanced extract_collection.R with improved inventory generation
-- Updated LinkML schema with new multivalued fields
-
-### Migration Notes
-For users of the previous catalog:
-- All canonical filenames have changed from v2, v3, etc. to v1
-- This reflects the correct versioning (these are first downloads from OSF)
-- Secondary categories and content tags provide better document classification
-- Syntax files are excluded from RAG collections but remain in the full catalog
-
-## [1.0.0] - 2025-09-28
+## [1.0.0] - 2025-09-15
 
 ### Added
-- Initial CCHS documentation catalog with 1,262 files
-- LinkML schema for metadata validation
-- CCHS UID system with file extension awareness
-- Document categorization and metadata extraction
-- OSF integration and file synchronization
-- Basic extract_collection() functionality for RAG document preparation
-
-### Features
-- Comprehensive metadata catalog for CCHS documentation (2001-2023)
-- Standardized canonical file naming using Jenny Bryan conventions
-- Document type classification (questionnaire, data-dictionary, user-guide, etc.)
-- Language support (English/French)
-- Temporal type classification (single/dual/multi-year surveys)
-- File integrity verification with checksums
+- Initial metadata catalog system for CCHS documentation
+- OSF.io mirror synchronisation
+- LinkML schema validation
+- Basic UID system for file identification
