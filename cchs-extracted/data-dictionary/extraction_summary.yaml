@@ -1,20 +1,25 @@
-extraction_date: '2025-12-27'
+extraction_date: '2026-01-02'
 extraction_script_version: 1.1.0
 total_files: 16
 successful: 16
 failed: 0
-total_variables: 19925
+total_variables: 21100
+notes: |
+  Re-extracted 2015-2016, 2017-2018, 2007-2008 on 2026-01-02 to fix
+  incomplete extraction bug (leading whitespace handling).
+  Previous counts: 2015-2016=639, 2017-2018=520
+  New counts: 2015-2016=1283, 2017-2018=1051
 files:
   - cchs_uid: cchs-2015d-p-dd-en-pdf-01
     year: 2015-2016
-    canonical_filename: cchs_2015d_dd_p_en_1_v1.yaml
-    variables_count: 639
+    canonical_filename: cchs_2015d_dd_p_en_1_v2.yaml
+    variables_count: 1283
     source_checksum: 92f7cd0df65f476107bc938ef5d39f53de79ee1a22b010463e6dc56dd1a279a1
     status: success
   - cchs_uid: cchs-2017d-p-dd-en-pdf-01
     year: 2017-2018
-    canonical_filename: cchs_2017d_dd_p_en_1_v1.yaml
-    variables_count: 520
+    canonical_filename: cchs_2017d_dd_p_en_1_v2.yaml
+    variables_count: 1051
     source_checksum: 5013d607bcfb505aa953234ba78c96927269a5d5ac49fe7a5191189a6969c58c
     status: success
   - cchs_uid: cchs-2014s-p-dd-en-pdf-01
@@ -43,7 +48,7 @@ files:
     status: success
   - cchs_uid: cchs-2007d-p-dd-en-pdf-01
     year: 2007-2008
-    canonical_filename: cchs_2007d_dd_p_en_1_v1.yaml
+    canonical_filename: cchs_2007d_dd_p_en_1_v2.yaml
     variables_count: 1820
     source_checksum: ae6bf552d73f906544a46090c1ac9edfc70ac84d8cf1ddf0c8cd59cc306305f5
     status: success

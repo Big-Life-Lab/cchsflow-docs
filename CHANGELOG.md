@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.1] - 2026-01-02
+
+### Fixed
+
+- **PUMF data dictionary extraction**: Re-extracted 3 files with incomplete variable counts (now v2)
+  - `cchs_2015d_dd_p_en_1_v2.yaml`: 639 → 1,283 variables (+644)
+  - `cchs_2017d_dd_p_en_1_v2.yaml`: 520 → 1,051 variables (+531)
+  - `cchs_2007d_dd_p_en_1_v2.yaml`: Re-extracted (count unchanged at 1,820)
+- **Root cause**: Original extraction missed variables with leading whitespace in PDF formatting
+- **Verification**: All YAML counts now match PDF source line counts
+
+### Changed
+
+- Updated `extraction_summary.yaml` with corrected counts and re-extraction notes
+- Updated `docs/future-improvements.md` with root cause analysis and validation recommendations
+
 ## [4.0.0] - 2025-12-29
 
 ### Added
