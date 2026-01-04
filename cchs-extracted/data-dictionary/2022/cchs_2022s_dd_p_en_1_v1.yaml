@@ -1,0 +1,4327 @@
+metadata:
+  source: CCHS_2022_DDI.xml
+  source_type: ddi_xml
+  year: '2022'
+  doc_type: pumf
+  language: EN
+  extraction_date: '2026-01-03'
+  variables_count: 255
+variables:
+  - name: VERDATE
+    label: Date of file creation
+    categories: ~
+  - name: REFPER
+    label: Reference period
+    categories: ~
+  - name: ADM_RNO
+    label: Sequential record number
+    categories: ~
+  - name: COLMODE
+    label: Collection mode - 18+
+    categories:
+      - value: '1'
+        label: 'r-EQ: self response by electronic questionnaire'
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: 'i-EQ: Interviewer administered EQ in person'
+      - value: '2'
+        label: 'i-EQ: Interviewer administered EQ by telephone'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: COLMODEY
+    label: Collection mode - 12-17 (youth respondents)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: 'i-EQ: Interviewer administered EQ in person'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'r-EQ: self response by electronic questionnaire'
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'i-EQ: Interviewer administered EQ by telephone'
+  - name: COLMODEP
+    label: Collection mode - 12-17 (PMK respondents)
+    categories:
+      - value: '3'
+        label: 'i-EQ: Interviewer administered EQ in person'
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'i-EQ: Interviewer administered EQ by telephone'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'r-EQ: self response by electronic questionnaire'
+      - value: '6'
+        label: Valid skip
+  - name: GEOGPRV
+    label: Province or territory of residence of respondent - (G)
+    categories:
+      - value: '35'
+        label: Ontario
+      - value: '59'
+        label: British Columbia
+      - value: '47'
+        label: Saskatchewan
+      - value: '24'
+        label: Quebec
+      - value: '48'
+        label: Alberta
+      - value: '60'
+        label: Yukon /Northwest Territories/ Nunavut
+      - value: '13'
+        label: New Brunswick
+      - value: '12'
+        label: Nova Scotia
+      - value: '96'
+        label: Valid skip
+      - value: '46'
+        label: Manitoba
+      - value: '97'
+        label: Don't know
+      - value: '98'
+        label: Refusal
+      - value: '99'
+        label: Not stated
+      - value: '11'
+        label: Prince Edward Island
+      - value: '10'
+        label: Newfoundland and labrador
+  - name: GEODGHR4
+    label: Health region - (D, G)
+    categories:
+      - value: '48935'
+        label: North Zone
+      - value: '24905'
+        label: L�Estrie
+      - value: '59911'
+        label: East Kootenay HSDA
+      - value: '59921'
+        label: Fraser East HSDA
+      - value: '35951'
+        label: City of Ottawa HU
+      - value: '35943'
+        label: Leeds, Grenville and Lanark District HU
+      - value: '24913'
+        label: R�gion de Laval
+      - value: '35933'
+        label: Grey Bruce HU
+      - value: '59932'
+        label: Vancouver HSDA
+      - value: '35975'
+        label: Oxford Elgin St. Thomas HU
+      - value: '59942'
+        label: Central Vancouver Island HSDA
+      - value: '35966'
+        label: Wellington-Dufferin-Guelph HU
+      - value: '12901'
+        label: Zone 1 - Western
+      - value: '99996'
+        label: Valid skip
+      - value: '35949'
+        label: Northwestern/Porcupine HU
+      - value: '24916'
+        label: Mont�r�gie
+      - value: '47909'
+        label: Prince Albert Parkland/Mamawetan-Keewatin-Athabaska RHA
+      - value: '12903'
+        label: Zone 3 - Eastern
+      - value: '35934'
+        label: Haldimand-Norfolk HU
+      - value: '13903'
+        label: Zone 3 (Fredericton area)
+      - value: '59943'
+        label: North Vancouver Island HSDA
+      - value: '47906'
+        label: Saskatoon RHA
+      - value: '12902'
+        label: Zone 2 - Northern
+      - value: '24911'
+        label: Gasp�sie - �les-de-la-Madeleine
+      - value: '35941'
+        label: Kingston, Frontenac and Lennox and Addington HU
+      - value: '35970'
+        label: York Regional HU
+      - value: '24915'
+        label: R�gion des Laurentides
+      - value: '35935'
+        label: Haliburton, Kawartha, Pine Ridge District HU
+      - value: '47905'
+        label: Sunrise/Kelsey Trail RHA
+      - value: '47904'
+        label: Regina Qu�Appelle RHA
+      - value: '46905'
+        label: Southern Health
+      - value: '24901'
+        label: Bas-Saint-Laurent
+      - value: '35927'
+        label: Brant County HU
+      - value: '35940'
+        label: Chatham-Kent HU
+      - value: '35937'
+        label: City of Hamilton HU
+      - value: '35946'
+        label: Niagara Regional Area HU
+      - value: '59952'
+        label: Northern Interior HSDA
+      - value: '99999'
+        label: Not stated
+      - value: '24902'
+        label: Saguenay - Lac-Saint-Jean
+      - value: '10911'
+        label: Eastern Regional
+      - value: '35957'
+        label: Renfrew County and District HU
+      - value: '35942'
+        label: Lambton HU
+      - value: '59913'
+        label: Okanagan HSDA
+      - value: '35962'
+        label: Thunder Bay District HU
+      - value: '59923'
+        label: Fraser South HSDA
+      - value: '60901'
+        label: Yukon/Northwest Territories/Nunavut
+      - value: '35958'
+        label: Eastern Ontario HU
+      - value: '24912'
+        label: Chaudi�re-Appalaches
+      - value: '59951'
+        label: Northwest/Northeast
+      - value: '10913'
+        label: Western/Labrador-Grenfell Regional
+      - value: '24906'
+        label: R�gion de Montr�al
+      - value: '35995'
+        label: City of Toronto HU
+      - value: '46903'
+        label: Interlake-Eastern/Northern Regional Health Authority
+      - value: '59931'
+        label: Richmond HSDA
+      - value: '35953'
+        label: Peel Regional HU
+      - value: '48933'
+        label: Central Zone
+      - value: '59933'
+        label: North Shore/Coast Garibaldi HSDA
+      - value: '35955'
+        label: Peterborough County-City HU
+      - value: '35944'
+        label: Middlesex-London HU
+      - value: '48931'
+        label: South Zone
+      - value: '10912'
+        label: Central Regional
+      - value: '48932'
+        label: Calgary Zone
+      - value: '35926'
+        label: The District of Algoma HU
+      - value: '24903'
+        label: Capitale-Nationale
+      - value: '13906'
+        label: Zones 6 and 7 (Bathurst and Miramichi)
+      - value: '35965'
+        label: Waterloo HU
+      - value: '46902'
+        label: Prairie Mountain Health
+      - value: '35939'
+        label: Huron/Perth HU
+      - value: '59922'
+        label: Fraser North HSDA
+      - value: '59941'
+        label: South Vancouver Island HSDA
+      - value: '12904'
+        label: Zone 4 - Central
+      - value: '35961'
+        label: Sudbury and District HU
+      - value: '24907'
+        label: L�Outaouais
+      - value: '46901'
+        label: Winnipeg RHA
+      - value: '13902'
+        label: Zone 2 (Saint John area)
+      - value: '47901'
+        label: Sun Country/Five Hills/Cypress RHA
+      - value: '24904'
+        label: Mauricie et du Centre-du-Qu�bec
+      - value: '35936'
+        label: Halton Regional HU
+      - value: '99997'
+        label: Don't know
+      - value: '24909'
+        label: C�te-Nord
+      - value: '59914'
+        label: Thompson/Cariboo HSDA
+      - value: '13901'
+        label: Zone 1 (Moncton area)
+      - value: '48934'
+        label: Edmonton Zone
+      - value: '35968'
+        label: Windsor-Essex County HU
+      - value: '24914'
+        label: R�gion de Lanaudi�re
+      - value: '24908'
+        label: L�Abitibi-T�miscamingue
+      - value: '47907'
+        label: Heartland/Prairie North RHA
+      - value: '35938'
+        label: Hastings and Prince Edward Counties HU
+      - value: '13904'
+        label: Zones 4 and 5 (Edmundston and Campbellton)
+      - value: '35947'
+        label: North Bay Parry Sound/Timiskaming HU
+      - value: '35960'
+        label: Simcoe Muskoka District HU
+      - value: '59912'
+        label: Kootenay-Boundary HSDA
+      - value: '99998'
+        label: Refusal
+      - value: '11900'
+        label: Prince Edward Island
+      - value: '35930'
+        label: Durham Regional HU
+  - name: DHHDGHSZ
+    label: Household size - Grouped
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Lives alone (household size=1)
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Household size 2 or more
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: EDDVH3
+    label: Highest level of education - household, 3 levels - (D)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Less than secondary school graduation
+      - value: '3'
+        label: Post-secondary certificate/diploma / university degree
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Secondary school graduation, no post-secondary education
+      - value: '9'
+        label: Not stated
+  - name: DHHGAGE
+    label: Age - (G)
+    categories:
+      - value: '5'
+        label: 65 and older
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: 35 to 49 years
+      - value: '4'
+        label: 50 to 64 years
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 18 to 34 years
+      - value: '1'
+        label: 12 to 17 years
+      - value: '9'
+        label: Not stated
+  - name: DHH_SEX
+    label: Sex at birth
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Male
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Female
+  - name: DOMAC
+    label: Main activity (1) - Inclusion Flag - (F)
+    categories:
+      - value: '0'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+  - name: MAC_05
+    label: Main activity - worked at job / business - 12 mo
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+  - name: DOGEN
+    label: General health - Inclusion Flag - (F)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+  - name: GEN_01
+    label: Perceived health
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '5'
+        label: Poor
+      - value: '4'
+        label: Fair
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Very good
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Excellent
+      - value: '3'
+        label: Good
+      - value: '7'
+        label: Don't know
+  - name: GEN_05
+    label: Perceived mental health
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Fair
+      - value: '1'
+        label: Excellent
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: Good
+      - value: '2'
+        label: Very good
+      - value: '8'
+        label: Refusal
+      - value: '5'
+        label: Poor
+  - name: GEN_10
+    label: Perceived life stress
+    categories:
+      - value: '3'
+        label: A bit stressful
+      - value: '6'
+        label: Valid skip
+      - value: '5'
+        label: Extremely stressful
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Not very stressful
+      - value: '4'
+        label: Quite a bit stressful
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Not at all stressful
+      - value: '7'
+        label: Don't know
+  - name: GEN_15
+    label: Perceived stress at work
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: A bit stressful
+      - value: '4'
+        label: Quite a bit stressful
+      - value: '1'
+        label: Not at all stressful
+      - value: '5'
+        label: Extremely stressful
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Not very stressful
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+  - name: GEN_20
+    label: Sense of belonging to local community
+    categories:
+      - value: '2'
+        label: Somewhat strong
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: Somewhat weak
+      - value: '4'
+        label: Very weak
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Very strong
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+  - name: DOLSM
+    label: Life satisfaction measures - Inclusion Flag - (F)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: LSM_01
+    label: Satisfaction with life in general
+    categories:
+      - value: '1'
+        label: '|'
+      - value: '0'
+        label: Very dissatisfied
+      - value: '5'
+        label: '|'
+      - value: '96'
+        label: Valid skip
+      - value: '7'
+        label: '|'
+      - value: '98'
+        label: Refusal
+      - value: '4'
+        label: '|'
+      - value: '97'
+        label: Don't know
+      - value: '99'
+        label: Not stated
+      - value: '3'
+        label: '|'
+      - value: '8'
+        label: '|'
+      - value: '10'
+        label: Very satisfied
+      - value: '2'
+        label: '|'
+      - value: '6'
+        label: '|'
+      - value: '9'
+        label: V
+  - name: LSMDVSWL
+    label: Satisfaction with life in general - (D)
+    categories:
+      - value: '3'
+        label: Neither satisfied nor dissatisfied
+      - value: '5'
+        label: Very dissatisfied
+      - value: '4'
+        label: Dissatisfied
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Satisfied
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Very satisfied
+  - name: DOHWT
+    label: Height and weight - Inclusion Flag - (F)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: HWTDGISW
+    label: BMI classification for adults (self-reported) - intl standard - (D, G)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Underweight/ Normal weight
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Overweight / Obese - Class I, II, III
+  - name: HWTDGWHO
+    label: BMI age 12 to 17 (self-reported) - WHO classification - (D, G)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Thinness/Normal
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Overweight/Obese
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: HWTDGBCC
+    label: BMI classification for adults (adjusted) - intl standard - (D, G)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Overweight / Obese - Class I, II, III
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Underweight/ Normal weight
+      - value: '9'
+        label: Not stated
+  - name: DOWTP
+    label: Weight perception - Inclusion Flag - (F)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: WTP_50
+    label: Self-perceived weight - overweight / underweight / just about right
+    categories:
+      - value: '2'
+        label: Underweight
+      - value: '3'
+        label: Just about right
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Overweight
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: DOCOV2
+    label: COVID-19 (2) - Inclusion Flag - (F)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+  - name: COV2_005
+    label: Self-perceived mental health - before / during pandemic
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Much better now
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: About the same
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Somewhat better now
+      - value: '7'
+        label: Don't know
+      - value: '5'
+        label: Much worse now
+      - value: '4'
+        label: Somewhat worse now
+  - name: COV2_10A
+    label: COVID-19 precautions - washes hands more frequently
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+  - name: COV2_10B
+    label: COVID-19 precautions - wears a mask in public places
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: COV2_10C
+    label: COVID-19 precautions - keeps a 2 m / 6 ft distance from others
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+  - name: COV2_10D
+    label: COVID-19 precautions - avoids crowds / large gatherings
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+  - name: COV2_10E
+    label: COVID-19 precautions - avoids leaving house for non-essential reasons
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: COV2_10F
+    label: COVID-19 precautions - works from home
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+  - name: COV2_10G
+    label: COVID-19 precautions - uses delivery / curb side pick-up services
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+  - name: COV2_10H
+    label: COVID-19 precautions - self-isolates if symptoms
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+  - name: COV2_10I
+    label: COVID-19 precautions - other precaution
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+  - name: COV2_10J
+    label: COVID-19 precautions - no precautions taken
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+  - name: COV2_038
+    label: Received COVID-19 vaccine
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Yes, received at least one dose of a vaccine
+  - name: COV2_030
+    label: COVID-19 vaccine - requires 1 or 2 doses
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Two doses
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: One dose
+  - name: COV2_035
+    label: COVID-19 vaccine - number of doses received so far
+    categories:
+      - value: '2'
+        label: Two doses
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: Three doses
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: One dose
+      - value: '4'
+        label: Four doses or more
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: COV2_041
+    label: COVID-19 vaccine - main reason why not vaccinated
+    categories:
+      - value: '96'
+        label: Valid skip
+      - value: '98'
+        label: Refusal
+      - value: '5'
+        label: Not been able to get an appointment yet
+      - value: '10'
+        label: Haven�t had the time
+      - value: '12'
+        label: Other reason
+      - value: '97'
+        label: Don't know
+      - value: '6'
+        label: Don't know where to go to get vaccinated
+      - value: '3'
+        label: Don�t have confidence in the vaccine that was offered
+      - value: '9'
+        label: Already had COVID-19
+      - value: '99'
+        label: Not stated
+      - value: '4'
+        label: Appointment in the future
+      - value: '7'
+        label: Sick at the time the vaccine was offered
+      - value: '11'
+        label: Don�t think it'snecessary, risks of having COVID-19 are low
+      - value: '2'
+        label: Don't want to be vaccinated at all
+      - value: '1'
+        label: Don't want to be vaccinated at this time
+      - value: '8'
+        label: Vaccine is not recommended for me
+  - name: COV2_45A
+    label: COVID-19 vaccine - reasons don't want - not at high risk
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+  - name: COV2_45B
+    label: COVID-19 vaccine - reasons don't want - won't be very sick
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+  - name: COV2_45C
+    label: COVID-19 vaccine - reasons don't want - pandemic severity overstated
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+  - name: COV2_45D
+    label: COVID-19 vaccine - reasons don't want - vaccines are not effective
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+  - name: COV2_45E
+    label: COVID-19 vaccine - reasons don't want - vaccines are not safe
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+  - name: COV2_45F
+    label: COVID-19 vaccine - reasons don't want - don't trust its effectiveness
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: COV2_45G
+    label: COVID-19 vaccine - reasons don't want - don't trust its safety
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+  - name: COV2_45H
+    label: COVID-19 vaccine - reasons don't want -  philosophical / religious
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+  - name: COV2_45I
+    label: COVID-19 vaccine - reasons don't want - other reason
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+  - name: COV2_040
+    label: COVID-19 vaccine - likeliness of getting it
+    categories:
+      - value: '4'
+        label: Very unlikely
+      - value: '3'
+        label: Somewhat unlikely
+      - value: '1'
+        label: Very likely
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Somewhat likely
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+  - name: DOCOV3
+    label: COVID-19 (3) - Inclusion Flag - (F)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+  - name: COV3_005
+    label: COVID-19 vaccine - likeliness of getting additional dose if offered
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '3'
+        label: Somewhat unlikely
+      - value: '1'
+        label: Very likely
+      - value: '2'
+        label: Somewhat likely
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Very unlikely
+  - name: DOCCC
+    label: Chronic conditions - Inclusion Flag - (F)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: CCC_05
+    label: Has diabetes
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+  - name: CCC_80
+    label: Has high blood pressure
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: CCC_85
+    label: High blood pressure - took medication - 1 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+  - name: CCC_90
+    label: Has had high blood cholesterol - lifetime
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: CCC_135
+    label: Has a mood disorder (depression, bipolar, mania, dysthymia)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+  - name: CCCDGSKL
+    label: Musculoskeletal condition - (G)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+  - name: CCCDGCAR
+    label: Cardiovascular condition (Heart disease or stroke) - (G)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+  - name: DOCC1
+    label: Chronic conditions (1) - Inclusion Flag - (F)
+    categories:
+      - value: '0'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+  - name: CC1_140
+    label: Has an anxiety disorder (phobia, panic, generalized anxiety)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+  - name: CC1_145
+    label: Has post-traumatic stress disorder (PTSD)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: CC1_155
+    label: Has chronic fatigue syndrome
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+  - name: CC1_170
+    label: Has multiple chemical sensitivities (MCS)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+  - name: DOWDM
+    label: Abilities - Inclusion Flag - (F)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '0'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+  - name: WDMDGDIF
+    label: Difficulty - Level of difficulty across domains - (G)
+    categories:
+      - value: '1'
+        label: No difficulty in any domain
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: At least 'some difficulty' in at least one domain
+  - name: DOOHM
+    label: Oral health - Inclusion Flag - (F)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '0'
+        label: 'No'
+  - name: OHM_05
+    label: Perceived oral health
+    categories:
+      - value: '3'
+        label: Good
+      - value: '5'
+        label: Poor
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Excellent
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '4'
+        label: Fair
+      - value: '2'
+        label: Very good
+  - name: OHM_15
+    label: Persistent / on-going mouth pain - frequency - 12 mo
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: Rarely
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Never
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Often
+      - value: '2'
+        label: Sometimes
+  - name: DOOHM3
+    label: Oral Health 3 - Inlcusion Flag - (F)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '0'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+  - name: OHM3_05
+    label: Visit dental professional - frequency
+    categories:
+      - value: '5'
+        label: Never
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: Less than once a year for check-ups or treatments
+      - value: '1'
+        label: More than once a year for check-ups or treatments
+      - value: '2'
+        label: About once a year for check-ups or treatments
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '4'
+        label: Only for emergency care
+  - name: OHM3_10
+    label: Visited dental professional - last time
+    categories:
+      - value: '3'
+        label: 2 years to less than 3 years ago
+      - value: '6'
+        label: 5 or more years ago
+      - value: '98'
+        label: Refusal
+      - value: '5'
+        label: 4 years to less than 5 years ago
+      - value: '97'
+        label: Don't know
+      - value: '99'
+        label: Not stated
+      - value: '4'
+        label: 3 years to less than 4 years ago
+      - value: '2'
+        label: 1 year to less than 2 years ago
+      - value: '96'
+        label: Valid skip
+      - value: '1'
+        label: Less than a year ago
+  - name: OHM3_15
+    label: Avoided going to a dental professional due to cost - 12 mo
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: OHM3_18
+    label: Avoided having recommended dental treatment due to cost - 12 mo
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: OHM3_20A
+    label: Type dental treatment avoided due to cost - check-ups / cleanings
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+  - name: OHM3_20B
+    label: Type dental treatment avoided due to cost - fillings
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+  - name: OHM3_20C
+    label: Type dental treatment avoided due to cost - root canal treatment
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+  - name: OHM3_20D
+    label: Type dental treatment avoided due to cost - tooth extraction
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+  - name: OHM3_20E
+    label: Type dental treatment avoided due to cost - tooth replacement
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+  - name: OHM3_20F
+    label: Type dental treatment avoided due to cost - no response provided
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: OHM3_45
+    label: Insurance - dental expenses - all / part cost coverage
+    categories:
+      - value: '3'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+  - name: OHM3G50A
+    label: Type of dental insurance - private plan (G)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+  - name: OHM3_50C
+    label: Type of insurance dental - government paid plan
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+  - name: OHM3_50E
+    label: Type of insurance dental - don't know
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: DOEAH
+    label: Eating habits - Inclusion Flag - (F)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+  - name: EAHG05
+    label: Ate food from a restaurant - number of times - 30 d - (G)
+    categories:
+      - value: '1'
+        label: 1-3 times (less than once a week)
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: 10+ times in a month
+      - value: '2'
+        label: 4-9 times
+      - value: '0'
+        label: Zero times
+      - value: '6'
+        label: Valid skip
+  - name: EAHDVCHO
+    label: Daily consumption - chocolate milk - (D)
+    categories:
+      - value: '999.8'
+        label: Refusal
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.7'
+        label: Don't know
+      - value: '999.9'
+        label: Not stated
+  - name: EAHDVFFD
+    label: Daily consumption - fruit flavoured drinks or sports drinks - (D)
+    categories:
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.8'
+        label: Refusal
+      - value: '999.7'
+        label: Don't know
+      - value: '999.9'
+        label: Not stated
+  - name: EAHDVFRU
+    label: Daily consumption - fruit - (D)
+    categories:
+      - value: '999.8'
+        label: Refusal
+      - value: '999.7'
+        label: Don't know
+      - value: '999.9'
+        label: Not stated
+      - value: '999.6'
+        label: Valid skip
+  - name: EAHDVGRN
+    label: Daily consumption - dark green vegetables - (D)
+    categories:
+      - value: '999.9'
+        label: Not stated
+      - value: '999.7'
+        label: Don't know
+      - value: '999.8'
+        label: Refusal
+      - value: '999.6'
+        label: Valid skip
+  - name: EAHDVJUI
+    label: Daily consumption - pure fruit juice - (D)
+    categories:
+      - value: '999.9'
+        label: Not stated
+      - value: '999.8'
+        label: Refusal
+      - value: '999.7'
+        label: Don't know
+      - value: '999.6'
+        label: Valid skip
+  - name: EAHDVORA
+    label: Daily consumption - orange-coloured vegetables - (D)
+    categories:
+      - value: '999.7'
+        label: Don't know
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.9'
+        label: Not stated
+      - value: '999.8'
+        label: Refusal
+  - name: EAHDVSCD
+    label: Daily consumption - sweetened coffee drinks or iced tea - (D)
+    categories:
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.8'
+        label: Refusal
+      - value: '999.9'
+        label: Not stated
+      - value: '999.7'
+        label: Don't know
+  - name: EAHDVSOD
+    label: Daily consumption - regular soft drinks - (D)
+    categories:
+      - value: '999.7'
+        label: Don't know
+      - value: '999.8'
+        label: Refusal
+      - value: '999.9'
+        label: Not stated
+      - value: '999.6'
+        label: Valid skip
+  - name: EAHDVSTA
+    label: Daily consumption - starchy vegetables - (D)
+    categories:
+      - value: '999.8'
+        label: Refusal
+      - value: '999.7'
+        label: Don't know
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.9'
+        label: Not stated
+  - name: EAHDVVEG
+    label: Daily consumption - other vegetables - (D)
+    categories:
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.9'
+        label: Not stated
+      - value: '999.7'
+        label: Don't know
+      - value: '999.8'
+        label: Refusal
+  - name: EAHDVEND
+    label: Daily consumption - energy drinks - (D)
+    categories:
+      - value: '999.9'
+        label: Not stated
+      - value: '999.6'
+        label: Valid skip
+      - value: '999.7'
+        label: Don't know
+      - value: '999.8'
+        label: Refusal
+  - name: EAHDVBVT
+    label: Daily consumption - beverages - (D)
+    categories:
+      - value: '9999.6'
+        label: Valid skip
+      - value: '9999.9'
+        label: Not stated
+      - value: '9999.8'
+        label: Refusal
+      - value: '9999.7'
+        label: Don't know
+  - name: EAHDVBVG
+    label: Grouping of total daily consumption - beverages - (D)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Drinks beverages between 5 and 10 times per day
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Drinks beverages less than 5 times per day
+      - value: '3'
+        label: Drinks beverages more than 10 times per day
+  - name: EAHDVFVT
+    label: Daily consumption - fruits and vegetables - (D)
+    categories:
+      - value: '9999.9'
+        label: Not stated
+      - value: '9999.6'
+        label: Valid skip
+      - value: '9999.8'
+        label: Refusal
+      - value: '9999.7'
+        label: Don't know
+  - name: EAHDVFVG
+    label: Grouping of total daily consumption - fruits and vegetables - (D)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Eats fruits and vegetables less than 5 times per day
+      - value: '3'
+        label: Eats fruits and vegetables more than 10 times per day
+      - value: '2'
+        label: Eats fruits and vegetables between 5 and 10 times per day
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+  - name: DOPAA
+    label: Physical activities - adults - Inclusion Flag - (F)
+    categories:
+      - value: '0'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+  - name: PAA_05
+    label: Active transportation - 7 d
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+  - name: PAA_10A
+    label: Active transportation - Monday
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+  - name: PAA_10B
+    label: Active transportation - Tuesday
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+  - name: PAA_10C
+    label: Active transportation - Wednesday
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+  - name: PAA_10D
+    label: Active transportation - Thursday
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+  - name: PAA_10E
+    label: Active transportation - Friday
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+  - name: PAA_10F
+    label: Active transportation - Saturday
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+  - name: PAA_10G
+    label: Active transportation - Sunday
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: PAA_15A
+    label: Active transportation  - 7 d - total - hours
+    categories:
+      - value: '998'
+        label: Refusal
+      - value: '997'
+        label: Don't know
+      - value: '996'
+        label: Valid skip
+      - value: '999'
+        label: Not stated
+  - name: PAA_15B
+    label: Active transportation - 7 d - total - minutes
+    categories:
+      - value: '50'
+        label: '50'
+      - value: '45'
+        label: '45'
+      - value: '97'
+        label: Don't know
+      - value: '5'
+        label: '5'
+      - value: '25'
+        label: '25'
+      - value: '15'
+        label: '15'
+      - value: '55'
+        label: '55'
+      - value: '0'
+        label: '0'
+      - value: '30'
+        label: '30'
+      - value: '99'
+        label: Not stated
+      - value: '96'
+        label: Valid skip
+      - value: '40'
+        label: '40'
+      - value: '20'
+        label: '20'
+      - value: '98'
+        label: Refusal
+      - value: '10'
+        label: '10'
+      - value: '35'
+        label: '35'
+  - name: PAA_30
+    label: Sports / fitness / recreational physical act - 7 d
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+  - name: PAA_35
+    label: Sports / fitness / recreational physical act - sweat
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+  - name: PAA_40A
+    label: Sports / fitness / recreational physical act - Monday
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+  - name: PAA_40B
+    label: Sports / fitness / recreational physical act - Tuesday
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: PAA_40C
+    label: Sports / fitness / recreational physical act  - Wednesday
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: PAA_40D
+    label: Sports / fitness / recreational physical act - Thursday
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+  - name: PAA_40E
+    label: Sports / fitness / recreational physical act - Friday
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+  - name: PAA_40F
+    label: Sports / fitness / recreational physical act - Saturday
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: PAA_40G
+    label: Sports / fitness / recreational physical act - Sunday
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: PAA_45A
+    label: Sports / fitness / recreational physical act - 7 d - total - hours
+    categories:
+      - value: '999'
+        label: Not stated
+      - value: '997'
+        label: Don't know
+      - value: '996'
+        label: Valid skip
+      - value: '998'
+        label: Refusal
+  - name: PAA_45B
+    label: Sports / fitness / recreational physical act - 7 d - total - minutes
+    categories:
+      - value: '99'
+        label: Not stated
+      - value: '45'
+        label: '45'
+      - value: '97'
+        label: Don't know
+      - value: '40'
+        label: '40'
+      - value: '5'
+        label: '5'
+      - value: '15'
+        label: '15'
+      - value: '30'
+        label: '30'
+      - value: '0'
+        label: '0'
+      - value: '25'
+        label: '25'
+      - value: '55'
+        label: '55'
+      - value: '10'
+        label: '10'
+      - value: '98'
+        label: Refusal
+      - value: '35'
+        label: '35'
+      - value: '50'
+        label: '50'
+      - value: '20'
+        label: '20'
+      - value: '96'
+        label: Valid skip
+  - name: PAA_60
+    label: Other physical activities - 7 d
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+  - name: PAA_65
+    label: Other physical activities - sweat
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: PAA_70A
+    label: Other physical activities -  Monday
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: PAA_70B
+    label: Other physical activities - Tuesday
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+  - name: PAA_70C
+    label: Other physical activities - Wednesday
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: PAA_70D
+    label: Other physical activities - Thursday
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: PAA_70E
+    label: Other physical activities - Friday
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+  - name: PAA_70F
+    label: Other physical activities - Saturday
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: PAA_70G
+    label: Other physical activities - Sunday
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: PAA_75A
+    label: Other physical activities - 7 d - total - hours
+    categories:
+      - value: '997'
+        label: Don't know
+      - value: '999'
+        label: Not stated
+      - value: '998'
+        label: Refusal
+      - value: '996'
+        label: Valid skip
+  - name: PAA_75B
+    label: Other physical activities - 7 d - total - minutes
+    categories:
+      - value: '40'
+        label: '40'
+      - value: '97'
+        label: Don't know
+      - value: '96'
+        label: Valid skip
+      - value: '25'
+        label: '25'
+      - value: '55'
+        label: '55'
+      - value: '30'
+        label: '30'
+      - value: '20'
+        label: '20'
+      - value: '50'
+        label: '50'
+      - value: '45'
+        label: '45'
+      - value: '0'
+        label: '0'
+      - value: '15'
+        label: '15'
+      - value: '98'
+        label: Refusal
+      - value: '5'
+        label: '5'
+      - value: '99'
+        label: Not stated
+      - value: '10'
+        label: '10'
+      - value: '35'
+        label: '35'
+  - name: PAA_95
+    label: Physical activities - vigorous intensity
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+  - name: PAA_100A
+    label: Physical activities - vigorous intensity - 7 d - total - hours
+    categories:
+      - value: '999'
+        label: Not stated
+      - value: '998'
+        label: Refusal
+      - value: '997'
+        label: Don't know
+      - value: '996'
+        label: Valid skip
+  - name: PAA_100B
+    label: Physical activities - vigorous intensity - 7 d - total - minutes
+    categories:
+      - value: '50'
+        label: '50'
+      - value: '96'
+        label: Valid skip
+      - value: '55'
+        label: '55'
+      - value: '99'
+        label: Not stated
+      - value: '5'
+        label: '5'
+      - value: '98'
+        label: Refusal
+      - value: '45'
+        label: '45'
+      - value: '35'
+        label: '35'
+      - value: '10'
+        label: '10'
+      - value: '20'
+        label: '20'
+      - value: '97'
+        label: Don't know
+      - value: '40'
+        label: '40'
+      - value: '0'
+        label: '0'
+      - value: '30'
+        label: '30'
+      - value: '25'
+        label: '25'
+      - value: '15'
+        label: '15'
+  - name: PAADVMVA
+    label: Total minutes - moderate to vigorous physical activities - 7 d - (D)
+    categories:
+      - value: '99998'
+        label: Refusal
+      - value: '99999'
+        label: Not stated
+      - value: '99997'
+        label: Don't know
+      - value: '99996'
+        label: Valid skip
+  - name: PAADVACV
+    label: Physical activity indicator - (D)
+    categories:
+      - value: '1'
+        label: Physically active at / above recommended level from CPAG
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: No physical activity minutes reported
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Physically active below recommended level from CPAG
+      - value: '6'
+        label: Valid skip
+  - name: PAADVAC2
+    label: Alternate physical activity indicator - (D)
+    categories:
+      - value: '1'
+        label: Level 1
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Level 2
+      - value: '4'
+        label: Level 4
+      - value: '3'
+        label: Level 3
+  - name: PAADVVIG
+    label: Total minutes - vigorous physical activities - 7 d - (D)
+    categories:
+      - value: '99999'
+        label: Not stated
+      - value: '99996'
+        label: Valid skip
+      - value: '99997'
+        label: Don't know
+      - value: '99998'
+        label: Refusal
+  - name: PAADVVOL
+    label: Volume of weekly activity - 7 d (METs*mins/week) - (D)
+    categories:
+      - value: '99998'
+        label: Refusal
+      - value: '99997'
+        label: Don't know
+      - value: '99999'
+        label: Not stated
+      - value: '99996'
+        label: Valid skip
+  - name: PAADVWHO
+    label: Physically active, based on WHO guidelines - (D)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Level 1
+      - value: '4'
+        label: Level 4
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: Level 3
+      - value: '2'
+        label: Level 2
+      - value: '9'
+        label: Not stated
+  - name: DOUPE
+    label: Use of protective equipment - Inclusion Flag - (F)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '0'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+  - name: UPE_05
+    label: Bicycling - 12 mo
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: UPE_10
+    label: Bicycling - helmet - frequency
+    categories:
+      - value: '2'
+        label: Most of the time
+      - value: '4'
+        label: Never
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Always
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: Rarely
+  - name: UPE_15
+    label: Rollerblading - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+  - name: UPE_20
+    label: Rollerblading - helmet - frequency
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '4'
+        label: Never
+      - value: '1'
+        label: Always
+      - value: '2'
+        label: Most of the time
+      - value: '3'
+        label: Rarely
+  - name: UPE_25
+    label: Rollerblading - wrist protectors - frequency
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Always
+      - value: '2'
+        label: Most of the time
+      - value: '3'
+        label: Rarely
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Never
+      - value: '9'
+        label: Not stated
+  - name: UPE_30
+    label: Rollerblading - elbow pads - frequency
+    categories:
+      - value: '2'
+        label: Most of the time
+      - value: '3'
+        label: Rarely
+      - value: '1'
+        label: Always
+      - value: '4'
+        label: Never
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+  - name: UPE_35
+    label: Rollerblading - knee pads - frequency
+    categories:
+      - value: '4'
+        label: Never
+      - value: '3'
+        label: Rarely
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Always
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Most of the time
+      - value: '6'
+        label: Valid skip
+  - name: UPE_40A
+    label: Downhill skiing - 12 mo
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: UPE_45
+    label: Downhill skiing - helmet - frequency
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: Rarely
+      - value: '1'
+        label: Always
+      - value: '2'
+        label: Most of the time
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '4'
+        label: Never
+  - name: UPE_40B
+    label: Snowboarding - 12 mo
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: UPE_50
+    label: Snowboarding - helmet - frequency
+    categories:
+      - value: '1'
+        label: Always
+      - value: '4'
+        label: Never
+      - value: '2'
+        label: Most of the time
+      - value: '8'
+        label: Refusal
+      - value: '3'
+        label: Rarely
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: UPE_55
+    label: Snowboarding - wrist protectors - frequency
+    categories:
+      - value: '2'
+        label: Most of the time
+      - value: '1'
+        label: Always
+      - value: '3'
+        label: Rarely
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '4'
+        label: Never
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: UPE_60A
+    label: Skateboarding - 12 mo
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: UPE_65
+    label: Skateboarding - helmet - frequency
+    categories:
+      - value: '2'
+        label: Most of the time
+      - value: '4'
+        label: Never
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Always
+      - value: '3'
+        label: Rarely
+  - name: UPE_70
+    label: Skateboarding - wrist protectors - frequency
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Most of the time
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Never
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Always
+      - value: '3'
+        label: Rarely
+  - name: UPE_75
+    label: Skateboarding - elbow pads - frequency
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Most of the time
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '4'
+        label: Never
+      - value: '3'
+        label: Rarely
+      - value: '1'
+        label: Always
+  - name: UPE_80
+    label: Ice hockey - 12 mo
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+  - name: UPE_85
+    label: Ice hockey - mouth guard - frequency
+    categories:
+      - value: '1'
+        label: Always
+      - value: '8'
+        label: Refusal
+      - value: '4'
+        label: Never
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Most of the time
+      - value: '3'
+        label: Rarely
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: DOSBE
+    label: Sedentary behaviours - Inclusion Flag - (F)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+  - name: SBE_005
+    label: Free time sitting/lying watching screen - school/work day - 7d
+    categories:
+      - value: '97'
+        label: Don't know
+      - value: '5'
+        label: 8 hours or more per day
+      - value: '6'
+        label: Was not at work or school
+      - value: '2'
+        label: More than 2 hours but less than 4 hours
+      - value: '99'
+        label: Not stated
+      - value: '98'
+        label: Refusal
+      - value: '96'
+        label: Valid skip
+      - value: '1'
+        label: 2 hours or less per day
+      - value: '3'
+        label: 4 hours to less than 6 hours
+      - value: '4'
+        label: 6 hours to less than 8 hours
+  - name: SBE_010
+    label: Free time sitting/lying watching screen - not school/work day - 7d
+    categories:
+      - value: '4'
+        label: 6 hours to less than 8 hours
+      - value: '3'
+        label: 4 hours to less than 6 hours
+      - value: '5'
+        label: 8 hours or more per day
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 2 hours or less per day
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: More than 2 hours but less than 4 hours
+  - name: DOSLP
+    label: Sleep - Inclusion Flag - (F)
+    categories:
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+  - name: SLPG005
+    label: Number of hours spent sleeping per night - (G)
+    categories:
+      - value: '8'
+        label: 9 hours to less than 10 hours
+      - value: '4'
+        label: 5 hours to less than 6 hours
+      - value: '99'
+        label: Not stated
+      - value: '2'
+        label: 3 hours to less than 4 hours
+      - value: '10'
+        label: 11 hours to less than 12 hours
+      - value: '9'
+        label: 10 hours to less than 11 hours
+      - value: '3'
+        label: 4 hours to less than 5 hours
+      - value: '7'
+        label: 8 hours to less than 9 hours
+      - value: '11'
+        label: 12 hours or more
+      - value: '1'
+        label: Under 3 hours
+      - value: '6'
+        label: 7 hours to less than 8 hours
+      - value: '98'
+        label: Refusal
+      - value: '5'
+        label: 6 hours to less than 7 hours
+      - value: '96'
+        label: Valid skip
+      - value: '97'
+        label: Don't know
+  - name: SLP_010
+    label: Trouble going to sleep or staying asleep - frequency
+    categories:
+      - value: '5'
+        label: All of the time
+      - value: '8'
+        label: Refusal
+      - value: '3'
+        label: Sometimes
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Never
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Rarely
+      - value: '7'
+        label: Don't know
+      - value: '4'
+        label: Most of the time
+  - name: SLP_015
+    label: Refreshing sleep - frequency
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '5'
+        label: All of the time
+      - value: '1'
+        label: Never
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: Sometimes
+      - value: '2'
+        label: Rarely
+      - value: '4'
+        label: Most of the time
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+  - name: SLP_020
+    label: Difficulty staying awake - frequency
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Rarely
+      - value: '5'
+        label: All of the time
+      - value: '1'
+        label: Never
+      - value: '8'
+        label: Refusal
+      - value: '4'
+        label: Most of the time
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: Sometimes
+  - name: DOCSS
+    label: Current smoking status - Inclusion Flag - (F)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+  - name: CSS_05
+    label: Smoked a whole cigarette - lifetime
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+  - name: CSS_15
+    label: Smoked more than 100 cigarettes - lifetime
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: CSSG20
+    label: Smoked - Frequency - 30 days - (G)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Every day
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: At least once in the month, but less than once a day
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '3'
+        label: Not at all
+  - name: CSS_25
+    label: Num of cigarettes smoked daily (daily smoker)
+    categories:
+      - value: '998'
+        label: Refusal
+      - value: '997'
+        label: Don't know
+      - value: '996'
+        label: Valid skip
+      - value: '999'
+        label: Not stated
+  - name: CSS_30
+    label: Num of cigarettes smoked daily (occasional smoker)
+    categories:
+      - value: '999'
+        label: Not stated
+      - value: '998'
+        label: Refusal
+      - value: '997'
+        label: Don't know
+      - value: '996'
+        label: Valid skip
+  - name: CSS_40
+    label: Made serious attempt to stop smoking - 12 mo
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: DOSPU
+    label: Smoking - past use - Inclusion Flag - (F)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: SPU_05
+    label: Smoked daily - lifetime (occasional / former smoker)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: SPU_20
+    label: Num of cigarettes smoked daily (former daily smoker)
+    categories:
+      - value: '999'
+        label: Not stated
+      - value: '996'
+        label: Valid skip
+      - value: '998'
+        label: Refusal
+      - value: '997'
+        label: Don't know
+  - name: SMKDVSTY
+    label: Smoking status (type 2) - traditional definition - (D)
+    categories:
+      - value: '99'
+        label: Not stated
+      - value: '96'
+        label: Valid skip
+      - value: '4'
+        label: Former occasional smoker (non-smoker now)
+      - value: '98'
+        label: Refusal
+      - value: '2'
+        label: Current occasional smoker
+      - value: '97'
+        label: Don't know
+      - value: '5'
+        label: Experimental smoker (>1 cig, <100 cig)
+      - value: '1'
+        label: Current daily smoker
+      - value: '6'
+        label: Lifetime abstainer (never smoked a whole cigarette)
+      - value: '3'
+        label: Former daily smoker (non-smoker now)
+  - name: SMKDGYCS
+    label: Num. of years smoked daily (current daily smokers only) - (G)
+    categories:
+      - value: '1'
+        label: Respondent has smoked daily for 2 years or less
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Respondent has smoked daily for 3 to 5 years
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Respondent has smoked daily for 11 years or more
+      - value: '3'
+        label: Respondent has smoked daily for 6 to 10 years
+      - value: '8'
+        label: Refusal
+  - name: SMKDGSTP
+    label: Number of years since stopping smoking completely - (G)
+    categories:
+      - value: '2'
+        label: 3 to 5 years
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: 6 to 10 years
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 1 to 2 years
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: Less than 1 year
+      - value: '4'
+        label: 11 or more years
+  - name: DOECV
+    label: Electronic cigarettes and vaping - Inclusion Flag - (F)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+  - name: ECV_05
+    label: Tried e-cigarette / vaping device - life
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: ECVG15
+    label: E-Cigarette - vaping device use - (G)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: At least once in the past month
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Never
+  - name: ECV_20
+    label: Used e-cigarette - llast time - nicotine
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: ECVDVSMK
+    label: E-Cigarette / vaping device and cigarette use - (D)
+    categories:
+      - value: '3'
+        label: Only tried e-cigarette/vaping device
+      - value: '5'
+        label: Never tried an e-cigarette/vaping device or cigarette
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Tried cigarette first
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Tried e-cigarette/vaping device first
+      - value: '4'
+        label: Only tried cigarette
+  - name: DOECV2
+    label: Electronic cigarette and vaping 2 - Inlcusion Flag - (F)
+    categories:
+      - value: '0'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+  - name: ECV2G05A
+    label: Vape - E-liquid with nicotine - (G)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Has not vaped e-liquid with nicotine
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Has vaped e-liquid with nicotine
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: ECV2G05B
+    label: Vape - E-liquid without nicotine - (G)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Has vaped e-liquid without nicotine
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Has not vaped e-liquid without nicotine
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+  - name: ECV2G05C
+    label: Vape - E-liquid with unknown content - (G)
+    categories:
+      - value: '1'
+        label: Has vaped e-liquid with unknown content
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Has not vaped e-liquid with unknown content
+      - value: '7'
+        label: Don't know
+  - name: ECV2_10
+    label: Tried to quit smoking with e-cigarette / vaping device - 12 mo
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+  - name: ECV2_15
+    label: Tried first - e-cigarette / vaping device or cigarette
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: E-cigarette or vaping device
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: Cigarette
+      - value: '7'
+        label: Don't know
+  - name: DOALC
+    label: Alcohol use - Inclusion Flag - (F)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+  - name: ALC_05
+    label: Had a drink - lifetime
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+  - name: ALC_10
+    label: Drank alcohol - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+  - name: ALC_15
+    label: Drank alcohol - frequency - 12 mo
+    categories:
+      - value: '2'
+        label: Once a month
+      - value: '99'
+        label: Not stated
+      - value: '96'
+        label: Valid skip
+      - value: '3'
+        label: 2 to 3 times a month
+      - value: '98'
+        label: Refusal
+      - value: '97'
+        label: Don't know
+      - value: '4'
+        label: Once a week
+      - value: '1'
+        label: Less than once a month
+      - value: '7'
+        label: Daily or almost daily
+      - value: '6'
+        label: 4 to 5 times a week
+      - value: '5'
+        label: 2 to 3 times a week
+  - name: ALC_20
+    label: Drank 5+ / 4+ drinks one occasion - frequency - 12 mo
+    categories:
+      - value: '4'
+        label: 2 to 3 times a month
+      - value: '97'
+        label: Don't know
+      - value: '5'
+        label: Once a week
+      - value: '1'
+        label: Never
+      - value: '99'
+        label: Not stated
+      - value: '6'
+        label: More than once a week
+      - value: '3'
+        label: Once a month
+      - value: '98'
+        label: Refusal
+      - value: '2'
+        label: Less than once a month
+      - value: '96'
+        label: Valid skip
+  - name: ALCDVTTM
+    label: Type of drinker - 12 months - (D)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '3'
+        label: Did not drink in the last 12 months
+      - value: '1'
+        label: Regular drinker
+      - value: '2'
+        label: Occasional drinker
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: DOCAN
+    label: Cannabis use - Inclusion Flag - (F)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '0'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+  - name: CAN_05C
+    label: Used cannabis - 12 mo
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: CAN_35A
+    label: Used cannabis - medical purpose - pain - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+  - name: CAN_35B
+    label: Used cannabis - medical purpose - nausea vomiting - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: CAN_35C
+    label: Used cannabis - medical purpose- lack of appetite - 12 mo
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: CAN_35D
+    label: Used cannabis - medical purpose- headaches / migraines - 12 mo
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+  - name: CAN_35E
+    label: Used cannabis - medical purpose - muscle spasms / seizures - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+  - name: CAN_35F
+    label: Used cannabis - medical purpose- anxiety / depression - 12 mo
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: CAN_35G
+    label: Used cannabis - medical purpose- symptoms of PTSD - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+  - name: CAN_35H
+    label: Used cannabis - medical purpose- problems sleeping - 12 mo
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: CAN_35I
+    label: Used cannabis - purpose- opioid withdrawal symptoms - 12 mo
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+  - name: CAN_35J
+    label: Used cannabis - medical purpose- other - 12 mo
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+  - name: CAN_40
+    label: Used cannabis - has a medical document for medical purposes use
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: DOFLU
+    label: Flu shots - Inclusion Flag - (F)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: FLU_05
+    label: Had seasonal flu vaccine - 12 mo
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: FLU_10
+    label: Last seasonal flu vaccine - month
+    categories:
+      - value: '11'
+        label: November
+      - value: '8'
+        label: August
+      - value: '6'
+        label: June
+      - value: '1'
+        label: January
+      - value: '7'
+        label: July
+      - value: '3'
+        label: March
+      - value: '5'
+        label: May
+      - value: '2'
+        label: February
+      - value: '97'
+        label: Don't know
+      - value: '96'
+        label: Valid skip
+      - value: '99'
+        label: Not stated
+      - value: '12'
+        label: December
+      - value: '9'
+        label: September
+      - value: '4'
+        label: April
+      - value: '98'
+        label: Refusal
+      - value: '10'
+        label: October
+  - name: FLU_15
+    label: Last seasonal flu vaccine - current / last year
+    categories:
+      - value: '2'
+        label: Last year
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: This year
+      - value: '6'
+        label: Valid skip
+  - name: FLU_20A
+    label: No flu vaccine - 12 mo - didn't think necessary
+    categories:
+      - value: '2'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: FLU_20B
+    label: No flu vaccine - 12 mo - concern about side effects
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '2'
+        label: 'No'
+  - name: FLU_20C
+    label: No flu vaccine - 12 mo - flu is not that severe
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: FLU_20D
+    label: No flu vaccine - 12 mo - flu vaccine doesn't work
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+  - name: FLU_20E
+    label: No flu vaccine - 12 mo - previous bad reaction
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: 'No'
+  - name: FLU_20F
+    label: No flu vaccine - 12 mo - other
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+  - name: DORHC
+    label: Regular health care provider - Inclusion Flag - (F)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '9'
+        label: Not stated
+  - name: RHC_05
+    label: Regular health care provider
+    categories:
+      - value: '5'
+        label: Don�t have a regular health care provider
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Family doctor or general practitioner
+      - value: '3'
+        label: Nurse practitioner
+      - value: '2'
+        label: Medical specialist
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Other
+  - name: DOLMAM
+    label: Labour market activities - Inclusion Flag - (F)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+      - value: '0'
+        label: 'No'
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: LBFDGHPW
+    label: Total usual hours worked per week - (D, G)
+    categories:
+      - value: '99'
+        label: Not stated
+      - value: '97'
+        label: Don't know
+      - value: '96'
+        label: Valid skip
+      - value: '98'
+        label: Refusal
+  - name: LBFDVPFT
+    label: Full-time / part-time working status (for total usual hours) - (D)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Full-time
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Part-time
+  - name: LBFDGWSS
+    label: Working status last week - (G)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '1'
+        label: Worked at or absent from job/business - last week
+      - value: '2'
+        label: Did not have a job - last week
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+  - name: SDCDGIMM
+    label: Immigrant flag - (D, G)
+    categories:
+      - value: '1'
+        label: Non-immigrant
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Immigrant or non-permanent resident
+      - value: '7'
+        label: Don't know
+  - name: SDCDVABT
+    label: Aboriginal Identity - (D)
+    categories:
+      - value: '2'
+        label: Non-Indigenous identity
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: Indigenous identity (First Nations, M�tis, Inuk/Inuit)
+      - value: '9'
+        label: Not stated
+  - name: SDCDVFLA
+    label: Visible minority flag - (D)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: Not a visible minority
+      - value: '6'
+        label: Valid skip
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Visible minority
+      - value: '9'
+        label: Not stated
+  - name: DOLAN
+    label: Language - Inclusion Flag - (F)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+  - name: DOINL
+    label: Insurance coverage (INL) - Inclusion Flag - (F)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '1'
+        label: 'Yes'
+      - value: '7'
+        label: Don't know
+  - name: INL_05
+    label: Insurance - long-term care costs - all / part cost coverage
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: 'Yes'
+  - name: DOINP
+    label: Insurance coverage (INP) - Inclusion Flag - (F)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '1'
+        label: 'Yes'
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+  - name: INP_05
+    label: Insurance - prescription medications - all / part cost coverage
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '3'
+        label: Don't know
+      - value: '2'
+        label: 'No'
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+  - name: DOPCN
+    label: Presciption cost - Inclusion Flag - (F)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: 'Yes'
+  - name: PCN_05
+    label: Had prescriptions for medication - 12 mo
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '2'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '6'
+        label: Valid skip
+  - name: PCNDGCRA
+    label: Prescription Medication - Cost related non-adherence - (G)
+    categories:
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+      - value: '2'
+        label: No cost related non-adherence
+      - value: '1'
+        label: Cost related non-adherence
+  - name: DOFSC
+    label: Food security - Inclusion Flag - (F)
+    categories:
+      - value: '1'
+        label: 'Yes'
+      - value: '0'
+        label: 'No'
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: FSCDVAF2
+    label: Food security - adult status (including marginally) - (D)
+    categories:
+      - value: '0'
+        label: Food secure
+      - value: '1'
+        label: Marginally food insecure
+      - value: '2'
+        label: Moderately food insecure
+      - value: '3'
+        label: Severely food insecure
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '8'
+        label: Refusal
+      - value: '7'
+        label: Don't know
+  - name: FSCDVCF2
+    label: Food security - child status (including marginally) - (D)
+    categories:
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+      - value: '3'
+        label: Severely food insecure
+      - value: '0'
+        label: Food secure
+      - value: '1'
+        label: Marginally food insecure
+      - value: '2'
+        label: Moderately food insecure
+      - value: '7'
+        label: Don't know
+      - value: '8'
+        label: Refusal
+  - name: FSCDVHF2
+    label: Household food security status (including marginally) - (D)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '0'
+        label: Food secure
+      - value: '3'
+        label: Severely food insecure
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Marginally food insecure
+      - value: '2'
+        label: Moderately food insecure
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+  - name: INCDGHH
+    label: Total Household Income - All Sources - (D, G)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '4'
+        label: $60,000 to $79,999
+      - value: '5'
+        label: $80,000 or more
+      - value: '2'
+        label: $20,000 to $39,999
+      - value: '3'
+        label: $40,000 to $59,999
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: No income or less than $20,000
+      - value: '9'
+        label: Not stated
+      - value: '6'
+        label: Valid skip
+  - name: INCDGRCA
+    label: Distribution of household income - National level - (D, G)
+    categories:
+      - value: '7'
+        label: Don't know
+      - value: '2'
+        label: Quintile 2
+      - value: '5'
+        label: Quintile 5
+      - value: '3'
+        label: Quintile 3
+      - value: '9'
+        label: Not stated
+      - value: '8'
+        label: Refusal
+      - value: '1'
+        label: Quintile 1
+      - value: '6'
+        label: Valid skip
+      - value: '4'
+        label: Quintile 4
+  - name: INCDGRPR
+    label: Distribution of household income - Provincial level - (D, G)
+    categories:
+      - value: '4'
+        label: Quintile 4
+      - value: '7'
+        label: Don't know
+      - value: '1'
+        label: Quintile 1
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Quintile 2
+      - value: '8'
+        label: Refusal
+      - value: '5'
+        label: Quintile 5
+      - value: '3'
+        label: Quintile 3
+      - value: '6'
+        label: Valid skip
+  - name: INCDGRRS
+    label: Distribution of household income - Health region level - (D, G)
+    categories:
+      - value: '8'
+        label: Refusal
+      - value: '5'
+        label: Quintile 5
+      - value: '4'
+        label: Quintile 4
+      - value: '6'
+        label: Valid skip
+      - value: '9'
+        label: Not stated
+      - value: '2'
+        label: Quintile 2
+      - value: '1'
+        label: Quintile 1
+      - value: '7'
+        label: Don't know
+      - value: '3'
+        label: Quintile 3
+  - name: WTS_M
+    label: Weights - Master
+    categories: ~
+

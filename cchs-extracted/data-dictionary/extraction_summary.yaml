@@ -1,14 +1,20 @@
-extraction_date: '2026-01-02'
+extraction_date: '2026-01-03'
 extraction_script_version: 1.1.0
-total_files: 16
-successful: 16
+total_files: 18
+successful: 18
 failed: 0
-total_variables: 21100
+total_variables: 22072
 notes: |
   Re-extracted 2015-2016, 2017-2018, 2007-2008 on 2026-01-02 to fix
   incomplete extraction bug (leading whitespace handling).
   Previous counts: 2015-2016=639, 2017-2018=520
   New counts: 2015-2016=1283, 2017-2018=1051
+
+  Re-extracted 2005 on 2026-01-03 from DDI XML (PDF had corruption issues).
+  Previous count: 1258, New count: 1284 (+26 variables recovered)
+
+  Added 2019-2020 (691 vars) and 2022 (255 vars) on 2026-01-03 from DDI XML.
+  Fixed filename swap in cchsflow-data repo before extraction.
 files:
   - cchs_uid: cchs-2015d-p-dd-en-pdf-01
     year: 2015-2016
@@ -52,11 +58,12 @@ files:
     variables_count: 1820
     source_checksum: ae6bf552d73f906544a46090c1ac9edfc70ac84d8cf1ddf0c8cd59cc306305f5
     status: success
-  - cchs_uid: cchs-2005s-p-dd-en-pdf-01
+  - cchs_uid: cchs-2005s-p-dd-en-xml-01
     year: '2005'
-    canonical_filename: cchs_2005s_dd_p_en_1_v1.yaml
-    variables_count: 1258
-    source_checksum: 1c38f118033a0f19274f0f2e01ed463fd1426047d2683ba8bf02eb8cafd68610
+    canonical_filename: cchs_2005s_dd_p_en_1_v2.yaml
+    variables_count: 1284
+    source: cchs-82M0013-E-2005-c3-1-main-file.xml
+    source_type: ddi_xml
     status: success
   - cchs_uid: cchs-2003s-p-dd-en-pdf-01
     year: '2003'
@@ -105,5 +112,19 @@ files:
     canonical_filename: cchs_2009s_dd_s_en_1_v1.yaml
     variables_count: 1845
     source_checksum: a2b826536d7aa8f940165220f190dff5b8c331d8e5231e1b64acf875558b81bf
+    status: success
+  - cchs_uid: cchs-2019d-p-dd-en-xml-01
+    year: 2019-2020
+    canonical_filename: cchs_2019d_dd_p_en_1_v1.yaml
+    variables_count: 691
+    source: CCHS_2019_2020_DDI.xml
+    source_type: ddi_xml
+    status: success
+  - cchs_uid: cchs-2022s-p-dd-en-xml-01
+    year: '2022'
+    canonical_filename: cchs_2022s_dd_p_en_1_v1.yaml
+    variables_count: 255
+    source: CCHS_2022_DDI.xml
+    source_type: ddi_xml
     status: success
 
