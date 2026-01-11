@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "CCHS & CHMS Documentation Catalog"
+  description: "Searchable catalog of Canadian health survey documentation"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "CCHS Catalog"
+        href: cchs-catalog.qmd
+      - text: "CHMS Catalog"
+        href: chms-catalog.qmd
+      - text: "Downloads"
+        href: downloads.qmd
+    right:
+      - icon: github
+        href: https://github.com/Big-Life-Lab/cchsflow-docs
+  page-footer:
+    center: |
+      Built with [Quarto](https://quarto.org/) |
+      [Big Life Lab](https://www.biglifelab.ca/)
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+
+execute:
+  echo: false
+  warning: false
+  message: false

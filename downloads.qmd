@@ -1,0 +1,90 @@
+---
+title: "Downloads"
+subtitle: "Curated collections and custom downloads"
+---
+
+## Curated collections
+
+Pre-packaged collections are available from [GitHub Releases](https://github.com/Big-Life-Lab/cchsflow-docs/releases).
+
+### Core Master Collection (v1.1.0)
+
+Essential English master documentation for CCHS analysis:
+
+- **129 files**: Questionnaires, data dictionaries, user guides, derived variables
+- **Years**: 2001-2023 (complete coverage)
+- **Language**: English only
+- **Document type**: Master files only
+
+[Download from GitHub Releases](https://github.com/Big-Life-Lab/cchsflow-docs/releases/tag/v1.1.0)
+
+## Create a custom collection
+
+To create your own filtered collection:
+
+### Using R
+
+```r
+# Clone the repository
+# git clone https://github.com/Big-Life-Lab/cchsflow-docs.git
+
+# Load the extraction function
+source("R/extract_collection.R")
+
+# Example: French questionnaires only
+french_questionnaires <- extract_collection(
+ survey = "CCHS",
+ collection_name = "cchs-french-questionnaires",
+ version = "v1.0.0",
+ language = "FR",
+ categories = "questionnaire"
+)
+
+# Example: Recent years data dictionaries
+recent_dd <- extract_collection(
+ survey = "CCHS",
+ collection_name = "cchs-recent-data-dictionaries",
+ version = "v1.0.0",
+ years = 2018:2023,
+ categories = "data-dictionary"
+)
+```
+
+### Using the catalog directly
+
+The YAML catalogs contain all file metadata including direct download URLs:
+
+```r
+library(yaml)
+
+# Load catalog
+catalog <- yaml::read_yaml("data/catalog/cchs_catalog.yaml")
+
+# Filter for specific files
+files <- catalog$files
+questionnaires_2023 <- files[sapply(files, function(x) {
+ x$year == "2023" && x$category == "questionnaire"
+})]
+
+# Get download URLs
+urls <- sapply(questionnaires_2023, function(x) x$github_url)
+```
+
+## Manifests
+
+Each collection includes a CSV manifest with metadata:
+
+| Column | Description |
+|--------|-------------|
+| `uid` | Unique identifier |
+| `canonical_filename` | Standardised filename |
+| `year` | Survey year |
+| `category` | Document type |
+| `language` | EN or FR |
+| `github_url` | Direct download link |
+
+Manifests are stored in [`data/manifests/`](https://github.com/Big-Life-Lab/cchsflow-docs/tree/main/data/manifests).
+
+## AI-assisted exploration
+
+Use the [CCHS Documentation NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) to ask questions about CCHS documentation and get instant answers.
