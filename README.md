@@ -2,18 +2,54 @@
 
 A production metadata catalog system for Canadian health survey documentation including the Canadian Community Health Survey (CCHS) and Canadian Health Measures Survey (CHMS), with enhanced UID generation, LinkML schema validation, and OSF.io synchronization capabilities.
 
-## 🎯 Overview
+## Finding documentation
 
-This repository provides:
-- **Comprehensive metadata catalogs** for Canadian health surveys:
-  - **CCHS**: 1,262+ files (2001-2023)
-  - **CHMS**: 52 files (6 cycles)
-- **Enhanced unique identifier systems** with survey-specific UID formats
-- **LinkML schema validation** for data consistency and quality assurance
-- **Multi-source integration** (OSF.io mirrors + PUMF files)
-- **OSF.io synchronization** infrastructure (read-only mirrors)
-- **Curated collections** with canonical filenames distributed via GitHub releases
-- **Automated reporting** and workflow management
+| If you need... | Go to... | Coverage |
+|----------------|----------|----------|
+| **Complete CCHS files** | [`cchs-osf-docs/`](cchs-osf-docs/) | 2001-2023 (1,262 files) |
+| **Complete CHMS files** | [`chms-osf-docs/`](chms-osf-docs/) | Cycles 1-6 (52 files) |
+| **Parsed/extracted content** | [`cchs-extracted/`](cchs-extracted/) | Variable definitions as YAML |
+| **Curated download** | [GitHub Releases](../../releases) | Core Master Collection ZIP |
+| **Search by metadata** | [`data/catalog/`](data/catalog/) | YAML catalogs with all file info |
+
+> **Note:** The `cchs-pumf-docs/` folder contains a legacy subset of PUMF files (through 2017 only). For complete documentation, use `cchs-osf-docs/`.
+
+---
+
+## Purpose
+
+Statistics Canada health survey documentation is scattered across multiple sources with inconsistent naming, incomplete coverage, and formats that aren't machine-readable. This repository consolidates and organises that documentation into a unified, searchable catalog.
+
+**What this repo does:**
+
+1. **Consolidates fragmented sources** - Merges documentation from OSF.io, Google Drive, and Borealis/ODESSI Dataverse into one catalog
+2. **Creates machine-readable metadata** - Extracts variable definitions from PDFs and DDI XML into structured YAML for programmatic access
+3. **Provides stable identifiers** - The UID system gives every file a predictable, canonical name regardless of original source
+4. **Tracks provenance** - Every file includes source, checksums, and extraction metadata for reproducibility
+5. **Bridges Master and PUMF documentation** - Reconciles RDC documentation (more variables) with public-use PUMF files
+6. **Enables searchable access** - Powers the [CCHS NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) AI assistant and integrates with analysis workflows
+
+## Related resources
+
+| Resource | Description |
+|----------|-------------|
+| [CCHS NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) | AI assistant for exploring CCHS documentation |
+| [cchsflow](https://github.com/Big-Life-Lab/cchsflow) | R package for harmonising CCHS variables across cycles |
+| [cchsflow-data](https://github.com/Big-Life-Lab/cchsflow-data) | CCHS PUMF data files and DDI metadata from ODESSI |
+| [613apps.ca](https://613apps.ca) | Population health applications using CCHS data |
+
+## Data sources
+
+This catalog integrates documentation from multiple sources:
+
+| Source | Content | Location in repo |
+|--------|---------|------------------|
+| OSF.io ([CCHS Docs](https://osf.io/6p3n9/)) | Master and Share files (2001-2023) | `cchs-osf-docs/` |
+| OSF.io ([CHMS Docs](https://osf.io/buva4/)) | CHMS cycles 1-6 | `chms-osf-docs/` |
+| Google Drive | Legacy PUMF documentation | `cchs-pumf-docs/` |
+| Borealis/ODESSI Dataverse | DDI XML with PUMF variable definitions | Extracted to `cchs-extracted/` via `cchsflow-data` |
+
+The YAML catalog (`data/catalog/cchs_catalog.yaml`) tracks all files with their `source_namespace` indicating origin.
 
 ## 📋 Quick Start
 
@@ -33,17 +69,7 @@ renv::restore()
 
 See [ENVIRONMENT.md](ENVIRONMENT.md) for complete setup instructions, including using **rig** for R version management and **pak** for faster package installation.
 
----
-
-### 🤖 AI-Powered Documentation Assistant
-
-**NEW**: [CCHS Documentation NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) 🔗
-
-Interactive AI assistant powered by Google NotebookLM with the complete CCHS Core Master Collection plus PUMF documentation. Ask questions, explore documentation, and get instant answers about CCHS surveys.
-
----
-
-### Download a Collection
+### Download a collection
 
 Download curated collections from [GitHub Releases](../../releases):
 
@@ -376,44 +402,26 @@ default:
     base_url: "https://api.osf.io/v2"
 ```
 
-## 📁 Repository Structure
+## Repository structure
 
-```
-├── R/                              # Core R scripts
-│   ├── clean_catalog_structure.R      # CCHS catalog generation
-│   ├── build_chms_catalog.R           # CHMS catalog generation
-│   ├── validate_health_survey_catalog.R  # Unified validation
-│   ├── extract_collection.R           # Survey-aware collection generation
-│   ├── osf_api_client.R               # OSF API client (both surveys)
-│   ├── osf_sync_system.R              # CCHS sync infrastructure
-│   ├── chms_sync_system.R             # CHMS sync infrastructure
-│   └── osf_versioning_system.R        # Change tracking
-├── data/
-│   ├── catalog/
-│   │   ├── cchs_catalog.yaml          # CCHS catalog (1,262 files)
-│   │   └── chms_catalog.yaml          # CHMS catalog (52 files)
-│   └── manifests/                     # Collection manifests (Git-tracked)
-│       ├── README.md                  # Manifests documentation
-│       └── cchs-core-master-collection-manifest-v1.1.0.csv
-├── metadata/
-│   ├── health_survey_schema_linkml.yaml  # Unified LinkML schema
-│   ├── chms_uid_design.md             # CHMS UID documentation
-│   └── legacy/                        # Historical artifacts
-├── cchs-osf-docs/                     # CCHS OSF.io mirror (original filenames)
-├── chms-osf-docs/                     # CHMS OSF.io mirror (original filenames)
-├── build/                             # Temporary artifacts (gitignored)
-│   └── *.zip                          # Collection builds
-├── docs/                              # Technical documentation
-│   ├── architecture.md                # System design
-│   ├── collections-guide.md           # Collections usage
-│   ├── osf-sync-guide.md             # OSF synchronization
-│   ├── uid-system.md                 # UID specification
-│   └── glossary.md                   # CCHS terminology
-└── reports/                           # Quarto reports
-    ├── catalog-browser.qmd            # Catalog exploration
-    ├── download-status.qmd            # Sync status
-    └── sync-workflow.qmd              # Workflow pipeline
-```
+### Documentation sources
+
+| Folder | Contents | Status |
+|--------|----------|--------|
+| `cchs-osf-docs/` | Complete CCHS OSF.io mirror | **Primary** (2001-2023) |
+| `chms-osf-docs/` | Complete CHMS OSF.io mirror | **Primary** (Cycles 1-6) |
+| `cchs-extracted/` | Parsed content from PDFs | Active development |
+| `cchs-pumf-docs/` | Legacy PUMF subset | Incomplete (see README) |
+
+### Metadata and code
+
+- `data/catalog/` - YAML catalogs (`cchs_catalog.yaml`, `chms_catalog.yaml`)
+- `data/manifests/` - Collection manifests for GitHub releases
+- `R/` - Core scripts (sync, validation, extraction)
+- `scripts/` - PDF extraction batch scripts
+- `metadata/` - LinkML schema and UID documentation
+- `reports/` - Quarto reports for catalog browsing
+- `docs/` - Technical documentation
 
 ## 🔬 Technical Details
 
