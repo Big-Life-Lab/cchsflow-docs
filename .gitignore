@@ -33,4 +33,10 @@ CLAUDE.md
 build/
 *.zip
 
+# Quarto site output
+_site/
+.quarto/
+
 .secrets
+
+/.quarto/

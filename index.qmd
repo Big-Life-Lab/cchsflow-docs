@@ -1,0 +1,78 @@
+---
+title: "Canadian Health Survey Documentation"
+subtitle: "CCHS & CHMS Documentation Catalog"
+---
+
+```{r setup}
+library(yaml)
+library(dplyr)
+
+# Load catalogs
+cchs <- yaml::read_yaml("data/catalog/cchs_catalog.yaml")
+chms <- yaml::read_yaml("data/catalog/chms_catalog.yaml")
+```
+
+## Overview
+
+This site provides searchable access to documentation for two major Canadian health surveys:
+
+- **Canadian Community Health Survey (CCHS)**: `r length(cchs$files)` files (2001-2023)
+- **Canadian Health Measures Survey (CHMS)**: `r length(chms$files)` files (Cycles 1-6)
+
+## Quick links
+
+| Survey | Catalog | Core documents |
+|--------|---------|----------------|
+| CCHS | [Browse all files](cchs-catalog.qmd) | [Questionnaires](cchs-catalog.qmd#category=questionnaire), [Data dictionaries](cchs-catalog.qmd#category=data-dictionary), [User guides](cchs-catalog.qmd#category=user-guide) |
+| CHMS | [Browse all files](chms-catalog.qmd) | [User guides](chms-catalog.qmd#category=user-guide), [Questionnaires](chms-catalog.qmd#category=questionnaire) |
+
+## Downloads
+
+For bulk downloads, see:
+
+- [GitHub Releases](https://github.com/Big-Life-Lab/cchsflow-docs/releases) - Curated collections (ZIP files)
+- [Downloads page](downloads.qmd) - Instructions for creating custom collections
+
+## Coverage summary
+
+### CCHS
+
+```{r cchs-summary}
+cchs_files <- cchs$files
+
+# By doc type
+doc_types <- table(sapply(cchs_files, function(x) x$doc_type))
+langs <- table(sapply(cchs_files, function(x) x$language))
+
+knitr::kable(
+  data.frame(
+    Type = names(doc_types),
+    Files = as.numeric(doc_types)
+  ),
+  col.names = c("Document Type", "Files"),
+  align = c("l", "r")
+)
+```
+
+### CHMS
+
+```{r chms-summary}
+chms_files <- chms$files
+
+cycles <- table(sapply(chms_files, function(x) x$chms_cycle))
+
+knitr::kable(
+  data.frame(
+    Cycle = gsub("cycle", "Cycle ", names(cycles)),
+    Files = as.numeric(cycles)
+  ),
+  col.names = c("Cycle", "Files"),
+  align = c("l", "r")
+)
+```
+
+## Related resources
+
+- [CCHS NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08) - AI assistant for exploring CCHS documentation
+- [cchsflow](https://github.com/Big-Life-Lab/cchsflow) - R package for harmonising CCHS variables
+- [cchsflow-data](https://github.com/Big-Life-Lab/cchsflow-data) - CCHS PUMF data files

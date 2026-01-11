@@ -1,0 +1,113 @@
+---
+title: "CHMS Documentation Catalog"
+subtitle: "Canadian Health Measures Survey (Cycles 1-6)"
+---
+
+```{r setup}
+library(yaml)
+library(dplyr)
+library(DT)
+
+# Load catalog
+catalog <- yaml::read_yaml("data/catalog/chms_catalog.yaml")
+files <- catalog$files
+```
+
+## Browse files
+
+Use the search box and column filters to find specific documents. Click any link to download the file directly.
+
+```{r catalog-table}
+# Convert to data frame
+df <- data.frame(
+  Cycle = sapply(files, function(x) gsub("cycle", "Cycle ", x$chms_cycle)),
+  Component = sapply(files, function(x) x$chms_component),
+  Category = sapply(files, function(x) x$category),
+  Language = sapply(files, function(x) x$language),
+  Filename = sapply(files, function(x) x$filename_original),
+  URL = sapply(files, function(x) x$github_url),
+  stringsAsFactors = FALSE
+)
+
+# Create clickable links
+df$Download <- paste0('<a href="', df$URL, '" target="_blank">Download</a>')
+
+# Format category names
+df$Category <- gsub("-", " ", df$Category)
+df$Category <- tools::toTitleCase(df$Category)
+
+# Format component names
+component_names <- c(
+  "gen" = "General",
+  "hhd" = "Household",
+  "clc" = "Clinic",
+  "ams" = "Activity Monitor",
+  "fast" = "Fasting",
+  "nel" = "Environmental",
+  "med" = "Medication",
+  "inc" = "Income",
+  "hcl" = "Health Clinic"
+)
+df$Component <- ifelse(df$Component %in% names(component_names),
+                       component_names[df$Component],
+                       df$Component)
+
+# Format language
+df$Language <- ifelse(df$Language == "e", "English", "French")
+
+# Select display columns
+display_df <- df[, c("Cycle", "Component", "Category", "Language", "Filename", "Download")]
+
+datatable(
+  display_df,
+  escape = FALSE,
+  filter = "top",
+  options = list(
+    pageLength = 25,
+    scrollX = TRUE
+  ),
+  rownames = FALSE
+)
+```
+
+## Summary
+
+### By cycle
+
+```{r by-cycle}
+cycle_counts <- table(df$Cycle)
+knitr::kable(
+  data.frame(
+    Cycle = names(cycle_counts),
+    Files = as.numeric(cycle_counts)
+  ),
+  col.names = c("Cycle", "Files"),
+  align = c("l", "r")
+)
+```
+
+### By component
+
+```{r by-component}
+comp_counts <- sort(table(df$Component), decreasing = TRUE)
+knitr::kable(
+  data.frame(
+    Component = names(comp_counts),
+    Files = as.numeric(comp_counts)
+  ),
+  col.names = c("Component", "Files"),
+  align = c("l", "r")
+)
+```
+
+## About CHMS
+
+The Canadian Health Measures Survey (CHMS) collects health data through:
+
+- **Household interviews** - Demographics, health status, lifestyle
+- **Clinic visits** - Physical measurements, blood/urine samples
+- **Activity monitoring** - Accelerometer data for physical activity
+
+Data is organised by **cycle** (collection period) and **component** (measurement type).
+
+**Source**: Files mirrored from [OSF.io CHMS Docs](https://osf.io/buva4/)

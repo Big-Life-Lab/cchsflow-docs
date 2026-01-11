@@ -1,0 +1,105 @@
+---
+title: "CCHS Documentation Catalog"
+subtitle: "Canadian Community Health Survey (2001-2023)"
+---
+
+```{r setup}
+library(yaml)
+library(dplyr)
+library(DT)
+
+# Load catalog
+catalog <- yaml::read_yaml("data/catalog/cchs_catalog.yaml")
+files <- catalog$files
+```
+
+## Browse files
+
+Use the search box and column filters to find specific documents. Click any link to download the file directly.
+
+```{r catalog-table}
+# Convert to data frame
+df <- data.frame(
+  Year = sapply(files, function(x) x$year),
+  Category = sapply(files, function(x) x$category),
+  Type = sapply(files, function(x) x$doc_type),
+  Language = sapply(files, function(x) x$language),
+  Filename = sapply(files, function(x) x$filename),
+  URL = sapply(files, function(x) x$github_url),
+  stringsAsFactors = FALSE
+)
+
+# Create clickable links
+df$Download <- paste0('<a href="', df$URL, '" target="_blank">Download</a>')
+
+# Format category names
+df$Category <- gsub("-", " ", df$Category)
+df$Category <- tools::toTitleCase(df$Category)
+
+# Format type
+df$Type <- tools::toTitleCase(df$Type)
+
+# Format language
+df$Language <- ifelse(df$Language == "EN", "English", "French")
+
+# Select display columns
+display_df <- df[, c("Year", "Category", "Type", "Language", "Filename", "Download")]
+
+datatable(
+  display_df,
+  escape = FALSE,  # Allow HTML in Download column
+  filter = "top",
+  options = list(
+    pageLength = 25,
+    scrollX = TRUE,
+    columnDefs = list(
+      list(width = "60px", targets = 0),   # Year
+      list(width = "120px", targets = 1),  # Category
+      list(width = "80px", targets = 2),   # Type
+      list(width = "80px", targets = 3),   # Language
+      list(width = "80px", targets = 5)    # Download
+    )
+  ),
+  rownames = FALSE
+)
+```
+
+## Summary statistics
+
+### By year
+
+```{r by-year}
+year_counts <- table(df$Year)
+knitr::kable(
+  data.frame(
+    Year = names(year_counts),
+    Files = as.numeric(year_counts)
+  ),
+  col.names = c("Year", "Files"),
+  align = c("l", "r")
+)
+```
+
+### By category
+
+```{r by-category}
+cat_counts <- sort(table(df$Category), decreasing = TRUE)
+knitr::kable(
+  data.frame(
+    Category = names(cat_counts),
+    Files = as.numeric(cat_counts)
+  ),
+  col.names = c("Category", "Files"),
+  align = c("l", "r")
+)
+```
+
+## Data sources
+
+Files in this catalog come from:
+
+- **OSF.io** - Master and Share files from the [CCHS Docs project](https://osf.io/6p3n9/)
+- **Google Drive** - Legacy PUMF documentation
+- **Borealis/ODESSI** - DDI XML metadata (extracted to YAML)
+
+See [data sources](https://github.com/Big-Life-Lab/cchsflow-docs#data-sources) for details.
