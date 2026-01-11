@@ -22,6 +22,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/HCLSup_rounded_C1.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/HCLSup_rounded_C1.pdf
 - uid: chms-c1-ams-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle1
@@ -37,6 +38,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/AM_rounded_C1.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/AM_rounded_C1.pdf
 - uid: chms-c1-fast-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle1
@@ -52,6 +54,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/Fasted_rounded_C1.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/Fasted_rounded_C1.pdf
 - uid: chms-c1-med-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle1
@@ -67,6 +70,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/Medication_rounded_C1.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/Medication_rounded_C1.pdf
 - uid: chms-c1-gen-ug-e-pdf-01
   survey: CHMS
   chms_cycle: cycle1
@@ -82,6 +86,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/CHMS_User_Guide_Cycle1_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/CHMS_User_Guide_Cycle1_E.pdf
 - uid: chms-c1-clc-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle1
@@ -97,6 +102,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/clinic_cycle1_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/clinic_cycle1_E.pdf
 - uid: chms-c1-hhd-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle1
@@ -112,6 +118,7 @@ files:
   file_size: 3702992
   date_modified: 2023-07-11T14:16:56.574117
   source_filepath: Cycle1/hhld_cycle1_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle1/hhld_cycle1_E.pdf
 - uid: chms-c2-gen-ug-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -127,6 +134,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/CHMS_User_Guide_Cycle2_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/CHMS_User_Guide_Cycle2_E.pdf
 - uid: chms-c2-clc-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -142,6 +150,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/clinic_cycle2_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/clinic_cycle2_E.pdf
 - uid: chms-c2-hhd-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -157,6 +166,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/hhld_cycle2_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/hhld_cycle2_E.pdf
 - uid: chms-c2-ams-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -172,6 +182,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/AM_rounded_C2.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/AM_rounded_C2.pdf
 - uid: chms-c2-fast-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -187,6 +198,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/Fasted_rounded_C2.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/Fasted_rounded_C2.pdf
 - uid: chms-c2-hcl-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -202,6 +214,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/HCL2_rounded_C2.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/HCL2_rounded_C2.pdf
 - uid: chms-c2-med-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle2
@@ -217,6 +230,7 @@ files:
   file_size: 1645531
   date_modified: 2023-07-11T16:01:03.353863
   source_filepath: Cycle2/Medication_rounded_C2.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle2/Medication_rounded_C2.pdf
 - uid: chms-c3-ams-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -232,6 +246,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/rounded_dd_ams_freq_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/rounded_dd_ams_freq_c3_e.pdf
 - uid: chms-c3-clc-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -247,6 +262,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/rounded_dd_clc_freq_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/rounded_dd_clc_freq_c3_e.pdf
 - uid: chms-c3-fast-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -262,6 +278,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/rounded_dd_fast_freq_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/rounded_dd_fast_freq_c3_e.pdf
 - uid: chms-c3-hhd-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -277,6 +294,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/rounded_dd_hhd_freq_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/rounded_dd_hhd_freq_c3_e.pdf
 - uid: chms-c3-nel-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -292,6 +310,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/rounded_dd_nel_freq_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/rounded_dd_nel_freq_c3_e.pdf
 - uid: chms-c3-gen-ug-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -307,6 +326,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/CHMS_User_Guide_Cycle3_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/CHMS_User_Guide_Cycle3_E.pdf
 - uid: chms-c3-clc-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -322,6 +342,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/quest_clc_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/quest_clc_c3_e.pdf
 - uid: chms-c3-hhd-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -337,6 +358,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/quest_hhd_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/quest_hhd_c3_e.pdf
 - uid: chms-c3-med-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle3
@@ -352,6 +374,7 @@ files:
   file_size: 279221
   date_modified: 2023-07-11T16:05:06.863139
   source_filepath: Cycle3/releasable_unrounded_dd_med_freq_c3_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle3/releasable_unrounded_dd_med_freq_c3_e.pdf
 - uid: chms-c4-gen-ug-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -367,6 +390,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/CHMS_User_Guide_Cycle4_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/CHMS_User_Guide_Cycle4_E.pdf
 - uid: chms-c4-clc-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -382,6 +406,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/quest_clc_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/quest_clc_c4_e.pdf
 - uid: chms-c4-hhd-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -397,6 +422,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/quest_hhd_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/quest_hhd_c4_e.pdf
 - uid: chms-c4-ams-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -412,6 +438,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/rounded_dd_ams_freq_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/rounded_dd_ams_freq_c4_e.pdf
 - uid: chms-c4-clc-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -427,6 +454,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/rounded_dd_clc_freq_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/rounded_dd_clc_freq_c4_e.pdf
 - uid: chms-c4-fast-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -442,6 +470,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/rounded_dd_fast_freq_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/rounded_dd_fast_freq_c4_e.pdf
 - uid: chms-c4-hhd-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -457,6 +486,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/rounded_dd_hhd_freq_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/rounded_dd_hhd_freq_c4_e.pdf
 - uid: chms-c4-nel-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -472,6 +502,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/rounded_dd_nel_freq_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/rounded_dd_nel_freq_c4_e.pdf
 - uid: chms-c4-med-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle4
@@ -487,6 +518,7 @@ files:
   file_size: 2885391
   date_modified: 2023-07-11T16:14:05.712150
   source_filepath: Cycle4/releasable_unrounded_dd_med_freq_c4_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle4/releasable_unrounded_dd_med_freq_c4_e.pdf
 - uid: chms-c5-ams-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -502,6 +534,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/rounded_dd_am_subsample_freq_c5_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/rounded_dd_am_subsample_freq_c5_E.pdf
 - uid: chms-c5-clc-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -517,6 +550,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/rounded_dd_clc_freq_c5_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/rounded_dd_clc_freq_c5_E.pdf
 - uid: chms-c5-fast-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -532,6 +566,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/rounded_dd_fast_freq_c5_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/rounded_dd_fast_freq_c5_E.pdf
 - uid: chms-c5-hhd-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -547,6 +582,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/rounded_dd_hhd_freq_c5_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/rounded_dd_hhd_freq_c5_E.pdf
 - uid: chms-c5-inc-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -562,6 +598,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/rounded_dd_inc_linked_freq_c5_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/rounded_dd_inc_linked_freq_c5_e.pdf
 - uid: chms-c5-nel-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -577,6 +614,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/rounded_dd_nel_freq_c5_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/rounded_dd_nel_freq_c5_E.pdf
 - uid: chms-c5-med-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -592,6 +630,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/dd_med_freq_c5_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/dd_med_freq_c5_E.pdf
 - uid: chms-c5-gen-ug-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -607,6 +646,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/ug_c5_e_december_2021.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/ug_c5_e_december_2021.pdf
 - uid: chms-c5-clc-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -622,6 +662,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/quest_clc_c5_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/quest_clc_c5_e.pdf
 - uid: chms-c5-hhd-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle5
@@ -637,6 +678,7 @@ files:
   file_size: 1331703
   date_modified: 2023-07-11T16:16:11.199212
   source_filepath: Cycle5/quest_hhd_c5_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle5/quest_hhd_c5_e.pdf
 - uid: chms-c6-gen-ug-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -652,6 +694,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/ug_c6_e_december_2021.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/ug_c6_e_december_2021.pdf
 - uid: chms-c6-hhd-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -667,6 +710,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/quest_hhd_c6_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/quest_hhd_c6_e.pdf
 - uid: chms-c6-ams-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -682,6 +726,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/rounded_dd_ams_freq_c6_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/rounded_dd_ams_freq_c6_E.pdf
 - uid: chms-c6-clc-qu-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -697,6 +742,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/quest_clc_c6_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/quest_clc_c6_e.pdf
 - uid: chms-c6-clc-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -712,6 +758,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/rounded_dd_clc_freq_c6_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/rounded_dd_clc_freq_c6_E.pdf
 - uid: chms-c6-nel-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -727,6 +774,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/rounded_dd_nel_freq_c6_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/rounded_dd_nel_freq_c6_E.pdf
 - uid: chms-c6-hhd-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -742,6 +790,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/rounded_dd_hhd_freq_c6_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/rounded_dd_hhd_freq_c6_E.pdf
 - uid: chms-c6-fast-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -757,6 +806,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/rounded_dd_fast_freq_c6_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/rounded_dd_fast_freq_c6_E.pdf
 - uid: chms-c6-med-dd-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -772,6 +822,7 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/dd_med_freq_c6_E.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/dd_med_freq_c6_E.pdf
 - uid: chms-c6-clc-dv-e-pdf-01
   survey: CHMS
   chms_cycle: cycle6
@@ -787,3 +838,6 @@ files:
   file_size: 2804075
   date_modified: 2023-06-28T17:13:59.304984
   source_filepath: Cycle6/dv_dhh_clc_c6_e.pdf
+  github_url: https://github.com/Big-Life-Lab/cchsflow-docs/raw/main/chms-osf-docs/Cycle6/dv_dhh_clc_c6_e.pdf
+catalog_metadata:
+  github_urls_added: '2026-01-11'

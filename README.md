@@ -51,7 +51,48 @@ This catalog integrates documentation from multiple sources:
 
 The YAML catalog (`data/catalog/cchs_catalog.yaml`) tracks all files with their `source_namespace` indicating origin.
 
-## 📋 Quick Start
+## Documentation coverage
+
+### CCHS: 1,421 files (2001-2023)
+
+| Type | Files | | Language | Files |
+|------|------:|-|----------|------:|
+| Master | 1,118 | | English | 1,097 |
+| Share | 183 | | French | 324 |
+| PUMF | 120 | | | |
+
+<details>
+<summary><strong>Coverage by year and document type</strong> (click to expand)</summary>
+
+| Year | Questionnaire | Data dictionary | User guide | Derived variables |
+|------|:---:|:---:|:---:|:---:|
+| 2001 | ✓ | ✓ | ✓ | ✓ |
+| 2003 | ✓ | ✓ | ✓ | ✓ |
+| 2005 | ✓ | ✓ | ✓ | ✓ |
+| 2007 | ✓ | ✓ | ✓ | ✓ |
+| 2009 | ✓ | ✓ | ✓ | ✓ |
+| 2010 | ✓ | ✓ | ✓ | ✓ |
+| 2011 | ✓ | ✓ | ✓ | ✓ |
+| 2012 | ✓ | ✓ | ✓ | ✓ |
+| 2013 | ✓ | ✓ | ✓ | ✓ |
+| 2014 | ✓ | ✓ | ✓ | ✓ |
+| 2015 | ✓ | ✓ | ✓ | ✓ |
+| 2016 | ✓ | ✓ | ✓ | ✓ |
+| 2017 | ✓ | ✓ | ✓ | ✓ |
+| 2018 | ✓ | ✓ | ✓ | ✓ |
+| 2019 | ✓ | ✓ | ✓ | ✓ |
+| 2020 | ✓ | ✓ | ✓ | ✓ |
+| 2021 | ✓ | ✓ | ✓ | ✓ |
+| 2022 | ✓ | ✓ | ✓ | ✓ |
+| 2023 | ✓ | ✓ | ✓ | ✓ |
+
+</details>
+
+### CHMS: 52 files (Cycles 1-6)
+
+All cycles include user guides, questionnaires, and data dictionaries covering household, clinic, activity monitor, and fasting components.
+
+## Quick start
 
 ### ⚙️ Setup R Environment
 
