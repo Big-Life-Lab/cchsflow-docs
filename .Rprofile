@@ -7,7 +7,7 @@ if (!startsWith(as.character(getRversion()), required)) {
   ))
 }
 
-# Activate renv if lockfile exists
-if (file.exists("renv.lock")) {
+# Activate renv if lockfile exists (skip if RENV_CONFIG_AUTOLOADER_ENABLED=false)
+if (file.exists("renv.lock") && !identical(Sys.getenv("RENV_CONFIG_AUTOLOADER_ENABLED"), "false")) {
   source("renv/activate.R")
 }
