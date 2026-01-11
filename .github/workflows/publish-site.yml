@@ -34,7 +34,7 @@ jobs:
           r-version: '4.3'
 
       - name: Install R packages
-        run: Rscript --vanilla -e 'install.packages(c("yaml", "dplyr", "DT", "knitr", "rmarkdown"))'
+        run: Rscript --vanilla -e 'install.packages(c("yaml", "dplyr", "DT", "knitr", "rmarkdown"), repos = "https://cloud.r-project.org")'
 
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
