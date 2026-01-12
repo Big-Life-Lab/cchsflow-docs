@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "!reports/"
+    - "!docs/"
+    - "!cchs-extracted/"
 
 website:
   title: "CCHS & CHMS Documentation Catalog"
