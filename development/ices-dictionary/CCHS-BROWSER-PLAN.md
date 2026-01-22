@@ -1,13 +1,13 @@
-# Plan: ICES CCHS Dictionary Browser - GitHub Pages
+# Plan: Statistics Canada CCHS Variable Browser - GitHub Pages
 
 ## Overview
 
-Create a searchable, interactive table of 14,005 CCHS variables from the ICES Data Dictionary, deployed as a static HTML page on GitHub Pages using Quarto + DT (DataTables).
+Create a searchable, interactive table of 14,005 CCHS variables, deployed as a static HTML page on GitHub Pages using Quarto + DT (DataTables).
 
 ## Specification
 
 ### User requirements
-- Search/filter 14,005 ICES CCHS variables by name, label, module, type
+- Search/filter 14,005 Statistics Canada CCHS variables by name, label, module, type
 - View which datasets contain each variable
 - Fast client-side filtering (no server required)
 - Accessible via GitHub Pages URL
@@ -23,7 +23,7 @@ Create a searchable, interactive table of 14,005 CCHS variables from the ICES Da
 
 | Column | Source | Notes |
 |--------|--------|-------|
-| Variable | `variable_name` | Searchable, linkable to ICES |
+| Variable | `variable_name` | Searchable, linkable for metadata |
 | Module | `module` (derived) | First 3-4 chars of variable name |
 | Label | `label` | Full-text searchable |
 | Type | `type` | Num8, Char10, etc. |
@@ -41,11 +41,11 @@ Create a searchable, interactive table of 14,005 CCHS variables from the ICES Da
 
 ### Phase 1: Create the Quarto report
 
-**File**: `reports/ices-dictionary-browser.qmd`
+**File**: `reports/cchs-variable-browser.qmd`
 
 ```yaml
 ---
-title: "ICES CCHS Data Dictionary Browser"
+title: "Statistics Canada CCHS Variable Browser"
 subtitle: "Search 14,005 variables across 231 datasets"
 author: "cchsflow-docs"
 date: last-modified
@@ -55,7 +55,6 @@ format:
     toc-depth: 2
     theme: cosmo
     embed-resources: true
-    self-contained: true
 execute:
   echo: false
   warning: false
@@ -65,7 +64,7 @@ execute:
 
 **R code blocks**:
 1. Load CSV data from `data/exports/ices_cchs_variables_for_sheets.csv`
-2. Create clickable links to ICES website for each variable
+2. Create clickable links to detailed metadata for each variable
 3. Render DT table with filters and pagination
 
 **DT configuration**:
@@ -94,15 +93,15 @@ Create a second table showing the 231 datasets:
 
 ### Phase 3: GitHub Actions workflow
 
-**File**: `.github/workflows/deploy-ices-browser.yml`
+**File**: `.github/workflows/deploy-cchs-browser.yml`
 
 ```yaml
-name: Deploy ICES Dictionary Browser
+name: Deploy CCHS Variable Browser
 
 on:
   push:
     paths:
-      - 'reports/ices-dictionary-browser.qmd'
+      - 'reports/cchs-variable-browser.qmd'
       - 'data/exports/ices_cchs_*.csv'
   workflow_dispatch:
 
@@ -121,38 +120,34 @@ jobs:
         run: echo "path=$(Rscript -e 'cat(renv::paths$library())')" >> $GITHUB_OUTPUT
       - uses: quarto-dev/quarto-actions/setup@v2
       - name: Render Quarto
-        run: quarto render reports/ices-dictionary-browser.qmd
+        run: quarto render reports/cchs-variable-browser.qmd --output-dir ../docs/cchs-browser
         env:
           R_LIBS_USER: ${{ steps.renv-path.outputs.path }}
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./reports
-          destination_dir: ices-browser
+        uses: actions/deploy-pages@v4
 ```
 
 ### Phase 4: Enable GitHub Pages
 
-Repository Settings → Pages → Source: Deploy from branch `gh-pages`
+Repository Settings → Pages → Source: GitHub Actions
 
-Result URL: `https://big-life-lab.github.io/cchsflow-docs/ices-browser/`
+Result URL: `https://big-life-lab.github.io/cchsflow-docs/cchs-browser/`
 
 ## Files to create/modify
 
 | Action | File | Purpose |
 |--------|------|---------|
-| Create | `reports/ices-dictionary-browser.qmd` | Main browser page |
-| Create | `.github/workflows/deploy-ices-browser.yml` | CI/CD deployment |
+| Create | `reports/cchs-variable-browser.qmd` | Main browser page |
+| Create | `.github/workflows/deploy-cchs-browser.yml` | CI/CD deployment |
 | Modify | `README.md` | Add link to live browser |
 
 ## Verification
 
-1. **Local test**: `quarto render reports/ices-dictionary-browser.qmd` and open HTML
+1. **Local test**: `quarto render reports/cchs-variable-browser.qmd` and open HTML
 2. **Table functionality**: Search, filter, pagination, export buttons work
 3. **Performance**: Page loads in <5 seconds, scrolling is smooth
 4. **Deployment**: Push triggers workflow, page appears at GH Pages URL
-5. **Links**: Variable links open correct ICES page
+5. **Links**: Variable links open correct metadata page
 
 ## Future enhancements (not in scope)
 
