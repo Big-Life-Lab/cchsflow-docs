@@ -1,0 +1,181 @@
+---
+title: "Statistics Canada CCHS Variable Browser"
+subtitle: "Search 14,005 variables across 231 datasets"
+author: "cchsflow-docs"
+date: last-modified
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    embed-resources: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(DT)
+library(dplyr)
+library(htmltools)
+```
+
+## About this browser
+
+This interactive table contains all **14,005 CCHS variables** from the [Canadian Community Health Survey](https://www.statcan.gc.ca/en/survey/household/3226). Use the search box and column filters to find variables of interest.
+
+**Data source**: Statistics Canada CCHS (metadata via ICES Data Dictionary)
+**Version**: 1.0.0
+
+::: {.callout-note}
+## Attribution
+The Canadian Community Health Survey (CCHS) is conducted by [Statistics Canada](https://www.statcan.gc.ca/). Variable metadata was scraped from the ICES Data Dictionary, which hosts this information for Ontario-based researchers.
+:::
+
+::: {.callout-tip}
+## Quick tips
+- Use the **global search box** (top right) to search across all columns
+- Use **column filters** (below headers) to filter specific fields
+- Click column headers to **sort**
+- Click **Copy** or **CSV** to export filtered results
+:::
+
+## Variables
+
+```{r load-data}
+# Load the variables data
+variables <- read.csv("../data/exports/ices_cchs_variables_for_sheets.csv",
+                      stringsAsFactors = FALSE)
+
+# Create clickable links to ICES for each variable
+variables <- variables |>
+  mutate(
+    # Create hyperlink to ICES variable page
+    Variable = sprintf(
+      '<a href="https://datadictionary.ices.on.ca/Applications/DataDictionary/Variables.aspx?Library=CCHS&Name=%s" target="_blank">%s</a>',
+      variable_name, variable_name
+    ),
+    # Rename columns for display
+    Module = module,
+    Label = label,
+    Type = type,
+    Format = ifelse(is.na(format) | format == "", "-", format),
+    Datasets = n_datasets,
+    `Sample datasets` = ifelse(
+      nchar(sample_datasets) > 60,
+      paste0(substr(sample_datasets, 1, 57), "..."),
+      sample_datasets
+    )
+  ) |>
+  select(Variable, Module, Label, Type, Format, Datasets, `Sample datasets`)
+```
+
+```{r variables-table}
+datatable(
+  variables,
+  filter = 'top',
+  rownames = FALSE,
+  escape = FALSE,  # Allow HTML links in Variable column
+  extensions = 'Buttons',
+  options = list(
+    pageLength = 25,
+    scrollX = TRUE,
+    deferRender = TRUE,
+    searchHighlight = TRUE,
+    dom = 'Bfrtip',
+    buttons = list(
+      'copy',
+      list(
+        extend = 'csv',
+        filename = 'ices_cchs_variables_filtered'
+      )
+    ),
+    columnDefs = list(
+      list(width = '100px', targets = 0),  # Variable
+      list(width = '80px', targets = 1),   # Module
+      list(width = '300px', targets = 2),  # Label
+      list(width = '60px', targets = 3),   # Type
+      list(width = '120px', targets = 4),  # Format
+      list(width = '70px', targets = 5),   # Datasets
+      list(width = '200px', targets = 6)   # Sample datasets
+    ),
+    language = list(
+      search = "Search all columns:",
+      info = "Showing _START_ to _END_ of _TOTAL_ variables"
+    )
+  ),
+  caption = htmltools::tags$caption(
+    style = 'caption-side: top; text-align: left; font-size: 1.1em; font-weight: bold;',
+    'Click variable name for detailed metadata'
+  )
+)
+```
+
+## Datasets
+
+```{r load-datasets}
+datasets <- read.csv("../data/exports/ices_cchs_datasets_for_sheets.csv",
+                     stringsAsFactors = FALSE)
+
+datasets <- datasets |>
+  arrange(desc(variable_count)) |>
+  rename(
+    `Dataset ID` = dataset_id,
+    `Variable count` = variable_count,
+    Type = dataset_type,
+    Region = region
+  )
+```
+
+The CCHS collection contains **`r nrow(datasets)` datasets**. Datasets vary in size from `r min(datasets$'Variable count')` to `r max(datasets$'Variable count')` variables.
+
+```{r datasets-table}
+datatable(
+  datasets,
+  filter = 'top',
+  rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    scrollX = TRUE,
+    dom = 'Bfrtip',
+    buttons = c('copy', 'csv'),
+    order = list(list(1, 'desc')),  # Sort by variable count descending
+    language = list(
+      info = "Showing _START_ to _END_ of _TOTAL_ datasets"
+    )
+  ),
+  caption = htmltools::tags$caption(
+    style = 'caption-side: top; text-align: left;',
+    'Sorted by variable count (largest first)'
+  )
+)
+```
+
+## Data dictionary schema
+
+The underlying data is stored in a DuckDB database with the following structure:
+
+| Table | Rows | Description |
+|-------|------|-------------|
+| `variables` | 14,005 | Variable metadata (name, label, type, format) |
+| `datasets` | 231 | Dataset identifiers and variable counts |
+| `variable_availability` | 118,668 | Many-to-many mapping of variables to datasets |
+| `value_formats` | 11,065 | Code/label pairs for categorical variables |
+
+## Source and updates
+
+- **Survey**: [Statistics Canada CCHS](https://www.statcan.gc.ca/en/survey/household/3226)
+- **Metadata source**: ICES Data Dictionary (scraped January 2026)
+- **Repository**: [Big-Life-Lab/cchsflow-docs](https://github.com/Big-Life-Lab/cchsflow-docs)
+- **Release**: [ices-cchs-dictionary-v1.0.0](https://github.com/Big-Life-Lab/cchsflow-docs/releases/tag/ices-cchs-dictionary-v1.0.0)
+
+::: {.callout-note}
+## Data ownership
+The CCHS is owned and maintained by Statistics Canada. This browser provides searchable access to variable metadata only. For survey data access, contact Statistics Canada or your local Research Data Centre.
+:::
+
+To update this browser with new data:
+1. Re-run the scraper: `Rscript scripts/run_ices_full_scrape_duckdb.R`
+2. Regenerate exports: Update `data/exports/` CSVs
+3. Re-render this report: `quarto render reports/ices-dictionary-browser.qmd`
