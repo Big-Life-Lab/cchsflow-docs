@@ -471,4 +471,19 @@ The catalog uses LinkML for structured validation:
 
 ---
 
+## 📜 Statistics Canada Attribution
+
+The Canadian Community Health Survey (CCHS) and Canadian Health Measures Survey (CHMS) are conducted by Statistics Canada. Survey data and documentation are accessed and adapted in accordance with the [Statistics Canada Open Licence](https://www.statcan.gc.ca/eng/reference/licence).
+
+**Source**: Statistics Canada, Canadian Community Health Survey (CCHS) and Canadian Health Measures Survey (CHMS). Reproduced and distributed on an "as is" basis with the permission of Statistics Canada.
+
+**Adapted from**: Statistics Canada survey documentation. This does not constitute an endorsement by Statistics Canada of this product.
+
+For information about accessing CCHS and CHMS data, visit:
+- [CCHS Survey Information](https://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&SDDS=3226)
+- [CHMS Survey Information](https://www.statcan.gc.ca/en/survey/household/5071)
+- [Research Data Centres](https://www.statcan.gc.ca/en/microdata/data-centres)
+
+---
+
 🤖 *Enhanced metadata catalog system for comprehensive Canadian health survey documentation management*
