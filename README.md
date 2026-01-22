@@ -110,6 +110,24 @@ renv::restore()
 
 See [ENVIRONMENT.md](ENVIRONMENT.md) for complete setup instructions, including using **rig** for R version management and **pak** for faster package installation.
 
+---
+
+### 🔍 CCHS Variable Browser
+
+**[Browse 14,005 CCHS Variables](https://big-life-lab.github.io/cchsflow-docs/cchs-browser/)** 🔗
+
+Interactive searchable table of all Statistics Canada CCHS variables across 231 datasets. Search by variable name, label, module, or type. Export filtered results to CSV.
+
+---
+
+### 🤖 AI-Powered Documentation Assistant
+
+**[CCHS Documentation NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08)** 🔗
+
+Interactive AI assistant powered by Google NotebookLM with the complete CCHS Core Master Collection plus PUMF documentation. Ask questions, explore documentation, and get instant answers about CCHS surveys.
+
+---
+
 ### Download a collection
 
 Download curated collections from [GitHub Releases](../../releases):
