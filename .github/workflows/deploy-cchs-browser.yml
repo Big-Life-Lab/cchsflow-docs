@@ -40,8 +40,9 @@ jobs:
 
       - name: Render CCHS Variable Browser
         run: |
+          quarto render reports/cchs-variable-browser.qmd
           mkdir -p docs/cchs-browser
-          quarto render reports/cchs-variable-browser.qmd --output-dir ../docs/cchs-browser
+          mv reports/cchs-variable-browser.html docs/cchs-browser/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
