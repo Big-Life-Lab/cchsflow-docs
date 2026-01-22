@@ -26,7 +26,7 @@ library(htmltools)
 This interactive table contains all **14,005 CCHS variables** from the [Canadian Community Health Survey](https://www.statcan.gc.ca/en/survey/household/3226). Use the search box and column filters to find variables of interest.
 
 **Data source**: Statistics Canada CCHS (metadata via ICES Data Dictionary)
-**Version**: 1.0.0
+**Version**: 1.1.0
 
 ::: {.callout-note}
 ## Attribution
@@ -35,8 +35,9 @@ The Canadian Community Health Survey (CCHS) is conducted by [Statistics Canada](
 
 ::: {.callout-tip}
 ## Quick tips
-- Use the **global search box** (top right) to search across all columns
-- Use **column filters** (below headers) to filter specific fields
+- Use **column filters** (below headers) to filter by year range, region, file type
+- **Example**: To find Ontario Share files 2001-2015, filter "Regions" = Ontario, "File Types" contains Share, "Max Year" ≤ 2015
+- Use the **global search box** (top right) to search variable names and labels
 - Click column headers to **sort**
 - Click **Copy** or **CSV** to export filtered results
 :::
@@ -44,36 +45,44 @@ The Canadian Community Health Survey (CCHS) is conducted by [Statistics Canada](
 ## Variables
 
 ```{r load-data}
-# Load the variables data
+# Load the variables data with enriched metadata
 variables <- read.csv("../data/exports/ices_cchs_variables_for_sheets.csv",
                       stringsAsFactors = FALSE)
 
-# Create clickable links to ICES for each variable
-variables <- variables |>
+# Create display-ready table with filtering columns
+variables_display <- variables |>
   mutate(
     # Create hyperlink to ICES variable page
     Variable = sprintf(
       '<a href="https://datadictionary.ices.on.ca/Applications/DataDictionary/Variables.aspx?Library=CCHS&Name=%s" target="_blank">%s</a>',
       variable_name, variable_name
     ),
-    # Rename columns for display
+    # Clean up display values
     Module = module,
     Label = label,
     Type = type,
     Format = ifelse(is.na(format) | format == "", "-", format),
+    Years = year_range,
+    `Min Year` = min_year,
+    `Max Year` = max_year,
+    Regions = regions,
+    `File Types` = file_types,
     Datasets = n_datasets,
-    `Sample datasets` = ifelse(
-      nchar(sample_datasets) > 60,
-      paste0(substr(sample_datasets, 1, 57), "..."),
+    # Ontario Share indicator for quick filtering
+    `Ontario Share` = ifelse(has_ontario & has_share, "Yes", "No"),
+    `Sample` = ifelse(
+      nchar(sample_datasets) > 50,
+      paste0(substr(sample_datasets, 1, 47), "..."),
       sample_datasets
     )
   ) |>
-  select(Variable, Module, Label, Type, Format, Datasets, `Sample datasets`)
+  select(Variable, Module, Label, Years, `Min Year`, `Max Year`,
+         Regions, `File Types`, `Ontario Share`, Datasets, `Sample`)
 ```
 
 ```{r variables-table}
 datatable(
-  variables,
+  variables_display,
   filter = 'top',
   rownames = FALSE,
   escape = FALSE,  # Allow HTML links in Variable column
@@ -88,17 +97,21 @@ datatable(
       'copy',
       list(
         extend = 'csv',
-        filename = 'ices_cchs_variables_filtered'
+        filename = 'cchs_variables_filtered'
       )
     ),
     columnDefs = list(
-      list(width = '100px', targets = 0),  # Variable
-      list(width = '80px', targets = 1),   # Module
-      list(width = '300px', targets = 2),  # Label
-      list(width = '60px', targets = 3),   # Type
-      list(width = '120px', targets = 4),  # Format
-      list(width = '70px', targets = 5),   # Datasets
-      list(width = '200px', targets = 6)   # Sample datasets
+      list(width = '90px', targets = 0),   # Variable
+      list(width = '60px', targets = 1),   # Module
+      list(width = '250px', targets = 2),  # Label
+      list(width = '70px', targets = 3),   # Years
+      list(width = '50px', targets = 4),   # Min Year
+      list(width = '50px', targets = 5),   # Max Year
+      list(width = '90px', targets = 6),   # Regions
+      list(width = '100px', targets = 7),  # File Types
+      list(width = '60px', targets = 8),   # Ontario Share
+      list(width = '50px', targets = 9),   # Datasets
+      list(width = '150px', targets = 10)  # Sample
     ),
     language = list(
       search = "Search all columns:",
@@ -107,7 +120,7 @@ datatable(
   ),
   caption = htmltools::tags$caption(
     style = 'caption-side: top; text-align: left; font-size: 1.1em; font-weight: bold;',
-    'Click variable name for detailed metadata'
+    'Click variable name for detailed metadata. Use column filters to narrow by year, region, or file type.'
   )
 )
 ```
@@ -118,36 +131,63 @@ datatable(
 datasets <- read.csv("../data/exports/ices_cchs_datasets_for_sheets.csv",
                      stringsAsFactors = FALSE)
 
-datasets <- datasets |>
-  arrange(desc(variable_count)) |>
-  rename(
+# Prepare display columns
+datasets_display <- datasets |>
+  mutate(
     `Dataset ID` = dataset_id,
-    `Variable count` = variable_count,
+    Variables = variable_count,
+    Year = year_label,
+    Region = region,
     Type = dataset_type,
-    Region = region
-  )
+    Cycle = ifelse(is.na(cycle_label) | cycle_label == "Unknown", "-", cycle_label),
+    Supplement = ifelse(is_supplement, supplement_type, "-"),
+    Bootstrap = ifelse(is_bootstrap, "Yes", "No")
+  ) |>
+  select(`Dataset ID`, Variables, Year, Region, Type, Cycle, Supplement, Bootstrap) |>
+  arrange(desc(Variables))
 ```
 
-The CCHS collection contains **`r nrow(datasets)` datasets**. Datasets vary in size from `r min(datasets$'Variable count')` to `r max(datasets$'Variable count')` variables.
+The CCHS collection contains **`r nrow(datasets_display)` datasets**. Datasets vary in size from `r min(datasets_display$Variables)` to `r max(datasets_display$Variables)` variables.
+
+::: {.callout-tip}
+## Finding Ontario Share files
+Filter the table below by:
+
+- **Region** = "Ontario"
+- **Type** = "Share"
+- **Bootstrap** = "No" (to exclude bootstrap weight files)
+
+This will show the main Ontario Share datasets used for most analyses.
+:::
 
 ```{r datasets-table}
 datatable(
-  datasets,
+  datasets_display,
   filter = 'top',
   rownames = FALSE,
   options = list(
-    pageLength = 15,
+    pageLength = 20,
     scrollX = TRUE,
     dom = 'Bfrtip',
     buttons = c('copy', 'csv'),
     order = list(list(1, 'desc')),  # Sort by variable count descending
+    columnDefs = list(
+      list(width = '180px', targets = 0),  # Dataset ID
+      list(width = '70px', targets = 1),   # Variables
+      list(width = '80px', targets = 2),   # Year
+      list(width = '100px', targets = 3),  # Region
+      list(width = '80px', targets = 4),   # Type
+      list(width = '120px', targets = 5),  # Cycle
+      list(width = '120px', targets = 6),  # Supplement
+      list(width = '60px', targets = 7)    # Bootstrap
+    ),
     language = list(
       info = "Showing _START_ to _END_ of _TOTAL_ datasets"
     )
   ),
   caption = htmltools::tags$caption(
     style = 'caption-side: top; text-align: left;',
-    'Sorted by variable count (largest first)'
+    'Use filters to find specific datasets by year, region, and file type'
   )
 )
 ```
