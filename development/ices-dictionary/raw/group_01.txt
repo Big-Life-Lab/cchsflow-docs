@@ -1,0 +1,618 @@
+Library: CCHS Member: 01. CCHS 2000-2001 Canadian Community Health Survey
+Back Search    Search
+Variable Name	Description	Type
+ADMA_IMP	Imputation flag	Num8
+ADMA_PRX	C2 completed by proxy	Num8
+ADMA_RNO	Sequential record number	Num8
+ALCA_1	Drank alcohol in past 12 months	Num8
+ALCA_2	Frequency of drinking alcohol	Num8
+ALCA_3	Frequency of having 5 or more drinks	Num8
+ALCA_5	Drank alcohol in past week	Num8
+ALCA_5A1	Number of drinks - Sunday	Num8
+ALCA_5A2	Number of drinks - Monday	Num8
+ALCA_5A3	Number of drinks - Tuesday	Num8
+ALCA_5A4	Number of drinks - Wednesday	Num8
+ALCA_5A5	Number of drinks - Thursday	Num8
+ALCA_5A6	Number of drinks - Friday	Num8
+ALCA_5A7	Number of drinks - Saturday	Num8
+ALCA_5B	Ever had a drink	Num8
+ALCA_6	Regularly drank > 12 drinks a week	Num8
+ALCA_7A	Reason red. drinking - dieting	Num8
+ALCA_7B	Reason red. drinking - athletic training	Num8
+ALCA_7C	Reason red. drinking - pregnancy	Num8
+ALCA_7D	Reason red. drinking - getting older	Num8
+ALCA_7E	Reason red. drinking - drink too much	Num8
+ALCA_7F	Reason red. drinking - aff. work/studies	Num8
+ALCA_7G	Reason red. drink. - interfer/fam. life	Num8
+ALCA_7H	Reason red. drink. - affect phys. health	Num8
+ALCA_7I	Reason red. drink. - affect social rel.	Num8
+ALCA_7J	Reason red. drink. - affect financ. pos.	Num8
+ALCA_7K	Reason red. drinking - aff. happiness	Num8
+ALCA_7L	Reason red. drinking - fam./friends inf.	Num8
+ALCA_7M	Reason red. drinking - other	Num8
+ALCADDLY	Average daily alcohol consumption - (D)	Num8
+ALCADTYP	Type of drinker - (D)	Num8
+ALCADWKY	Number of drinks - past week (D)	Num8
+ALDADPP	Alc. dependence - predicted prob. - (D)	Num8
+ALDADSF	Alc. dependence - short form score - (D)	Num8
+BPCA_010	Ever had blood pressure taken	Num8
+BPCA_012	Last time blood pressure was taken	Num8
+BPCA_16A	B.p. not taken - not gotten around to it	Num8
+BPCA_16B	B.p. not taken - not necessary/resp.	Num8
+BPCA_16C	B.p. not taken - not necessary/doctor	Num8
+BPCA_16D	B.p. not taken - personal/family resp.	Num8
+BPCA_16E	B.p. not taken - not available/required	Num8
+BPCA_16F	B.p. not taken - not available in area	Num8
+BPCA_16G	B.p. not taken - waiting time too long	Num8
+BPCA_16H	B.p. not taken - transportation problems	Num8
+BPCA_16I	B.p. not taken - language problem	Num8
+BPCA_16J	B.p. not taken - cost	Num8
+BPCA_16K	B.p. not taken - didn't know where to go	Num8
+BPCA_16L	B.p. not taken - fear	Num8
+BPCA_16M	B.p. not taken - other reason	Num8
+BRFA_01	Has given birth in the past 5 years	Num8
+BRFA_01B	Took folic acid - before last pregnancy	Num8
+BRFA_02	Breastfed / tried to b.feed - last child	Num8
+BRFA_03	Still breastfeeding last child	Num8
+BRFA_04	Duration of breastfeeding last child	Num8
+BRFA_05	Main reason stopped breastfeeding	Num8
+BRFA_10	Smoked - last pregnancy	Num8
+BRFA_11	# cigarettes daily - last pregnancy	Num8
+BRFA_12	Smoked - while breastfeeding last baby	Num8
+BRFA_13	# cigarettes daily - while breastfeeding	Num8
+BRFA_14	Second-hand smoke - last pregnancy	Num8
+BRFA_20	Drank alcohol - ast pregnancy	Num8
+BRFA_21	Frequency of drinking - last pregnancy	Num8
+BRFA_22	Consumed alcohol while breastfeeding	Num8
+BRFA_23	Frequency of drinking - breastfeeding	Num8
+BRXA_110	Had breasts examined by health prof.	Num8
+BRXA_112	Last time breasts examined for lumps	Num8
+BRXA_16A	No breast ex. - havn't gotten around/it	Num8
+BRXA_16B	No breast ex. - resp. didn't think nec.	Num8
+BRXA_16C	No breast ex. - dr. didn't think necess.	Num8
+BRXA_16D	No breast ex. - pers./family resp.	Num8
+BRXA_16E	No breast ex. - not av. when required	Num8
+BRXA_16F	No breast ex. - not available in area	Num8
+BRXA_16G	No breast ex. - waiting time too long	Num8
+BRXA_16H	No breast ex. - transportation problems	Num8
+BRXA_16I	No breast ex. - language problem	Num8
+BRXA_16J	No breast ex. - cost	Num8
+BRXA_16K	No breast ex. - did not know where to go	Num8
+BRXA_16L	No breast ex. - fear	Num8
+BRXA_16M	No breast ex. - other reason	Num8
+BSXA_120	Self-examined breasts for lumps	Num8
+BSXA_121	Freq./breast self-examination	Num8
+BSXA_22A	Breast self-ex. learned from - doctor	Num8
+BSXA_22B	Breast self-ex. learned from - nurse	Num8
+BSXA_22C	Breast self-ex. learned from - book, etc	Num8
+BSXA_22D	Breast self-ex. learned from - TV, etc	Num8
+BSXA_22E	Breast self-ex. learned from - mother	Num8
+BSXA_22F	Breast self-ex. learned from - sister	Num8
+BSXA_22G	Breast self-ex. learned from - other	Num8
+CCCA_011	Has food allergies	Num8
+CCCA_021	Has allergies other than food allergies	Num8
+CCCA_031	Has asthma	Num8
+CCCA_035	Asthma - had symptoms/attacks	Num8
+CCCA_036	Asthma - took medication	Num8
+CCCA_041	Has fibromyalgia	Num8
+CCCA_051	Has arthritis/rheumatism	Num8
+CCCA_05A	Arthr./rheum. - kind	Num8
+CCCA_061	Has back problems excl. fibrom. & arthr.	Num8
+CCCA_071	Has high blood pressure	Num8
+CCCA_081	Has migraine headaches	Num8
+CCCA_101	Has diabetes	Num8
+CCCA_105	Diabetes - currently takes insulin	Num8
+CCCA_10A	Diabetes diagnosed - when pregnant	Num8
+CCCA_10B	Diabetes diagnosed - other than pregnant	Num8
+CCCA_10C	Diabetes diagnosed - when/start insulin	Num8
+CCCA_111	Has epilepsy	Num8
+CCCA_121	Has heart disease	Num8
+CCCA_12A	Heart disease - ever had a heart attack	Num8
+CCCA_12J	Heart disease - has angina	Num8
+CCCA_12K	Heart disease - has cong. heart failure	Num8
+CCCA_131	Has cancer	Num8
+CCCA_141	Has stomach/intestinal ulcers	Num8
+CCCA_151	Suffers from the effects of a stroke	Num8
+CCCA_161	Has urinary incontinence	Num8
+CCCA_171	Has bowel disorder-Crohn's Dis./colitis	Num8
+CCCA_191	Has cataracts	Num8
+CCCA_201	Has glaucoma	Num8
+CCCA_211	Has a thyroid condition	Num8
+CCCA_251	Has chronic fatigue syndrome	Num8
+CCCA_261	Suffers/multiple chemical sensitivities	Num8
+CCCA_91A	Has chronic bronchitis	Num8
+CCCA_91B	Has emphys./chronic obstr. pulm. disease	Num8
+CCCAF1	Has a chronic condition - (F)	Num8
+CCCAG221	Has other chronic condition - (G)	Num8
+CCCAGTOT	Number of chronic conditions - (G)	Num8
+CIHA_1	Did something to improve health	Num8
+CIHA_2	Most important change to improve health	Num8
+CIHA_3	Thinks should do something - imp. hlth.	Num8
+CIHA_4	Most important thing to improve health	Num8
+CIHA_5	Barrier to improving health	Num8
+CIHA_6A	Barrier - lack will power	Num8
+CIHA_6B	Barrier - lack of time	Num8
+CIHA_6C	Barrier - too tired	Num8
+CIHA_6D	Barrier - too difficult	Num8
+CIHA_6E	Barrier - too costly	Num8
+CIHA_6F	Barrier - too stressed	Num8
+CIHA_6G	Barrier - disab./health prob.	Num8
+CIHA_6H	Barrier - other	Num8
+CIHA_7	Intending to improve health - next year	Num8
+CIHA_8A	Health improvement - more exercise	Num8
+CIHA_8B	Health improvement - lose weight	Num8
+CIHA_8C	Health improvement - eating habits	Num8
+CIHA_8D	Health improvement - quit smoking	Num8
+CIHA_8E	Health improvement - smoke reduct.	Num8
+CIHA_8F	Health improvement - manage stress	Num8
+CIHA_8G	Health improvement - reduce stress	Num8
+CIHA_8H	Health improvement - take vitamins	Num8
+CIHA_8I	Health improvement - other	Num8
+CMHA_01K	Consulted mental health professional	Num8
+CMHA_1MA	Consulted m. h. prof. - fam. doc.	Num8
+CMHA_1MB	Consulted m. h. prof. - psychiatrist	Num8
+CMHA_1MC	Consulted m. h. prof. - psychologist	Num8
+CMHA_1MD	Consulted m. h. prof. - nurse	Num8
+CMHA_1ME	Consulted m. h. prof. - social worker	Num8
+CMHA_1MF	Consulted m. h. prof. - other	Num8
+CMHAG01L	Consulted m. h. prof. - times (G)	Num8
+DENA_130	Visited dentist	Num8
+DENA_132	Last time visited dentist	Num8
+DENA_36A	No dental visit - haven't got. around it	Num8
+DENA_36B	No dental vis. - resp. didn't think nec.	Num8
+DENA_36C	No dental vis. - dent. didn't think nec.	Num8
+DENA_36D	No dental visit - pers./family respons.	Num8
+DENA_36E	No dental visit - not av. when requ.	Num8
+DENA_36F	No dental visit - not available in area	Num8
+DENA_36G	No dental visit - waiting time too long	Num8
+DENA_36H	No dental visit - transportation prob.	Num8
+DENA_36I	No dental visit - language problem	Num8
+DENA_36J	No dental visit - cost	Num8
+DENA_36K	No dental visit - didn't know where	Num8
+DENA_36L	No dental visit - fear	Num8
+DENA_36M	No dental visit - wears dentures	Num8
+DENA_36N	No dental visit - other reason	Num8
+DHHA_OWN	Dwelling - owned by a member of hsld	Num8
+DHHA_SEX	Sex	Num8
+DHHAG611	No. persons 6-11 years/in hhld - (D, G)	Num8
+DHHAGAGE	Age - (G)	Num8
+DHHAGBED	Dwelling - number of bedrooms - (D, G)	Num8
+DHHAGL12	No. pers. < 12 years old in hhld - (D,G)	Num8
+DHHAGLE5	No. pers. <= 5 years old in hhld - (D,G)	Num8
+DHHAGLVG	Living arrangement/selected resp. (D, G)	Num8
+DHHAGMS	Marital status - (G)	Num8
+DISADCH	Chronicity Distress Impair. Scale - (D)	Num8
+DISADDS	Distress Scale - (D)	Num8
+DPSADMT	Specific month when felt depressed - (D)	Num8
+DPSADPP	Depr. Scale - Predicted Prob.. - (D)	Num8
+DPSADSF	Depr. Scale - Short Form Score - (D)	Num8
+DPSADWK	Number of weeks felt depressed - (D)	Num8
+DRGA_1A	Medication - pain relievers	Num8
+DRGA_1B	Medication - tranquilizers	Num8
+DRGA_1C	Medication - diet pills	Num8
+DRGA_1D	Medication - antidepressants	Num8
+DRGA_1E	Medication - codeine/Demerol/morphine	Num8
+DRGA_1F	Medication - allergy medicine	Num8
+DRGA_1G	Medication - asthma medications	Num8
+DRGA_1H	Medication - cough/cold remedies	Num8
+DRGA_1I	Medication - penicillin/other antibio.	Num8
+DRGA_1J	Medication - medicine for the heart	Num8
+DRGA_1K	Medication - medicine for blood pressure	Num8
+DRGA_1L	Medication - diuretics	Num8
+DRGA_1M	Medication - steroids	Num8
+DRGA_1N	Medication - insulin	Num8
+DRGA_1O	Medication - pills to control diabetes	Num8
+DRGA_1P	Medication - sleeping pills	Num8
+DRGA_1Q	Medication - stomach remedies	Num8
+DRGA_1R	Medication - laxatives	Num8
+DRGA_1S	Medication - birth control pills	Num8
+DRGA_1T	Medication - hormones for menopause	Num8
+DRGA_1T1	Hormone therapy - type	Num8
+DRGA_1T2	Hormone therapy - year started	Num8
+DRGA_1U	Medication - thyroid	Num8
+DRGA_1V	Medication - other	Num8
+DRGAF1	At least one medication in past month	Num8
+DUIA_1	Passenger with drunk driver	Num8
+EDUADH04	Highest level - HH 4 levels	Num8
+EDUADR04	Highest level - respond. 4 levels - (D)	Num8
+ETSA_1	Second-hand smoke - most days	Num8
+ETSA_2A	Second-hand smoke - at home	Num8
+ETSA_2B	Second-hand smoke - car / vehicle	Num8
+ETSA_2C	Second-hand smoke - in public places	Num8
+ETSA_2D	Second-hand smoke - friends or relatives	Num8
+ETSA_3	Smoke from cigarettes - bothered by	Num8
+ETSA_4	Smoke from cigarettes - irritation	Num8
+ETSA_5	Restrictions - smoking in home	Num8
+ETSA_6A	Restrictions - not permitted in home	Num8
+ETSA_6B	Restrictions - permitted/certain rooms	Num8
+ETSA_6C	Restrictions - not presence/young child.	Num8
+ETSA_6D	Restrictions - other	Num8
+FINA_1	Worried there would not be enough to eat	Num8
+FINA_2	Did not have enough to eat	Num8
+FINA_3	Did not eat desired quality / variety	Num8
+FINAF1	Some food insecurity in past 12 months	Num8
+FINAFDN	Food insecurity flag	Num8
+FLUA_160	Ever had a flu shot	Num8
+FLUA_162	Last time had flu shot	Num8
+FLUA_66A	No flu shot - have not gotten around it	Num8
+FLUA_66B	No flu shot - resp. didn't think necess.	Num8
+FLUA_66C	No flu shot - doctor didn't think nec.	Num8
+FLUA_66D	No flu shot - personal/family resp.	Num8
+FLUA_66E	No flu shot - not avail. when required	Num8
+FLUA_66F	No flu shot - not available in area	Num8
+FLUA_66G	No flu shot - waiting time too long	Num8
+FLUA_66H	No flu shot - transportation problems	Num8
+FLUA_66I	No flu shot - language problem	Num8
+FLUA_66J	No flu shot - cost	Num8
+FLUA_66K	No flu shot - did not know where to go	Num8
+FLUA_66L	No flu shot - fear	Num8
+FLUA_66M	No flu shot - bad reaction to prev. shot	Num8
+FLUA_66N	No flu shot - other reason	Num8
+FVCADCAR	Daily consumption - carrots (D)	Num8
+FVCADFRU	Daily consumption - fruit (D)	Num8
+FVCADJUI	Daily consumption - fruit juice (D)	Num8
+FVCADPOT	Daily consumption - potatoes (D)	Num8
+FVCADSAL	Daily consumption - green salad (D)	Num8
+FVCADTOT	Daily cons. - total fruits and veg. (D)	Num8
+FVCADVEG	Daily consumption – other vegetables (D)	Num8
+FVCAGTOT	Daily cons. – total fruits and veg. (G)	Num8
+GENA_01	Self-perceived health	Num8
+GENA_02	Self-perceived hlth - compared 1 yr ago	Num8
+GENA_03	No./hours spent sleeping each night	Num8
+GENA_04	Freq. - trouble sleeping	Num8
+GENA_05	Freq. - find sleep refreshing	Num8
+GENA_06	Freq. - find it difficult to stay awake	Num8
+GENA_07	Self perc. eval. - life stress	Num8
+GENA_08	Worked in the past 12 months	Num8
+GENA_09	Self perc. eval. - work stress	Num8
+GENA_10	Self perc. eval. - belonging/local comm.	Num8
+GENADHDI	Health description index - (D)	Num8
+GEOADPMF	Health Region (5) - (G)	Num8
+GEOAGPRV	Province - (G)	Num8
+HCUA_01	Overnight patient	Num8
+HCUA_04	Consulted altern. health care provider	Num8
+HCUA_04A	Attended self-help group	Num8
+HCUA_05A	Altern. health care - massage therapist	Num8
+HCUA_05B	Altern. health care - acupuncturist	Num8
+HCUA_05C	Altern. health care - homeopath/naturo.	Num8
+HCUA_06	Self-perceived unmet health care needs	Num8
+HCUA_07A	Care not received - not avail. in area	Num8
+HCUA_07B	Care not received - not av. when require	Num8
+HCUA_07C	Care not received - wait too long	Num8
+HCUA_07D	Care not received - felt/be inadequate	Num8
+HCUA_07E	Care not received - cost	Num8
+HCUA_07F	Care not received - too busy	Num8
+HCUA_07G	Care not received - didn't get around it	Num8
+HCUA_07H	Care not received - didn't know where	Num8
+HCUA_07I	Care not received - transportation prob.	Num8
+HCUA_07J	Care not received - language problem	Num8
+HCUA_07K	Care not received- pers./fam. resp.	Num8
+HCUA_07L	Care not received - dislikes dr./afraid	Num8
+HCUA_07M	Care not received - decided not to seek	Num8
+HCUA_07N	Care not received - other reason	Num8
+HCUA_08A	Type/care not rec. - phys. health prob.	Num8
+HCUA_08B	Type/care not rec. - emot./mental prob.	Num8
+HCUA_08C	Type/care not rec. - regular check-up	Num8
+HCUA_08D	Type/care not rec. - injury	Num8
+HCUA_08E	Type/care not rec. - other	Num8
+HCUAFHPC	Consultation with any health prof. (F)	Num8
+HCUAG01A	No./nights as patient - (G)	Num8
+HCUAG02A	No./consultations - family doc./g.p. (G)	Num8
+HCUAG02B	No./consultations - eye specialist - (G)	Num8
+HCUAG02C	No./consultations - other medical dr.(G)	Num8
+HCUAG02D	No./consultations - nurse - (G)	Num8
+HCUAG02E	No./consultations - dentist/ortho. - (G)	Num8
+HCUAG02F	No./consultations - chiropractor - (G)	Num8
+HCUAG02G	No./consultations - physiotherapist (G)	Num8
+HCUAG02H	No./consultations - soc. work./couns.(G)	Num8
+HCUAG02I	No./consul. - psychologist - (G)	Num8
+HCUAG02J	No./consul. - speech/aud./occ. ther. (G)	Num8
+HCUAG03A	Place/most recent cont.-family doctor(G)	Num8
+HCUAG03C	Place/most recent cont.-oth. med. doc(G)	Num8
+HCUAG03D	Place/most recent cont. - nurse - (G)	Num8
+HCUAG05L	Altern. health care - (G)	Num8
+HCUAGMDC	No. of consultations/med. doctors - (G)	Num8
+HMCA_09	Received home care services	Num8
+HMCA_10A	Home care received - nursing care	Num8
+HMCA_10B	Home care received - other health care	Num8
+HMCA_10C	Home care received - personal care	Num8
+HMCA_10D	Home care received - housework	Num8
+HMCA_10E	Home care received - meal prep./delivery	Num8
+HMCA_10F	Home care received - shopping	Num8
+HMCA_10G	Home care received - respite care	Num8
+HMCA_10H	Home care received - other type	Num8
+HUIADCOG	Cognition prob. - function code - (D)	Num8
+HUIADEMO	Emotional problems - function code - (D)	Num8
+HUIADHSI	Health Utility Index (HUI3) - (D)	Num8
+HUIADPAD	Act. prevent/pain - function code - (D)	Num8
+HUIAGDEX	Dexterity trouble - function code (D, G)	Num8
+HUIAGHER	Hearing problems - function code (D, G)	Num8
+HUIAGMOB	Mobility trouble - function code (D, G)	Num8
+HUIAGSPE	Speech trouble - function code - (D, G)	Num8
+HUIAGVIS	Vision trouble - function code - (D, G)	Num8
+HWTAGBMI	Body Mass Index - (D, G)	Num8
+HWTAGHT	Height - (G)	Num8
+HWTAGSW	Standard weight - (D, G)	Num8
+HWTAGWTK	Weight - kilograms (D, G)	Num8
+INCADIA2	Income adequacy - 2 groups - (D)	Num8
+INCADIA4	Income adequacy - 4 groups - (D)	Num8
+INCADIA5	Income adequacy - 5 groups - (D)	Num8
+INCAFDN	Family income flag	Num8
+INCAG2	Total hhld inc. - main source - (G)	Num8
+INCAGHH	Total hhld inc. from all sources (D, G)	Num8
+INCAGPER	Total pers. inc. from all sources (D, G)	Num8
+INJA_01	Injured in past 12 months	Num8
+INJA_10	Most serious injury - result of a fall	Num8
+INJA_13	Injury - received treatment/48hours	Num8
+INJA_14A	Treatment site - doctor's office	Num8
+INJA_14B	Treatment site - hospital emergency room	Num8
+INJA_15	Most serious injury - hospital admission	Num8
+INJA_16	Other injuries - treated / not limiting	Num8
+INJADSTT	Injury Status - (D)	Num8
+INJAG02	Number of injuries - (G)	Num8
+INJAG05	Most serious injury - (G)	Num8
+INJAG06	Most serious injury/body part aff. (G)	Num8
+INJAG08	Most serious injury - place - (G)	Num8
+INJAG09	Most serious injury - activity - (G)	Num8
+INJAG11	Most serious injury - how fell - (G)	Num8
+INJAG14C	Treatment site - clinic - (G)	Num8
+INJAG14G	Treatment site - work/school/home - (G)	Num8
+INJAG14J	Treatment site - telephone/other - (G)	Num8
+INJAG17	Number of other injuries - (G)	Num8
+INJAGCAU	Cause of injury - (D,G)	Num8
+LBFA_31A	Occupation	Num8
+LBFA_35	Smoking restictions at work	Num8
+LBFADHPW	Total hours usually worked/week - (D)	Num8
+LBFADMJS	Multiple job status - (D)	Num8
+LBFADPFT	Usual hrs worked - full or part time (F)	Num8
+LBFADSTU	Student working status - (D)	Num8
+LBFADWSS	Status last week - 4 groups - (D)	Num8
+LBFAG31	Self-employment status - (G)	Num8
+LBFAGJST	Job status over past year - (G)	Num8
+LBFAGRNW	Reason/not working last week - (D, G)	Num8
+MAMA_30	Ever had mammogram	Num8
+MAMA_31A	Had mammogram - family history	Num8
+MAMA_31B	Had mammogram - regular check-up	Num8
+MAMA_31C	Had mammogram - age	Num8
+MAMA_31D	Had mammogram - previously detected lump	Num8
+MAMA_31E	Had mammogram - follow-up treatment	Num8
+MAMA_31F	Had mammogram - hormone replac. therapy	Num8
+MAMA_31G	Had mammogram - breast problems	Num8
+MAMA_31H	Had mammogram - other reason	Num8
+MAMA_32	Last time mammogram was done	Num8
+MAMA_36A	No mam. - have not gotten around to it	Num8
+MAMA_36B	No mam. - doctor didn't think necessary	Num8
+MAMA_36C	No mam. - doctor didn't think necessary	Num8
+MAMA_36D	No mam. - personal/family resp.	Num8
+MAMA_36E	No mam. - not available when required	Num8
+MAMA_36F	No mam. - not available in the area	Num8
+MAMA_36G	No mam. - waiting time was too long	Num8
+MAMA_36H	No mam. - transportation problems	Num8
+MAMA_36I	No mam. - language problem	Num8
+MAMA_36J	No mam. - cost	Num8
+MAMA_36K	No mam. - did not know where to go	Num8
+MAMA_36L	No mam. - fear	Num8
+MAMA_36M	No mam. - other reason	Num8
+MAMA_38	Had a hysterectomy	Num8
+MASADM1	Mastery scale - (D)	Num8
+MDBADBA1	Affect balance - method A - (D)	Num8
+MDBADBA2	Affect balance - method B - (D)	Num8
+MDBADNEG	Affect balance - negative mood - (D)	Num8
+MDBADPOS	Affect balance - positive mood - (D)	Num8
+PACA_1A	Act./last 3 months - walking	Num8
+PACA_1B	Act./last 3 months - gardening/yard work	Num8
+PACA_1C	Act./last 3 months - swimming	Num8
+PACA_1D	Act./last 3 months - bicycling	Num8
+PACA_1E	Act./last 3 months - pop./social dance	Num8
+PACA_1F	Act./last 3 months - home exercises	Num8
+PACA_1G	Act./last 3 months - ice hockey	Num8
+PACA_1H	Act./last 3 months - ice skating	Num8
+PACA_1I	Act./last 3 months - in-line skat./roll.	Num8
+PACA_1J	Act./last 3 months - jogging or running	Num8
+PACA_1K	Act./last 3 months - golfing	Num8
+PACA_1L	Act./last 3 months - ex. class/aerobics	Num8
+PACA_1M	Act./last 3 months - skiing/snowboarding	Num8
+PACA_1N	Act./last 3 months - bowling	Num8
+PACA_1O	Act./last 3 months - baseball/softball	Num8
+PACA_1P	Act./last 3 months - tennis	Num8
+PACA_1Q	Act./last 3 months - weight-training	Num8
+PACA_1R	Act./last 3 months - fishing	Num8
+PACA_1S	Act./last 3 months - volleyball	Num8
+PACA_1T	Act./last 3 months - basketball	Num8
+PACA_1U	Act./last 3 months - other (#1)	Num8
+PACA_1V	Activity / last 3 months - no activity	Num8
+PACA_1W	Act./last 3 months - other (#2)	Num8
+PACA_1X	Act./last 3 months - other (#3)	Num8
+PACA_2A	No./times partic. - walking for exercise	Num8
+PACA_2B	No./times partic. - gardening	Num8
+PACA_2C	No./times partic. - swimming	Num8
+PACA_2D	No./times partic. - bicycling	Num8
+PACA_2E	No./times partic. - popular/social dance	Num8
+PACA_2F	No./times partic. - home exercises	Num8
+PACA_2G	No./times partic. - ice hockey	Num8
+PACA_2H	No./times partic. - ice skating	Num8
+PACA_2I	No./times partic. -in-line skat/ rollerb	Num8
+PACA_2J	No./times partic. - jogging/running	Num8
+PACA_2K	No./times partic. - golfing	Num8
+PACA_2L	No./times partic. - ex. class/aerobics	Num8
+PACA_2M	No./times - downhill skiing/snowboarding	Num8
+PACA_2N	No./times partic. - bowling	Num8
+PACA_2O	No./times partic. - baseball or softball	Num8
+PACA_2P	No./times partic. - tennis	Num8
+PACA_2Q	No./times partic. - weight training	Num8
+PACA_2R	No./times partic. - fishing	Num8
+PACA_2S	No./times partic. - volleyball	Num8
+PACA_2T	No./times partic. - basketball	Num8
+PACA_2U	No./times partic. - other activity (#1)	Num8
+PACA_2W	No./times partic. - other activity (#2)	Num8
+PACA_2X	No./times partic. - other activity (#3)	Num8
+PACA_3A	Time spent - walking for exercise	Num8
+PACA_3B	Time spent - gardening	Num8
+PACA_3C	Time spent - swimming	Num8
+PACA_3D	Time spent - bicycling	Num8
+PACA_3E	Time spent - popular/social dance	Num8
+PACA_3F	Time spent - home exercises	Num8
+PACA_3G	Time spent - ice hockey	Num8
+PACA_3H	Time spent - ice skating	Num8
+PACA_3I	Time spent - in-line skating/rollerblad	Num8
+PACA_3J	Time spent - jogging/running	Num8
+PACA_3K	Time spent - golfing	Num8
+PACA_3L	Time spent - exercise class/aerobics	Num8
+PACA_3M	Time spent -downhill skiing/snowboarding	Num8
+PACA_3N	Time spent - bowling	Num8
+PACA_3O	Time spent - baseball/softball	Num8
+PACA_3P	Time spent - tennis	Num8
+PACA_3Q	Time spent - weight training	Num8
+PACA_3R	Time spent - fishing	Num8
+PACA_3S	Time spent - volleyball	Num8
+PACA_3T	Time spent - basketball	Num8
+PACA_3U	Time spent - other activity (#1)	Num8
+PACA_3W	Time spent - other activity (#2)	Num8
+PACA_3X	Time spent - other activity (#3)	Num8
+PACA_4A	No./hours spent - walking work/school	Num8
+PACA_4B	No./hours spent - biking-work/school	Num8
+PACA_6	Level of physical activity for usual day	Num8
+PACADEE	Energy expenditure - (D)	Num8
+PACADFM	Monthly freq./phys. act. >15 min. - (D)	Num8
+PACADFR	Frequency of all physical activity - (D)	Num8
+PACADPAI	Physical activity index - (D)	Num8
+PACAFD	Partic. in daily phy. Act. - > 15 min.	Num8
+PACAFLEI	Participant in leisure physical activity	Num8
+PAPA_020	Ever had PAP smear test	Num8
+PAPA_022	Last time had PAP smear test	Num8
+PAPA_26A	No PAP - have not gotten around to it	Num8
+PAPA_26B	No PAP - resp. didn't think necessary	Num8
+PAPA_26C	No PAP - doctor didn't think necessary	Num8
+PAPA_26D	No PAP - personal/fam. responsibilities	Num8
+PAPA_26E	No PAP - not available when required	Num8
+PAPA_26F	No PAP - not available in area	Num8
+PAPA_26G	No PAP - waiting time too long	Num8
+PAPA_26H	No PAP - transportation problems	Num8
+PAPA_26I	No PAP - language problem	Num8
+PAPA_26J	No PAP - cost	Num8
+PAPA_26K	No PAP - did not know where to go	Num8
+PAPA_26L	No PAP - fear	Num8
+PAPA_26M	No PAP - hysterectomy	Num8
+PAPA_26N	No PAP - hate/dislike having one done	Num8
+PAPA_26O	No PAP - other reason	Num8
+PCUA_150	Phys. check-up without a health problem	Num8
+PCUA_151	Phys. check-up during visit/health prob.	Num8
+PCUA_152	Last time had physical check up	Num8
+PCUA_56A	No phys. check-up - haven't got. around	Num8
+PCUA_56B	No phys. check-up - resp. think not nec.	Num8
+PCUA_56C	No phys. check-up - dr. think not nec.	Num8
+PCUA_56D	No phys. check-up - pers./family resp.	Num8
+PCUA_56E	No phys. check-up - not av. when require	Num8
+PCUA_56F	No phys. check-up - not available/area	Num8
+PCUA_56G	No phys. check-up - wait. time too long	Num8
+PCUA_56H	No phys. check-up - transportation prob.	Num8
+PCUA_56I	No phys. check-up - language problem	Num8
+PCUA_56J	No phys. check-up - cost	Num8
+PCUA_56K	No phys. check-up - didn't know where/go	Num8
+PCUA_56L	No phys. check-up - fear	Num8
+PCUA_56M	No phys. check-up - other reason	Num8
+PSAA_170	Ever had a PSA blood test	Num8
+PSAA_172	Last time had PSA blood test	Num8
+PSAA_73A	Reason/PSA - family history	Num8
+PSAA_73B	Reason/PSA - regular check-up/screening	Num8
+PSAA_73C	Reason/PSA - age	Num8
+PSAA_73D	Reason/PSA - follow-up/previous problem	Num8
+PSAA_73E	Reason/PSA - follow-up/prostate treat.	Num8
+PSAA_73F	Reason/PSA - other	Num8
+RACA_1	Has difficulty with activities	Num8
+RACA_2A	Reduction - activities at home	Num8
+RACA_2B	Reduction - activities at work or school	Num8
+RACA_2C	Reduction - other activities	Num8
+RACA_6A	Needs help - preparing meals	Num8
+RACA_6B	Needs help - shopping for necessities	Num8
+RACA_6C	Needs help - housework	Num8
+RACA_6D	Needs help - heavy household chores	Num8
+RACA_6E	Needs help - personal care	Num8
+RACA_6F	Needs help - moving about inside house	Num8
+RACADIMP	Impact of health problems - (D)	Num8
+RACAF6	Needs help with at least one task - (F)	Num8
+RACAG5	Cause of health problem - (G)	Num8
+REPA_1	Rep. strain injury - past 12 months	Num8
+REPA_4A	Rep. strain - sports / exercise	Num8
+REPA_4B	Rep. strain - leisure or hobby	Num8
+REPA_4C	Rep. strain - job or business	Num8
+REPA_4D	Rep. strain - chores, unpaid work, ed.	Num8
+REPA_4E	Rep. strain - sleeping, eating, care	Num8
+REPA_4F	Rep. strain - other	Num8
+REPAG3	Rep. strain - body part affected - (G)	Num8
+SACA_1	Time spent - on a computer	Num8
+SACA_2	Time spent - playing video games	Num8
+SACA_3	Time spent - watching television/videos	Num8
+SACA_4	Time spent - reading	Num8
+SACADTOT	Time - selected sed. activities - (D)	Num8
+SCAA_1	Has used nicotine patch	Num8
+SCAA_2	Usefulness of nicotine patch	Num8
+SCAA_3	Has used nicotine gum or candy	Num8
+SCAA_4	Usefulness of nicotine gum or candy	Num8
+SCAA_5	Tried to quit smoking - past 12 months	Num8
+SCAA_6	Tried to quit - nicotine patch	Num8
+SCAA_7	Tried to quit - nicotine gum or candy	Num8
+SCAADQUI	Attempted to stop smoking - (D)	Num8
+SDCA_8	Currently attending - school/col./univ.	Num8
+SDCA_9	Full-time student/part-time student	Num8
+SDCAFIMM	Immigrant status (D)	Num8
+SDCAGCBG	Country of birth - (G)	Num8
+SDCAGLNG	Language/respondent can converse (D, G)	Num8
+SDCAGRAC	Cultural / racial origin - (D, G)	Num8
+SDCAGRES	Length/time in Canada since imm. (D, G)	Num8
+SFEADE1	Self-esteem scale - (D)	Num8
+SMKA_01A	Smoked >=100 cigarettes - former smokers	Num8
+SMKA_01B	Ever smoked whole cigarette	Num8
+SMKA_05B	# cigarettes per day (occasional smoker)	Num8
+SMKA_05C	# days smoked at least 1 cigarette	Num8
+SMKA_05D	Ever smoked daily	Num8
+SMKA_06A	When stopped smoking (never daily)	Num8
+SMKA_09A	When stopped (former daily)	Num8
+SMKA_200	Household member smokes inside house	Num8
+SMKA_202	Type of smoker	Num8
+SMKA_204	# cigarettes per day (daily smoker)	Num8
+SMKA_208	# cigarettes per day (former daily)	Num8
+SMKA_300	Cigarettes - how obtained	Num8
+SMKADSTY	Type of smoker - (D)	Num8
+SMKADYCS	Number of years smoked - (D)	Num8
+SMKAG01C	Age - smoked first whole cigarette - (G)	Num8
+SMKAG203	Age started smoking daily - (G)	Num8
+SMKAG207	Age started smoking daily - (G)	Num8
+SPRA_1	Freq - attends religious services/ meet	Num8
+SPRA_2	Spiritual values or faith - importance	Num8
+SPRA_3	Self-perceived spirituality	Num8
+SSMADAFF	Affection - MOS subscale - (D)	Num8
+SSMADEMO	Emot./info. support - MOS subscale - (D)	Num8
+SSMADSOC	Positive social interaction - MOS - (D)	Num8
+SSMADTNG	Tangible social support - MOS - (D)	Num8
+SUIA_1	Has considered suicide - lifetime	Num8
+SUIA_2	Has considered suicide - past 12 months	Num8
+SXBA_1	Ever had sexual intercourse	Num8
+SXBA_3	Had sexual intercourse in past 12 months	Num8
+SXBA_5	Relationship lasted 12 months or longer	Num8
+SXBA_6	Relationships lasted less than 12 months	Num8
+SXBA_7	Condom use - freq - relat < 12 months	Num8
+SXBA_7A	Condom use - last time	Num8
+TALA_1	Smoked cigars	Num8
+TALA_2	Smoked a pipe	Num8
+TALA_3	Used snuff	Num8
+TALA_4	Used chewing tobacco	Num8
+TWDA_1	Stayed in bed - illness or injury	Num8
+TWDA_3	Reduced activities - illness or injury	Num8
+TWDA_5	Has regular medical doctor	Num8
+TWDADDDY	Total number of disability days - (D)	Num8
+UPEA_02A	Freq./in-line skating helmet use	Num8
+UPEA_02B	Freq./wear wrist guards	Num8
+UPEA_02C	Freq./wear elbow pads	Num8
+UPEA_02D	Freq./wear knee pads	Num8
+UPEA_101	Freq./bike helmet use	Num8
+UPEA_103	Freq./skiing/boarding helmet use	Num8
+WSTADALL	Work stress - all items - (D)	Num8
+WSTADAUT	Work stress - authority - (D)	Num8
+WSTADJIN	Work stress - job Insecurity - (D)	Num8
+WSTADPHY	Work stress - physical exertion - (D)	Num8
+WSTADPSY	Work stress - psycholog. demands - (D)	Num8
+WSTADSKI	Work stress - skill discretion - (D)	Num8
+WSTADSOC	Work stress - social Support - (D)	Num8
+WTSAM	Sampling weight - pumf weight	Num8
+Number of variables: 614

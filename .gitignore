@@ -24,6 +24,10 @@ renv/staging/
 osf_credentials.R
 # Google Drive credentials (security)
 .secrets/
+.secrets
+# Downloaded data directories
+odesi-data/
+cchs-data-docs/
 # Temporary files
 *~
 .DS_Store
@@ -37,6 +41,7 @@ build/
 _site/
 .quarto/
 
-.secrets
-
-/.quarto/
+# ICES Data Dictionary (distributed via GitHub releases)
+data/ices_cchs_dictionary.duckdb
+data/ices_cchs_dictionary.duckdb.wal
+data/catalog/ices_cchs_availability_matrix.csv
