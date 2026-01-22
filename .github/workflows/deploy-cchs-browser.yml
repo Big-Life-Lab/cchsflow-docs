@@ -1,11 +1,11 @@
-name: Deploy ICES Dictionary Browser
+name: Deploy CCHS Variable Browser
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'reports/ices-dictionary-browser.qmd'
+      - 'reports/cchs-variable-browser.qmd'
       - 'data/exports/ices_cchs_*.csv'
   workflow_dispatch:
 
@@ -47,8 +47,8 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render ICES Dictionary Browser
-        run: quarto render reports/ices-dictionary-browser.qmd --output-dir ../docs/ices-browser
+      - name: Render CCHS Variable Browser
+        run: quarto render reports/cchs-variable-browser.qmd --output-dir ../docs/cchs-browser
         env:
           R_LIBS_USER: ${{ steps.renv-path.outputs.path }}
 
@@ -58,7 +58,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './docs/ices-browser'
+          path: './docs/cchs-browser'
 
   deploy:
     environment:
