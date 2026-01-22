@@ -26,7 +26,7 @@ library(htmltools)
 This interactive table contains all **14,005 CCHS variables** from the [Canadian Community Health Survey](https://www.statcan.gc.ca/en/survey/household/3226). Use the search box and column filters to find variables of interest.
 
 **Data source**: Statistics Canada CCHS (metadata via ICES Data Dictionary)
-**Version**: 1.1.0
+**Version**: 1.2.0
 
 ::: {.callout-note}
 ## Attribution
@@ -35,10 +35,10 @@ The Canadian Community Health Survey (CCHS) is conducted by [Statistics Canada](
 
 ::: {.callout-tip}
 ## Quick tips
-- Use **column filters** (below headers) to filter by year range, region, file type
-- **Example**: To find Ontario Share files 2001-2015, filter "Regions" = Ontario, "File Types" contains Share, "Max Year" ≤ 2015
+- Use **dropdown filters** (below headers) for Regions, File Types, and Ontario Share
+- Use **numeric sliders** for Min Year and Max Year
+- **Example**: To find Ontario Share files 2001-2015, select "Ontario" from Regions dropdown, select Ontario Share = "Yes", and slide Max Year to ≤ 2015
 - Use the **global search box** (top right) to search variable names and labels
-- Click column headers to **sort**
 - Click **Copy** or **CSV** to export filtered results
 :::
 
@@ -50,6 +50,7 @@ variables <- read.csv("../data/exports/ices_cchs_variables_for_sheets.csv",
                       stringsAsFactors = FALSE)
 
 # Create display-ready table with filtering columns
+# Convert categorical columns to factors for dropdown filters in DT
 variables_display <- variables |>
   mutate(
     # Create hyperlink to ICES variable page
@@ -65,11 +66,12 @@ variables_display <- variables |>
     Years = year_range,
     `Min Year` = min_year,
     `Max Year` = max_year,
-    Regions = regions,
-    `File Types` = file_types,
+    # Factor columns get dropdown filters instead of text boxes
+    Regions = factor(regions),
+    `File Types` = factor(file_types),
+    `Ontario Share` = factor(ifelse(has_ontario & has_share, "Yes", "No"),
+                             levels = c("Yes", "No")),
     Datasets = n_datasets,
-    # Ontario Share indicator for quick filtering
-    `Ontario Share` = ifelse(has_ontario & has_share, "Yes", "No"),
     `Sample` = ifelse(
       nchar(sample_datasets) > 50,
       paste0(substr(sample_datasets, 1, 47), "..."),
@@ -131,17 +133,18 @@ datatable(
 datasets <- read.csv("../data/exports/ices_cchs_datasets_for_sheets.csv",
                      stringsAsFactors = FALSE)
 
-# Prepare display columns
+# Prepare display columns with factors for dropdown filters
 datasets_display <- datasets |>
   mutate(
     `Dataset ID` = dataset_id,
     Variables = variable_count,
     Year = year_label,
-    Region = region,
-    Type = dataset_type,
-    Cycle = ifelse(is.na(cycle_label) | cycle_label == "Unknown", "-", cycle_label),
+    # Factor columns get dropdown filters
+    Region = factor(region),
+    Type = factor(dataset_type),
+    Cycle = factor(ifelse(is.na(cycle_label) | cycle_label == "Unknown", "-", cycle_label)),
     Supplement = ifelse(is_supplement, supplement_type, "-"),
-    Bootstrap = ifelse(is_bootstrap, "Yes", "No")
+    Bootstrap = factor(ifelse(is_bootstrap, "Yes", "No"), levels = c("No", "Yes"))
   ) |>
   select(`Dataset ID`, Variables, Year, Region, Type, Cycle, Supplement, Bootstrap) |>
   arrange(desc(Variables))
