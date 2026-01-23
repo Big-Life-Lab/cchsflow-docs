@@ -254,39 +254,202 @@ This section reviews existing standards and tools for survey variable harmonisat
 
 ---
 
-## 5. Literature review scope
-
-To inform the design, a more comprehensive review should examine:
+## 5. Literature review
 
 ### 5.1 Survey harmonisation methodology
 
-- **Retrospective harmonisation**: Fortier et al. (2017), Doiron et al. (2013)
-- **Prospective harmonisation**: Granda et al. (2010)
-- **Harmonisation quality assessment**: Griffith et al. (2013)
+#### Maelstrom Research guidelines (Fortier et al. 2017)
+
+The definitive methodological framework for retrospective data harmonisation comes from Maelstrom Research. [Fortier et al. (2017)](https://academic.oup.com/ije/article/46/1/103/2617181) developed guidelines through three initiatives between 2006-2015: a phone survey with 34 major international research initiatives, expert workshops, and case studies.
+
+**Key findings**:
+- Wide range of projects use retrospective harmonisation, but terminologies, procedures, technologies and methods vary markedly
+- Input from 100+ investigators across 15+ countries
+- Harmonisation requires balancing precision (exact matching) against breadth (accepting heterogeneity)
+- Definitions of target variables and harmonisation potential are context-specific
+
+**Process steps**:
+1. Define research questions, objectives, and protocol
+2. Assemble information and select studies
+3. Define target variables (DataSchema)
+4. Process data and evaluate harmonisation potential
+5. Estimate quality of harmonised variables
+
+**Relevance**: The Maelstrom approach separates *what* to harmonise (DataSchema) from *how* (algorithms), but doesn't formally model *why* variables are considered equivalent.
+
+**References**:
+- [Maelstrom Research guidelines for rigorous retrospective data harmonization](https://academic.oup.com/ije/article/46/1/103/2617181) (Int J Epidemiol, 2017)
+- [Maelstrom Guidelines website](https://www.maelstrom-research.org/page/maelstrom-guidelines)
+- [Fostering population-based cohort data discovery: The Maelstrom Research cataloguing toolkit](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0200926) (PLOS ONE, 2018)
+
+#### QuickCharmStats: Documentation standards (Kolczynska 2022)
+
+[Kolczynska (2022)](https://journals.sagepub.com/doi/10.1177/20597991221077923) addresses a gap: comparative statistical analyses require harmonisation, yet there are no agreed documentation standards or journal requirements for reporting harmonisation decisions.
+
+**Key insight**: "The social sciences do not have clear operationalisation frameworks that guide and homogenise variable coding decisions across disciplines."
+
+[QuickCharmStats](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0147795) was proposed as open-source software for organising, documenting, and publishing data harmonisation projects. Future versions aim to import DDI metadata directly.
+
+**Relevance**: Highlights the need for explicit documentation of harmonisation rationale—exactly what we propose with the ontology.
 
 ### 5.2 DDI for comparison and harmonisation
 
-- DDI Comparison module specifications and implementation guides
-- Case studies using DDI for cross-study comparison
-- DDI-CDI adoption in statistical agencies
+#### DDI variable cascade
+
+The [DDI variable cascade](https://ddi4.readthedocs.io/en/latest/userguides/variablecascade.html) provides a model for describing variables from conception to use in datasets, drawing on the Generic Statistical Information Model (GSIM) and ISO/IEC 11179.
+
+**Key concepts**:
+- **Conceptual Variable**: Abstract concept (e.g., "smoking status")
+- **Represented Variable**: Concept + value domain (e.g., "smoking status measured as daily/occasional/never")
+- **Instance Variable**: Concrete variable in a specific dataset
+
+**Challenge identified**: "Each time in the processing cascade the list of sentinel values changes, the value domain changes, which forces the variable to change as well... this variable proliferation is unmanageable and unsustainable."
+
+**Relevance**: The cascade model maps well to our use case (same concept, different instance variables across cycles), but DDI's XML implementation is heavy.
+
+**References**:
+- [The Variable Cascade — DDI 4.0 documentation](https://ddi4.readthedocs.io/en/latest/userguides/variablecascade.html)
+- [DDI Alliance webinar: The DDI Variable Cascade](https://ddialliance.org/news/news/news-247.html) (March 2023)
+
+#### DDI-CDI (Cross-Domain Integration)
+
+[DDI-CDI Version 1.0](https://ddialliance.org/Specification/ddi-cdi) was released in January 2025. It is a model-driven, domain-neutral specification designed for combining data from diverse sources.
+
+**Variable comparison in DDI-CDI**: Comparable instance variables should have:
+- Same unit of measurement
+- Same intended data type
+- Same substantive value domain
+- Sentinel values from same set
+- Same sentinel (missing value) concepts
+- Population drawn from same universe
+
+**Key innovation**: DDI-CDI is explicitly designed to work with other standards (PROV-O, BPMN, DCAT, SDMX, Schema.org) and supports data integration/harmonisation functions.
+
+**Relevance**: DDI-CDI's comparability criteria align closely with our `same_variable_different_name` relationship type.
+
+**References**:
+- [DDI-CDI specification](https://ddialliance.org/Specification/ddi-cdi)
+- [CODATA: DDI Cross-Domain Integration](https://codata.org/initiatives/making-data-work/ddi-cross-domain-integration/)
+- [WorldFAIR Pilot Testing Harmonisation Workflows](https://zenodo.org/records/10724744) (2024)
+
+#### DDI case studies
+
+The European DDI User Conference has published relevant case studies:
+- "Application of DDI Comparison Capabilities to a Multi-Site Sexual Behaviour Data Harmonisation Exercise"
+- "French electoral surveys data harmonization based on DDI-L foundational constructs" ([Zenodo](https://zenodo.org/records/7405370))
+- [ATHLOS Project: Data harmonization of longitudinal studies on healthy ageing](https://pmc.ncbi.nlm.nih.gov/articles/PMC6184037/)
 
 ### 5.3 Ontology design patterns for survey data
 
-- OBOE (Extensible Observation Ontology)
-- STATO (Statistics Ontology)
-- Survey ontology patterns in social science
+#### OBOE (Extensible Observation Ontology)
 
-### 5.4 Knowledge graph approaches
+[OBOE](https://github.com/NCEAS/oboe) is a formal ontology for scientific observation and measurement, developed at NCEAS.
 
-- Property graphs vs RDF for survey metadata
-- Graph databases for variable discovery (Neo4j, etc.)
-- Hybrid approaches (YAML source → graph query)
+**Core model**:
+- **Observation**: About an Entity, provides context for other Observations
+- **Measurement**: Of a Characteristic of an Entity
+- **Measurement Standard**: Unit, precision, protocol
+
+**Extensibility**: OBOE provides extension points for domain-specific Entity, Characteristic, and Measurement Standard classes.
+
+**Relevance**: OBOE's observation model could inform how we represent survey questions (observations) and responses (measurements), but it's designed for ecological data rather than social surveys.
+
+**References**:
+- [OBOE GitHub repository](https://github.com/NCEAS/oboe)
+- [OBOE on BioPortal](https://bioportal.bioontology.org/ontologies/OBOE)
+- Madin et al. (2007) "An ontology for describing and synthesizing ecological observation data" (Ecological Informatics)
+
+#### STATO (Statistics Ontology)
+
+[STATO](https://stato-ontology.org/) is a general-purpose statistics ontology covering statistical tests, probability distributions, variables, and experimental design.
+
+**Coverage**:
+- Statistical methods and tests
+- Conditions of application
+- Probability distributions
+- Plots and graphical representations
+
+**Use case**: Provides formal definitions of statistical tests to support standardised analysis reports and text mining of statistical analyses.
+
+**Relevance**: STATO could provide vocabulary for describing analysis-related metadata, but doesn't address survey variable harmonisation directly.
+
+**References**:
+- [STATO website](https://stato-ontology.org/)
+- [STATO on OBO Foundry](http://obofoundry.org/ontology/stato.html)
+
+#### COOS (Core Ontology for Official Statistics)
+
+[COOS](https://linked-statistics.github.io/COOS/coos.html) is an RDF/OWL vocabulary for official statistics, describing statistical processes, products, and organisations.
+
+**Relevance**: May provide useful vocabulary for describing Statistics Canada processes, but focused on organisational/process metadata rather than variable semantics.
+
+### 5.4 Knowledge graph and LinkML approaches
+
+#### Knowledge graphs for survey metadata
+
+Knowledge graphs provide structured representation of entities and relationships, enabling:
+- Data integration across heterogeneous sources
+- Semantic interoperability through shared vocabulary
+- Advanced reasoning and inference
+
+**Property graphs vs RDF**: Property graphs (Neo4j, etc.) offer simpler querying but less semantic richness than RDF. For our use case, a hybrid approach (YAML source → queryable store) may be optimal.
+
+**References**:
+- [Knowledge Graphs and Ontologies in Semantic Web Applications](https://www.nature.com/research-intelligence/nri-topic-summaries/knowledge-graphs-and-ontologies-in-semantic-web-applications-micro-92) (Nature Research Intelligence)
+
+#### LinkML for survey metadata
+
+[LinkML](https://linkml.io/) bridges data formats (JSON, relational, RDF) while providing semantic grounding through URI mappings.
+
+**Key features for our use case**:
+- YAML authoring for human readability
+- Generates JSON Schema, SHACL, SQL schemas
+- Supports metadata annotations
+- Used by DataHarmonizer for sample/specimen metadata
+
+**Relevance**: LinkML is already used in this project for catalog metadata. Extending it for variable relationships maintains consistency and leverages existing tooling.
+
+**References**:
+- [LinkML documentation](https://linkml.io/linkml/)
+- [The Linked Data Modeling Language (LinkML): A General-Purpose Framework](https://ceur-ws.org/Vol-3073/paper24.pdf)
 
 ### 5.5 Existing CCHS harmonisation work
 
-- cchsflow design decisions and lessons learned
-- Statistics Canada's own harmonisation approaches
-- ICES and other RDC harmonisation practices
+#### cchsflow R package
+
+[cchsflow](https://big-life-lab.github.io/cchsflow/) transforms and harmonises CCHS variables across cycles (2001-2018).
+
+**Architecture**:
+- `variables.csv` worksheet: Describes variable mappings
+- `variable_details.csv`: Recoding specifications
+- `rec_with_table()` function: Applies transformations
+
+**Documented limitations** (from cchsflow documentation):
+- "Combining CCHS across survey cycles will result in misclassification error and other forms of bias"
+- "Almost all CCHS variables have had at least some change in wording and category responses"
+- "Changes in survey sampling, response rates, weighting methods and other survey design changes"
+
+**Gap identified**: The worksheets define transformations but don't explain *why* variables are considered equivalent or document the evidence for equivalence decisions.
+
+**Related package**: [recodeflow](https://big-life-lab.github.io/recodeflow/) provides generic recoding functions that cchsflow builds upon.
+
+**References**:
+- [cchsflow on CRAN](https://cran.r-project.org/web/packages/cchsflow/index.html)
+- [cchsflow GitHub repository](https://github.com/Big-Life-Lab/cchsflow)
+- [Variables sheet vignette](https://github.com/Big-Life-Lab/cchsflow/blob/main/vignettes/variables_sheet.Rmd)
+
+### 5.6 Summary of gaps
+
+| Approach | Captures equivalence | Documents evidence | Machine-readable | Human-editable |
+|----------|---------------------|-------------------|-----------------|----------------|
+| DDI Comparison | Yes | Partially | Yes (XML) | No |
+| DDI-CDI | Yes | Yes | Yes (XML/JSON) | No |
+| Maelstrom | Yes | No (code only) | Partially | No |
+| cchsflow | Yes | No | CSV | Yes |
+| SKOS | Partially | No | Yes (RDF) | No |
+| **Proposed** | Yes | Yes | Yes (YAML→DB) | Yes |
+
+The proposed ontology addresses the gap: explicit, documented variable relationships in a human-editable format that can be queried programmatically and integrated with existing cchsflow workflows
 
 ---
 
