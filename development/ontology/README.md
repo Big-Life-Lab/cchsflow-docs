@@ -60,6 +60,10 @@ Beyond 1:1 matching, the ontology could support:
 
 Planning phase - defining relationship types and data model.
 
+## Documents
+
+- [REQUIREMENTS.md](REQUIREMENTS.md) - Full requirements, use cases, and existing approaches review
+
 ## Related
 
 - `../cchs-variable-dictionary/` - Variable metadata from Statistics Canada CCHS
