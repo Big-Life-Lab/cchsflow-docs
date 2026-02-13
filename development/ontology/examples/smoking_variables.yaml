@@ -1,0 +1,524 @@
+# CCHS Variable Ontology - Smoking Variables Prototype
+#
+# This file demonstrates the data model for variable relationships,
+# following the DDI Variable Cascade (Conceptual → Represented → Instance).
+#
+# Terminology aligns with cchsflow worksheet conventions:
+#   - section/subject/sub_subject → Conceptual Variable hierarchy
+#   - variableStart → Instance Variable (cycle-specific source)
+#   - variable → Represented Variable (harmonised target)
+#
+# KEY DESIGN DECISION (v0.3.0):
+#   Instance variable IDs use the format: database::variable_name
+#   This matches cchsflow's variableStart format exactly (e.g., cchs2007_2008_p::SMKDSTY)
+#   and aligns with how researchers naturally reference variables.
+#
+#   The DDI XML `ID` attribute (e.g., V622) is a sequential position identifier,
+#   NOT a semantic identifier. The `name` attribute (e.g., SMKDSTY) is what matters.
+#   See TERMINOLOGY_MAPPING.md for analysis of DDI XML structure.
+#
+# Version: 0.3.0 (prototype)
+# Date: 2026-01-23
+
+# =============================================================================
+# CONCEPTUAL VARIABLES
+# =============================================================================
+# Maps to cchsflow: section → subject → sub_subject
+# These are abstract concepts independent of measurement specifics
+
+conceptual_variables:
+  - id: cv-smoking-status
+    label: Smoking status
+    definition: >
+      Whether and how frequently the respondent currently smokes cigarettes,
+      combined with smoking history.
+    # Aligned with cchsflow hierarchy:
+    section: Health behaviour
+    subject: Smoking
+    sub_subject: status
+
+  - id: cv-smoking-intensity
+    label: Smoking intensity
+    definition: >
+      Quantity of cigarettes smoked per day by smokers.
+    section: Health behaviour
+    subject: Smoking
+    sub_subject: intensity
+
+  - id: cv-smoking-initiation
+    label: Smoking initiation
+    definition: >
+      Age or timing of when the respondent started smoking.
+    section: Health behaviour
+    subject: Smoking
+    sub_subject: initiation
+
+  - id: cv-smoking-cessation
+    label: Smoking cessation
+    definition: >
+      When and how the respondent quit smoking.
+    section: Health behaviour
+    subject: Smoking
+    sub_subject: cessation
+
+
+# =============================================================================
+# REPRESENTED VARIABLES
+# =============================================================================
+# Maps to cchsflow: harmonised `variable` with `variableType`
+# These are specific operationalisations with defined value domains
+
+represented_variables:
+  - id: rv-smoking-status-3cat
+    label: Smoking freq
+    label_long: Current cigarette smoking frequency (daily, occasional, not at all)
+    conceptual_variable: cv-smoking-status
+    variable_type: Categorical           # matches cchsflow variableType
+    recommended: secondary               # matches cchsflow {recommended:X}
+    cchsflow_variable: SMK_202           # reference to cchsflow harmonised variable
+    value_domain:
+      type: categorical
+      categories:
+        - code: 1
+          label: Daily
+          label_long: Daily smoker
+        - code: 2
+          label: Occasionally
+          label_long: Occasional smoker
+        - code: 3
+          label: Not at all
+          label_long: Non-smoker
+    question_text: >
+      At the present time, do you smoke cigarettes daily, occasionally or not at all?
+    universe: All respondents aged 12+
+    notes: >
+      Core smoking status question used consistently across CCHS cycles.
+      Maps to cchsflow SMK_202.
+
+  - id: rv-smoking-type-6cat
+    label: Smoking (6-cat pre-2015)
+    label_long: Type of smoker (6-category, pre-2015 categories with derivation for 2015+)
+    conceptual_variable: cv-smoking-status
+    variable_type: Categorical
+    recommended: primary                  # this is the preferred variable
+    cchsflow_variable: SMKDSTY_A
+    value_domain:
+      type: categorical
+      categories:
+        - code: 1
+          label: Daily
+          label_long: Daily smoker
+        - code: 2
+          label: Occasional (former daily)
+          label_long: Occasional smoker - former daily
+        - code: 3
+          label: Occasional (never daily)
+          label_long: Always occasional smoker
+        - code: 4
+          label: Former daily
+          label_long: Former daily smoker (quit completely)
+        - code: 5
+          label: Former occasional
+          label_long: Former occasional smoker
+        - code: 6
+          label: Never
+          label_long: Never smoked
+    notes: >
+      Derived variable combining current smoking status with smoking history.
+      Provides consistent pre-2015 category structure across all cycles.
+      Maps to cchsflow SMKDSTY_A.
+
+  - id: rv-ever-smoked-daily-yn
+    label: Ever smoked daily (yes/no)
+    conceptual_variable: cv-smoking-status
+    variable_type: Categorical
+    value_domain:
+      type: categorical
+      categories:
+        - code: 1
+          label: Yes
+        - code: 2
+          label: No
+    question_text: >
+      Have you ever smoked cigarettes daily?
+    universe: Occasional smokers and former smokers
+
+  - id: rv-cigs-per-day-continuous
+    label: Cigs/day
+    label_long: Cigarettes per day when smoking daily (ever-daily smokers, unified)
+    conceptual_variable: cv-smoking-intensity
+    variable_type: Continuous
+    recommended: primary
+    cchsflow_variable: cigs_per_day
+    value_domain:
+      type: numeric
+      unit: cigarettes
+      range:
+        min: 1
+        max: 99
+    question_text: >
+      How many cigarettes do you smoke each day now?
+    universe: Ever-daily smokers (current daily + former daily)
+    notes: >
+      Unified daily smoking intensity for pack-years and dose-response analyses.
+      Combines current (SMK_204) and former (SMK_208) daily intensity.
+
+
+# =============================================================================
+# INSTANCE VARIABLES
+# =============================================================================
+# Maps to cchsflow: `variableStart` entries (cycle-specific source variables)
+# These are physical variables as they appear in specific CCHS datasets
+#
+# ID FORMAT: database::variable_name (matches cchsflow variableStart exactly)
+# Examples: cchs2001_p::SMKADSTY, cchs2007_2008_p::SMKDSTY
+#
+# This format is used because:
+#   1. It's how researchers naturally reference variables
+#   2. It matches cchsflow's existing variableStart convention
+#   3. DDI XML IDs (V622, V238) are just position identifiers, not semantic IDs
+
+instance_variables:
+  # --- Current smoking status (3 categories) - collected ---
+  # cchsflow variableStart chain for SMK_202:
+  # SMKA_202 (2001) → SMKC_202 (2003) → SMKE_202 (2005) → SMK_202 (2007-2014) → SMK_005 (2015-2021) → CSS_05 (2022+)
+
+  - id: cchs2001_p::SMKA_202
+    variable_name: SMKA_202
+    label: Type of smoker
+    represented_variable: rv-smoking-status-3cat
+    database: cchs2001_p
+    type: collected
+    notes: >
+      2001 cycle used SMKA_ prefix. Question and categories unchanged through 2023.
+
+  - id: cchs2003_p::SMKC_202
+    variable_name: SMKC_202
+    label: Type of smoker
+    represented_variable: rv-smoking-status-3cat
+    database: cchs2003_p
+    type: collected
+
+  - id: cchs2005_p::SMKE_202
+    variable_name: SMKE_202
+    label: Type of smoker
+    represented_variable: rv-smoking-status-3cat
+    database: cchs2005_p
+    type: collected
+
+  - id: cchs2007_2008_p::SMK_202
+    variable_name: SMK_202
+    label: Type of smoker
+    represented_variable: rv-smoking-status-3cat
+    database: cchs2007_2008_p
+    type: collected
+    notes: >
+      From 2007, prefix simplified to SMK_ (no cycle letter).
+      Used through 2014.
+
+  - id: cchs2015_2016_p::SMK_005
+    variable_name: SMK_005
+    label: Type of smoker (daily / occasionally / not at all) - presently
+    represented_variable: rv-smoking-status-3cat
+    database: cchs2015_2016_p
+    type: collected
+    notes: >
+      2015 redesign: sequential numbering (SMK_005, SMK_010, etc.)
+      replacing previous scheme (SMK_202, SMK_204, etc.).
+
+  - id: cchs2022_p::CSS_05
+    variable_name: CSS_05
+    label: Cigarettes - smoke type
+    represented_variable: rv-smoking-status-3cat
+    database: cchs2022_p
+    type: collected
+    notes: >
+      2022 module rename: SMK → CSS (Cigarette Smoking Status).
+      Question unchanged.
+
+  # --- Derived smoking type (6 categories) ---
+  # cchsflow variableStart chain for SMKDSTY_A:
+  # SMKADSTY (2001) → SMKCDSTY (2003) → SMKEDSTY (2005) → SMKDSTY (2007-2014) → SMKDVSTY (2015+)
+
+  - id: cchs2001_p::SMKADSTY
+    variable_name: SMKADSTY
+    label: Type of smoker - (D)
+    represented_variable: rv-smoking-type-6cat
+    database: cchs2001_p
+    type: derived
+    ddi_id: V...                      # DDI position ID (for provenance, not semantics)
+    notes: >
+      2001 derived smoking status. 6-category classification.
+
+  - id: cchs2003_p::SMKCDSTY
+    variable_name: SMKCDSTY
+    label: Type of smoker - (D)
+    represented_variable: rv-smoking-type-6cat
+    database: cchs2003_p
+    type: derived
+    ddi_id: V694                      # From cchs-82M0013-E-2003-c2-1-GeneralFile.xml
+
+  - id: cchs2005_p::SMKEDSTY
+    variable_name: SMKEDSTY
+    label: Type of smoker - (D)
+    represented_variable: rv-smoking-type-6cat
+    database: cchs2005_p
+    type: derived
+
+  - id: cchs2007_2008_p::SMKDSTY
+    variable_name: SMKDSTY
+    label: Type of smoker - (D)
+    represented_variable: rv-smoking-type-6cat
+    database: cchs2007_2008_p
+    type: derived
+    ddi_id: V622                      # From cchs-E-2007-2008-AnnualComponent.xml
+    notes: >
+      From 2007, prefix simplified. Used through 2014.
+
+  - id: cchs2015_2016_p::SMKDVSTY
+    variable_name: SMKDVSTY
+    label: Smoking status (type 2) - traditional definition - (D)
+    represented_variable: rv-smoking-type-6cat
+    database: cchs2015_2016_p
+    type: derived
+    ddi_id: V238                      # From cchs-82M0013-E-2015-2016-Annual-component.xml
+    notes: >
+      2015 redesign added 'V' to distinguish from other smoking variables.
+      Category 5 semantic changed (former occasional → experimental in StatCan
+      version), but cchsflow SMKDSTY_A remaps to maintain pre-2015 meaning.
+
+  # --- Ever smoked daily (collected) ---
+
+  - id: cchs2007_2008_p::SMK_05D
+    variable_name: SMK_05D
+    label: Ever smoked cigarettes daily
+    represented_variable: rv-ever-smoked-daily-yn
+    database: cchs2007_2008_p
+    type: collected
+
+  - id: cchs2015_2016_p::SMK_030
+    variable_name: SMK_030
+    label: Smoked daily - lifetime (occasional / former smoker)
+    represented_variable: rv-ever-smoked-daily-yn
+    database: cchs2015_2016_p
+    type: collected
+    notes: >
+      Renamed from SMK_05D to SMK_030 in 2015 redesign.
+      Question wording clarified but meaning unchanged.
+
+
+# =============================================================================
+# RELATIONSHIPS
+# =============================================================================
+# Explicit mappings between instance variables with evidence and rationale
+# These document WHY variables are considered equivalent (Schema-First logic)
+#
+# SOURCE/TARGET use the instance variable ID format: database::variable_name
+# This makes relationships readable—you can immediately see what variables are linked.
+
+relationships:
+  # --- same_variable_different_name: SMK_202 chain (3-category collected) ---
+  # Full chain: SMKA_202 → SMKC_202 → SMKE_202 → SMK_202 → SMK_005 → CSS_05
+
+  - id: rel-smk202-2001-2003
+    type: same_variable_different_name
+    source: cchs2001_p::SMKA_202
+    target: cchs2003_p::SMKC_202
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: exact
+      response_categories_match: exact
+      universe_match: exact
+    rationale: >
+      Prefix change SMKA → SMKC for 2003 cycle. Question unchanged.
+    confidence: 1.0
+
+  - id: rel-smk202-2003-2005
+    type: same_variable_different_name
+    source: cchs2003_p::SMKC_202
+    target: cchs2005_p::SMKE_202
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: exact
+      response_categories_match: exact
+      universe_match: exact
+    rationale: >
+      Prefix change SMKC → SMKE for 2005 cycle. Question unchanged.
+    confidence: 1.0
+
+  - id: rel-smk202-2005-2007
+    type: same_variable_different_name
+    source: cchs2005_p::SMKE_202
+    target: cchs2007_2008_p::SMK_202
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: exact
+      response_categories_match: exact
+      universe_match: exact
+    rationale: >
+      Prefix simplified from SMKE_ to SMK_ for 2007+ cycles.
+      Statistics Canada standardised naming, dropping cycle letters.
+    confidence: 1.0
+
+  - id: rel-smk202-2007-2015
+    type: same_variable_different_name
+    source: cchs2007_2008_p::SMK_202
+    target: cchs2015_2016_p::SMK_005
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: exact
+      response_categories_match: exact
+      universe_match: exact
+    rationale: >
+      2015 CCHS redesign: sequential numbering (SMK_005, SMK_010, etc.)
+      replaced thematic numbering (SMK_202, SMK_204, etc.).
+      Question, response categories, and universe unchanged.
+    confidence: 1.0
+
+  - id: rel-smk005-2015-2022
+    type: same_variable_different_name
+    source: cchs2015_2016_p::SMK_005
+    target: cchs2022_p::CSS_05
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: exact
+      response_categories_match: exact
+      universe_match: exact
+    rationale: >
+      2022 module rename: SMK → CSS (Cigarette Smoking Status).
+      Question, response categories, and universe unchanged.
+    confidence: 1.0
+
+  # --- same_variable_different_name: SMKDSTY chain (6-category derived) ---
+  # Full chain: SMKADSTY → SMKCDSTY → SMKEDSTY → SMKDSTY → SMKDVSTY
+
+  - id: rel-smkdsty-2001-2003
+    type: same_variable_different_name
+    source: cchs2001_p::SMKADSTY
+    target: cchs2003_p::SMKCDSTY
+    harmonisation_potential: complete
+    evidence:
+      response_categories_match: exact
+      derivation_algorithm_match: exact
+      universe_match: exact
+    rationale: >
+      Prefix change SMKA → SMKC for derived variable. Categories unchanged.
+    confidence: 1.0
+
+  - id: rel-smkdsty-2003-2005
+    type: same_variable_different_name
+    source: cchs2003_p::SMKCDSTY
+    target: cchs2005_p::SMKEDSTY
+    harmonisation_potential: complete
+    evidence:
+      response_categories_match: exact
+      derivation_algorithm_match: exact
+      universe_match: exact
+    rationale: >
+      Prefix change SMKC → SMKE for 2005 cycle.
+    confidence: 1.0
+
+  - id: rel-smkdsty-2005-2007
+    type: same_variable_different_name
+    source: cchs2005_p::SMKEDSTY
+    target: cchs2007_2008_p::SMKDSTY
+    harmonisation_potential: complete
+    evidence:
+      response_categories_match: exact
+      derivation_algorithm_match: exact
+      universe_match: exact
+    rationale: >
+      Prefix simplified from SMKE → SMK for 2007+ cycles.
+    confidence: 1.0
+
+  - id: rel-smkdsty-2007-2015
+    type: same_variable_different_name
+    source: cchs2007_2008_p::SMKDSTY
+    target: cchs2015_2016_p::SMKDVSTY
+    harmonisation_potential: complete
+    evidence:
+      response_categories_match: exact       # After cchsflow remapping
+      derivation_algorithm_match: similar    # StatCan changed cat 5 meaning
+      universe_match: exact
+    rationale: >
+      2015 redesign added 'V' to variable name. Note: StatCan's native SMKDVSTY
+      changed category 5 semantics (former occasional → experimental), but
+      cchsflow's SMKDSTY_A applies remapping to maintain pre-2015 meaning.
+      This relationship documents the *cchsflow-harmonised* equivalence.
+    confidence: 1.0
+    notes: >
+      Important distinction: Raw StatCan SMKDVSTY is NOT equivalent to
+      pre-2015 SMKDSTY due to category 5 semantic change. The equivalence
+      documented here is achieved via cchsflow's calculate_smoking_status_detailed()
+      derivation function.
+
+  # --- same_variable_different_name: ever smoked daily ---
+
+  - id: rel-smk05d-2007-2015
+    type: same_variable_different_name
+    source: cchs2007_2008_p::SMK_05D
+    target: cchs2015_2016_p::SMK_030
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: minor_wording
+      response_categories_match: exact
+      universe_match: exact
+    rationale: >
+      Variable renamed from SMK_05D to SMK_030 in 2015 redesign.
+      Question wording slightly clarified but semantic meaning unchanged.
+    confidence: 0.95
+    notes: >
+      Lower confidence due to minor wording change. Manual verification
+      against Statistics Canada documentation confirms semantic equivalence.
+
+  # --- derived_from: Relationship between collected and derived ---
+
+  - id: rel-smk202-to-smkdsty
+    type: derived_from
+    source: cchs2007_2008_p::SMK_202
+    target: cchs2007_2008_p::SMKDSTY
+    harmonisation_potential: partial
+    direction: source_contributes_to_target
+    evidence:
+      derivation_documented: true
+    rationale: >
+      SMKDSTY (6-category) is derived from SMK_202 (3-category) combined
+      with smoking history questions (SMK_05D, SMK_01A).
+      The 6 categories collapse to 3 for current status:
+      codes 1,2,3 → "current" detail; codes 4,5,6 → history detail.
+    confidence: 1.0
+    notes: >
+      Harmonisation potential is "partial" from SMK_202 to SMKDSTY (requires
+      additional variables). Reverse direction (SMKDSTY → SMK_202) has
+      "complete" potential via simple category collapse.
+
+
+# =============================================================================
+# METADATA
+# =============================================================================
+
+metadata:
+  schema_version: "0.3.0"
+  created: 2026-01-23
+  modified: 2026-01-23
+  description: >
+    Prototype YAML demonstrating the CCHS variable ontology data model.
+    Terminology aligned with cchsflow worksheet conventions (section, subject,
+    sub_subject, variableStart patterns).
+  scope:
+    survey: CCHS
+    section: Health behaviour
+    subject: Smoking
+    cycles: 2001-2023
+  cchsflow_alignment:
+    variables_csv: inst/extdata/variables.csv
+    variable_details_csv: inst/extdata/variable_details.csv
+    notes: >
+      This ontology complements (does not replace) cchsflow worksheets.
+      Ontology documents *what* and *why*; worksheets document *how*.
+  validation_status: prototype
+  notes: >
+    This file demonstrates the data model for variable relationships.
+    Instance variables reference cchsflow variableStart patterns.
+    Relationships document the rationale for equivalence decisions
+    that are operationalised in cchsflow worksheets.

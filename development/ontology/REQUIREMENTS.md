@@ -26,32 +26,82 @@ Develop a variable ontology that explicitly models relationships between CCHS va
 - Integration with existing cchsflow infrastructure
 - Potential for automated harmonisation code generation
 
-### 1.3 Scope
+### 1.3 Architectural principle: Schema-First vs Code-First
+
+The literature (see Section 5 and the [Variable Relationship Modelling Review](variable_relationship_modelling_review.md)) identifies a fundamental dichotomy in harmonisation approaches:
+
+| Philosophy | Artefact | Purpose | Examples |
+|------------|----------|---------|----------|
+| **Schema-First** | Metadata (XML, YAML, RDF) | Declarative mapping—*what* is equivalent and *why* | DDI, OWL ontologies |
+| **Code-First** | Code (R scripts, CSV tables) | Procedural logic—*how* to transform | Maelstrom Rmonize, cchsflow |
+
+**cchsflow is deliberately Code-First**: flat CSVs for universal readability, machine-actionability, and version control transparency.
+
+**This ontology is Schema-First**: it captures the conceptual logic and evidence for equivalence decisions.
+
+**They are complementary, not competing**:
+- The ontology documents *what* is equivalent and *why*
+- The worksheets specify *how* to transform
+- They inform each other but serve different purposes
+- There is no requirement for 1:1 mapping between ontology relationships and worksheet rows
+
+### 1.4 Scope
 
 **In scope**:
 - CCHS variable relationships across cycles (2001-present)
 - Integration with scraped ICES metadata (14,005 variables)
 - Support for cchsflow harmonisation workflows
+- Documentation of evidence and rationale for equivalence decisions
 
 **Out of scope** (for initial version):
 - Cross-survey harmonisation (CCHS ↔ CHMS, international)
 - Full semantic ontology with reasoning capabilities
 - Real-time survey data validation
+- Automatic generation of cchsflow worksheets (future goal)
+
+### 1.5 Theoretical foundation: The Variable Cascade
+
+The DDI Variable Cascade (adopted by DDI-CDI and GSIM) provides the foundational model for understanding variable relationships across time. It decomposes a "survey variable" into three levels of abstraction:
+
+```
+Conceptual Variable → Represented Variable → Instance Variable
+     (what)              (how encoded)         (where stored)
+```
+
+**Conceptual Variable**: The most abstract layer—defines the semantics independent of representation. Answers: *What is being measured?* Example: "Current smoking frequency" (no information about codes or categories).
+
+**Represented Variable**: Adds specificity about the value domain and measurement. Answers: *How is the concept encoded?* Example: "Smoking status measured as daily/occasional/not at all" (specifies the categories but not the dataset).
+
+**Instance Variable**: The physical realisation in a specific dataset. Answers: *Where is the data stored?* Example: `SMKDSTY` in CCHS 2001-p, `SMK_005` in CCHS 2003-p (includes variable name, data type, dataset location).
+
+**Implications for relationship modelling**:
+
+| Shared level | Relationship type | Implication |
+|--------------|-------------------|-------------|
+| Represented Variable | `same_variable_different_name` | Structurally identical—can merge directly |
+| Conceptual Variable only | `derived` or `related` | Semantically linked but transformation required |
+| Neither | `impossible` | No harmonisation possible |
+
+This cascade model directly informs our data model design (Section 7).
 
 ---
 
 ## 2. Use cases
 
-### 2.1 Primary use case: Same variable, different name
+### 2.1 Primary use case: Same variable, different name (Complete harmonisation)
 
 **Actor**: Health researcher using cchsflow
 
 **Scenario**: A researcher wants to analyse smoking status trends from 2001-2015 using Ontario Share files. The variable measuring "daily/occasional/non-smoker" status changed names:
 
-| Cycle | Variable |
-|-------|----------|
-| 2001 (Cycle 1.1) | `SMKDSTY` |
-| 2003+ (Cycle 2.1 onwards) | `SMK_005` |
+| Cycle | Variable | Question |
+|-------|----------|----------|
+| 2001 (Cycle 1.1) | `SMKDSTY` | "At the present time, do you smoke cigarettes daily, occasionally or not at all?" |
+| 2003+ (Cycle 2.1 onwards) | `SMK_005` | "At the present time, do you smoke cigarettes daily, occasionally or not at all?" |
+
+Both have identical response categories (1=Daily, 2=Occasionally, 3=Not at all) and universe (age 12+).
+
+**Harmonisation Potential**: **Complete** (no information loss)
 
 **Current workflow**:
 1. Consult cchsflow documentation or worksheets
@@ -62,38 +112,151 @@ Develop a variable ontology that explicitly models relationships between CCHS va
 1. Search ontology for "smoking status" or `SMKDSTY`
 2. See explicit relationship: `SMKDSTY same_variable_different_name SMK_005`
 3. View evidence: "Question text identical, response categories identical, universe identical"
-4. Optionally: Generate cchsflow recoding code from relationship
+4. View Harmonisation Potential status: Complete
+5. Optionally: Generate cchsflow recoding code from relationship
 
 **Requirements derived**:
 - R1.1: Store relationships between variable instances
 - R1.2: Classify relationship types (same-variable-different-name is simplest)
 - R1.3: Document evidence for each relationship
 - R1.4: Support search/discovery by variable name or concept
+- R1.5: Include Harmonisation Potential status (Complete/Partial/Impossible)
 
-### 2.2 Secondary use case: Derived variables with response recoding
+### 2.2 Secondary use case: Response category changes (Partial harmonisation)
 
-**Scenario**: A variable exists across cycles but response categories changed. For example, a question with 5 response options in 2001 was simplified to 3 options in 2005.
+**Scenario**: Self-rated health has been asked consistently across CCHS cycles, but response categories changed:
+
+| Cycle | Variable | Response categories |
+|-------|----------|-------------------|
+| 2001 | `GENDHDI` | 1=Excellent, 2=Very good, 3=Good, 4=Fair, 5=Poor |
+| 2003+ | `GEN_005` | 1=Excellent, 2=Very good, 3=Good, 4=Fair, 5=Poor |
+
+In this case, the variable name changed but categories remained identical—still a **Complete** harmonisation.
+
+**More complex example** (hypothetical): Alcohol consumption frequency
+
+| Cycle | Variable | Response categories |
+|-------|----------|-------------------|
+| Early | `ALC_1` | 1=Daily, 2=4-6/week, 3=2-3/week, 4=Once/week, 5=Once/month, 6=<Once/month, 7=Never |
+| Later | `ALC_2` | 1=Daily/almost daily, 2=Weekly, 3=Monthly, 4=Less than monthly, 5=Never |
+
+**Harmonisation Potential**: **Partial** (precision loss from 7 categories to 5)
+
+The ontology must capture:
+- Value mapping: 1→1, 2+3→2, 4→2, 5→3, 6→4, 7→5
+- Information loss: Cannot distinguish "4-6/week" from "2-3/week" in harmonised data
+- Rationale: "Collapsed to align with later survey's reduced granularity"
 
 **Requirements derived**:
 - R2.1: Store value mappings (source codes → target codes)
 - R2.2: Distinguish relationship types (same-name-different-coding vs derived)
 - R2.3: Support bidirectional reasoning where applicable
+- R2.4: Document information loss when Harmonisation Potential = Partial
 
-### 2.3 Future use case: Conceptual hierarchy
+### 2.3 Use case: Unit drift (Complete harmonisation with transformation)
 
-**Scenario**: A researcher wants all variables related to "tobacco use" regardless of specific question type.
+**Scenario**: Height measurement changed units across CCHS cycles:
+
+| Cycle | Variable | Unit |
+|-------|----------|------|
+| 2001, 2003 | `HWTGHTM` | Inches |
+| 2005+ | `HWTGHTM` | Metres |
+
+**Harmonisation Potential**: **Complete** (no information loss—unit conversion is exact)
+
+This is currently handled by cchsflow's `rec_with_table()` function, which applies the conversion formula. The ontology should document:
+- Same Represented Variable (concept and precision are identical)
+- Transformation required: `height_m = height_in * 0.0254`
+- No information loss despite the transformation
 
 **Requirements derived**:
-- R3.1: Support broader/narrower concept relationships
-- R3.2: Allow grouping variables under abstract concepts
+- R2.5: Support relationships that require transformation without information loss
 
-### 2.4 Future use case: Standard vocabulary linking
+### 2.4 Use case: Universe changes (Partial or Impossible harmonisation)
+
+**Scenario**: A question's target population changed between cycles:
+
+| Cycle | Variable | Universe |
+|-------|----------|----------|
+| 2001-2005 | `DRUG_X` | Age 12+ |
+| 2007+ | `DRUG_X` | Age 18+ |
+
+**Harmonisation Potential**: **Partial** (can harmonise for 18+ only, but lose 12-17 data from early cycles)
+
+The ontology should capture:
+- Universe mismatch: 12+ vs 18+
+- Conditional harmonisation possible: Restrict analysis to 18+ across all cycles
+- Rationale: "Survey changed drug questions to adults-only"
+
+**Requirements derived**:
+- R2.6: Document universe differences
+- R2.7: Support conditional harmonisation (harmonisable under certain restrictions)
+
+### 2.5 Use case: Discovery across cycles
+
+**Actor**: Researcher planning a new study
+
+**Scenario**: A researcher wants to study diabetes prevalence trends but doesn't know which CCHS variables to use. They need to:
+1. Find all diabetes-related variables across cycles
+2. Understand which are comparable
+3. Identify gaps (cycles where questions weren't asked)
+
+**Current workflow**:
+1. Search ICES Data Dictionary or cchsflow docs for "diabetes"
+2. Manually compare question wording across cycles
+3. Build a spreadsheet tracking comparability (error-prone)
+
+**Desired workflow**:
+1. Query ontology: "All variables linked to Conceptual Variable 'diabetes_status'"
+2. See all Instance Variables grouped by Represented Variable
+3. Identify Complete vs Partial vs Impossible relationships
+4. View evidence for each equivalence decision
+
+**Requirements derived**:
+- R3.1: Support Conceptual Variable as grouping mechanism
+- R3.2: Query by concept to retrieve all related Instance Variables
+
+### 2.6 Use case: New cycle onboarding
+
+**Actor**: cchsflow maintainer
+
+**Scenario**: A new CCHS cycle is released (e.g., 2023). The maintainer needs to:
+1. Identify which existing variables have equivalents in the new cycle
+2. Flag variables that may need review (question text changed)
+3. Document variables that were dropped or added
+
+**Current workflow**:
+1. Manual comparison of variable lists
+2. Read through documentation for each variable
+3. Update worksheets one variable at a time
+
+**Desired workflow**:
+1. Import new cycle variable metadata
+2. Auto-match by question text similarity → flag high-confidence `same_variable_different_name` candidates
+3. Flag low-confidence matches for manual review
+4. Document new variables without predecessors
+5. Document discontinued variables
+
+**Requirements derived**:
+- R3.3: Support automated matching (question text similarity)
+- R3.4: Include confidence scores for automated relationships
+- R3.5: Track variable lifecycle (introduced, discontinued)
+
+### 2.7 Future use case: Conceptual hierarchy
+
+**Scenario**: A researcher wants all variables related to "tobacco use" regardless of specific question type (smoking status, amount smoked, quit attempts, secondhand exposure).
+
+**Requirements derived**:
+- R4.1: Support broader/narrower concept relationships
+- R4.2: Allow grouping variables under abstract concepts (taxonomy)
+
+### 2.8 Future use case: Standard vocabulary linking
 
 **Scenario**: Export CCHS variable metadata to a system that uses SNOMED-CT or LOINC codes.
 
 **Requirements derived**:
-- R4.1: Support links to external vocabularies
-- R4.2: Maintain vocabulary version information
+- R5.1: Support links to external vocabularies
+- R5.2: Maintain vocabulary version information
 
 ---
 
@@ -103,17 +266,32 @@ Develop a variable ontology that explicitly models relationships between CCHS va
 
 | ID | Requirement | Priority | Use case |
 |----|-------------|----------|----------|
+| **Core relationships** ||||
 | R1.1 | Store relationships between variable instances | Must | 2.1 |
 | R1.2 | Classify relationship types | Must | 2.1 |
 | R1.3 | Document evidence for relationships | Must | 2.1 |
-| R1.4 | Search/discover by variable name or concept | Must | 2.1 |
-| R2.1 | Store value mappings | Should | 2.2 |
+| R1.4 | Search/discover by variable name or concept | Must | 2.1, 2.5 |
+| R1.5 | Include Harmonisation Potential status (Complete/Partial/Impossible) | Must | 2.1-2.4 |
+| **Value and unit handling** ||||
+| R2.1 | Store value mappings (source codes → target codes) | Should | 2.2 |
 | R2.2 | Distinguish derived vs renamed variables | Should | 2.2 |
 | R2.3 | Support bidirectional reasoning | Could | 2.2 |
-| R3.1 | Support broader/narrower relationships | Could | 2.3 |
-| R3.2 | Group variables under abstract concepts | Could | 2.3 |
-| R4.1 | Link to external vocabularies | Won't (v1) | 2.4 |
-| R4.2 | Track vocabulary versions | Won't (v1) | 2.4 |
+| R2.4 | Document information loss when Harmonisation Potential = Partial | Should | 2.2 |
+| R2.5 | Support relationships requiring transformation without info loss | Should | 2.3 |
+| R2.6 | Document universe differences | Should | 2.4 |
+| R2.7 | Support conditional harmonisation | Could | 2.4 |
+| **Discovery and onboarding** ||||
+| R3.1 | Support Conceptual Variable as grouping mechanism | Should | 2.5 |
+| R3.2 | Query by concept to retrieve all related Instance Variables | Should | 2.5 |
+| R3.3 | Support automated matching (question text similarity) | Could | 2.6 |
+| R3.4 | Include confidence scores for automated relationships | Could | 2.6 |
+| R3.5 | Track variable lifecycle (introduced, discontinued) | Could | 2.6 |
+| **Concept hierarchy (future)** ||||
+| R4.1 | Support broader/narrower relationships | Won't (v1) | 2.7 |
+| R4.2 | Group variables under abstract concepts (taxonomy) | Won't (v1) | 2.7 |
+| **External vocabularies (future)** ||||
+| R5.1 | Link to external vocabularies | Won't (v1) | 2.8 |
+| R5.2 | Track vocabulary versions | Won't (v1) | 2.8 |
 
 ### 3.2 Non-functional requirements
 
@@ -453,27 +631,144 @@ The proposed ontology addresses the gap: explicit, documented variable relations
 
 ---
 
-## 6. Open questions
+## 6. Emerging data model design
 
-1. **Granularity**: Should relationships be defined at the variable level or variable-cycle level?
+This section captures the evolving data model concepts. Final schema will be developed in LinkML.
 
-2. **Transitivity**: If A same_as B and B same_as C, should we infer A same_as C, or require explicit assertions?
+### 6.1 Core entities
 
-3. **Versioning**: How do we handle updates when we discover a relationship was incorrect?
+Based on the Variable Cascade model:
 
-4. **cchsflow integration**: Generate worksheets from ontology, or annotate existing worksheets with ontology references?
+**ConceptualVariable**: Abstract concept independent of measurement
+```yaml
+conceptual_variables:
+  - id: smoking_frequency_current
+    label: "Current smoking frequency"
+    description: "Self-reported frequency of cigarette smoking at time of survey"
+    domain: tobacco_use  # For future hierarchy support
+```
 
-5. **Automation potential**: Can we auto-detect `same_variable_different_name` cases from question text matching?
+**RepresentedVariable**: Concept with specific value domain
+```yaml
+represented_variables:
+  - id: smoking_status_3cat
+    label: "Smoking status (3 categories)"
+    conceptual_variable: smoking_frequency_current
+    value_domain:
+      - code: 1
+        label: "Daily"
+      - code: 2
+        label: "Occasionally"
+      - code: 3
+        label: "Not at all"
+```
+
+**InstanceVariable**: Physical variable in a specific dataset
+```yaml
+instance_variables:
+  - id: cchs-2001-SMKDSTY
+    name: SMKDSTY
+    label: "Type of smoker"
+    cycle: cchs-2001
+    dataset_type: share  # share, pumf, master
+    represented_variable: smoking_status_3cat
+    question_text: "At the present time, do you smoke cigarettes daily, occasionally or not at all?"
+    universe: "Age 12+"
+```
+
+### 6.2 Relationships
+
+**VariableRelationship**: Explicit link between Instance Variables
+```yaml
+relationships:
+  - id: rel-smoking-001
+    type: same_variable_different_name
+    source: cchs-2001-SMKDSTY
+    target: cchs-2003-SMK_005
+    harmonisation_potential: complete
+    evidence:
+      question_text_match: exact
+      response_categories_match: exact
+      universe_match: exact
+    rationale: "Variable renamed between cycles; question, response categories, and universe unchanged"
+    confidence: 1.0  # 1.0 = manual review, <1.0 = automated match
+    reviewed_by: "DM"
+    review_date: "2026-01-23"
+```
+
+### 6.3 Relationship types
+
+| Type | Description | Harmonisation Potential |
+|------|-------------|------------------------|
+| `same_variable_different_name` | Name changed, everything else identical | Complete |
+| `recoded` | Response categories changed, requires mapping | Complete or Partial |
+| `unit_converted` | Measurement unit changed, requires transformation | Complete |
+| `universe_restricted` | Target population narrowed | Partial |
+| `derived_from` | Target computed from source(s) | Complete or Partial |
+| `no_equivalent` | Evaluated and determined incompatible | Impossible |
+
+### 6.4 Harmonisation Potential status
+
+Following Maelstrom Research guidelines:
+
+| Status | Definition | Example |
+|--------|------------|---------|
+| **Complete** | No information loss; direct mapping or reversible transformation | Name change, unit conversion |
+| **Partial** | Some precision or coverage lost; aggregation required | 5 categories → 3 categories |
+| **Impossible** | No compatible information; cannot harmonise | Different constructs entirely |
+
+The explicit "Impossible" status is valuable metadata—it documents that harmonisation was evaluated and rejected.
+
+### 6.5 Evidence structure
+
+Each relationship should document what was compared:
+
+```yaml
+evidence:
+  question_text_match: exact | similar | different
+  response_categories_match: exact | superset | subset | different
+  universe_match: exact | subset | different
+  unit_match: exact | convertible | incompatible
+  notes: "Free text for additional context"
+```
+
+### 6.6 Open design questions
+
+1. **Transitivity**: If A same_as B and B same_as C, should we infer A same_as C?
+   - **Proposal**: Don't auto-infer; support queries that traverse chains but require explicit assertions for each pair
+
+2. **Bidirectionality**: Are all relationships symmetric?
+   - **Proposal**: `same_variable_different_name` is symmetric; `derived_from` is directional
+
+3. **Negative assertions**: How to document "evaluated and not equivalent"?
+   - **Proposal**: Relationship with `type: no_equivalent` and `harmonisation_potential: impossible`
+
+4. **Confidence scoring**: How to represent automated vs manual matches?
+   - **Proposal**: `confidence` field (0.0-1.0); 1.0 = manual review, <1.0 = automated (include similarity score)
 
 ---
 
-## 7. Next steps
+## 7. Open questions (for further discussion)
 
-1. **Literature review**: Expand Section 5 with specific papers and findings
-2. **DDI deep-dive**: Examine CCHS DDI files on Maelstrom for comparison module usage
-3. **cchsflow audit**: Document current worksheet structure and identify gaps
-4. **Prototype**: Small YAML example for smoking variables to test schema
-5. **Stakeholder input**: Review with cchsflow maintainers and users
+1. **Versioning**: How do we handle updates when we discover a relationship was incorrect?
+
+2. **cchsflow integration**: Generate worksheets from ontology, or annotate existing worksheets with ontology references? (Current thinking: complement first, generate later)
+
+3. **Automation scope**: What level of automated matching is feasible with ICES metadata?
+
+4. **LinkML schema**: Extend existing catalog schema or create new ontology schema?
+
+---
+
+## 8. Next steps
+
+1. ~~**Literature review**: Expand Section 5 with specific papers and findings~~ ✓ Done
+2. ~~**Comprehensive review**: Analysis in `variable_relationship_modelling_review.md`~~ ✓ Done
+3. **Finalise data model**: Complete LinkML schema based on Section 6 design
+4. **Prototype**: Small YAML example for 5-10 smoking variables to test schema
+5. **Validate**: Query prototype to verify it supports use cases 2.1, 2.5, 2.6
+6. **cchsflow audit**: Document current worksheet structure and identify gaps
+7. **Stakeholder input**: Review with cchsflow maintainers and users
 
 ---
 
@@ -481,14 +776,27 @@ The proposed ontology addresses the gap: explicit, documented variable relations
 
 | Term | Definition |
 |------|------------|
+| **Conceptual Variable** | Abstract concept independent of measurement (DDI Variable Cascade level 1). Example: "Current smoking frequency" |
+| **Represented Variable** | Concept with specified value domain (DDI Variable Cascade level 2). Example: "Smoking status as daily/occasional/not at all" |
+| **Instance Variable** | Physical variable in a specific dataset (DDI Variable Cascade level 3). Example: `SMKDSTY` in CCHS 2001 |
 | **Harmonisation** | Process of making variables comparable across datasets or time periods |
-| **Variable instance** | A specific variable in a specific dataset/cycle |
-| **Conceptual variable** | Abstract concept measured by one or more variable instances |
-| **Pass-through** | Harmonisation where no recoding is needed (1:1 mapping) |
+| **Harmonisation Potential** | Maelstrom classification: Complete (no loss), Partial (some loss), Impossible (incompatible) |
+| **Pass-through** | Harmonisation where no recoding is needed (1:1 mapping); equivalent to `same_variable_different_name` |
 | **Derived variable** | Variable computed from one or more source variables |
+| **Variable Cascade** | DDI model linking Conceptual → Represented → Instance Variables |
+| **Schema-First** | Approach prioritising declarative metadata (DDI, ontologies)—captures *what* and *why* |
+| **Code-First** | Approach prioritising procedural logic (Maelstrom, cchsflow)—captures *how* |
 
 ## Appendix B: Document history
 
 | Version | Date | Author | Changes |
 |---------|------|--------|---------|
 | 0.1.0 | 2026-01-23 | cchsflow-docs | Initial draft |
+| 0.2.0 | 2026-01-23 | cchsflow-docs | Expanded use cases, added Variable Cascade foundation, Section 6 data model design, Schema-First/Code-First distinction |
+
+## Appendix C: Related documents
+
+| Document | Purpose |
+|----------|---------|
+| [README.md](README.md) | Overview and quick reference |
+| [variable_relationship_modelling_review.md](variable_relationship_modelling_review.md) | Comprehensive 49-reference analysis of DDI, Maelstrom, cchsflow, ontologies, and knowledge graphs |
