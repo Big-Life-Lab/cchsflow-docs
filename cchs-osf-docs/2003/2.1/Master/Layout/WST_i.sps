@@ -1,5 +1,0 @@
-DATA LIST FILE = INFILE NOTABLE/
- SAMPLEID     1-  20 (A)
- PERSONID    21-  22    
- WSTCDJST    23-  26 (2)
-    .
