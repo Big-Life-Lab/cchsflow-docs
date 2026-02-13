@@ -87,51 +87,7 @@ classes:
         range: string
         description: ICES library name (e.g., "CCHS")
 
-  CchsVariable:
-    description: A CCHS variable from the ICES data dictionary (raw scraped data)
-    comments:
-      - All fields are stored verbatim as they appear on the ICES Variables.aspx page
-      - No interpretation or normalization is performed during scrape
-    attributes:
-      variable_name:
-        range: string
-        required: true
-        identifier: true
-        description: Variable name exactly as shown on ICES (e.g., "ACC_10", "ADMA_IMP")
-      label:
-        range: string
-        required: true
-        description: Variable description from ICES (MainContent_lbLabel element)
-      type:
-        range: string
-        required: true
-        description: Data type string from ICES (MainContent_lbTypeLength element, e.g., "Num8", "Char10")
-      format:
-        range: string
-        description: Format code from ICES (MainContent_lbFormat element, e.g., "CCHS_PUMF_YESNOFM")
-      values_raw:
-        range: string
-        description: >-
-          Raw HTML content from MainContent_lbvalue element, verbatim.
-          Contains code/label pairs separated by <br/> tags (e.g., "1 = YES<br/>2 = NO").
-          Stored for data integrity; parsed values stored in value_formats table.
-      values:
-        range: ValueCode
-        multivalued: true
-        inlined_as_list: true
-        description: Parsed value codes from values_raw (code/label pairs)
-      available_in_raw:
-        range: string
-        description: >-
-          Raw text from MainContent_lbAvailableIn element, verbatim.
-          May contain commas, newlines, or other separators between dataset IDs.
-      available_in:
-        range: string
-        multivalued: true
-        description: Parsed dataset IDs from available_in_raw (split on comma/newline)
-      available_in_count:
-        range: integer
-        description: Count of datasets in available_in list
+
 
   CchsDataset:
     description: A CCHS dataset from the ICES data dictionary (raw scraped data)
