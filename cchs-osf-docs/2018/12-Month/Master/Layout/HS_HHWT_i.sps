@@ -1,4 +1,0 @@
-DATA LIST FILE = INFILE NOTABLE/
- SAMPLEID     1-  20 (A)
- WTS_MHH  21-  27 (2)
-     .

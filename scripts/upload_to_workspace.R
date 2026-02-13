@@ -12,9 +12,10 @@
 library(googledrive)
 
 # --- Configuration ---
-WORKSPACE_EMAIL <- "dmanuel@biglifelab.ca"
-WORKSPACE_ROOT  <- "CCHS-Documentation"
-LOCAL_SOURCE    <- "cchs-osf-docs"
+WORKSPACE_EMAIL  <- "dmanuel@biglifelab.ca"
+SHARED_FOLDER_ID <- "0AMZr2JC1NGt7Uk9PVA"  # cchsflow shared folder
+DOC_FOLDER_ID    <- "1WDpaCUXB7hQRrONyegTZ5-ewUyDh9rDj"  # CCHS-Documentation
+LOCAL_SOURCE     <- "cchs-osf-docs"
 REMOTE_SUBFOLDER <- "cchs-osf-docs"
 
 dry_run <- "--dry-run" %in% commandArgs(trailingOnly = TRUE)

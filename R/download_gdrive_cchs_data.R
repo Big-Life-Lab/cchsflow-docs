@@ -1,85 +1,40 @@
-# CCHS Data Download from Google Drive
+# CCHS Data Download from Google Workspace
 #
-# Downloads CCHS data files from Google Drive folder
-# Folder: https://drive.google.com/drive/folders/1M8C8KV88fHtgzZleRatlInf0c8Cwv8ZR
+# Downloads CCHS documentation files from shared Google Workspace folder.
+# Shared folder: https://drive.google.com/drive/folders/0AMZr2JC1NGt7Uk9PVA
 #
-# This script attempts to download using public access first.
-# For private folders, run setup_gdrive_auth.R first to authenticate.
+# Subfolder structure:
+#   CCHS-Documentation/
+#     cchs-osf-docs/       - OSF documentation mirror (1,313 files)
+#     cchs-pumf-archive/   - PUMF data dictionaries, DDI XML
+#     ices-dictionary/     - ICES scrape artefacts
+#     chms-osf-docs/       - CHMS documentation
+#
+# Prerequisites:
+#   Run scripts/setup_workspace_gdrive.R to authenticate with Workspace
+#
+# Usage:
+#   source("R/download_gdrive_cchs_data.R")
+#   download_cchs_docs()                    # Download cchs-osf-docs
+#   download_cchs_docs("cchs-pumf-archive") # Download PUMF archive
 
 library(googledrive)
-library(httr)
 
-# Google Drive folder ID for CCHS-data
-folder_id <- "1M8C8KV88fHtgzZleRatlInf0c8Cwv8ZR"
-dest_dir <- "cchs-data-docs"
+# --- Configuration ---
+WORKSPACE_EMAIL <- "dmanuel@biglifelab.ca"
+SHARED_FOLDER_ID <- "0AMZr2JC1NGt7Uk9PVA"  # cchsflow shared folder
+DOC_FOLDER_ID <- "1WDpaCUXB7hQRrONyegTZ5-ewUyDh9rDj"  # CCHS-Documentation
 
-# Create destination directory
-if (!dir.exists(dest_dir)) {
-  dir.create(dest_dir, recursive = TRUE)
-  cat("Created directory:", dest_dir, "\n")
-}
+# Subfolder IDs (from shared folder)
+SUBFOLDER_IDS <- list(
+  "cchs-osf-docs"     = "1Sw_-HMFYQVYi_dUSFgaGUSvoS1H3xPHO",
+  "cchs-pumf-archive" = "1R_9Y0IkSAG__yMXVZ7S-4u5MNHYzto4e",
+  "ices-dictionary"   = "1p-gON3WAUMRIdHndjPDJgvGjX7cKhPZn",
+  "chms-osf-docs"     = "14P666MpgTzNyMen9TLQAjFCQdB48k06_"
+)
 
-# Try without authentication first (for public folders)
-# If this fails, you'll need to run setup_gdrive_auth.R
-cat("Attempting to access Google Drive folder...\n")
-cat("Folder ID:", folder_id, "\n")
-cat("Destination:", dest_dir, "\n\n")
-
-# Check if authentication is needed
-auth_needed <- tryCatch({
-  drive_deauth()
-  test_items <- drive_ls(as_id(folder_id), page_size = 1)
-  FALSE  # No auth needed
-}, error = function(e) {
-  cat("Public access failed. Authentication required.\n")
-  cat("Please run: source('R/setup_gdrive_auth.R')\n\n")
-  TRUE  # Auth needed
-})
-
-if (auth_needed) {
-  # Try to use cached authentication
-  if (dir.exists(".secrets")) {
-    cat("Using cached authentication from .secrets/\n")
-    options(
-      gargle_oauth_cache = ".secrets",
-      gargle_oauth_email = TRUE
-    )
-  } else {
-    stop("Authentication required. Please run setup_gdrive_auth.R first.")
-  }
-}
-
-cat("Fetching folder structure...\n")
-all_items <- drive_ls(as_id(folder_id))
-cat("Found", nrow(all_items), "items in root folder\n\n")
-
-# Manual download function using direct Google Drive download links
-download_file_direct <- function(file_id, local_path) {
-  # Google Drive direct download URL
-  url <- paste0("https://drive.google.com/uc?export=download&id=", file_id)
-
-  cat("Downloading:", basename(local_path), "\n")
-
-  tryCatch({
-    # Try direct download
-    response <- GET(url, write_disk(local_path, overwrite = TRUE))
-
-    if (status_code(response) == 200) {
-      file_size <- file.info(local_path)$size
-      cat(sprintf("  ✓ Success (%s bytes)\n", format(file_size, big.mark = ",")))
-      return(TRUE)
-    } else {
-      cat("  ✗ Failed (status:", status_code(response), ")\n")
-      return(FALSE)
-    }
-  }, error = function(e) {
-    cat("  ✗ Error:", e$message, "\n")
-    return(FALSE)
-  })
-}
-
-# Recursive folder download using direct links
-download_folder_direct <- function(folder_id, local_path, depth = 0) {
+# --- Recursive download ---
+download_folder <- function(folder_id, local_path, depth = 0) {
   indent <- paste(rep("  ", depth), collapse = "")
 
   items <- drive_ls(as_id(folder_id))
@@ -89,7 +44,7 @@ download_folder_direct <- function(folder_id, local_path, depth = 0) {
     return(invisible(NULL))
   }
 
-  cat(indent, "Processing", nrow(items), "items...\n", sep = "")
+  cat(indent, "Processing ", nrow(items), " items...\n", sep = "")
 
   for (i in seq_len(nrow(items))) {
     item <- items[i, ]
@@ -100,19 +55,23 @@ download_folder_direct <- function(folder_id, local_path, depth = 0) {
     local_item_path <- file.path(local_path, item_name)
 
     if (item_type == "application/vnd.google-apps.folder") {
-      # Folder - create and recurse
-      cat(indent, "📁 ", item_name, "\n", sep = "")
+      cat(indent, "  [folder] ", item_name, "\n", sep = "")
       if (!dir.exists(local_item_path)) {
         dir.create(local_item_path, recursive = TRUE)
       }
-      download_folder_direct(item_id, local_item_path, depth + 1)
+      download_folder(item_id, local_item_path, depth + 1)
     } else {
-      # File - try direct download
       if (!file.exists(local_item_path)) {
-        cat(indent, "📄 ", sep = "")
-        download_file_direct(item_id, local_item_path)
+        cat(indent, "  ", item_name, "... ", sep = "")
+        tryCatch({
+          drive_download(as_id(item_id), path = local_item_path, overwrite = FALSE)
+          file_size <- file.info(local_item_path)$size
+          cat(sprintf("done (%s bytes)\n", format(file_size, big.mark = ",")))
+        }, error = function(e) {
+          cat("FAILED:", e$message, "\n")
+        })
       } else {
-        cat(indent, "⊘  Skipping (exists): ", item_name, "\n", sep = "")
+        cat(indent, "  (exists) ", item_name, "\n", sep = "")
       }
     }
   }
@@ -120,42 +79,54 @@ download_folder_direct <- function(folder_id, local_path, depth = 0) {
   invisible(NULL)
 }
 
-# Main download function
-download_all_cchs_data <- function() {
-  cat("\n═══════════════════════════════════════════════════════════\n")
-  cat("Starting CCHS Data Download from Google Drive\n")
-  cat("═══════════════════════════════════════════════════════════\n\n")
+#' Download CCHS documentation from shared Workspace
+#'
+#' @param subfolder Which subfolder to download. One of: "cchs-osf-docs",
+#'   "cchs-pumf-archive", "ices-dictionary", "chms-osf-docs"
+#' @param dest_dir Local destination directory. Defaults to subfolder name.
+download_cchs_docs <- function(subfolder = "cchs-osf-docs", dest_dir = subfolder) {
+  if (!subfolder %in% names(SUBFOLDER_IDS)) {
+    stop(
+      "Unknown subfolder: ", subfolder,
+      "\nChoose from: ", paste(names(SUBFOLDER_IDS), collapse = ", ")
+    )
+  }
+
+  # Authenticate
+  options(gargle_oauth_cache = ".secrets", gargle_oauth_email = TRUE)
+  drive_auth(email = WORKSPACE_EMAIL, cache = ".secrets")
+  cat("Authenticated as:", drive_user()$emailAddress, "\n\n")
+
+  # Create destination
+  if (!dir.exists(dest_dir)) {
+    dir.create(dest_dir, recursive = TRUE)
+    cat("Created directory:", dest_dir, "\n")
+  }
+
+  folder_id <- SUBFOLDER_IDS[[subfolder]]
+
+  cat("=================================================\n")
+  cat("Downloading:", subfolder, "\n")
+  cat("Destination:", dest_dir, "\n")
+  cat("=================================================\n\n")
 
   start_time <- Sys.time()
-  download_folder_direct(folder_id, dest_dir)
+  download_folder(folder_id, dest_dir)
   end_time <- Sys.time()
 
-  # Summary statistics
-  cat("\n═══════════════════════════════════════════════════════════\n")
-  cat("✓ Download Complete!\n")
-  cat("═══════════════════════════════════════════════════════════\n\n")
-
+  # Summary
   file_count <- length(list.files(dest_dir, recursive = TRUE))
-  total_size <- sum(file.info(list.files(dest_dir, recursive = TRUE, full.names = TRUE))$size, na.rm = TRUE)
+  total_size <- sum(
+    file.info(list.files(dest_dir, recursive = TRUE, full.names = TRUE))$size,
+    na.rm = TRUE
+  )
 
-  cat("Destination:  ", dest_dir, "\n")
-  cat("Total files:  ", file_count, "\n")
-  cat("Total size:   ", format(total_size / 1024^2, digits = 2), "MB\n")
-  cat("Duration:     ", format(end_time - start_time), "\n\n")
+  cat("\n=================================================\n")
+  cat("Download complete\n")
+  cat("=================================================\n")
+  cat("Files:    ", file_count, "\n")
+  cat("Size:     ", format(total_size / 1024^2, digits = 2), "MB\n")
+  cat("Duration: ", format(end_time - start_time), "\n")
 
-  cat("Next steps:\n")
-  cat("1. Review downloaded files in", dest_dir, "\n")
-  cat("2. Run cataloging script to generate metadata\n")
-  cat("3. Add to catalog configuration\n\n")
-
-  invisible(list(
-    files = file_count,
-    size_mb = total_size / 1024^2,
-    duration = end_time - start_time
-  ))
-}
-
-# Run if sourced directly
-if (!interactive()) {
-  download_all_cchs_data()
+  invisible(list(files = file_count, size_mb = total_size / 1024^2))
 }
