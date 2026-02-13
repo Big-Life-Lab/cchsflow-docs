@@ -1,0 +1,92 @@
+-- =============================================================================
+-- CCHS Metadata Schema (DuckDB) - v2.2 with Rich Text Support
+-- =============================================================================
+
+-- 1. CYCLES & METADATA
+CREATE TABLE cchs_cycles (
+    cycle_id VARCHAR PRIMARY KEY,     
+    start_year INTEGER,
+    end_year INTEGER,
+    has_master BOOLEAN DEFAULT TRUE,
+    has_pumf BOOLEAN DEFAULT TRUE
+);
+
+-- 2. RAW VARIABLES (Updated for DDI Content)
+CREATE TABLE raw_variables (
+    variable_name VARCHAR,            
+    cycle_id VARCHAR,                 
+    file_type VARCHAR,                -- 'MASTER', 'PUMF'
+    
+    label_en VARCHAR,                 
+    variable_type VARCHAR,            -- 'Categorical', 'Continuous'
+    length INTEGER,
+    
+    -- DDI Rich Content (New Columns)
+    question_text VARCHAR,            -- "Have you smoked...?" (Essential for LLM context)
+    universe_logic VARCHAR,           -- "Asked of respondents 12+..."
+    notes VARCHAR,                    -- DDI notes/instructions
+    
+    -- Categories & Missing Codes
+    categories_json JSON,
+    missing_codes_json JSON,
+    
+    -- Data-Driven Stats (Method B)
+    min_val DOUBLE,
+    max_val DOUBLE,
+    distinct_count INTEGER,           
+    
+    -- Provenance
+    source_filename VARCHAR,          
+    source_method VARCHAR,            -- 'DDI_XML', 'DATA_SCAN', 'PDF_PARSE'
+    validation_status VARCHAR,        
+    
+    ingestion_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    PRIMARY KEY (variable_name, cycle_id, file_type)
+);
+
+-- 3. HARMONIZED DEFINITIONS (Legacy cchsflow logic)
+CREATE TABLE cchsflow_definitions (
+    target_variable VARCHAR,          
+    source_variable VARCHAR,          
+    cycle_id VARCHAR,
+    rec_to VARCHAR,                   
+    rec_from VARCHAR,                 
+    cat_mapping_json JSON,            
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 4. ONTOLOGY TABLES
+CREATE TABLE ontology_concepts (
+    concept_id VARCHAR PRIMARY KEY,   
+    subject_group VARCHAR,            
+    preferred_label VARCHAR,          
+    description VARCHAR
+);
+
+CREATE TABLE variable_concepts (
+    variable_name VARCHAR,
+    cycle_id VARCHAR,
+    concept_id VARCHAR REFERENCES ontology_concepts(concept_id),
+    match_confidence FLOAT DEFAULT 1.0,
+    match_source VARCHAR                 
+);
+
+CREATE TABLE variable_relationships (
+    source_node VARCHAR,              
+    target_node VARCHAR,              
+    relationship_type VARCHAR,        
+    description VARCHAR               
+);
+
+-- View: DDI Preferred
+-- When checking PUMF variables, prefer DDI sources over Data Scans for metadata
+CREATE VIEW v_pumf_metadata AS
+SELECT * FROM raw_variables
+WHERE file_type = 'PUMF'
+ORDER BY 
+    CASE source_method 
+        WHEN 'DDI_XML' THEN 1 
+        WHEN 'DATA_SCAN' THEN 2
+        ELSE 3 
+    END;
