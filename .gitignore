@@ -31,6 +31,10 @@ cchs-data-docs/
 # Temporary files
 *~
 .DS_Store
+# Python cache
+__pycache__/
+# Claude Code local config
+.claude/
 # AI context (local development)
 CLAUDE.md
 # Build artifacts (collections as release assets)
