@@ -3,12 +3,14 @@
 # Downloads CCHS documentation files from shared Google Workspace folder.
 # Shared folder: https://drive.google.com/drive/folders/0AMZr2JC1NGt7Uk9PVA
 #
-# Subfolder structure:
-#   CCHS-Documentation/
+# Workspace structure (cchsflow shared drive):
+#   CCHS-documentation/
 #     cchs-osf-docs/       - OSF documentation mirror (1,313 files)
 #     cchs-pumf-archive/   - PUMF data dictionaries, DDI XML
 #     ices-dictionary/     - ICES scrape artefacts
-#     chms-osf-docs/       - CHMS documentation
+#     CCHS_PUMF_Archive/   - Full PUMF archive (from personal Drive)
+#   CHMS-documentation/
+#     Cycle1/ ... Cycle6/  - CHMS documentation (52 files)
 #
 # Prerequisites:
 #   Run scripts/setup_workspace_gdrive.R to authenticate with Workspace
@@ -17,20 +19,24 @@
 #   source("R/download_gdrive_cchs_data.R")
 #   download_cchs_docs()                    # Download cchs-osf-docs
 #   download_cchs_docs("cchs-pumf-archive") # Download PUMF archive
+#   download_cchs_docs("chms-docs")         # Download CHMS documentation
 
 library(googledrive)
 
 # --- Configuration ---
 WORKSPACE_EMAIL <- "dmanuel@biglifelab.ca"
-SHARED_FOLDER_ID <- "0AMZr2JC1NGt7Uk9PVA"  # cchsflow shared folder
-DOC_FOLDER_ID <- "1WDpaCUXB7hQRrONyegTZ5-ewUyDh9rDj"  # CCHS-Documentation
+SHARED_FOLDER_ID <- "0AMZr2JC1NGt7Uk9PVA"  # cchsflow shared drive
 
-# Subfolder IDs (from shared folder)
+# Top-level folders in shared drive
+CCHS_DOC_ID <- "1WDpaCUXB7hQRrONyegTZ5-ewUyDh9rDj"  # CCHS-documentation
+CHMS_DOC_ID <- "1SAsV1CoikRTna12l4-2vod3fn7lLkn30"  # CHMS-documentation
+
+# Subfolder IDs (within CCHS-documentation)
 SUBFOLDER_IDS <- list(
   "cchs-osf-docs"     = "1Sw_-HMFYQVYi_dUSFgaGUSvoS1H3xPHO",
   "cchs-pumf-archive" = "1R_9Y0IkSAG__yMXVZ7S-4u5MNHYzto4e",
   "ices-dictionary"   = "1p-gON3WAUMRIdHndjPDJgvGjX7cKhPZn",
-  "chms-osf-docs"     = "14P666MpgTzNyMen9TLQAjFCQdB48k06_"
+  "chms-docs"         = "1SAsV1CoikRTna12l4-2vod3fn7lLkn30"
 )
 
 # --- Recursive download ---

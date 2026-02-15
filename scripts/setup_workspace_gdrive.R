@@ -37,8 +37,10 @@ cat("\n=================================================\n")
 cat("Creating CCHS documentation folder structure\n")
 cat("=================================================\n\n")
 
-# Top-level folder for all CCHS documentation
-WORKSPACE_ROOT <- "CCHS-Documentation"
+# Top-level folders in shared cchsflow drive
+# CCHS-documentation: 1WDpaCUXB7hQRrONyegTZ5-ewUyDh9rDj
+# CHMS-documentation: 1SAsV1CoikRTna12l4-2vod3fn7lLkn30
+WORKSPACE_ROOT <- "CCHS-documentation"
 
 # Check if root folder already exists
 existing <- drive_find(
