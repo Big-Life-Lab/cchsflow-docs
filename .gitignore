@@ -35,6 +35,7 @@ cchs-data-docs/
 __pycache__/
 # Claude Code local config
 .claude/
+.mcp.json
 # AI context (local development)
 CLAUDE.md
 # Build artifacts (collections as release assets)
