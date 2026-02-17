@@ -10,7 +10,8 @@
 --   - Loaded into DuckDB at build time
 --
 -- DuckDB-only tables: dataset_sources, dataset_aliases, variable_datasets,
---   variable_families, variable_family_members, value_codes
+--   variable_families, variable_family_members, value_codes,
+--   variable_summary_stats, variable_groups, variable_group_members
 --   - Machine-generated during ingestion
 --   - Too large or too dynamic for CSV
 --
@@ -127,6 +128,9 @@ CREATE TABLE IF NOT EXISTS variable_datasets (
     length INTEGER,                      -- field length (from DDI)
     question_text VARCHAR,               -- question text (from DDI)
     universe VARCHAR,                    -- universe (from DDI)
+    intrvl VARCHAR,                      -- measurement level: 'discrete' or 'contin' (from DDI)
+    wgt_var VARCHAR,                     -- weight variable reference ID (from DDI)
+    notes VARCHAR,                       -- derivation notes, UNF fingerprint, etc. (from DDI)
     PRIMARY KEY (variable_name, dataset_id, source_id)
 );
 
@@ -163,13 +167,57 @@ CREATE TABLE IF NOT EXISTS value_codes (
     dataset_id VARCHAR NOT NULL REFERENCES datasets(dataset_id),
     code VARCHAR NOT NULL,
     label VARCHAR,
-    frequency INTEGER,                   -- from RData factor counts (NULL for DDI)
+    frequency INTEGER,                   -- unweighted count (from RData or DDI)
+    frequency_weighted DOUBLE,           -- weighted count (from DDI catStat wgtd)
     source_id VARCHAR NOT NULL REFERENCES sources(source_id),
     PRIMARY KEY (variable_name, dataset_id, code, source_id)
 );
 
 -- ============================================================
--- 10. Catalog metadata: key-value store for build info
+-- 10. Variable summary statistics: distributional stats per variable per dataset
+--     DuckDB-only, populated from DDI XML sumStat elements
+-- ============================================================
+CREATE TABLE IF NOT EXISTS variable_summary_stats (
+    variable_name VARCHAR NOT NULL REFERENCES variables(variable_name),
+    dataset_id VARCHAR NOT NULL REFERENCES datasets(dataset_id),
+    stat_mean DOUBLE,                    -- DDI sumStat type="mean"
+    stat_median DOUBLE,                  -- DDI sumStat type="medn"
+    stat_mode VARCHAR,                   -- DDI sumStat type="mode" (can be '.')
+    stat_stdev DOUBLE,                   -- DDI sumStat type="stdev"
+    stat_min DOUBLE,                     -- DDI sumStat type="min"
+    stat_max DOUBLE,                     -- DDI sumStat type="max"
+    n_valid INTEGER,                     -- DDI sumStat type="vald"
+    n_invalid INTEGER,                   -- DDI sumStat type="invd"
+    source_id VARCHAR NOT NULL REFERENCES sources(source_id),
+    PRIMARY KEY (variable_name, dataset_id, source_id)
+);
+
+-- ============================================================
+-- 11. Variable groups: module classifications per dataset
+--     DuckDB-only, populated from DDI XML varGrp elements
+--     e.g., "SMK: Smoking", "ALC: Alcohol use"
+-- ============================================================
+CREATE TABLE IF NOT EXISTS variable_groups (
+    group_id VARCHAR NOT NULL,           -- generated: dataset_id || '::' || group_code
+    dataset_id VARCHAR NOT NULL REFERENCES datasets(dataset_id),
+    group_code VARCHAR NOT NULL,         -- e.g., 'SMK', 'ALC', 'DIA'
+    group_label VARCHAR NOT NULL,        -- e.g., 'Smoking', 'Alcohol use', 'Diabetes care'
+    source_id VARCHAR NOT NULL REFERENCES sources(source_id),
+    PRIMARY KEY (group_id)
+);
+
+-- ============================================================
+-- 12. Variable group members: which variables belong to which groups
+--     DuckDB-only, populated from DDI XML varGrp var attribute
+-- ============================================================
+CREATE TABLE IF NOT EXISTS variable_group_members (
+    group_id VARCHAR NOT NULL REFERENCES variable_groups(group_id),
+    variable_name VARCHAR NOT NULL REFERENCES variables(variable_name),
+    PRIMARY KEY (group_id, variable_name)
+);
+
+-- ============================================================
+-- 13. Catalog metadata: key-value store for build info
 -- ============================================================
 CREATE TABLE IF NOT EXISTS catalog_metadata (
     key VARCHAR PRIMARY KEY,
@@ -215,6 +263,7 @@ SELECT
     vd.variable_name, vd.dataset_id, vd.source_id,
     vd.label, vd.type, vd.position, vd.length,
     vd.question_text, vd.universe,
+    vd.intrvl, vd.wgt_var, vd.notes,
     d.year_start, d.year_end, d.temporal_type, d.release
 FROM variable_datasets vd
 JOIN datasets d ON vd.dataset_id = d.dataset_id
@@ -267,3 +316,14 @@ FROM dataset_sources ds
 JOIN datasets d ON ds.dataset_id = d.dataset_id
 JOIN sources s ON ds.source_id = s.source_id
 ORDER BY ds.dataset_id, s.authority, s.source_id;
+
+-- Variable group membership: which module each variable belongs to per dataset
+CREATE OR REPLACE VIEW v_variable_groups AS
+SELECT
+    vgm.variable_name, vg.dataset_id,
+    vg.group_code, vg.group_label,
+    d.year_start, d.year_end
+FROM variable_group_members vgm
+JOIN variable_groups vg ON vgm.group_id = vg.group_id
+JOIN datasets d ON vg.dataset_id = d.dataset_id
+ORDER BY vg.dataset_id, vg.group_code, vgm.variable_name;
