@@ -5,10 +5,9 @@
 #   CSV (source of truth) → DuckDB (queryable) → MCP server (tools)
 #
 # Phase 0: Create fresh DuckDB, apply schema, load CSVs
-# Phase 1: Ingest PUMF RData (future)
+# Phase 1: Ingest PUMF RData
 # Phase 2: Ingest DDI XML (future)
-# Phase 3: Ingest cchsflow families (future)
-# Phase 4: Validate merge (future)
+# Phase 3: Validate merge (future)
 #
 # Usage: Rscript --vanilla database/build_db.R
 
@@ -130,12 +129,73 @@ for (i in seq_len(nrow(tables))) {
   cat(sprintf("    %-25s %6d rows  (%d cols)\n", tbl, n, tables$n_cols[i]))
 }
 
+# ------------------------------------------------------------------
+# Phase 1: PUMF RData ingestion
+# ------------------------------------------------------------------
+rdata_dir <- "../cchsflow-data/data/sources/rdata/"
+
+if (dir.exists(rdata_dir)) {
+  cat("\n\nPhase 1: PUMF RData ingestion\n")
+  source("ingestion/ingest_pumf_rdata.R")
+  ingest_pumf_rdata(con, rdata_dir)
+} else {
+  cat("\n\nPhase 1: SKIPPED (RData directory not found:", rdata_dir, ")\n")
+}
+
+# ------------------------------------------------------------------
+# Phase 2: DDI XML ingestion
+# ------------------------------------------------------------------
+ddi_dir <- "../cchsflow-data/ddi/"
+
+if (dir.exists(ddi_dir)) {
+  cat("\n\nPhase 2: DDI XML ingestion\n")
+  source("ingestion/ingest_ddi_xml.R")
+  ingest_ddi_xml(con, ddi_dir)
+} else {
+  cat("\n\nPhase 2: SKIPPED (DDI directory not found:", ddi_dir, ")\n")
+}
+
+# ------------------------------------------------------------------
+# Update status based on source attestation
+# ------------------------------------------------------------------
+cat("\n\nUpdating variable status...\n")
+
+# Variables with at least one primary source → active
+n_active <- dbExecute(con, "
+  UPDATE variables SET status = 'active'
+  WHERE n_primary_sources > 0 AND status = 'temp'
+")
+cat("  Variables → active (primary source):", n_active, "\n")
+
+# Variables with only secondary sources → temp (unchanged)
+n_temp <- dbGetQuery(con, "
+  SELECT COUNT(*) AS n FROM variables
+  WHERE n_primary_sources = 0 AND status = 'temp'
+")$n
+cat("  Variables remaining temp (secondary only):", n_temp, "\n")
+
+# ------------------------------------------------------------------
+# Final summary
+# ------------------------------------------------------------------
+cat("\n\n=== Final Summary ===\n")
+tables <- dbGetQuery(con, "
+  SELECT table_name,
+         (SELECT COUNT(*) FROM information_schema.columns c
+          WHERE c.table_name = t.table_name) AS n_cols
+  FROM information_schema.tables t
+  WHERE table_schema = 'main' AND table_type = 'BASE TABLE'
+  ORDER BY table_name
+")
+
+for (i in seq_len(nrow(tables))) {
+  tbl <- tables$table_name[i]
+  n <- dbGetQuery(con, paste0("SELECT COUNT(*) AS n FROM ", tbl))$n
+  cat(sprintf("    %-25s %6d rows  (%d cols)\n", tbl, n, tables$n_cols[i]))
+}
+
 dbDisconnect(con, shutdown = TRUE)
 
-cat("\n=== Phase 0 complete ===\n")
+cat("\n=== Build complete ===\n")
 cat("Database:", db_path, "\n")
 cat("\nNext phases (not yet implemented):\n")
-cat("  Phase 1: Ingest PUMF RData → variable_datasets, value_codes\n")
-cat("  Phase 2: Ingest DDI XML → variable_datasets, value_codes\n")
-cat("  Phase 3: Ingest cchsflow → variable_families\n")
-cat("  Phase 4: Validate merge\n")
+cat("  Phase 3: Validate merge\n")
