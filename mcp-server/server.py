@@ -2,7 +2,10 @@
 CCHS Metadata MCP Server
 
 Exposes the unified CCHS metadata DuckDB via Model Context Protocol tools.
-See: development/redevelopment/PROPOSAL_mcp_metadata_architecture.md
+See: development/architecture/PROPOSAL_mcp_metadata_architecture.md
+
+Database schema v2: 13 tables, 6 views. Built from PUMF RData + DDI XML
+primary sources with full provenance tracking.
 """
 
 import json
@@ -31,6 +34,24 @@ def get_connection():
     return duckdb.connect(DB_PATH, read_only=True)
 
 
+def _safe_json(obj):
+    """JSON serializer that handles pandas NaN/NaT and numpy types."""
+    import math
+    if isinstance(obj, float) and math.isnan(obj):
+        return None
+    try:
+        import numpy as np
+        if isinstance(obj, (np.integer,)):
+            return int(obj)
+        if isinstance(obj, (np.floating,)):
+            return float(obj) if not np.isnan(obj) else None
+        if isinstance(obj, (np.bool_,)):
+            return bool(obj)
+    except ImportError:
+        pass
+    return str(obj)
+
+
 @mcp.tool()
 def search_variables(query: str, limit: int = 20) -> str:
     """Search for CCHS variables by name or label.
@@ -41,12 +62,17 @@ def search_variables(query: str, limit: int = 20) -> str:
     """
     con = get_connection()
     results = con.execute("""
-        SELECT variable_name, label, type, dataset_count
+        SELECT variable_name,
+               COALESCE(label_short, label_long, label_statcan) AS label,
+               type, n_datasets, status
         FROM variables
-        WHERE variable_name ILIKE ? OR label ILIKE ?
-        ORDER BY dataset_count DESC
+        WHERE variable_name ILIKE ?
+           OR label_short ILIKE ?
+           OR label_long ILIKE ?
+           OR label_statcan ILIKE ?
+        ORDER BY n_datasets DESC NULLS LAST
         LIMIT ?
-    """, [f"%{query}%", f"%{query}%", limit]).fetchdf()
+    """, [f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", limit]).fetchdf()
     con.close()
 
     if results.empty:
@@ -67,7 +93,12 @@ def get_variable_detail(variable_name: str) -> str:
 
     # Base variable info
     var_info = con.execute("""
-        SELECT variable_name, label, type, format, dataset_count
+        SELECT variable_name,
+               label_short, label_long, label_statcan,
+               type, value_format,
+               question_text, universe,
+               section, subject, subsection, cchsflow_name,
+               n_datasets, n_cycles, n_primary_sources, status
         FROM variables
         WHERE variable_name = ?
     """, [variable_name]).fetchdf()
@@ -76,62 +107,75 @@ def get_variable_detail(variable_name: str) -> str:
         con.close()
         return json.dumps({"error": f"Variable '{variable_name}' not found"})
 
-    # Availability with cycle info
-    availability = con.execute("""
-        SELECT ds.dataset_id, ds.cycle, ds.file_type
-        FROM variable_availability va
-        JOIN datasets ds ON va.dataset_id = ds.dataset_id
-        WHERE va.variable_name = ?
-        ORDER BY ds.cycle
-    """, [variable_name]).fetchdf()
-
-    # DDI enrichment (if available)
-    ddi = con.execute("""
-        SELECT dataset_id, question_text, universe_logic, categories_json
-        FROM ddi_variables
+    # History across datasets (using the view for best merged metadata)
+    history = con.execute("""
+        SELECT variable_name, dataset_id, label, type,
+               year_start, year_end, temporal_type, release,
+               dataset_label, question_text, sources
+        FROM v_variable_history
         WHERE variable_name = ?
+        ORDER BY year_start
     """, [variable_name]).fetchdf()
 
-    # Value format codes
-    format_name = var_info["format"].iloc[0]
-    value_codes = None
-    if format_name:
-        vc = con.execute("""
-            SELECT code, label FROM value_formats WHERE format_name = ?
-        """, [format_name]).fetchdf()
-        if not vc.empty:
-            value_codes = vc.to_dict(orient="records")
+    # Value codes (prefer DDI for labels, RData for frequencies)
+    value_codes = con.execute("""
+        SELECT vc.dataset_id, vc.code, vc.label,
+               vc.frequency, vc.frequency_weighted, vc.source_id,
+               d.year_start
+        FROM value_codes vc
+        JOIN datasets d ON vc.dataset_id = d.dataset_id
+        WHERE vc.variable_name = ?
+        ORDER BY d.year_start DESC, vc.code
+    """, [variable_name]).fetchdf()
+
+    # Summary stats (latest cycle)
+    summary_stats = con.execute("""
+        SELECT ss.dataset_id, ss.stat_mean, ss.stat_median, ss.stat_mode,
+               ss.stat_stdev, ss.stat_min, ss.stat_max,
+               ss.n_valid, ss.n_invalid,
+               d.year_start
+        FROM variable_summary_stats ss
+        JOIN datasets d ON ss.dataset_id = d.dataset_id
+        WHERE ss.variable_name = ?
+        ORDER BY d.year_start DESC
+        LIMIT 1
+    """, [variable_name]).fetchdf()
+
+    # Module group membership
+    groups = con.execute("""
+        SELECT vg.group_code, vg.group_label, vg.dataset_id
+        FROM variable_group_members vgm
+        JOIN variable_groups vg ON vgm.group_id = vg.group_id
+        WHERE vgm.variable_name = ?
+        ORDER BY vg.dataset_id
+    """, [variable_name]).fetchdf()
 
     con.close()
 
-    result = {
-        "variable_name": var_info["variable_name"].iloc[0],
-        "label": var_info["label"].iloc[0],
-        "type": var_info["type"].iloc[0],
-        "format": format_name,
-        "dataset_count": int(var_info["dataset_count"].iloc[0]),
-        "availability": availability.to_dict(orient="records"),
-    }
+    result = var_info.iloc[0].to_dict()
+    result["datasets"] = history.to_dict(orient="records") if not history.empty else []
 
-    if not ddi.empty:
-        # Use the first non-null question text
-        qt = ddi.loc[ddi["question_text"].notna(), "question_text"]
-        ul = ddi.loc[ddi["universe_logic"].notna(), "universe_logic"]
-        result["question_text"] = qt.iloc[0] if not qt.empty else None
-        result["universe_logic"] = ul.iloc[0] if not ul.empty else None
+    if not value_codes.empty:
+        # Show deduplicated codes from latest cycle
+        latest = value_codes[value_codes["year_start"] == value_codes["year_start"].max()]
+        # Prefer DDI source for labels
+        ddi_codes = latest[latest["source_id"] == "ddi_xml"]
+        codes_to_show = ddi_codes if not ddi_codes.empty else latest
+        result["value_codes"] = codes_to_show[
+            ["code", "label", "frequency", "frequency_weighted"]
+        ].to_dict(orient="records")
 
-        # Parse categories from DDI
-        cats = ddi.loc[ddi["categories_json"].notna(), "categories_json"]
-        if not cats.empty:
-            try:
-                result["ddi_categories"] = json.loads(cats.iloc[0])
-            except (json.JSONDecodeError, TypeError):
-                pass
+    if not summary_stats.empty:
+        result["summary_stats"] = summary_stats.iloc[0].to_dict()
 
-    if value_codes:
-        result["value_codes"] = value_codes
+    if not groups.empty:
+        # Deduplicate group codes across datasets
+        unique_groups = groups.drop_duplicates(subset=["group_code"])[
+            ["group_code", "group_label"]
+        ].to_dict(orient="records")
+        result["module_groups"] = unique_groups
 
-    return json.dumps(result, indent=2, default=str)
+    return json.dumps(result, indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -144,28 +188,19 @@ def get_variable_history(variable_name: str) -> str:
     """
     con = get_connection()
     results = con.execute("""
-        SELECT
-            v.variable_name,
-            v.label,
-            ds.cycle,
-            ds.file_type,
-            ds.dataset_id,
-            d.question_text
-        FROM variables v
-        JOIN variable_availability va ON v.variable_name = va.variable_name
-        JOIN datasets ds ON va.dataset_id = ds.dataset_id
-        LEFT JOIN ddi_variables d
-            ON v.variable_name = d.variable_name
-            AND va.dataset_id = d.dataset_id
-        WHERE v.variable_name = ?
-        ORDER BY ds.cycle, ds.file_type
+        SELECT variable_name, label, dataset_id,
+               year_start, year_end, temporal_type, release,
+               dataset_label, question_text, type, sources
+        FROM v_variable_history
+        WHERE variable_name = ?
+        ORDER BY year_start
     """, [variable_name]).fetchdf()
     con.close()
 
     if results.empty:
         return json.dumps({"error": f"Variable '{variable_name}' not found"})
 
-    return results.to_json(orient="records", indent=2)
+    return json.dumps(results.to_dict(orient="records"), indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -177,20 +212,34 @@ def get_dataset_variables(dataset_id: str, limit: int = 100) -> str:
         limit: Maximum results (default 100)
     """
     con = get_connection()
+
+    # Try canonical ID first, then check aliases
+    resolved_id = dataset_id
+    alias_check = con.execute("""
+        SELECT dataset_id FROM dataset_aliases WHERE alias = ?
+        LIMIT 1
+    """, [dataset_id]).fetchone()
+    if alias_check:
+        resolved_id = alias_check[0]
+
     results = con.execute("""
-        SELECT v.variable_name, v.label, v.type
-        FROM variable_availability va
-        JOIN variables v ON va.variable_name = v.variable_name
-        WHERE va.dataset_id = ?
-        ORDER BY v.variable_name
+        SELECT variable_name, label, type, subject, section, position, sources
+        FROM v_dataset_variables
+        WHERE dataset_id = ?
+        ORDER BY position NULLS LAST, variable_name
         LIMIT ?
-    """, [dataset_id, limit]).fetchdf()
+    """, [resolved_id, limit]).fetchdf()
     con.close()
 
     if results.empty:
         return json.dumps({"error": f"Dataset '{dataset_id}' not found or empty"})
 
-    return results.to_json(orient="records", indent=2)
+    return json.dumps({
+        "dataset_id": resolved_id,
+        "resolved_from": dataset_id if dataset_id != resolved_id else None,
+        "n_variables": len(results),
+        "variables": results.to_dict(orient="records")
+    }, indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -203,13 +252,15 @@ def get_common_variables(dataset_id_1: str, dataset_id_2: str) -> str:
     """
     con = get_connection()
     results = con.execute("""
-        SELECT v.variable_name, v.label, v.type
-        FROM variable_availability va1
-        JOIN variable_availability va2
-            ON va1.variable_name = va2.variable_name
-        JOIN variables v ON va1.variable_name = v.variable_name
-        WHERE va1.dataset_id = ? AND va2.dataset_id = ?
-        ORDER BY v.variable_name
+        SELECT DISTINCT vd1.variable_name,
+               COALESCE(v.label_short, v.label_long, v.label_statcan) AS label,
+               v.type
+        FROM variable_datasets vd1
+        JOIN variable_datasets vd2
+            ON vd1.variable_name = vd2.variable_name
+        JOIN variables v ON vd1.variable_name = v.variable_name
+        WHERE vd1.dataset_id = ? AND vd2.dataset_id = ?
+        ORDER BY vd1.variable_name
     """, [dataset_id_1, dataset_id_2]).fetchdf()
     con.close()
 
@@ -218,7 +269,7 @@ def get_common_variables(dataset_id_1: str, dataset_id_2: str) -> str:
         "dataset_2": dataset_id_2,
         "common_count": len(results),
         "variables": results.to_dict(orient="records") if not results.empty else []
-    }, indent=2)
+    }, indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -232,21 +283,28 @@ def compare_master_pumf(variable_name: str, cycle: str) -> str:
     """
     con = get_connection()
 
+    # Parse cycle to year_start
+    year_start = int(cycle.split("-")[0])
+
     results = con.execute("""
-        SELECT
-            ds.file_type,
-            ds.dataset_id,
-            d.question_text,
-            d.universe_logic,
-            d.categories_json
-        FROM variable_availability va
-        JOIN datasets ds ON va.dataset_id = ds.dataset_id
-        LEFT JOIN ddi_variables d
-            ON va.variable_name = d.variable_name
-            AND va.dataset_id = d.dataset_id
-        WHERE va.variable_name = ? AND ds.cycle = ?
-        ORDER BY ds.file_type
-    """, [variable_name, cycle]).fetchdf()
+        SELECT vd.dataset_id, d.release, d.year_start, d.year_end,
+               vd.label, vd.type, vd.question_text, vd.universe,
+               vd.intrvl, vd.source_id
+        FROM variable_datasets vd
+        JOIN datasets d ON vd.dataset_id = d.dataset_id
+        WHERE vd.variable_name = ? AND d.year_start = ?
+        ORDER BY d.release, vd.source_id
+    """, [variable_name, year_start]).fetchdf()
+
+    # Get value codes for each dataset in this cycle
+    value_codes = con.execute("""
+        SELECT vc.dataset_id, vc.code, vc.label,
+               vc.frequency, vc.frequency_weighted, vc.source_id
+        FROM value_codes vc
+        JOIN datasets d ON vc.dataset_id = d.dataset_id
+        WHERE vc.variable_name = ? AND d.year_start = ?
+        ORDER BY vc.dataset_id, vc.code
+    """, [variable_name, year_start]).fetchdf()
     con.close()
 
     if results.empty:
@@ -255,26 +313,40 @@ def compare_master_pumf(variable_name: str, cycle: str) -> str:
         })
 
     comparisons = []
-    for _, row in results.iterrows():
+    for dataset_id in results["dataset_id"].unique():
+        ds_rows = results[results["dataset_id"] == dataset_id]
+        # Prefer DDI source row for metadata
+        ddi_row = ds_rows[ds_rows["source_id"] == "ddi_xml"]
+        row = ddi_row.iloc[0] if not ddi_row.empty else ds_rows.iloc[0]
+
         entry = {
-            "file_type": row["file_type"],
-            "dataset_id": row["dataset_id"],
+            "dataset_id": dataset_id,
+            "release": row["release"],
+            "label": row["label"],
+            "type": row["type"],
+            "question_text": row["question_text"],
+            "intrvl": row["intrvl"],
+            "sources": list(ds_rows["source_id"].unique()),
         }
-        if row["question_text"]:
-            entry["question_text"] = row["question_text"]
-        if row["categories_json"]:
-            try:
-                entry["categories"] = json.loads(row["categories_json"])
-            except (json.JSONDecodeError, TypeError):
-                entry["categories_raw"] = row["categories_json"]
+
+        # Attach value codes for this dataset
+        ds_codes = value_codes[value_codes["dataset_id"] == dataset_id]
+        if not ds_codes.empty:
+            # Prefer DDI codes
+            ddi_codes = ds_codes[ds_codes["source_id"] == "ddi_xml"]
+            codes = ddi_codes if not ddi_codes.empty else ds_codes
+            entry["value_codes"] = codes[
+                ["code", "label", "frequency", "frequency_weighted"]
+            ].to_dict(orient="records")
+
         comparisons.append(entry)
 
     return json.dumps({
         "variable_name": variable_name,
         "cycle": cycle,
-        "file_types_found": list(results["file_type"].unique()),
+        "releases_found": list(results["release"].unique()),
         "comparisons": comparisons
-    }, indent=2, default=str)
+    }, indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -287,43 +359,46 @@ def get_value_codes(variable_name: str) -> str:
     """
     con = get_connection()
 
-    # Get format name from variables table
-    var = con.execute("""
-        SELECT format FROM variables WHERE variable_name = ?
+    # Get value codes from value_codes table, grouped by dataset
+    codes = con.execute("""
+        SELECT vc.dataset_id, d.year_start, vc.code, vc.label,
+               vc.frequency, vc.frequency_weighted, vc.source_id
+        FROM value_codes vc
+        JOIN datasets d ON vc.dataset_id = d.dataset_id
+        WHERE vc.variable_name = ?
+        ORDER BY d.year_start DESC, vc.source_id, vc.code
     """, [variable_name]).fetchdf()
+
+    # Also get the ICES value_format name if it exists
+    var_info = con.execute("""
+        SELECT value_format FROM variables WHERE variable_name = ?
+    """, [variable_name]).fetchdf()
+    con.close()
 
     result = {"variable_name": variable_name}
 
-    if not var.empty and var["format"].iloc[0]:
-        format_name = var["format"].iloc[0]
-        codes = con.execute("""
-            SELECT code, label FROM value_formats WHERE format_name = ?
-            ORDER BY code
-        """, [format_name]).fetchdf()
-        if not codes.empty:
-            result["ices_value_codes"] = codes.to_dict(orient="records")
+    if not var_info.empty and var_info["value_format"].iloc[0]:
+        result["ices_format_name"] = var_info["value_format"].iloc[0]
 
-    # Also check DDI categories
-    ddi = con.execute("""
-        SELECT dataset_id, categories_json
-        FROM ddi_variables
-        WHERE variable_name = ? AND categories_json IS NOT NULL
-        LIMIT 1
-    """, [variable_name]).fetchdf()
+    if not codes.empty:
+        # Show codes from latest cycle, preferring DDI source
+        latest_year = codes["year_start"].max()
+        latest = codes[codes["year_start"] == latest_year]
+        ddi_codes = latest[latest["source_id"] == "ddi_xml"]
+        codes_to_show = ddi_codes if not ddi_codes.empty else latest
 
-    if not ddi.empty:
-        try:
-            result["ddi_categories"] = json.loads(ddi["categories_json"].iloc[0])
-            result["ddi_source_dataset"] = ddi["dataset_id"].iloc[0]
-        except (json.JSONDecodeError, TypeError):
-            pass
+        result["latest_cycle_year"] = int(latest_year)
+        result["latest_dataset"] = codes_to_show["dataset_id"].iloc[0]
+        result["codes"] = codes_to_show[
+            ["code", "label", "frequency", "frequency_weighted"]
+        ].to_dict(orient="records")
 
-    con.close()
-
-    if len(result) == 1:
+        # Summary: how many cycles have codes
+        result["n_datasets_with_codes"] = len(codes["dataset_id"].unique())
+    else:
         result["message"] = f"No value codes found for '{variable_name}'"
 
-    return json.dumps(result, indent=2)
+    return json.dumps(result, indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -337,35 +412,44 @@ def suggest_cchsflow_row(variable_name: str, target_cycle: str) -> str:
     """
     con = get_connection()
 
+    # Parse cycle to year_start
+    year_start = int(target_cycle.split("-")[0])
+
     # Check if variable exists in target cycle
     avail = con.execute("""
-        SELECT ds.dataset_id, ds.file_type
-        FROM variable_availability va
-        JOIN datasets ds ON va.dataset_id = ds.dataset_id
-        WHERE va.variable_name = ? AND ds.cycle = ?
-    """, [variable_name, target_cycle]).fetchdf()
+        SELECT DISTINCT vd.dataset_id, d.release
+        FROM variable_datasets vd
+        JOIN datasets d ON vd.dataset_id = d.dataset_id
+        WHERE vd.variable_name = ? AND d.year_start = ?
+    """, [variable_name, year_start]).fetchdf()
 
     # Get variable metadata
     var_info = con.execute("""
-        SELECT label, type, format FROM variables WHERE variable_name = ?
+        SELECT variable_name,
+               COALESCE(label_short, label_long, label_statcan) AS label,
+               type, question_text, cchsflow_name
+        FROM variables WHERE variable_name = ?
     """, [variable_name]).fetchdf()
 
-    # Get DDI categories if available
-    ddi = con.execute("""
-        SELECT categories_json, question_text
-        FROM ddi_variables
-        WHERE variable_name = ?
-        LIMIT 1
-    """, [variable_name]).fetchdf()
+    # Get value codes for target cycle
+    value_codes = con.execute("""
+        SELECT vc.code, vc.label, vc.frequency, vc.frequency_weighted
+        FROM value_codes vc
+        JOIN datasets d ON vc.dataset_id = d.dataset_id
+        WHERE vc.variable_name = ? AND d.year_start = ?
+          AND vc.source_id = 'ddi_xml'
+        ORDER BY vc.code
+    """, [variable_name, year_start]).fetchdf()
 
-    # Get value codes
-    value_codes = None
-    if not var_info.empty and var_info["format"].iloc[0]:
-        vc = con.execute("""
-            SELECT code, label FROM value_formats WHERE format_name = ?
-        """, [var_info["format"].iloc[0]]).fetchdf()
-        if not vc.empty:
-            value_codes = vc.to_dict(orient="records")
+    # If no DDI codes, try RData codes
+    if value_codes.empty:
+        value_codes = con.execute("""
+            SELECT vc.code, vc.label, vc.frequency, vc.frequency_weighted
+            FROM value_codes vc
+            JOIN datasets d ON vc.dataset_id = d.dataset_id
+            WHERE vc.variable_name = ? AND d.year_start = ?
+            ORDER BY vc.code
+        """, [variable_name, year_start]).fetchdf()
 
     con.close()
 
@@ -378,21 +462,14 @@ def suggest_cchsflow_row(variable_name: str, target_cycle: str) -> str:
     if not var_info.empty:
         result["label"] = var_info["label"].iloc[0]
         result["type"] = var_info["type"].iloc[0]
+        result["question_text"] = var_info["question_text"].iloc[0]
+        result["cchsflow_name"] = var_info["cchsflow_name"].iloc[0]
 
     if not avail.empty:
         result["datasets_in_cycle"] = avail.to_dict(orient="records")
 
-    if not ddi.empty:
-        if ddi["question_text"].iloc[0]:
-            result["question_text"] = ddi["question_text"].iloc[0]
-        if ddi["categories_json"].iloc[0]:
-            try:
-                result["categories"] = json.loads(ddi["categories_json"].iloc[0])
-            except (json.JSONDecodeError, TypeError):
-                pass
-
-    if value_codes:
-        result["value_codes"] = value_codes
+    if not value_codes.empty:
+        result["value_codes"] = value_codes.to_dict(orient="records")
 
     # Generate suggested cchsflow row
     if not avail.empty and not var_info.empty:
@@ -402,11 +479,11 @@ def suggest_cchsflow_row(variable_name: str, target_cycle: str) -> str:
             "variableStart": variable_name,
             "variableStartLabel": var_info["label"].iloc[0] if not var_info.empty else "",
             "rec_from": "copy",
-            "rec_to": variable_name,
+            "rec_to": var_info["cchsflow_name"].iloc[0] or variable_name,
             "note": f"Auto-suggested for cycle {target_cycle}. Review before use."
         }
 
-    return json.dumps(result, indent=2, default=str)
+    return json.dumps(result, indent=2, default=_safe_json)
 
 
 @mcp.tool()
@@ -418,39 +495,53 @@ def get_database_summary() -> str:
     stats["total_variables"] = con.execute(
         "SELECT COUNT(*) FROM variables"
     ).fetchone()[0]
+    stats["active_variables"] = con.execute(
+        "SELECT COUNT(*) FROM variables WHERE status = 'active'"
+    ).fetchone()[0]
     stats["total_datasets"] = con.execute(
         "SELECT COUNT(*) FROM datasets"
     ).fetchone()[0]
-    stats["total_availability_rows"] = con.execute(
-        "SELECT COUNT(*) FROM variable_availability"
+    stats["total_variable_dataset_links"] = con.execute(
+        "SELECT COUNT(*) FROM variable_datasets"
     ).fetchone()[0]
-    stats["total_value_formats"] = con.execute(
-        "SELECT COUNT(*) FROM value_formats"
+    stats["total_value_codes"] = con.execute(
+        "SELECT COUNT(*) FROM value_codes"
     ).fetchone()[0]
-    stats["ddi_enriched_variables"] = con.execute(
-        "SELECT COUNT(DISTINCT variable_name) FROM ddi_variables"
+    stats["total_summary_stats"] = con.execute(
+        "SELECT COUNT(*) FROM variable_summary_stats"
     ).fetchone()[0]
-    stats["ddi_with_question_text"] = con.execute(
-        "SELECT COUNT(*) FROM ddi_variables WHERE question_text IS NOT NULL"
+    stats["total_variable_groups"] = con.execute(
+        "SELECT COUNT(*) FROM variable_groups"
+    ).fetchone()[0]
+    stats["total_group_memberships"] = con.execute(
+        "SELECT COUNT(*) FROM variable_group_members"
     ).fetchone()[0]
 
-    # Cycle coverage
-    cycles = con.execute("""
-        SELECT cycle, COUNT(*) as dataset_count
-        FROM datasets
-        GROUP BY cycle
-        ORDER BY cycle
+    # Sources
+    sources = con.execute("""
+        SELECT source_id, source_name, authority, n_files
+        FROM sources
+        ORDER BY authority, source_id
     """).fetchdf()
-    stats["cycles"] = cycles.to_dict(orient="records")
+    stats["sources"] = sources.to_dict(orient="records")
 
-    # File type distribution
-    file_types = con.execute("""
-        SELECT file_type, COUNT(*) as count
+    # PUMF datasets with year range
+    pumf_datasets = con.execute("""
+        SELECT dataset_id, year_start, year_end, n_variables
         FROM datasets
-        GROUP BY file_type
+        WHERE release = 'pumf' AND geo = 'can'
+        ORDER BY year_start
+    """).fetchdf()
+    stats["pumf_national_datasets"] = pumf_datasets.to_dict(orient="records")
+
+    # Release type distribution
+    releases = con.execute("""
+        SELECT release, COUNT(*) as count
+        FROM datasets
+        GROUP BY release
         ORDER BY count DESC
     """).fetchdf()
-    stats["file_types"] = file_types.to_dict(orient="records")
+    stats["dataset_releases"] = releases.to_dict(orient="records")
 
     # Metadata
     meta = con.execute("SELECT * FROM catalog_metadata").fetchdf()
@@ -458,7 +549,7 @@ def get_database_summary() -> str:
         stats["catalog_metadata"] = dict(zip(meta["key"], meta["value"]))
 
     con.close()
-    return json.dumps(stats, indent=2)
+    return json.dumps(stats, indent=2, default=_safe_json)
 
 
 if __name__ == "__main__":
