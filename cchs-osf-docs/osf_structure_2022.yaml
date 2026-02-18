@@ -1,0 +1,298 @@
+created: 1.7713771e+09
+year: 2022.0
+source: OSF.io API (recursive)
+purpose: Complete OSF structure for year 2022
+base_directory: cchs-osf-docs
+folder_id: 68d724945d66d3ed9ed4e948
+total_items: 58.0
+structure:
+- id: 68d724aea0d859ae61d4e98b
+  name: 12-Month
+  path: 2022/12-Month
+  kind: folder
+  children:
+  - id: 68d724c3f0c494b838b8f973
+    name: Master
+    path: 2022/12-Month/Master
+    kind: folder
+    children:
+    - id: 68d724ec9caf86128d1b9e7f
+      name: Docs
+      path: 2022/12-Month/Master/Docs
+      kind: folder
+      children:
+      - id: 68d727671f5499c9301b9feb
+        name: CCHS_2022_DataDictionary_Freqs.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_DataDictionary_Freqs.pdf
+        kind: file
+        size: 2509219
+      - id: 68d72768d306dd45521b9fc4
+        name: CCHS_2022_CV_Tables_Share.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_CV_Tables_Share.pdf
+        kind: file
+        size: 18882238
+      - id: 68d7276b6853e231f81b9ef0
+        name: CCHS_2022_Derived_Variables.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Derived_Variables.pdf
+        kind: file
+        size: 605683
+      - id: 68d7276b552b517034d4e9f7
+        name: CCHS_2022_Household_Weights.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Household_Weights.pdf
+        kind: file
+        size: 410638
+      - id: 68d7276f2757efb4c9b8f6b3
+        name: CCHS_2022_Income_Master File.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Income_Master File.pdf
+        kind: file
+        size: 389291
+      - id: 68d7276ff0c494b838b8f97f
+        name: CCHS_2022_Questionnaire.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_Questionnaire.pdf
+        kind: file
+        size: 2638895
+      - id: 68d7277127a555cb08432bd4
+        name: CCHS_2022_User_Guide.pdf
+        path: 2022/12-Month/Master/Docs/CCHS_2022_User_Guide.pdf
+        kind: file
+        size: 1100557
+      - id: 68d72773197918f542d4e9bf
+        name: ESCC_2022_CV_Tables_Partagé.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_CV_Tables_Partagé.pdf
+        kind: file
+        size: 9481529
+      - id: 68d7277407d65e2111b8f7b4
+        name: ESCC_2022_DictionnaireDonnées_Fréq.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_DictionnaireDonnées_Fréq.pdf
+        kind: file
+        size: 2540087
+      - id: 68d72776197918f542d4e9c1
+        name: ESCC_2022_Guide_Utilisateur.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Guide_Utilisateur.pdf
+        kind: file
+        size: 1508188
+      - id: 68d727773adab2f8ba6041c7
+        name: ESCC_2022_Poids_Ménages.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Poids_Ménages.pdf
+        kind: file
+        size: 412586
+      - id: 68d7277849dd359efd432bda
+        name: ESCC_2022_Questionnaire.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Questionnaire.pdf
+        kind: file
+        size: 2825843
+      - id: 68d72779f3da59001ab8f858
+        name: ESCC_2022_Revenu_Fichier Maître.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Revenu_Fichier Maître.pdf
+        kind: file
+        size: 388619
+      - id: 68d7277b70c48b1e83604226
+        name: ESCC_2022_Variables_Dérivées.pdf
+        path: 2022/12-Month/Master/Docs/ESCC_2022_Variables_Dérivées.pdf
+        kind: file
+        size: 635966
+    - id: 68d72504de6315d316432b74
+      name: Layout
+      path: 2022/12-Month/Master/Layout
+      kind: folder
+      children:
+      - id: 68d9c5093d4554df7060447d
+        name: hs_fmt.SAS
+        path: 2022/12-Month/Master/Layout/hs_fmt.SAS
+        kind: file
+        size: 24575
+      - id: 68d9c5096564004680d4ea2f
+        name: hs_fmt.do
+        path: 2022/12-Month/Master/Layout/hs_fmt.do
+        kind: file
+        size: 22709
+      - id: 68d9c50b6f1937b7e21ba065
+        name: hs_frq.SAS
+        path: 2022/12-Month/Master/Layout/hs_frq.SAS
+        kind: file
+        size: 54069
+      - id: 68d9c50b7078e85448d4eaab
+        name: hs_i.SAS
+        path: 2022/12-Month/Master/Layout/hs_i.SAS
+        kind: file
+        size: 54069
+      - id: 68d9c50eebe4b9e153b8fa41
+        name: hs_i.sps
+        path: 2022/12-Month/Master/Layout/hs_i.sps
+        kind: file
+        size: 34710
+      - id: 68d9c50fd3a64a60b8604197
+        name: hs_infmt.do
+        path: 2022/12-Month/Master/Layout/hs_infmt.do
+        kind: file
+        size: 14429
+      - id: 68d9c510dc6fb50b59d4eac2
+        name: hs_lbe.do
+        path: 2022/12-Month/Master/Layout/hs_lbe.do
+        kind: file
+        size: 45506
+      - id: 68d9c5134d48328dc9b8f73d
+        name: hs_lbe.SAS
+        path: 2022/12-Month/Master/Layout/hs_lbe.SAS
+        kind: file
+        size: 41755
+      - id: 68d9c5133d4554df70604480
+        name: hs_lbf.do
+        path: 2022/12-Month/Master/Layout/hs_lbf.do
+        kind: file
+        size: 48607
+      - id: 68d9c516e8ec92a4951b9e4a
+        name: hs_lbf.SAS
+        path: 2022/12-Month/Master/Layout/hs_lbf.SAS
+        kind: file
+        size: 44856
+      - id: 68d9c5173d4554df70604482
+        name: hs_miss.sps
+        path: 2022/12-Month/Master/Layout/hs_miss.sps
+        kind: file
+        size: 32240
+      - id: 68d9c518550f916e0a432d43
+        name: hs_pfe.SAS
+        path: 2022/12-Month/Master/Layout/hs_pfe.SAS
+        kind: file
+        size: 86810
+      - id: 68d9c519e8ec92a4951b9e4c
+        name: hs_pff.SAS
+        path: 2022/12-Month/Master/Layout/hs_pff.SAS
+        kind: file
+        size: 90648
+      - id: 68d9c51b6f1937b7e21ba06b
+        name: hs_vale.do
+        path: 2022/12-Month/Master/Layout/hs_vale.do
+        kind: file
+        size: 136139
+      - id: 68d9c51c93b9c193b9b8f935
+        name: hs_vale.sps
+        path: 2022/12-Month/Master/Layout/hs_vale.sps
+        kind: file
+        size: 87028
+      - id: 68d9c51d6ced4af9a0b8f9cd
+        name: hs_valf.do
+        path: 2022/12-Month/Master/Layout/hs_valf.do
+        kind: file
+        size: 144636
+      - id: 68d9c51fc045e038bcd4eade
+        name: hs_valf.sps
+        path: 2022/12-Month/Master/Layout/hs_valf.sps
+        kind: file
+        size: 90866
+      - id: 68d9c520550f916e0a432d45
+        name: hs_vare.sps
+        path: 2022/12-Month/Master/Layout/hs_vare.sps
+        kind: file
+        size: 41765
+      - id: 68d9c522e0676afe63604110
+        name: hs_varf.sps
+        path: 2022/12-Month/Master/Layout/hs_varf.sps
+        kind: file
+        size: 44866
+      - id: 68d9c55de0676afe6360411e
+        name: Territories
+        path: 2022/12-Month/Master/Layout/Territories
+        kind: folder
+        children:
+        - id: 68d9c56d78554cf9c4b8fab1
+          name: hs_fmt.do
+          path: 2022/12-Month/Master/Layout/Territories/hs_fmt.do
+          kind: file
+          size: 25116
+        - id: 68d9c56e2026329d8cd4ec1a
+          name: hs.dct
+          path: 2022/12-Month/Master/Layout/Territories/hs.dct
+          kind: file
+          size: 22057
+        - id: 68d9c56f117096abef6044d4
+          name: hs_fmt.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_fmt.SAS
+          kind: file
+          size: 27535
+        - id: 68d9c571117096abef6044d6
+          name: hs_frq.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_frq.SAS
+          kind: file
+          size: 60434
+        - id: 68d9c5723aa68dde27432d6a
+          name: hs_i.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_i.SAS
+          kind: file
+          size: 60434
+        - id: 68d9c573b4fc076ae2432e0f
+          name: hs_i.sps
+          path: 2022/12-Month/Master/Layout/Territories/hs_i.sps
+          kind: file
+          size: 38858
+        - id: 68d9c575117096abef6044d9
+          name: hs_infmt.do
+          path: 2022/12-Month/Master/Layout/Territories/hs_infmt.do
+          kind: file
+          size: 16131
+        - id: 68d9c5765af3d0cd061b9eac
+          name: hs_lbe.do
+          path: 2022/12-Month/Master/Layout/Territories/hs_lbe.do
+          kind: file
+          size: 51573
+        - id: 68d9c577d3a64a60b86041ad
+          name: hs_lbe.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_lbe.SAS
+          kind: file
+          size: 47378
+        - id: 68d9c57a6f1937b7e21ba073
+          name: hs_lbf.do
+          path: 2022/12-Month/Master/Layout/Territories/hs_lbf.do
+          kind: file
+          size: 54162
+        - id: 68d9c57ad3a64a60b86041af
+          name: hs_lbf.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_lbf.SAS
+          kind: file
+          size: 49967
+        - id: 68d9c57d1b31f5611bb8fabb
+          name: hs_pfe.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_pfe.SAS
+          kind: file
+          size: 87702
+        - id: 68d9c57d1b31f5611bb8fabd
+          name: hs_miss.sps
+          path: 2022/12-Month/Master/Layout/Territories/hs_miss.sps
+          kind: file
+          size: 36316
+        - id: 68d9c580d1b423a827d4eb76
+          name: hs_pff.SAS
+          path: 2022/12-Month/Master/Layout/Territories/hs_pff.SAS
+          kind: file
+          size: 91435
+        - id: 68d9c580c045e038bcd4eaf9
+          name: hs_vale.do
+          path: 2022/12-Month/Master/Layout/Territories/hs_vale.do
+          kind: file
+          size: 149122
+        - id: 68d9c582e0676afe63604124
+          name: hs_valf.do
+          path: 2022/12-Month/Master/Layout/Territories/hs_valf.do
+          kind: file
+          size: 157626
+        - id: 68d9c584d1b423a827d4eb78
+          name: hs_vale.sps
+          path: 2022/12-Month/Master/Layout/Territories/hs_vale.sps
+          kind: file
+          size: 88528
+        - id: 68d9c585e8ec92a4951b9e60
+          name: hs_valf.sps
+          path: 2022/12-Month/Master/Layout/Territories/hs_valf.sps
+          kind: file
+          size: 92261
+        - id: 68d9c5873aa68dde27432d74
+          name: hs_vare.sps
+          path: 2022/12-Month/Master/Layout/Territories/hs_vare.sps
+          kind: file
+          size: 47388
+        - id: 68d9c5873d4554df7060448f
+          name: hs_varf.sps
+          path: 2022/12-Month/Master/Layout/Territories/hs_varf.sps
+          kind: file
+          size: 49977

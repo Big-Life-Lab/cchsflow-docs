@@ -1,0 +1,4981 @@
+label define   ABM_01A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ABM_01B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ABM_01C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ABM_01D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ADM_DOI_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ADM_MOI_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ADM_YOI_FMT ///
+     2022  "Year of interview" ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   AGE_01A_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   AGE_01B_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   AGE_01C_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ALCDVTTM_FMT ///
+     1  "Regular drinker" ///
+     2  "Occasional drinker" ///
+     3  "Did not drink in the last 12 months" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ALC_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ALC_10_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ALC_15_FMT ///
+     01  "Less than once a month" ///
+     02  "Once a month" ///
+     03  "2 to 3 times a month" ///
+     04  "Once a week" ///
+     05  "2 to 3 times a week" ///
+     06  "4 to 5 times a week" ///
+     07  "Daily or almost daily" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ALC_20_FMT ///
+     01  "Never" ///
+     02  "Less than once a month" ///
+     03  "Once a month" ///
+     04  "2 to 3 times a month" ///
+     05  "Once a week" ///
+     06  "More than once a week" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   AWCAGE_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CANDVF12_FMT ///
+     01  "Has not used cannabis - 12 mo" ///
+     02  "Has used cannabis lest than once a month, incl ''just once''" ///
+     03  "Has used cannabis 1 to 3 times a month" ///
+     04  "Has used cannabis once a week" ///
+     05  "Has used cannabis more than once a week" ///
+     06  "Has used cannabis daily / almost daily" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   CANDVLEO_FMT ///
+     1  "Has used cannabis more than once - lifetime" ///
+     2  "Has not used cannabis more than once - lifetime" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CANDVLIO_FMT ///
+     1  "Has used cannabis - lifetime" ///
+     2  "Has never used cannabis - lifetime" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CANDVLS3_FMT ///
+     1  "Non user" ///
+     2  "Past user" ///
+     3  "Current user" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CANDVLS5_FMT ///
+     1  "Has never used cannabis - lifetime" ///
+     2  "Cannabis just once in lifetime and not in past 12 mo" ///
+     3  "Cannabis just once in lifetime and in past 12 mo" ///
+     4  "Cannabis more than once in lifetime and not in past 12 mo" ///
+     5  "Cannabis more than once in lifetime and in past 12 mo" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CANDVYEO_FMT ///
+     1  "Has used cannabis - 12 mo" ///
+     2  "Has not used cannabis more than once - 12 mo" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CANDVYIO_FMT ///
+     1  "Has used cannabis - 12 mo" ///
+     2  "Has not used cannabis - 12 mo" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_05A_FMT ///
+     1  "Just once" ///
+     2  "More than once" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_05B_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CAN_05C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_10_FMT ///
+     1  "Less than once a month" ///
+     2  "1 to 3 times a month" ///
+     3  "Once a week" ///
+     4  "More than once a week" ///
+     5  "Daily or almost daily" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15BA_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15BB_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15BC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_15E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_20_FMT ///
+     1  "Smoked" ///
+     2  "Vaporized" ///
+     3  "Swallowed" ///
+     4  "Absorbed" ///
+     5  "Other method" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_25I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_30_FMT ///
+     1  "Non-medical purposes only" ///
+     2  "Medical purposes only" ///
+     3  "Both medical and non-medical purposes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_35J_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_40_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CAN_45_FMT ///
+     01  "Never" ///
+     02  "1 day" ///
+     03  "2 or 3 days" ///
+     04  "1 or 2 days per week" ///
+     05  "3 or 4 days per week" ///
+     06  "5 or 6 days per week" ///
+     07  "Daily" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   CAN_50_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CC1_140_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CC1_145_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CC1_150_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CC1_155_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CC1_160_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CC1_165_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CC1_170_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CC1_175_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CC1_180_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CCCDVDIA_FMT ///
+     1  "Type 1 diabetes" ///
+     2  "Type 2 diabetes" ///
+     3  "Gestational diabetes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_10_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CCC_100_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_105_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_110_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CCC_115_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CCC_120_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_125_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_130_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_135_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_20_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_30_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 2 months" ///
+     03  "2 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year or more" ///
+     06  "Never" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   CCC_35_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_40_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_45_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_50_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CCC_55_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_60I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_65_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_65A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_70_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CCC_75_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_80_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_85_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_90_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CCC_95_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COLMODE_FMT ///
+     1  "r-EQ: self response by electronic questionnaire" ///
+     2  "i-EQ: Interviewer administered EQ by telephone" ///
+     3  "i-EQ: Interviewer administered EQ in person" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COLMODEP_FMT ///
+     1  "r-EQ: self response by electronic questionnaire" ///
+     2  "i-EQ: Interviewer administered EQ by telephone" ///
+     3  "i-EQ: Interviewer administered EQ in person" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COLMODEY_FMT ///
+     1  "r-EQ: self response by electronic questionnaire" ///
+     2  "i-EQ: Interviewer administered EQ by telephone" ///
+     3  "i-EQ: Interviewer administered EQ in person" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COL_LANG_FMT ///
+     1  "English" ///
+     2  "French" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_005_FMT ///
+     1  "Much better now" ///
+     2  "Somewhat better now" ///
+     3  "About the same" ///
+     4  "Somewhat worse now" ///
+     5  "Much worse now" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_015_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_020_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_030_FMT ///
+     1  "One dose" ///
+     2  "Two doses" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_035_FMT ///
+     1  "One dose" ///
+     2  "Two doses" ///
+     3  "Three doses" ///
+     4  "Four doses or more" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_038_FMT ///
+     1  "Yes, received at least one dose of a vaccine" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_040_FMT ///
+     1  "Very likely" ///
+     2  "Somewhat likely" ///
+     3  "Somewhat unlikely" ///
+     4  "Very unlikely" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_041_FMT ///
+     01  "Don't want to be vaccinated at this time" ///
+     02  "Don't want to be vaccinated at all" ///
+     03  "Don’t have confidence in the vaccine that was offered" ///
+     04  "Appointment in the future" ///
+     05  "Not been able to get an appointment yet" ///
+     06  "Don't know where to go to get vaccinated" ///
+     07  "Sick at the time the vaccine was offered" ///
+     08  "Vaccine is not recommended for me" ///
+     09  "Already had COVID-19" ///
+     10  "Haven’t had the time" ///
+     11  "Don’t think it'snecessary, risks of having COVID-19 are low" ///
+     12  "Other reason" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   COV2_060_FMT ///
+     1  "Very likely" ///
+     2  "Somewhat likely" ///
+     3  "Somewhat unlikely" ///
+     4  "Very unlikely" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_10J_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_45I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   COV2_55A_FMT ///
+     01  "One dose is enough to protect against COVID-19" ///
+     02  "Was not aware that needed a 2nd dose" ///
+     03  "Bad reaction to the first dose" ///
+     04  "Concerns about side effects associated with the 2nd dose" ///
+     05  "Vaccine wanted for 2nd dose is not available" ///
+     06  "Appointment in the future" ///
+     07  "Too much trouble getting a 2nd appointment" ///
+     08  "Already had COVID-19" ///
+     09  "Don’t think it's necessary, risks of having COVID-19 are low" ///
+     10  "Other reason" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   COV3_005_FMT ///
+     1  "Very likely" ///
+     2  "Somewhat likely" ///
+     3  "Somewhat unlikely" ///
+     4  "Very unlikely" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CSS_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CSS_10_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CSS_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CSS_20_FMT ///
+     1  "Every day" ///
+     2  "Less than 1X / day, but at least 1X / week" ///
+     3  "Less than 1X / week, but at least 1X in the past month" ///
+     4  "Not at all" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   CSS_25_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CSS_30_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   CSS_35_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   CSS_40_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DHHDV611_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVA65_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVAOS_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   DHHDVHSZ_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVL12_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVL18_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVLE5_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVLVG_FMT ///
+     01  "Unattached individual living alone" ///
+     02  "Unattached individual living with others" ///
+     03  "Individual living with spouse / partner" ///
+     04  "Parent living with spouse / partner and children" ///
+     05  "Single parent living with children" ///
+     06  "Child living with a single parent" ///
+     07  "Child living with a single parent and siblings" ///
+     08  "Child living with two parents" ///
+     09  "Child living with two parents and siblings" ///
+     10  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVOKD_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHHDVYKD_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   DHH_SEX_FMT ///
+     1  "Male" ///
+     2  "Female" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOABM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOALC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOCAN_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOCC1_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOCCC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOCOV2_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOCOV3_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOCSS_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOECV_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOECV2_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOEDC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOFLU_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOFSC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOGEN_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOHMC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOHWT_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOIM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOINC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOINJ_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOINL_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOINP_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLAN_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLBF_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLMA3_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLMA4_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLMA5_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLMA6_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLMAM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOLSM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOMAC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOMEX_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOMXA_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOMXS_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOOHM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOOHM3_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOPCN_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOPG_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOPRM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOPRS_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DORHC_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOSOR_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOSPU_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOUPE_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOWDM_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DOWTP_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   DWL_01A_FMT ///
+     1  "Yes, owned, even if it is still being paid for" ///
+     2  "No, rented, even if no cash rent is paid" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ECV2_05A_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ECV2_05B_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ECV2_05C_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   ECV2_10_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ECV2_15_FMT ///
+     1  "E-cigarette or vaping device" ///
+     2  "Cigarette" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ECVDVSMK_FMT ///
+     1  "Tried e-cigarette/vaping device first" ///
+     2  "Tried cigarette first" ///
+     3  "Only tried e-cigarette/vaping device" ///
+     4  "Only tried cigarette" ///
+     5  "Never tried an e-cigarette/vaping device or cigarette" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ECV_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ECV_10_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   ECV_15_FMT ///
+     1  "Every day" ///
+     2  "Almost every day" ///
+     3  "At least once a week" ///
+     4  "At least once in the past month" ///
+     5  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ECV_20_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   EDC_10_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   EDC_20_FMT ///
+     1  "Full-time student" ///
+     2  "Part-time student" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   EDDVH3_FMT ///
+     1  "Less than secondary school graduation" ///
+     2  "Secondary school graduation, no post-secondary education" ///
+     3  "Post-secondary certificate/diploma / university degree" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   EDDVR3_FMT ///
+     1  "Less than secondary school graduation" ///
+     2  "Secondary school graduation, no post-secondary education" ///
+     3  "Post-secondary certificate/diploma / university degree" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   ED_05_FMT ///
+     01  "Less than high school diploma or its equivalent" ///
+     02  "High school diploma or a high school equivalency certificate" ///
+     03  "Trade certificate or diploma" ///
+     04  "College/CEGEP/other non-university certificate or diploma" ///
+     05  "University certificate or diploma below the bachelor's level" ///
+     06  "Bachelor's degree (e.g. B.A., B.Sc., LL.B.)" ///
+     07  "University certificate, diploma, degree above the BA level" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   FLU_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_10_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   FLU_15_FMT ///
+     1  "This year" ///
+     2  "Last year" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_20A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_20B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_20C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_20D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_20E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FLU_20F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSCDVAF2_FMT ///
+     0  "Food secure" ///
+     1  "Marginally food insecure" ///
+     2  "Moderately food insecure" ///
+     3  "Severely food insecure" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSCDVCF2_FMT ///
+     0  "Food secure" ///
+     1  "Marginally food insecure" ///
+     2  "Moderately food insecure" ///
+     3  "Severely food insecure" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSCDVHF2_FMT ///
+     0  "Food secure" ///
+     1  "Marginally food insecure" ///
+     2  "Moderately food insecure" ///
+     3  "Severely food insecure" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_10_FMT ///
+     1  "Often true" ///
+     2  "Sometimes true" ///
+     3  "Never true" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_15_FMT ///
+     1  "Often true" ///
+     2  "Sometimes true" ///
+     3  "Never true" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_20_FMT ///
+     1  "Often true" ///
+     2  "Sometimes true" ///
+     3  "Never true" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_25_FMT ///
+     1  "Often true" ///
+     2  "Sometimes true" ///
+     3  "Never true" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_30_FMT ///
+     1  "Often true" ///
+     2  "Sometimes true" ///
+     3  "Never true" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_35_FMT ///
+     1  "Often true" ///
+     2  "Sometimes true" ///
+     3  "Never true" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_40_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_45_FMT ///
+     1  "Almost every month" ///
+     2  "Some months but not every month" ///
+     3  "Only 1 or 2 months" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_50_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_55_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_60_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_65_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_70_FMT ///
+     1  "Almost every month" ///
+     2  "Some months but not every month" ///
+     3  "Only 1 or 2 months" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_75_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_80_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_85_FMT ///
+     1  "Almost every month" ///
+     2  "Some months but not every month" ///
+     3  "Only 1 or 2 months" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_90_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   FSC_95_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GDRA_10_FMT ///
+     1  "Man" ///
+     2  "Woman" ///
+     3  "Non-binary person" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GENDER_2_FMT ///
+     1  "Men+" ///
+     2  "Women+" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEN_01_FMT ///
+     1  "Excellent" ///
+     2  "Very good" ///
+     3  "Good" ///
+     4  "Fair" ///
+     5  "Poor" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEN_05_FMT ///
+     1  "Excellent" ///
+     2  "Very good" ///
+     3  "Good" ///
+     4  "Fair" ///
+     5  "Poor" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEN_10_FMT ///
+     1  "Not at all stressful" ///
+     2  "Not very stressful" ///
+     3  "A bit stressful" ///
+     4  "Quite a bit stressful" ///
+     5  "Extremely stressful" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEN_15_FMT ///
+     1  "Not at all stressful" ///
+     2  "Not very stressful" ///
+     3  "A bit stressful" ///
+     4  "Quite a bit stressful" ///
+     5  "Extremely stressful" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEN_20_FMT ///
+     1  "Very strong" ///
+     2  "Somewhat strong" ///
+     3  "Somewhat weak" ///
+     4  "Very weak" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEODVBHA_FMT ///
+     5910  "Interior" ///
+     5920  "Fraser" ///
+     5930  "Vancouver" ///
+     5940  "Vancouver Island" ///
+     5950  "Northern" ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   GEODVCA_FMT ///
+     000  "No CA assigned" ///
+     005  "Bay Roberts" ///
+     010  "Grand Falls-Windsor" ///
+     011  "Gander" ///
+     015  "Corner Brook" ///
+     105  "Charlottetown" ///
+     110  "Summerside" ///
+     210  "Kentville" ///
+     215  "Truro" ///
+     220  "New Glasgow" ///
+     225  "Cape Breton" ///
+     320  "Fredericton" ///
+     328  "Bathurst" ///
+     329  "Miramichi" ///
+     330  "Campbellton" ///
+     335  "Edmundston" ///
+     403  "Matane" ///
+     404  "Rimouski" ///
+     405  "Rivière-du-Loup" ///
+     406  "Baie-Comeau" ///
+     410  "Alma" ///
+     411  "Dolbeau-Mistassini" ///
+     412  "Sept-Îles" ///
+     423  "Sainte-Marie" ///
+     428  "Saint-Georges" ///
+     430  "Thetford Mines" ///
+     437  "Cowansville" ///
+     440  "Victoriaville" ///
+     444  "Shawinigan" ///
+     447  "Drummondville" ///
+     450  "Granby" ///
+     452  "Saint-Hyacinthe" ///
+     454  "Sorel-Tracy" ///
+     456  "Joliette" ///
+     465  "Salaberry-de-Valleyfield" ///
+     468  "Lachute" ///
+     480  "Val-d'Or" ///
+     485  "Rouyn-Noranda" ///
+     501  "Cornwall" ///
+     502  "Hawkesbury" ///
+     507  "Arnprior" ///
+     509  "Carleton Place" ///
+     512  "Brockville" ///
+     515  "Pembroke" ///
+     516  "Petawawa" ///
+     527  "Cobourg" ///
+     528  "Port Hope" ///
+     530  "Kawartha Lakes" ///
+     531  "Centre Wellington" ///
+     533  "Ingersoll" ///
+     544  "Woodstock" ///
+     546  "Tillsonburg" ///
+     547  "Norfolk" ///
+     553  "Stratford" ///
+     556  "Chatham-Kent" ///
+     557  "Leamington" ///
+     562  "Sarnia" ///
+     565  "Wasaga Beach" ///
+     566  "Owen Sound" ///
+     567  "Collingwood" ///
+     569  "Orillia" ///
+     571  "Midland" ///
+     575  "North Bay" ///
+     582  "Elliot Lake" ///
+     586  "Timmins" ///
+     590  "Sault Ste. Marie" ///
+     598  "Kenora" ///
+     603  "Winkler" ///
+     605  "Steinbach" ///
+     607  "Portage la Prairie" ///
+     610  "Brandon" ///
+     640  "Thompson" ///
+     710  "Yorkton" ///
+     715  "Moose Jaw" ///
+     720  "Swift Current" ///
+     735  "North Battleford" ///
+     745  "Prince Albert" ///
+     750  "Estevan" ///
+     755  "Weyburn" ///
+     805  "Medicine Hat" ///
+     806  "Brooks" ///
+     820  "Okotoks" ///
+     821  "High River" ///
+     826  "Strathmore" ///
+     828  "Canmore" ///
+     830  "Red Deer" ///
+     831  "Sylvan Lake" ///
+     832  "Lacombe" ///
+     833  "Camrose" ///
+     840  "Lloydminster" ///
+     845  "Cold Lake" ///
+     850  "Grande Prairie" ///
+     860  "Wood Buffalo" ///
+     865  "Wetaskiwin" ///
+     905  "Cranbrook" ///
+     907  "Nelson" ///
+     913  "Penticton" ///
+     918  "Vernon" ///
+     920  "Salmon Arm" ///
+     925  "Kamloops" ///
+     930  "Chilliwack" ///
+     934  "Squamish" ///
+     937  "Duncan" ///
+     938  "Nanaimo" ///
+     939  "Parksville" ///
+     940  "Port Alberni" ///
+     943  "Courtenay" ///
+     944  "Campbell River" ///
+     945  "Powell River" ///
+     950  "Williams Lake" ///
+     952  "Quesnel" ///
+     955  "Prince Rupert" ///
+     965  "Terrace" ///
+     970  "Prince George" ///
+     975  "Dawson Creek" ///
+     977  "Fort St. John" ///
+     990  "Whitehorse" ///
+     995  "Yellowknife" ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   GEODVCMA_FMT ///
+     000  "No CMA assigned" ///
+     001  "St. John's" ///
+     205  "Halifax" ///
+     305  "Moncton" ///
+     310  "Saint John" ///
+     408  "Saguenay" ///
+     421  "Québec" ///
+     433  "Sherbrooke" ///
+     442  "Trois-Rivières" ///
+     462  "Montréal" ///
+     505  "Ottawa-Gatineau" ///
+     521  "Kingston" ///
+     522  "Belleville" ///
+     529  "Peterborough" ///
+     532  "Oshawa" ///
+     535  "Toronto" ///
+     537  "Hamilton" ///
+     539  "St. Catharines - Niagara" ///
+     541  "Kitchener - Cambridge - Waterloo" ///
+     543  "Brantford" ///
+     550  "Guelph" ///
+     555  "London" ///
+     559  "Windsor" ///
+     568  "Barrie" ///
+     580  "Greater Sudbury / Grand Sudbury" ///
+     595  "Thunder Bay" ///
+     602  "Winnipeg" ///
+     705  "Regina" ///
+     725  "Saskatoon" ///
+     810  "Lethbridge" ///
+     825  "Calgary" ///
+     835  "Edmonton" ///
+     915  "Kelowna" ///
+     932  "Abbotsford - Mission" ///
+     933  "Vancouver" ///
+     935  "Victoria" ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   GEODVHR4_FMT ///
+     1011  "Eastern Regional" ///
+     1012  "Central Regional" ///
+     1013  "Western Regional" ///
+     1014  "Labrador-Grenfell Regional" ///
+     1100  "Prince Edward Island" ///
+     1201  "Zone 1 - Western" ///
+     1202  "Zone 2 - Northern" ///
+     1203  "Zone 3 - Eastern" ///
+     1204  "Zone 4 - Central" ///
+     1301  "Zone 1 (Moncton area)" ///
+     1302  "Zone 2 (Saint John area)" ///
+     1303  "Zone 3 (Fredericton area)" ///
+     1304  "Zone 4 (Edmundston area)" ///
+     1305  "Zone 5 (Campbellton area)" ///
+     1306  "Zone 6 (Bathurst area)" ///
+     1307  "Zone 7 (Miramichi area)" ///
+     2401  "Bas-Saint-Laurent" ///
+     2402  "Saguenay - Lac-Saint-Jean" ///
+     2403  "Capitale-Nationale" ///
+     2404  "Mauricie et du Centre-du-Québec" ///
+     2405  "L'Estrie" ///
+     2406  "Région de Montréal" ///
+     2407  "L'Outaouais" ///
+     2408  "L'Abitibi-Témiscamingue" ///
+     2409  "Côte-Nord" ///
+     2410  "Nord-du-Québec" ///
+     2411  "Gaspésie - Îles-de-la-Madeleine" ///
+     2412  "Chaudière-Appalaches" ///
+     2413  "Région de Laval" ///
+     2414  "Région de Lanaudière" ///
+     2415  "Région des Laurentides" ///
+     2416  "Montérégie" ///
+     2417  "Nunavik" ///
+     2418  "Terres-Cries-de-la-Baie-James" ///
+     3526  "The District of Algoma HU" ///
+     3527  "Brant County HU" ///
+     3530  "Durham Regional HU" ///
+     3531  "Elgin-St Thomas HU" ///
+     3533  "Grey Bruce HU" ///
+     3534  "Haldimand-Norfolk HU" ///
+     3535  "Haliburton, Kawartha, Pine Ridge District HU" ///
+     3536  "Halton Regional HU" ///
+     3537  "City of Hamilton HU" ///
+     3538  "Hastings and Prince Edward Counties HU" ///
+     3539  "Huron County HU" ///
+     3540  "Chatham-Kent HU" ///
+     3541  "Kingston, Frontenac and Lennox and Addington HU" ///
+     3542  "Lambton HU" ///
+     3543  "Leeds, Grenville and Lanark District HU" ///
+     3544  "Middlesex-London HU" ///
+     3546  "Niagara Regional Area HU" ///
+     3547  "North Bay Parry Sound District HU" ///
+     3549  "Northwestern HU" ///
+     3551  "City of Ottawa HU" ///
+     3552  "Oxford County HU" ///
+     3553  "Peel Regional HU" ///
+     3554  "Perth District HU" ///
+     3555  "Peterborough County-City HU" ///
+     3556  "Porcupine HU" ///
+     3557  "Renfrew County and District HU" ///
+     3558  "Eastern Ontario HU" ///
+     3560  "Simcoe Muskoka District HU" ///
+     3561  "Sudbury and District HU" ///
+     3562  "Thunder Bay District HU" ///
+     3563  "Timiskaming HU" ///
+     3565  "Waterloo HU" ///
+     3566  "Wellington-Dufferin-Guelph HU" ///
+     3568  "Windsor-Essex County HU" ///
+     3570  "York Regional HU" ///
+     3575  "Oxford Elgin St. Thomas HU" ///
+     3595  "City of Toronto HU" ///
+     4601  "Winnipeg RHA" ///
+     4602  "Prairie Mountain Health" ///
+     4603  "Interlake-Eastern Regional Health" ///
+     4604  "Northern RHA" ///
+     4605  "Southern Health" ///
+     4701  "Sun Country RHA" ///
+     4702  "Five Hills RHA" ///
+     4703  "Cypress RHA" ///
+     4704  "Regina Qu'Appelle RHA" ///
+     4705  "Sunrise RHA" ///
+     4706  "Saskatoon RHA" ///
+     4707  "Heartland RHA" ///
+     4708  "Kelsey Trail RHA" ///
+     4709  "Prince Albert Parkland RHA" ///
+     4710  "Prairie North RHA" ///
+     4711  "Mamawetan Churchill River RHA" ///
+     4712  "Keewatin Yatthé RHA" ///
+     4713  "Athabasca Health Authority" ///
+     4714  "Mamawetan/Keewatin/Athabasca" ///
+     4831  "South Zone" ///
+     4832  "Calgary Zone" ///
+     4833  "Central Zone" ///
+     4834  "Edmonton Zone" ///
+     4835  "North Zone" ///
+     5911  "East Kootenay HSDA" ///
+     5912  "Kootenay-Boundary HSDA" ///
+     5913  "Okanagan HSDA" ///
+     5914  "Thompson/Cariboo HSDA" ///
+     5921  "Fraser East HSDA" ///
+     5922  "Fraser North HSDA" ///
+     5923  "Fraser South HSDA" ///
+     5931  "Richmond HSDA" ///
+     5932  "Vancouver HSDA" ///
+     5933  "North Shore/Coast Garibaldi HSDA" ///
+     5941  "South Vancouver Island HSDA" ///
+     5942  "Central Vancouver Island HSDA" ///
+     5943  "North Vancouver Island HSDA" ///
+     5951  "Northwest HSDA" ///
+     5952  "Northern Interior HSDA" ///
+     5953  "Northeast HSDA" ///
+     6001  "Yukon" ///
+     6101  "Northwest Territories" ///
+     6201  "Nunavut" ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   GEODVP16_FMT ///
+     01  "Health Region Peer Group A" ///
+     02  "Health Region Peer Group B" ///
+     03  "Health Region Peer Group C" ///
+     04  "Health Region Peer Group D" ///
+     05  "Health Region Peer Group E" ///
+     06  "Health Region Peer Group F" ///
+     07  "Health Region Peer Group G" ///
+     08  "Health Region Peer Group H" ///
+     09  "Health Region Peer Group I" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   GEODVPSZ_FMT ///
+     1  "Rural area (less than 1,000)" ///
+     2  "Small population centre (1,000 to 29,999)" ///
+     3  "Medium population centre (30,000 to 99,999)" ///
+     4  "Large urban population centre (100,000 or greater)" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEODVSAT_FMT ///
+     001  "CMA" ///
+     002  "Tracted CA" ///
+     003  "Non-tracted CA" ///
+     004  "Strongly influenced zone" ///
+     005  "Moderately influenced zone" ///
+     006  "Weakly influenced zone" ///
+     007  "Non-influenced zone" ///
+     008  "Territories" ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   GEODVUR_FMT ///
+     01  "Core" ///
+     02  "Fringe" ///
+     03  "Rural area inside of a CMA or CA" ///
+     04  "Population centre outside of a CMA and CA" ///
+     05  "Rural area outside of a CMA or CA" ///
+     06  "Secondary core" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   GEODVUR2_FMT ///
+     1  "Population Centre" ///
+     2  "Rural Area" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   GEO_PRV_FMT ///
+     10  "NEWFOUNDLAND AND LABRADOR" ///
+     11  "PRINCE EDWARD ISLAND" ///
+     12  "NOVA SCOTIA" ///
+     13  "NEW BRUNSWICK" ///
+     24  "QUEBEC" ///
+     35  "ONTARIO" ///
+     46  "MANITOBA" ///
+     47  "SASKATCHEWAN" ///
+     48  "ALBERTA" ///
+     59  "BRITISH COLUMBIA" ///
+     60  "YUKON" ///
+     61  "NORTHWEST TERRITORIES" ///
+     62  "NUNAVUT" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMCDVHLP_FMT ///
+     1  "Services were very helpful or somewhat helpful" ///
+     2  "Services were not helpful" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMCDVVRH_FMT ///
+     1  "Received some home care - 12 mo" ///
+     2  "No one received any home care services - 12 mo" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_005G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_010A_FMT ///
+     1  "You" ///
+     2  "Another member of the household" ///
+     3  "You and another member of the household" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_010B_FMT ///
+     1  "You" ///
+     2  "Another member of the household" ///
+     3  "You and another member of the household" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_010C_FMT ///
+     1  "You" ///
+     2  "Another member of the household" ///
+     3  "You and another member of the household" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_010D_FMT ///
+     1  "You" ///
+     2  "Another member of the household" ///
+     3  "You and another member of the household" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_010E_FMT ///
+     1  "You" ///
+     2  "Another member of the household" ///
+     3  "You and another member of the household" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_010F_FMT ///
+     1  "You" ///
+     2  "Another member of the household" ///
+     3  "You and another member of the household" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_015A_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 3 months" ///
+     03  "3 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year to 3 years" ///
+     06  "More than 3 years" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_015B_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 3 months" ///
+     03  "3 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year to 3 years" ///
+     06  "More than 3 years" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_015C_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 3 months" ///
+     03  "3 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year to 3 years" ///
+     06  "More than 3 years" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_015D_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 3 months" ///
+     03  "3 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year to 3 years" ///
+     06  "More than 3 years" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_015E_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 3 months" ///
+     03  "3 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year to 3 years" ///
+     06  "More than 3 years" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_015F_FMT ///
+     01  "Less than 1 month" ///
+     02  "1 month to less than 3 months" ///
+     03  "3 months to less than 6 months" ///
+     04  "6 months to less than 1 year" ///
+     05  "1 year to 3 years" ///
+     06  "More than 3 years" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_020A_FMT ///
+     01  "$0" ///
+     02  "$1 to less than $50" ///
+     03  "$50 to less than $100" ///
+     04  "$100  to less than $200" ///
+     05  "$200 to less than $300" ///
+     06  "$300 to less than $400" ///
+     07  "$400 to less than $1,000" ///
+     08  "$1,000 and more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_020B_FMT ///
+     01  "$0" ///
+     02  "$1 to less than $50" ///
+     03  "$50 to less than $100" ///
+     04  "$100  to less than $200" ///
+     05  "$200 to less than $300" ///
+     06  "$300 to less than $400" ///
+     07  "$400 to less than $1,000" ///
+     08  "$1,000 and more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_020C_FMT ///
+     01  "$0" ///
+     02  "$1 to less than $50" ///
+     03  "$50 to less than $100" ///
+     04  "$100  to less than $200" ///
+     05  "$200 to less than $300" ///
+     06  "$300 to less than $400" ///
+     07  "$400 to less than $1,000" ///
+     08  "$1,000 and more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_020D_FMT ///
+     01  "$0" ///
+     02  "$1 to less than $50" ///
+     03  "$50 to less than $100" ///
+     04  "$100  to less than $200" ///
+     05  "$200 to less than $300" ///
+     06  "$300 to less than $400" ///
+     07  "$400 to less than $1,000" ///
+     08  "$1,000 and more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_020E_FMT ///
+     01  "$0" ///
+     02  "$1 to less than $50" ///
+     03  "$50 to less than $100" ///
+     04  "$100  to less than $200" ///
+     05  "$200 to less than $300" ///
+     06  "$300 to less than $400" ///
+     07  "$400 to less than $1,000" ///
+     08  "$1,000 and more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_020F_FMT ///
+     01  "$0" ///
+     02  "$1 to less than $50" ///
+     03  "$50 to less than $100" ///
+     04  "$100  to less than $200" ///
+     05  "$200 to less than $300" ///
+     06  "$300 to less than $400" ///
+     07  "$400 to less than $1,000" ///
+     08  "$1,000 and more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HMC_025A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_025B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_025C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_025D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_025E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_025F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_030_FMT ///
+     1  "Very satisfied" ///
+     2  "Somewhat satisfied" ///
+     3  "Neither satisfied nor dissatisfied" ///
+     4  "Somewhat dissatisfied" ///
+     5  "Very dissatisfied" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_035A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_035B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_035C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_035D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_035E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_037_FMT ///
+     1  "Very helpful" ///
+     2  "Somewhat helpful" ///
+     3  "Not helpful" ///
+     4  "Reason for homecare was unrelated to staying at home" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_038A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_038B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_038C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_038D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_038E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_038F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_040_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_045_FMT ///
+     1  "You only" ///
+     2  "Other household member" ///
+     3  "You and other household member" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_050A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_050B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_050C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_050D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_050E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_050F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055J_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055K_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_055L_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_060A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_060B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_060C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_060D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_060E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HMC_060F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HWTDVBCC_FMT ///
+     01  "Underweight" ///
+     02  "Normal weight" ///
+     03  "Overweight" ///
+     04  "Obese - Class I" ///
+     05  "Obese - Class II" ///
+     06  "Obese - Class III" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HWTDVCOL_FMT ///
+     1  "Thinness" ///
+     2  "Normal" ///
+     3  "Overweight" ///
+     4  "Obese" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HWTDVISW_FMT ///
+     01  "Underweight" ///
+     02  "Normal weight" ///
+     03  "Overweight" ///
+     04  "Obese - Class I" ///
+     05  "Obese - Class II" ///
+     06  "Obese - Class III" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HWTDVWHO_FMT ///
+     1  "Thinness" ///
+     2  "Normal" ///
+     3  "Overweight" ///
+     4  "Obese" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   HWT_05A_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HWT_05B_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   HWT_05C_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   HWT_40A_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   HWT_40B_FMT ///
+     1  "Pounds" ///
+     2  "Kilograms" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   IM_01A_FMT ///
+     1  "Born in Canada" ///
+     2  "Born outside Canada" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   IM_01A1_FMT ///
+     10  "Newfoundland and Labrador" ///
+     11  "Prince Edward Island" ///
+     12  "Nova Scotia" ///
+     13  "New Brunswick" ///
+     24  "Quebec" ///
+     35  "Ontario" ///
+     46  "Manitoba" ///
+     47  "Saskatchewan" ///
+     48  "Alberta" ///
+     59  "British Columbia" ///
+     60  "Yukon" ///
+     61  "Northwest Territories" ///
+     62  "Nunavut" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   IM_02_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   IM_03_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   IM_04_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   IM_05A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   IM_05A1_FMT ///
+     1  "By birth" ///
+     2  "By naturalization" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   IM_05B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INCDVHH_FMT ///
+     01  "No income or income loss" ///
+     02  "Less than $5,000" ///
+     03  "$5,000 to $9,999" ///
+     04  "$10,000 to $14,999" ///
+     05  "$15,000 to $19,999" ///
+     06  "$20,000 to $29,999" ///
+     07  "$30,000 to $39,999" ///
+     08  "$40,000 to $49,999" ///
+     09  "$50,000 to $59,999" ///
+     10  "$60,000 to $69,999" ///
+     11  "$70,000 to $79,999" ///
+     12  "$80,000 to $89,999" ///
+     13  "$90,000 to $99,999" ///
+     14  "$100,000 to $149,999" ///
+     15  "$150,000 or more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INCDVPER_FMT ///
+     01  "No income or income loss" ///
+     02  "Less than $5,000" ///
+     03  "$5,000 to $9,999" ///
+     04  "$10,000 to $14,999" ///
+     05  "$15,000 to $19,999" ///
+     06  "$20,000 to $29,999" ///
+     07  "$30,000 to $39,999" ///
+     08  "$40,000 to $49,999" ///
+     09  "$50,000 to $59,999" ///
+     10  "$60,000 to $69,999" ///
+     11  "$70,000 to $79,999" ///
+     12  "$80,000 to $89,999" ///
+     13  "$90,000 to $99,999" ///
+     14  "$100,000 or more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INCDVRCA_FMT ///
+     01  "Decile 1" ///
+     02  "Decile 2" ///
+     03  "Decile 3" ///
+     04  "Decile 4" ///
+     05  "Decile 5" ///
+     06  "Decile 6" ///
+     07  "Decile 7" ///
+     08  "Decile 8" ///
+     09  "Decile 9" ///
+     10  "Decile 10" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INCDVRPR_FMT ///
+     01  "Decile 1" ///
+     02  "Decile 2" ///
+     03  "Decile 3" ///
+     04  "Decile 4" ///
+     05  "Decile 5" ///
+     06  "Decile 6" ///
+     07  "Decile 7" ///
+     08  "Decile 8" ///
+     09  "Decile 9" ///
+     10  "Decile 10" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INCDVRRS_FMT ///
+     01  "Decile 1" ///
+     02  "Decile 2" ///
+     03  "Decile 3" ///
+     04  "Decile 4" ///
+     05  "Decile 5" ///
+     06  "Decile 6" ///
+     07  "Decile 7" ///
+     08  "Decile 8" ///
+     09  "Decile 9" ///
+     10  "Decile 10" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INCFIMPH_FMT ///
+     01  "Reported" ///
+     02  "Imputed" ///
+     09  "Not stated (no income information available)" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INC_005A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005J_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005K_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005L_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005M_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005N_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_005O_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_010_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_015_FMT ///
+     01  "Wages and salaries" ///
+     02  "Income from self-employment" ///
+     03  "Dividends and interest (e.g., on bonds, savings)" ///
+     04  "Employment insurance" ///
+     05  "Workers' compensation" ///
+     06  "Benefits from Canada or Quebec Pension Plan" ///
+     07  "Job-related retirement pensions, superannuation, annuities" ///
+     08  "RRSP/RRIF" ///
+     09  "Old Age Security and Guaranteed Income Supplement" ///
+     10  "Provincial or municipal social  assistance or welfare" ///
+     11  "Child Tax Benefit or family allowances" ///
+     12  "Child support" ///
+     13  "Alimony" ///
+     14  "Other (e.g., rental income, scholarships)" ///
+     15  "None" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INC_021_FMT ///
+     99999996  "Valid skip" ///
+     99999997  "Don't know" ///
+     99999998  "Refusal" ///
+     99999999  "Not stated"
+label define   INC_025A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025J_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025K_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025L_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025M_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025N_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_025O_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_030_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INC_035_FMT ///
+     01  "Wages and salaries" ///
+     02  "Income from self-employment" ///
+     03  "Dividends and interest (e.g., on bonds, savings)" ///
+     04  "Employment insurance" ///
+     05  "Workers' compensation" ///
+     06  "Benefits from Canada or Quebec Pension Plan" ///
+     07  "Job-related retirement pensions, superannuation, annuities" ///
+     08  "RRSP/RRIF" ///
+     09  "Old Age Security and Guaranteed Income Supplement" ///
+     10  "Provincial or municipal social  assistance or welfare" ///
+     11  "Child Tax Benefit or family allowances" ///
+     12  "Child support" ///
+     13  "Alimony" ///
+     14  "Other (e.g., rental income, scholarships)" ///
+     15  "None" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INC_041_FMT ///
+     99999996  "Valid skip" ///
+     99999997  "Don't know" ///
+     99999998  "Refusal" ///
+     99999999  "Not stated"
+label define   INJ_05A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_05AA_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_05B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_05BA_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_05C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_05CA_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_10_FMT ///
+     01  "Riding a bike" ///
+     02  "Sports or physical activity" ///
+     03  "Household chores, outdoor yard maintenance or unpaid work" ///
+     04  "Riding or driving a motor vehicle" ///
+     05  "Working at a paid job or business" ///
+     06  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_15A_FMT ///
+     01  "While doing physical activity" ///
+     02  "Going up or down stairs" ///
+     03  "Slipped or stumbled while walking" ///
+     04  "Getting into or out of furniture" ///
+     05  "From an elevated position" ///
+     06  "Due to health problems" ///
+     07  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_20_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_20A_FMT ///
+     1  "Doctor’s office or clinic" ///
+     2  "Hospital emergency room" ///
+     3  "Chiropractor or physiotherapist’s office" ///
+     4  "Other" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_25_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_30_FMT ///
+     01  "Riding a bike" ///
+     02  "Sports or physical activity" ///
+     03  "Household chores, outdoor yard maintenance or unpaid work" ///
+     04  "Riding or driving a motor vehicle" ///
+     05  "Working at a paid job or business" ///
+     06  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_35_FMT ///
+     01  "Multiple body parts" ///
+     02  "Head or neck" ///
+     03  "Shoulder or upper arm" ///
+     04  "Elbow or lower arm" ///
+     05  "Wrist or hand" ///
+     06  "Hip or thigh" ///
+     07  "Knee or lower leg" ///
+     08  "Ankle or foot" ///
+     09  "Back or spine" ///
+     10  "Chest" ///
+     11  "Abdomen or pelvis" ///
+     12  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_40_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_40A_FMT ///
+     01  "While doing physical activity" ///
+     02  "Going up or down stairs" ///
+     03  "Slipped or stumbled while walking" ///
+     04  "Getting into or out of furniture" ///
+     05  "From an elevated position" ///
+     06  "Due to health problems" ///
+     07  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_45_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_45A_FMT ///
+     1  "Doctor’s office or clinic" ///
+     2  "Hospital emergency room" ///
+     3  "Other" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_50_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_55_FMT ///
+     01  "Riding a bike" ///
+     02  "Sports or physical activity" ///
+     03  "Household chores, outdoor yard maintenance or unpaid work" ///
+     04  "Riding or driving a motor vehicle" ///
+     05  "Working at a paid job or business" ///
+     06  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_60_FMT ///
+     01  "Multiple body parts" ///
+     02  "Head or neck" ///
+     03  "Shoulder or upper arm" ///
+     04  "Elbow or lower arm" ///
+     05  "Wrist or hand" ///
+     06  "Hip or thigh" ///
+     07  "Knee or lower leg" ///
+     08  "Ankle or foot" ///
+     09  "Back or spine" ///
+     10  "Chest" ///
+     11  "Abdomen or pelvis" ///
+     12  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   INJ_65_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_70_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_70A_FMT ///
+     1  "Doctor’s office or clinic" ///
+     2  "Hospital emergency room" ///
+     3  "Other" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INJ_75_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INL_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Don't know" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   INP_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Don't know" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_01_FMT ///
+     1  "English only" ///
+     2  "French only" ///
+     3  "Both English and French" ///
+     4  "Neither English nor French" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_02A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_02B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_02C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_04A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_04B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LAN_04C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LBFDVHPW_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   LBFDVING_FMT ///
+     01  "Agriculture, forestry, fishing and hunting" ///
+     02  "Mining, quarrying, and oil/gas extraction" ///
+     03  "Utilities" ///
+     04  "Construction" ///
+     05  "Manufacturing" ///
+     06  "Wholesale trade" ///
+     07  "Retail trade" ///
+     08  "Transportation and warehousing" ///
+     09  "Information and cultural industries" ///
+     10  "Finance and insurance" ///
+     11  "Real estate and rental and leasing" ///
+     12  "Professional, scientific and technical services" ///
+     13  "Management of companies and enterprises" ///
+     14  "Admin, support, waste management, remediation services" ///
+     15  "Educational services" ///
+     16  "Health care and social assistance" ///
+     17  "Arts, entertainment and recreation" ///
+     18  "Accommodation and food services" ///
+     19  "Other services (except public administration)" ///
+     20  "Public administration" ///
+     95  "Could not be coded" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   LBFDVOCG_FMT ///
+     01  "Management occupations" ///
+     02  "Business, finance and administration occupations" ///
+     03  "Natural and applied sciences and related occupations" ///
+     04  "Health occupations" ///
+     05  "Occupations in education, law, social/community/gov services" ///
+     06  "Occupations in art, culture, recreation and sport" ///
+     07  "Sales and service occupations" ///
+     08  "Trades, transport, equip operators and related occupations" ///
+     09  "Natural resources, agriculture and related occupations" ///
+     10  "Occupations in manufacturing and utilities" ///
+     95  "Could not be coded" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   LBFDVPFT_FMT ///
+     1  "Full-time" ///
+     2  "Part-time" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LBFDVWSS_FMT ///
+     1  "Worked at a job / business - last week" ///
+     2  "Absent from work / business - last week" ///
+     3  "Did not have a job - last week" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LBF_11_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMA3_01_FMT ///
+     1  "Employee" ///
+     2  "Self-employed" ///
+     3  "Working in a family business without pay" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMA4FQ01_FMT ///
+     1  "Yes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMA4FQ02_FMT ///
+     1  "Yes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMA4FQ03_FMT ///
+     1  "Yes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMA5FQ01_FMT ///
+     1  "Yes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMA5FQ02_FMT ///
+     1  "Yes" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMAM_01_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Permanently unable to work" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMAM_02_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LMAM_03_FMT ///
+     01  "Vacation" ///
+     02  "Own illness or disability" ///
+     03  "Caring for own children" ///
+     04  "Caring for elder relative" ///
+     05  "Maternity or parental leave" ///
+     06  "Other personal or family responsibilities" ///
+     07  "Labour dispute (strike or lockout)" ///
+     08  "Temporary layoff due to business conditions" ///
+     09  "Seasonal layoff" ///
+     10  "Casual job, no work available" ///
+     11  "Work schedule" ///
+     12  "Self-employed, no work available" ///
+     13  "Seasonal business" ///
+     14  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   LM_025_FMT ///
+     1  "At a fixed location outside the home" ///
+     2  "Outside the home with no fixed location" ///
+     3  "At home" ///
+     4  "Absent from work" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LSMDVSWL_FMT ///
+     1  "Very satisfied" ///
+     2  "Satisfied" ///
+     3  "Neither satisfied nor dissatisfied" ///
+     4  "Dissatisfied" ///
+     5  "Very dissatisfied" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   LSM_01_FMT ///
+     00  "Very dissatisfied" ///
+     01  "|" ///
+     02  "|" ///
+     03  "|" ///
+     04  "|" ///
+     05  "|" ///
+     06  "|" ///
+     07  "|" ///
+     08  "|" ///
+     09  "V" ///
+     10  "Very satisfied" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MAC_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MA_02_FMT ///
+     01  "Looking for paid work" ///
+     02  "Going to school" ///
+     03  "Caring for your children" ///
+     04  "Household work" ///
+     05  "Retired" ///
+     06  "Maternity, paternity or parental leave" ///
+     07  "Long term illness" ///
+     08  "Volunteering or care-giving other than for your children" ///
+     09  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MA_03_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEXDVBM6_FMT ///
+     1  "Had exclusively breastfed last baby at least 6 months" ///
+     2  "Had not exclusively breastfeed last baby at least 6 months" ///
+     3  "Has not breastfed her last baby at all" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEXDVLBM_FMT ///
+     00  "Has not breastfed or given breastmilk to last baby" ///
+     01  "Less than 1 week" ///
+     02  "1 week to less than 1 month" ///
+     03  "1 month to less than 2 months" ///
+     04  "2 months to less than 3 months" ///
+     05  "3 months to less than 4 months" ///
+     06  "4 months to less than 5 months" ///
+     07  "5 months to less than 6 months" ///
+     08  "6 months or more" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_10_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_100_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_105_FMT ///
+     1  "Did not want to breastfeed" ///
+     2  "No support or information to breastfeed" ///
+     3  "Medical condition" ///
+     4  "Other" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_110_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_115A_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_115B_FMT ///
+     1  "Days" ///
+     2  "Weeks" ///
+     3  "Months" ///
+     4  "Years" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_12_FMT ///
+     1  "Single birth" ///
+     2  "Multiple births" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_120_FMT ///
+     01  "Not enough breast milk" ///
+     02  "Child weaned themselves" ///
+     03  "Planned to stop at this time" ///
+     04  "Difficulty with breastfeeding" ///
+     05  "Medical condition" ///
+     06  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_125_FMT ///
+     1  "Every day or almost every day" ///
+     2  "Occasionally" ///
+     3  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_150_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_155_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_160_FMT ///
+     1  "Days" ///
+     2  "Weeks" ///
+     3  "Months" ///
+     4  "Years" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_170_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_175_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_180_FMT ///
+     1  "Days" ///
+     2  "Weeks" ///
+     3  "Months" ///
+     4  "Years" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_190_FMT ///
+     1  "Infant cereals" ///
+     2  "Fruits or vegetables" ///
+     3  "Meat and meat alternatives" ///
+     4  "Other" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_20_FMT ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_25_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   MEX_30_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   MEX_40_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Don't know" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_50_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Don't know" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_65_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Don't know" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_70_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   MEX_75_FMT ///
+     1  "Pounds" ///
+     2  "Kilograms" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_80_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   MEX_85_FMT ///
+     1  "Pounds" ///
+     2  "Kilograms" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MEX_90_FMT ///
+     1  "Every day or almost every day" ///
+     2  "Occasionally" ///
+     3  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_10_FMT ///
+     1  "A few times a month or less" ///
+     2  "Once or twice a week" ///
+     3  "Many times a week" ///
+     4  "Everyday" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_12_FMT ///
+     1  "One drink" ///
+     2  "Two drinks" ///
+     3  "Three drinks" ///
+     4  "More than three" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_20_FMT ///
+     1  "A few times a month or less" ///
+     2  "Once or twice a week" ///
+     3  "Many times a week" ///
+     4  "Everyday" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_22_FMT ///
+     1  "One drink" ///
+     2  "Two drinks" ///
+     3  "Three drinks" ///
+     4  "More than three" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_35_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_40_FMT ///
+     1  "A few times a month or less" ///
+     2  "Once or twice a week" ///
+     3  "Many times a week" ///
+     4  "Everyday" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXA_42_FMT ///
+     1  "One drink" ///
+     2  "Two drinks" ///
+     3  "Three drinks" ///
+     4  "More than three" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXS_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXS_10_FMT ///
+     1  "Everyday" ///
+     2  "Almost everyday" ///
+     3  "A few times a week" ///
+     4  "Rarely" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXS_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXS_20_FMT ///
+     1  "Everyday" ///
+     2  "Almost everyday" ///
+     3  "A few times a week" ///
+     4  "Rarely" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   MXS_35_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_05_FMT ///
+     1  "More than once a year for check-ups or treatments" ///
+     2  "About once a year for check-ups or treatments" ///
+     3  "Less than once a year for check-ups or treatments" ///
+     4  "Only for emergency care" ///
+     5  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_10_FMT ///
+     01  "Less than a year ago" ///
+     02  "1 year to less than 2 years ago" ///
+     03  "2 years to less than 3 years ago" ///
+     04  "3 years to less than 4 years ago" ///
+     05  "4 years to less than 5 years ago" ///
+     06  "5 or more years ago" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   OHM3_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_18_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_20A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_20B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_20C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_20D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_20E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_20F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_45_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Don't know" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_50A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_50B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_50C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_50D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM3_50E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM_05_FMT ///
+     1  "Excellent" ///
+     2  "Very good" ///
+     3  "Good" ///
+     4  "Fair" ///
+     5  "Poor" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM_10_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   OHM_15_FMT ///
+     1  "Often" ///
+     2  "Sometimes" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PCN_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PCN_10A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PCN_10B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PCN_10C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PCN_10D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PCN_10E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05C_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05D_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05E_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05F_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05G_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05H_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05I_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05J_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PG_05K_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRMDV12M_FMT ///
+     1  "Has used a pain reliever - 12 mo" ///
+     2  "Has not used a pain reliever - 12 mo" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_10_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_20_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_25_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_30_FMT ///
+     01  "Once or twice" ///
+     02  "3 to 11 times a year" ///
+     03  "About once a month" ///
+     04  "2 or 3 times a month" ///
+     05  "About once or twice a week" ///
+     06  "3 or 4 times a week" ///
+     07  "Daily or almost daily" ///
+     08  "As needed, or following surgery" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   PRM_35_FMT ///
+     1  "No, none were prescribed" ///
+     2  "Yes, they all were prescribed" ///
+     3  "Some were prescribed and others were not" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_40A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_40B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_50_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRM_55_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PROXYSEX_FMT ///
+     1  "Male, non proxy interview" ///
+     2  "Female, non proxy interview" ///
+     3  "Male, proxy interview" ///
+     4  "Female, proxy interview" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   PRS_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   RHC_05_FMT ///
+     1  "Family doctor or general practitioner" ///
+     2  "Medical specialist" ///
+     3  "Nurse practitioner" ///
+     4  "Other" ///
+     5  "Don’t have a regular health care provider" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SAMDVLNK_FMT ///
+     1  "Respondent agreed to link information" ///
+     2  "Respondent did not agree to link information" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SAMDVSHR_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     3  "Partial" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SDCDVABT_FMT ///
+     1  "Indigenous identity (First Nations, Métis, Inuk/Inuit)" ///
+     2  "Non-Indigenous identity" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SDCDVALI_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   SDCDVCB_FMT ///
+     01  "Canada" ///
+     02  "Other - North America" ///
+     03  "South, Central America, Caribbean and Bermuda" ///
+     04  "Europe" ///
+     05  "Africa" ///
+     06  "Asia" ///
+     07  "Oceania" ///
+     08  "Antarctica and adjacent islands" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SDCDVFL1_FMT ///
+     01  "English" ///
+     02  "French" ///
+     03  "English and French" ///
+     04  "English, French and Other" ///
+     05  "English and Other" ///
+     06  "French and Other" ///
+     07  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SDCDVFLA_FMT ///
+     1  "Visible minority" ///
+     2  "Not a visible minority" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SDCDVFLS_FMT ///
+     1  "English" ///
+     2  "French" ///
+     3  "English and French" ///
+     4  "Neither English nor French" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SDCDVIMM_FMT ///
+     1  "Non-immigrant (citizen by birth)" ///
+     2  "Immigrant (landed immigrant or citizen by naturalization)" ///
+     3  "Non-permanent resident" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SDCDVLHM_FMT ///
+     01  "English" ///
+     02  "French" ///
+     03  "English and French" ///
+     04  "English, French and Other" ///
+     05  "English and Other" ///
+     06  "French and Other" ///
+     07  "Other" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SDCDVRES_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   SDCDVVM_FMT ///
+     01  "South Asian" ///
+     02  "Chinese" ///
+     03  "Black" ///
+     04  "Filipino" ///
+     05  "Latin American" ///
+     06  "Arab" ///
+     07  "Southeast Asian" ///
+     08  "West Asian" ///
+     09  "Korean" ///
+     10  "Japanese" ///
+     11  "Visible minority n.i.e" ///
+     12  "Multiple visible minorities" ///
+     13  "Not a visible minority" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SMKDVSTY_FMT ///
+     01  "Current daily smoker" ///
+     02  "Current occasional smoker" ///
+     03  "Former daily smoker (non-smoker now)" ///
+     04  "Former occasional smoker (non-smoker now)" ///
+     05  "Experimental smoker (>1 cig, <100 cig)" ///
+     06  "Lifetime abstainer (never smoked a whole cigarette)" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SMKDVYCS_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   SOR_01_FMT ///
+     1  "Heterosexual" ///
+     2  "Lesbian or gay" ///
+     3  "Bisexual" ///
+     4  "Or please specify" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SPU_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SPU_10A_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SPU_10B_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   SPU_15_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   SPU_20_FMT ///
+     996  "Valid skip" ///
+     997  "Don't know" ///
+     998  "Refusal" ///
+     999  "Not stated"
+label define   SPU_25A_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SPU_25B_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   SPU_30_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   SPU_35A_FMT ///
+     01  "January" ///
+     02  "February" ///
+     03  "March" ///
+     04  "April" ///
+     05  "May" ///
+     06  "June" ///
+     07  "July" ///
+     08  "August" ///
+     09  "September" ///
+     10  "October" ///
+     11  "November" ///
+     12  "December" ///
+     96  "Valid skip" ///
+     97  "Don't know" ///
+     98  "Refusal" ///
+     99  "Not stated"
+label define   SPU_35B_FMT ///
+     9996  "Valid skip" ///
+     9997  "Don't know" ///
+     9998  "Refusal" ///
+     9999  "Not stated"
+label define   UPE_05_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_10_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_15_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_20_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_25_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_30_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_35_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_40A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_40B_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_45_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_50_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_55_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_60A_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_65_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_70_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_75_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_80_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   UPE_85_FMT ///
+     1  "Always" ///
+     2  "Most of the time" ///
+     3  "Rarely" ///
+     4  "Never" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   VMRNIE_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   VMROTHER_FMT ///
+     1  "Yes" ///
+     2  "No" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WDM_05_FMT ///
+     1  "No difficulty" ///
+     2  "Some difficulty" ///
+     3  "A lot of difficulty" ///
+     4  "Cannot do at all or unable to do" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WDM_10_FMT ///
+     1  "No difficulty" ///
+     2  "Some difficulty" ///
+     3  "A lot of difficulty" ///
+     4  "Cannot do at all or unable to do" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WDM_15_FMT ///
+     1  "No difficulty" ///
+     2  "Some difficulty" ///
+     3  "A lot of difficulty" ///
+     4  "Cannot do at all or unable to do" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WDM_20_FMT ///
+     1  "No difficulty" ///
+     2  "Some difficulty" ///
+     3  "A lot of difficulty" ///
+     4  "Cannot do at all or unable to do" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WDM_25_FMT ///
+     1  "No difficulty" ///
+     2  "Some difficulty" ///
+     3  "A lot of difficulty" ///
+     4  "Cannot do at all or unable to do" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WDM_30_FMT ///
+     1  "No difficulty" ///
+     2  "Some difficulty" ///
+     3  "A lot of difficulty" ///
+     4  "Cannot do at all or unable to do" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
+label define   WTP_50_FMT ///
+     1  "Overweight" ///
+     2  "Underweight" ///
+     3  "Just about right" ///
+     6  "Valid skip" ///
+     7  "Don't know" ///
+     8  "Refusal" ///
+     9  "Not stated"
