@@ -25,9 +25,11 @@ osf_credentials.R
 # Google Drive credentials (security)
 .secrets/
 .secrets
-# Downloaded data directories
+# Downloaded data directories (mirrored on Google Drive)
 odesi-data/
 cchs-data-docs/
+cchs-osf-docs/
+data/sources/sas-master-labels/
 # Temporary files
 *~
 .DS_Store

@@ -2,159 +2,203 @@
 
 This document describes the architecture of the cchsflow-docs repository: a unified metadata database and MCP server for the Canadian Community Health Survey.
 
+For the full design rationale and enum references, see [PLAN_database_rebuild.md](../development/architecture/PLAN_database_rebuild.md).
+
 ## Overview
 
 The system merges variable metadata from multiple sources into a single DuckDB database, exposed via Model Context Protocol (MCP) tools for LLM agents, R/Python scripts, and web applications.
 
+### Three-tier architecture
+
 ```
-  ICES scrape ──────►┌──────────────────────────┐
-  (14,005 variables) │    Unified DuckDB         │
-                     │                           │
-  DDI XML ──────────►│  database/                │
-  (11 PUMF files)    │  cchs_metadata.duckdb     │
-                     │                           │
-  Joel's data ──────►│  (future: v2)             │
-  (StatCan files)    │                           │
-                     └─────────┬────────────────┘
-                               │
-                               ▼
-                     ┌──────────────────────────┐
-                     │    MCP Server             │
-                     │    mcp-server/server.py   │
-                     │    9 query tools          │
-                     └─────────┬────────────────┘
-                               │
-                  ┌────────────┼────────────────┐
-                  ▼            ▼                ▼
-            LLM Agents    Web Frontend    R/Python
-            (Claude,      (future)        scripts
-             Gemini)
+CSV (source of truth)  →  DuckDB (queryable)  →  MCP server (tools)
+```
+
+1. **CSV files** (`data/sources.csv`, `data/datasets.csv`, `data/variables.csv`) are git-tracked, human-editable reference data. They define the skeletal structure: which sources exist, which datasets exist, which variables exist.
+
+2. **DuckDB** (`database/cchs_metadata.duckdb`) is a build artefact (gitignored). The build script loads CSVs, then runs ingestion scripts that enrich the database with per-dataset metadata from primary sources (RData, DDI XML).
+
+3. **MCP server** (`mcp-server/server.py`) exposes 9 query tools over the DuckDB database for LLM agents and scripts.
+
+### Data flow
+
+```
+data/sources.csv    ─┐
+data/datasets.csv   ─┤─→ database/build_db.R ─→ database/cchs_metadata.duckdb
+data/variables.csv  ─┘         │                        │
+                        Phase 0: load CSVs              │
+                        Phase 1: ingest RData     mcp-server/server.py
+                        Phase 2: ingest DDI XML   (9 query tools)
+                               │                        │
+                    ┌──────────┘               ┌────────┘
+                    ▼                          ▼
+          ../cchsflow-data/            LLM agents, R/Python
+          data/sources/rdata/ (11)     scripts, web frontends
+          ddi/ (11)
 ```
 
 ## Data sources
 
-| Source | Tables populated | Content |
-|--------|-----------------|---------|
-| ICES Data Dictionary scrape | `datasets`, `variables`, `variable_availability`, `value_formats` | 14,005 variables, 231 datasets, 118,668 availability rows |
-| DDI XML files (11 valid) | `ddi_variables` | 11,135 records with question text, universe logic, response categories |
-| Joel's Data Dictionary Builder | `statcan_variables` (future) | Ground truth from actual PUMF/Master files |
-| cchsflow worksheets | `harmonisation_mappings` (future) | Variable recoding rules |
+| Source ID | Name | Authority | Files | Content |
+|-----------|------|-----------|-------|---------|
+| `pumf_rdata` | CCHS PUMF RData files | primary | 11 | Variable names, R types, factor levels with frequencies |
+| `ddi_xml` | CCHS DDI XML documentation | primary | 11 | Labels, question text, universe, response categories, summary statistics |
+| `master_sas_label` | CCHS Master SAS English label files | primary | 34 | Variable names and labels from StatCan Master SAS layout files |
+| `ices_scrape` | ICES Data Dictionary scrape | secondary | 1 | Variable names, abbreviated labels, dataset IDs, value formats |
+| `cchsflow` | cchsflow R package worksheets | secondary | 2 | Harmonized variable names, family mappings, section/subject classification |
+| `yaml_extract` | Extracted YAML data dictionaries | secondary | 42 | Variable definitions from PDF data dictionaries (AI-extracted, quality varies) |
 
-## Database schema
+Sources are registered in `data/sources.csv` and loaded into the `sources` table during the build.
 
-The unified database is at `database/cchs_metadata.duckdb`. Schema is defined in `database/schema.sql`.
+## Database schema (v2)
 
-### Core tables (from ICES scrape)
+The database has 13 tables and 6 views, defined in `database/schema.sql`.
 
-- **`datasets`** (239 rows): Dataset identifiers with parsed `cycle` and `file_type` columns
-- **`variables`** (14,005 rows): One row per unique variable name with label, type, format
-- **`variable_availability`** (118,668 rows): Which variables appear in which datasets
-- **`value_formats`** (11,065 rows): Response category code-label pairs
+### CSV-sourced tables
 
-### DDI enrichment
+These tables are loaded directly from git-tracked CSV files. They define the reference structure.
 
-- **`ddi_variables`** (11,135 rows): Question text, universe/skip logic, structured response categories from DDI XML parsing
+| Table | Rows | Description |
+|-------|------|-------------|
+| `sources` | 6 | Data source registry with authority level |
+| `datasets` | 251 | One row per survey file release with parsed cycle, temporal_type, release, geo, content |
+| `variables` | 16,171 | One row per unique variable name with three-label model, status, and provenance counts |
 
-### Ontology stubs (empty in v1)
+### DuckDB-only tables
 
-- **`ontology_concepts`**: For capturing conceptual variable groupings
-- **`variable_concepts`**: For linking variables to concepts
+These tables are machine-generated during ingestion. Too large or dynamic for CSV.
+
+| Table | Rows | Description |
+|-------|------|-------------|
+| `dataset_sources` | ~253 | Which specific files attest each dataset |
+| `dataset_aliases` | ~253 | Maps external IDs (e.g., `CCHS200708_PUMF`) to canonical `dataset_id` |
+| `variable_datasets` | ~21,810 | Per-source metadata for each variable-dataset pair (label, type, position, question_text) |
+| `value_codes` | ~145,910 | Response categories per variable per dataset, separate rows per source |
+| `variable_summary_stats` | ~10,893 | Distributional statistics from DDI XML (mean, median, stdev, min, max) |
+| `variable_groups` | ~562 | Module classifications from DDI XML (e.g., "SMK: Smoking") |
+| `variable_group_members` | ~9,642 | Which variables belong to which module groups |
+| `variable_families` | 0 | Cross-cycle variable equivalents (Phase 3, not yet populated) |
+| `variable_family_members` | 0 | Maps cycle-specific names to families (Phase 3) |
+| `catalog_metadata` | 3 | Build metadata (schema version, build date, R version) |
 
 ### Views
 
-- **`v_variable_detail`**: Joins variables + availability + datasets + DDI in a single query
-- **`v_variable_history`**: Traces a variable across cycles with DDI context
-
-## MCP server
-
-The MCP server at `mcp-server/server.py` exposes 9 tools via FastMCP:
-
-| Tool | Purpose |
+| View | Purpose |
 |------|---------|
-| `search_variables` | Full-text search on variable names and labels |
-| `get_variable_detail` | Complete metadata for one variable |
-| `get_variable_history` | Trace a variable across all cycles/datasets |
-| `get_dataset_variables` | List all variables in a dataset |
-| `get_common_variables` | Variables shared between two datasets |
-| `compare_master_pumf` | Compare a variable across file types within a cycle |
-| `get_value_codes` | Response categories for a variable |
-| `suggest_cchsflow_row` | Draft cchsflow worksheet row for harmonisation |
-| `get_database_summary` | High-level database statistics |
+| `v_variable_history` | Variable across cycles — best metadata merged from all sources |
+| `v_variable_datasets_detail` | All source rows preserved for provenance auditing |
+| `v_dataset_variables` | Variables in a dataset with deduplicated labels |
+| `v_dataset_provenance` | All sources for each dataset (joins dataset_sources → sources) |
+| `v_family_history` | Cross-cycle variable equivalents via family tables |
+| `v_variable_groups` | Module membership per variable per dataset |
 
-### Running the server
+## Provenance model
 
-```bash
-# Install dependencies
-pip install -r mcp-server/requirements.txt
+Every record tracks its origin. This is essential because the database is populated incrementally from sources of varying reliability.
 
-# Run directly
-python mcp-server/server.py
+### Three mechanisms
 
-# Or configure in Claude Code settings
-```
+1. **Source authority** (`sources.authority`): `primary` (StatCan-generated) vs `secondary` (derived/scraped). Primary sources are trusted for promoting `status` from `temp` to `active`.
 
-### Claude Code configuration
+2. **Row-level metadata** on every table: `version`, `status`, `last_updated`, `notes`. The `status` field tracks verification: `active` (verified against primary source), `temp` (unverified), `draft` (incomplete), `inactive` (superseded).
 
-Add to `~/.claude/mcp-servers.json`:
+3. **Separate rows per source** in linking tables: `variable_datasets` is keyed by `(variable_name, dataset_id, source_id)`. The same variable from RData and DDI gets separate rows, each carrying their own metadata. Disagreements are visible, not silently collapsed.
 
-```json
-{
-  "cchs-metadata": {
-    "command": "python",
-    "args": ["mcp-server/server.py"],
-    "cwd": "/path/to/cchsflow-docs"
-  }
-}
-```
+### Three-label model
 
-## Ingestion pipeline
+| Column | Source | Mutable | Purpose |
+|--------|--------|---------|---------|
+| `label_statcan` | Latest DDI or RData, verbatim | No | Provenance and fidelity |
+| `label_short` | CCHS conventions (≤40 chars) | Yes | Table headers, search results |
+| `label_long` | Full descriptive | Yes | Documentation |
 
-The database is built reproducibly from source data:
+## Build pipeline
 
 ```bash
 Rscript --vanilla database/build_db.R
 ```
 
-This runs:
-1. `ingestion/ingest_ices_scrape.R` — migrates ICES DuckDB, parses cycle/file_type
-2. `ingestion/ingest_ddi_xml.R` — parses 11 DDI XML files, loads enrichment data
+The build is deterministic and takes approximately 2 minutes. It deletes the existing database and rebuilds from scratch.
+
+| Phase | Script | Input | Output |
+|-------|--------|-------|--------|
+| 0 | `build_db.R` | CSVs + `schema.sql` | Fresh DuckDB with sources, datasets, variables, dataset_sources, dataset_aliases |
+| 1 | `ingest_pumf_rdata.R` | 11 RData files | variable_datasets, value_codes (source_id = `pumf_rdata`) |
+| 2 | `ingest_ddi_xml.R` | 11 DDI XML files | variable_datasets, value_codes, variable_summary_stats, variable_groups (source_id = `ddi_xml`) |
+| Post | `build_db.R` | — | Status promotion: variables with primary sources → `active` |
+
+Future phases (not yet implemented):
+- **Phase 3**: Variable family seeding from cchsflow
+- **Phase 4**: Merge validation and integrity checks
+
+## MCP server
+
+The MCP server at `mcp-server/server.py` exposes 9 read-only tools via FastMCP:
+
+| Tool | Purpose |
+|------|---------|
+| `search_variables` | Full-text search on variable names and labels |
+| `get_variable_detail` | Complete metadata for one variable (history, value codes, summary stats, groups) |
+| `get_variable_history` | Trace a variable across all cycles and datasets |
+| `get_dataset_variables` | List all variables in a dataset (with alias resolution) |
+| `get_common_variables` | Variables shared between two datasets |
+| `compare_master_pumf` | Compare a variable across file types within a cycle |
+| `get_value_codes` | Response categories with weighted frequencies |
+| `suggest_cchsflow_row` | Draft cchsflow worksheet row for harmonization |
+| `get_database_summary` | High-level database statistics |
+
+### Configuration
+
+The MCP server is configured in `.mcp.json` at the repository root. It connects to the DuckDB database via the `CCHS_DB_PATH` environment variable.
 
 ## Repository structure
 
 ```
 cchsflow-docs/
 ├── database/
-│   ├── cchs_metadata.duckdb       # Unified database (built artefact)
-│   ├── schema.sql                 # DuckDB schema DDL
-│   └── build_db.R                 # Master build script
+│   ├── cchs_metadata.duckdb       # Build artefact (gitignored)
+│   ├── schema.sql                 # v2 schema DDL (13 tables, 6 views)
+│   └── build_db.R                 # Master build script (Phase 0→1→2)
 ├── ingestion/
-│   ├── ingest_ices_scrape.R       # ICES data → DuckDB
-│   └── ingest_ddi_xml.R          # DDI XML → DuckDB
+│   ├── ingest_pumf_rdata.R        # Phase 1: RData → variable_datasets + value_codes
+│   └── ingest_ddi_xml.R          # Phase 2: DDI XML → full enrichment
 ├── mcp-server/
-│   ├── server.py                  # FastMCP server (9 tools)
+│   ├── server.py                  # FastMCP v2 server (9 tools)
 │   └── requirements.txt
-├── ddi-xml/                       # DDI XML source files (11 valid)
 ├── data/
-│   ├── ices_cchs_dictionary.duckdb  # Original ICES scrape (source)
-│   ├── cchs_variable_dictionary.csv # Flat export for LLM consumption
-│   └── catalog/                     # YAML document catalogs
+│   ├── sources.csv                # Source registry (6 sources)
+│   ├── datasets.csv               # Dataset definitions (251 datasets)
+│   ├── variables.csv              # Variable registry (16,171 variables)
+│   ├── sources/
+│   │   └── sas-master-labels/     # 34 StatCan Master SAS label files
+│   └── catalog/
+│       └── cchs_catalog.yaml      # Document-level metadata (1,421 entries)
 ├── development/
-│   ├── ontology/                  # Variable ontology (in progress)
-│   └── redevelopment/             # Architecture proposal and specs
-├── reports/
-│   └── cchs-variable-browser.html
-└── docs/
-    └── architecture.md            # This file
+│   ├── architecture/
+│   │   ├── PLAN_database_rebuild.md  # Full design rationale and enum references
+│   │   └── PROPOSAL_mcp_metadata_architecture.md
+│   └── ontology/                  # Variable relationship modelling (in progress)
+├── docs/
+│   └── architecture.md            # This file
+├── .claude/
+│   └── skills/
+│       ├── cchs-database/         # Database build and maintenance workflow
+│       └── cchs-documentation/    # CCHS documentation lookups and naming conventions
+└── .mcp.json                      # MCP server configuration
 ```
 
 ## Design decisions
 
-1. **Variable names as primary keys.** DDI XML analysis confirmed that position IDs (V622, V238) change between cycles. Variable names (SMKDSTY) are what researchers use.
+1. **Variable names as primary keys.** DDI position IDs (V622, V238) change between cycles. Variable names (SMKDSTY) are what researchers use and are stable identifiers.
 
 2. **Normalised storage, denormalised views.** Tables are normalised for integrity. Views aggregate data into complete records so MCP tools return full context in one call.
 
-3. **Separate DDI table.** DDI data is per variable per dataset (11K rows). The base `variables` table has one row per name (14K rows). A LEFT JOIN fills in DDI context where available without breaking queries where it's absent.
+3. **Full provenance — never collapsed.** Every record keeps its source_id. If RData and DDI both describe the same variable, they get separate rows. This makes disagreements visible and auditable.
 
-4. **Explicit cycle and file_type.** Parsed from dataset_id patterns (e.g., `CCHS201516_ONT_SHARE` → cycle `2015-2016`, file_type `Share`) to support cycle-based queries.
+4. **CSV source of truth.** Human-editable CSV files define the reference structure. The DuckDB database is a reproducible build artefact. This separates curation (CSV edits) from computation (ingestion scripts).
 
 5. **DuckDB.** Embedded, serverless, fast analytical queries. R and Python both read the same file. No infrastructure to maintain.
+
+6. **Canonical dataset naming.** `cchs-{year}{s|d}-{release}-{geo}[-{content}][-{subfile}]` — human-readable, parseable, consistent. External IDs (ICES, RData filenames) are stored as aliases.
+
+See [PLAN_database_rebuild.md](../development/architecture/PLAN_database_rebuild.md) for the complete set of design decisions, enum references, and schema rationale.
