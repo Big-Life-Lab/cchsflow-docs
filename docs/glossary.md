@@ -311,5 +311,4 @@ Specific purpose documentation:
 
 **See also**:
 - [UID System](uid-system.md) - Complete UID specification
-- [Collections Guide](collections-guide.md) - Working with collections
-- [README Glossary](../README.md#-cchs-terminology) - Quick reference
+- [README](../README.md#-cchs-terminology) - Quick reference

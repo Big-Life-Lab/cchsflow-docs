@@ -1,358 +1,208 @@
-# CCHS Documentation Catalog - System Architecture
+# CCHS metadata architecture
 
-This document describes the architecture, components, and data flow of the CCHS Documentation Catalog System.
+This document describes the architecture of the cchsflow-docs repository: a unified metadata database and MCP server for the Canadian Community Health Survey.
 
-## 🎯 System Overview
+For the full design rationale and enum references, see [PLAN_database_rebuild.md](../development/architecture/PLAN_database_rebuild.md).
 
-The CCHS Documentation Catalog is a **metadata catalog and distribution system** for Canadian Community Health Survey documentation. It maintains a read-only mirror of OSF.io documentation, generates a comprehensive metadata catalog, and distributes curated collections via GitHub releases.
+## Overview
 
-## 📊 Architecture Diagram
+The system merges variable metadata from multiple sources into a single DuckDB database, exposed via Model Context Protocol (MCP) tools for LLM agents, R/Python scripts, and web applications.
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                         OSF.io (Source)                         │
-│                    Project: 6p3n9 / jm8bx                       │
-│                    1,262 files (2001-2023)                      │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             │ R/osf_sync_system.R
-                             │ R/osf_api_client.R
-                             ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                    cchs-osf-docs/ (Mirror)                      │
-│              Original filenames, Git-tracked                    │
-│              Read-only authoritative source                     │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             │ R/clean_catalog_structure.R
-                             │ R/enhance_categorization.R
-                             ↓
-┌─────────────────────────────────────────────────────────────────┐
-│              data/catalog/cchs_catalog.yaml                     │
-│           1,262 files with UIDs and metadata                    │
-│           LinkML schema validation                              │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             │ R/extract_collection.R
-                             ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                    Collections (Themed Sets)                    │
-│              Canonical filenames, filtered scope                │
-│              ZIP files + CSV manifests                          │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                    ┌────────┴────────┐
-                    │                 │
-                    ↓                 ↓
-            ┌──────────────┐  ┌──────────────┐
-            │  build/*.zip │  │ data/        │
-            │  (gitignored)│  │ manifests/   │
-            │  Temporary   │  │ *.csv        │
-            └──────┬───────┘  │ (Git-tracked)│
-                   │          └──────────────┘
-                   │
-                   ↓
-         ┌──────────────────┐
-         │ GitHub Releases  │
-         │ Distribution     │
-         └──────────────────┘
-```
-
-## 🏗️ Core Components
-
-### 1. OSF.io Integration Layer
-
-**Purpose**: Synchronize with OSF.io and maintain local mirror
-
-**Components**:
-- `R/osf_api_client.R` - Custom API client (replaces broken `osfr`)
-- `R/osf_sync_system.R` - Sync orchestration and change detection
-- `R/osf_versioning_system.R` - Git-based change tracking
-- `cchs-osf-docs/` - Local mirror directory
-
-**Key Features**:
-- Handles OSF API pagination correctly (fixes 10-item limitation)
-- Preserves original filenames and folder structure
-- Detects changes via git diff
-- Supports incremental updates
-
-### 2. Metadata Catalog System
-
-**Purpose**: Comprehensive metadata catalog with validation
-
-**Components**:
-- `data/catalog/cchs_catalog.yaml` - Production catalog (1,262 files)
-- `metadata/cchs_schema_linkml.yaml` - LinkML schema
-- `R/clean_catalog_structure.R` - Catalog generation
-- `R/enhance_categorization.R` - Enhanced categorization
-- `R/validate_catalog.R` - Validation system
-
-**Key Features**:
-- UID system v2 with extension awareness
-- 34 document categories
-- Secondary categories and semantic tags
-- LinkML schema validation
-- 100% unique identifiers
-
-### 3. Collections System
-
-**Purpose**: Generate and distribute themed file collections
-
-**Components**:
-- `R/extract_collection.R` - Collection generation
-- `data/manifests/` - Collection metadata (Git-tracked)
-- `build/` - Temporary build artifacts (gitignored)
-- `.github/workflows/release-collection.yml` - Automated releases
-
-**Key Features**:
-- Filter by year, language, doc type, category
-- Canonical filenames (Jenny Bryan conventions)
-- CSV manifests with metadata
-- GitHub releases for distribution
-- Automated checksums
-
-### 4. Reporting System
-
-**Purpose**: Status reporting and workflow documentation
-
-**Components**:
-- `cchs_osf_download_report.qmd` - Download status
-- `sync_workflow.qmd` - Executable workflow docs
-- `cchs_catalog.qmd` - Catalog browser
-
-**Key Features**:
-- Quarto-based reports
-- HTML and PDF output
-- Interactive tables (GT, DataTables)
-- Reproducible workflows
-
-## 🔄 Data Flow
-
-### 1. OSF Synchronization Flow
+### Three-tier architecture
 
 ```
-OSF.io API
-    ↓ (GET requests with pagination)
-Metadata extraction
-    ↓ (Save to YAML)
-cchs-osf-docs/osf-metadata/YEAR.yaml
-    ↓ (Git diff detection)
-Change detection
-    ↓ (Download if needed)
-cchs-osf-docs/YEAR/... (files)
+CSV (source of truth)  →  DuckDB (queryable)  →  MCP server (tools)
 ```
 
-### 2. Catalog Generation Flow
+1. **CSV files** (`data/sources.csv`, `data/datasets.csv`, `data/variables.csv`) are git-tracked, human-editable reference data. They define the skeletal structure: which sources exist, which datasets exist, which variables exist.
+
+2. **DuckDB** (`database/cchs_metadata.duckdb`) is a build artefact (gitignored). The build script loads CSVs, then runs ingestion scripts that enrich the database with per-dataset metadata from primary sources (RData, DDI XML).
+
+3. **MCP server** (`mcp-server/server.py`) exposes 9 query tools over the DuckDB database for LLM agents and scripts.
+
+### Data flow
 
 ```
-cchs-osf-docs/ (source files)
-    ↓ (Scan and extract metadata)
-File metadata extraction
-    ↓ (UID assignment)
-UID generation (smart sequencing)
-    ↓ (Categorization)
-Enhanced categorization
-    ↓ (Validation)
-LinkML schema validation
-    ↓ (Save)
-data/catalog/cchs_catalog.yaml
+data/sources.csv    ─┐
+data/datasets.csv   ─┤─→ database/build_db.R ─→ database/cchs_metadata.duckdb
+data/variables.csv  ─┘         │                        │
+                        Phase 0: load CSVs              │
+                        Phase 1: ingest RData     mcp-server/server.py
+                        Phase 2: ingest DDI XML   (9 query tools)
+                               │                        │
+                    ┌──────────┘               ┌────────┘
+                    ▼                          ▼
+          ../cchsflow-data/            LLM agents, R/Python
+          data/sources/rdata/ (11)     scripts, web frontends
+          ddi/ (11)
 ```
 
-### 3. Collection Generation Flow
+## Data sources
 
-```
-User specifies filters
-    ↓ (Load catalog)
-Read cchs_catalog.yaml
-    ↓ (Filter files)
-Apply filters (year, lang, doc_type, category)
-    ↓ (Copy files)
-Copy to temp directory with canonical names
-    ↓ (Generate manifest)
-Create CSV manifest with metadata
-    ↓ (Package)
-Create ZIP + move manifest to data/manifests/
-    ↓ (Release)
-Upload to GitHub release
-```
+| Source ID | Name | Authority | Files | Content |
+|-----------|------|-----------|-------|---------|
+| `pumf_rdata` | CCHS PUMF RData files | primary | 11 | Variable names, R types, factor levels with frequencies |
+| `ddi_xml` | CCHS DDI XML documentation | primary | 11 | Labels, question text, universe, response categories, summary statistics |
+| `master_sas_label` | CCHS Master SAS English label files | primary | 34 | Variable names and labels from StatCan Master SAS layout files |
+| `ices_scrape` | ICES Data Dictionary scrape | secondary | 1 | Variable names, abbreviated labels, dataset IDs, value formats |
+| `cchsflow` | cchsflow R package worksheets | secondary | 2 | Harmonized variable names, family mappings, section/subject classification |
+| `yaml_extract` | Extracted YAML data dictionaries | secondary | 42 | Variable definitions from PDF data dictionaries (AI-extracted, quality varies) |
 
-## 💾 Data Storage Strategy
+Sources are registered in `data/sources.csv` and loaded into the `sources` table during the build.
 
-### Git-Tracked (Repository)
+## Database schema (v2)
 
-**What**: Metadata, manifests, code, small configs
+The database has 13 tables and 6 views, defined in `database/schema.sql`.
 
-- Source code (`R/`, `.github/`)
-- OSF mirror (`cchs-osf-docs/`) - ~166 MB
-- Catalog (`data/catalog/cchs_catalog.yaml`) - ~500 KB
-- Manifests (`data/manifests/*.csv`) - ~25 KB each
-- Documentation (`docs/`, `README.md`, etc.)
-- Configuration (`.gitignore`, `config.yml`)
+### CSV-sourced tables
 
-**Why**: Version control, change tracking, collaboration
+These tables are loaded directly from git-tracked CSV files. They define the reference structure.
 
-### Gitignored (Local Only)
+| Table | Rows | Description |
+|-------|------|-------------|
+| `sources` | 6 | Data source registry with authority level |
+| `datasets` | 251 | One row per survey file release with parsed cycle, temporal_type, release, geo, content |
+| `variables` | 16,171 | One row per unique variable name with three-label model, status, and provenance counts |
 
-**What**: Build artifacts, credentials, temporary files
+### DuckDB-only tables
 
-- Collection ZIPs (`build/*.zip`)
-- Environment variables (`.env`)
-- R workspace (`.RData`, `.Rhistory`)
-- Temporary files (`*~`, `.DS_Store`)
+These tables are machine-generated during ingestion. Too large or dynamic for CSV.
 
-**Why**: Large files, sensitive data, generated content
+| Table | Rows | Description |
+|-------|------|-------------|
+| `dataset_sources` | ~253 | Which specific files attest each dataset |
+| `dataset_aliases` | ~253 | Maps external IDs (e.g., `CCHS200708_PUMF`) to canonical `dataset_id` |
+| `variable_datasets` | ~21,810 | Per-source metadata for each variable-dataset pair (label, type, position, question_text) |
+| `value_codes` | ~145,910 | Response categories per variable per dataset, separate rows per source |
+| `variable_summary_stats` | ~10,893 | Distributional statistics from DDI XML (mean, median, stdev, min, max) |
+| `variable_groups` | ~562 | Module classifications from DDI XML (e.g., "SMK: Smoking") |
+| `variable_group_members` | ~9,642 | Which variables belong to which module groups |
+| `variable_families` | 0 | Cross-cycle variable equivalents (Phase 3, not yet populated) |
+| `variable_family_members` | 0 | Maps cycle-specific names to families (Phase 3) |
+| `catalog_metadata` | 3 | Build metadata (schema version, build date, R version) |
 
-### GitHub Releases (Distribution)
+### Views
 
-**What**: Collection ZIP files and manifests
+| View | Purpose |
+|------|---------|
+| `v_variable_history` | Variable across cycles — best metadata merged from all sources |
+| `v_variable_datasets_detail` | All source rows preserved for provenance auditing |
+| `v_dataset_variables` | Variables in a dataset with deduplicated labels |
+| `v_dataset_provenance` | All sources for each dataset (joins dataset_sources → sources) |
+| `v_family_history` | Cross-cycle variable equivalents via family tables |
+| `v_variable_groups` | Module membership per variable per dataset |
 
-- Collection ZIPs (e.g., `cchs-core-master-collection-v1.1.0.zip`)
-- Manifest copies (for convenience)
-- Release notes with checksums
+## Provenance model
 
-**Why**: Large file distribution, versioned downloads, user access
+Every record tracks its origin. This is essential because the database is populated incrementally from sources of varying reliability.
 
-## 🔐 Security & Authentication
+### Three mechanisms
 
-### OSF.io Authentication
+1. **Source authority** (`sources.authority`): `primary` (StatCan-generated) vs `secondary` (derived/scraped). Primary sources are trusted for promoting `status` from `temp` to `active`.
 
-- Personal Access Token (PAT) stored in `.env`
-- Never committed to Git
-- Required permissions: Read/write for private project
-- Token passed via HTTP headers
+2. **Row-level metadata** on every table: `version`, `status`, `last_updated`, `notes`. The `status` field tracks verification: `active` (verified against primary source), `temp` (unverified), `draft` (incomplete), `inactive` (superseded).
 
-### GitHub Authentication
+3. **Separate rows per source** in linking tables: `variable_datasets` is keyed by `(variable_name, dataset_id, source_id)`. The same variable from RData and DDI gets separate rows, each carrying their own metadata. Disagreements are visible, not silently collapsed.
 
-- GitHub Actions uses `GITHUB_TOKEN` (automatic)
-- No manual token management needed for releases
-- Workflow permissions configured in YAML
+### Three-label model
 
-## 🎨 Design Principles
+| Column | Source | Mutable | Purpose |
+|--------|--------|---------|---------|
+| `label_statcan` | Latest DDI or RData, verbatim | No | Provenance and fidelity |
+| `label_short` | CCHS conventions (≤40 chars) | Yes | Table headers, search results |
+| `label_long` | Full descriptive | Yes | Documentation |
 
-### 1. Separation of Concerns
+## Build pipeline
 
-- **Source** (`cchs-osf-docs/`): Original files, read-only
-- **Catalog** (`data/catalog/`): Metadata only
-- **Collections** (`build/`): Derived artifacts
-- **Releases**: Distribution platform
-
-### 2. Reproducibility
-
-- All collections regenerable from OSF mirror
-- Deterministic UID assignment
-- Documented workflows
-- Version-controlled code
-
-### 3. Single Source of Truth
-
-- OSF.io is upstream source
-- `cchs-osf-docs/` is local mirror (authoritative copy)
-- Catalog derived from mirror
-- Collections derived from catalog
-
-### 4. Automation
-
-- Scripted sync workflows
-- Automated catalog generation
-- GitHub Actions for releases
-- Validation at every step
-
-### 5. Versioning
-
-- Semantic versioning for collections
-- Git for code and metadata
-- Manifests track file versions
-- Release tags for distribution
-
-## 🔧 Technology Stack
-
-### Core Technologies
-
-- **R**: Data processing, cataloging, collection generation
-- **YAML**: Catalog storage format
-- **CSV**: Manifest format (portable, simple)
-- **LinkML**: Schema validation
-- **Git**: Version control
-- **GitHub**: Hosting and releases
-- **Quarto**: Reporting and documentation
-
-### Key R Packages
-
-```r
-# OSF Integration
-library(httr)         # HTTP client for OSF API
-library(jsonlite)     # JSON parsing
-
-# Data Processing
-library(dplyr)        # Data manipulation
-library(readr)        # CSV reading/writing
-library(yaml)         # YAML reading/writing
-
-# Infrastructure
-library(config)       # Configuration management
-library(git2r)        # Git operations
-
-# Reporting
-library(gt)           # Tables
-library(quarto)       # Documentation
+```bash
+Rscript --vanilla database/build_db.R
 ```
 
-## 📊 Performance Characteristics
+The build is deterministic and takes approximately 2 minutes. It deletes the existing database and rebuilds from scratch.
 
-### Catalog Size
+| Phase | Script | Input | Output |
+|-------|--------|-------|--------|
+| 0 | `build_db.R` | CSVs + `schema.sql` | Fresh DuckDB with sources, datasets, variables, dataset_sources, dataset_aliases |
+| 1 | `ingest_pumf_rdata.R` | 11 RData files | variable_datasets, value_codes (source_id = `pumf_rdata`) |
+| 2 | `ingest_ddi_xml.R` | 11 DDI XML files | variable_datasets, value_codes, variable_summary_stats, variable_groups (source_id = `ddi_xml`) |
+| Post | `build_db.R` | — | Status promotion: variables with primary sources → `active` |
 
-- **Files**: 1,262 documents
-- **YAML Size**: ~500 KB (uncompressed)
-- **Load Time**: <1 second in R
-- **Validation Time**: ~2-3 seconds
+Future phases (not yet implemented):
+- **Phase 3**: Variable family seeding from cchsflow
+- **Phase 4**: Merge validation and integrity checks
 
-### Collection Generation
+## MCP server
 
-- **Core Master Collection**: 129 files, ~166 MB
-- **Generation Time**: ~30-60 seconds
-- **Manifest Size**: ~23 KB
+The MCP server at `mcp-server/server.py` exposes 9 read-only tools via FastMCP:
 
-### OSF Synchronization
+| Tool | Purpose |
+|------|---------|
+| `search_variables` | Full-text search on variable names and labels |
+| `get_variable_detail` | Complete metadata for one variable (history, value codes, summary stats, groups) |
+| `get_variable_history` | Trace a variable across all cycles and datasets |
+| `get_dataset_variables` | List all variables in a dataset (with alias resolution) |
+| `get_common_variables` | Variables shared between two datasets |
+| `compare_master_pumf` | Compare a variable across file types within a cycle |
+| `get_value_codes` | Response categories with weighted frequencies |
+| `suggest_cchsflow_row` | Draft cchsflow worksheet row for harmonization |
+| `get_database_summary` | High-level database statistics |
 
-- **Full Sync**: ~10-15 minutes (all years)
-- **Incremental Sync**: ~1-2 minutes (changed years only)
-- **Change Detection**: <10 seconds (git-based)
+For tutorials and workflow examples, see [mcp-guide.md](mcp-guide.md). For complete tool specifications, see [mcp-reference.md](mcp-reference.md).
 
-## 🚀 Scalability
+### Configuration
 
-### Current Scale
+The MCP server is configured in `.mcp.json` at the repository root. It connects to the DuckDB database via the `CCHS_DB_PATH` environment variable.
 
-- ✅ 1,262 files cataloged
-- ✅ 19 survey years (2001-2023)
-- ✅ Repository size: ~166 MB
-- ✅ Clone time: ~30-60 seconds
+## Repository structure
 
-### Future Scale
+```
+cchsflow-docs/
+├── database/
+│   ├── cchs_metadata.duckdb       # Build artefact (gitignored)
+│   ├── schema.sql                 # v2 schema DDL (13 tables, 6 views)
+│   └── build_db.R                 # Master build script (Phase 0→1→2)
+├── ingestion/
+│   ├── ingest_pumf_rdata.R        # Phase 1: RData → variable_datasets + value_codes
+│   └── ingest_ddi_xml.R          # Phase 2: DDI XML → full enrichment
+├── mcp-server/
+│   ├── server.py                  # FastMCP v2 server (9 tools)
+│   └── requirements.txt
+├── data/
+│   ├── sources.csv                # Source registry (6 sources)
+│   ├── datasets.csv               # Dataset definitions (251 datasets)
+│   ├── variables.csv              # Variable registry (16,171 variables)
+│   ├── sources/
+│   │   └── sas-master-labels/     # 35 StatCan Master SAS label files
+│   └── catalog/
+│       └── cchs_catalog.yaml      # Document-level metadata (1,421 entries)
+├── development/
+│   ├── architecture/
+│   │   ├── PLAN_database_rebuild.md  # Full design rationale and enum references
+│   │   └── PROPOSAL_mcp_metadata_architecture.md
+│   └── ontology/                  # Variable relationship modelling (in progress)
+├── docs/
+│   ├── architecture.md            # This file
+│   ├── mcp-guide.md               # MCP tool tutorials and workflow examples
+│   └── mcp-reference.md           # MCP tool specifications
+├── .claude/
+│   └── skills/
+│       ├── cchs-database/         # Database build and maintenance workflow
+│       └── cchs-documentation/    # CCHS documentation lookups and naming conventions
+└── .mcp.json                      # MCP server configuration
+```
 
-- Can handle 5,000+ files without architectural changes
-- Can support 50+ survey years
-- Repository size manageable up to ~500 MB
-- For larger scale, consider Git LFS for OSF mirror
+## Design decisions
 
-## 🔍 Monitoring & Validation
+1. **Variable names as primary keys.** DDI position IDs (V622, V238) change between cycles. Variable names (SMKDSTY) are what researchers use and are stable identifiers.
 
-### Automated Checks
+2. **Normalised storage, denormalised views.** Tables are normalised for integrity. Views aggregate data into complete records so MCP tools return full context in one call.
 
-- LinkML schema validation on catalog
-- UID uniqueness verification
-- File count consistency checks
-- Checksum validation
+3. **Full provenance — never collapsed.** Every record keeps its source_id. If RData and DDI both describe the same variable, they get separate rows. This makes disagreements visible and auditable.
 
-### Manual Reviews
+4. **CSV source of truth.** Human-editable CSV files define the reference structure. The DuckDB database is a reproducible build artefact. This separates curation (CSV edits) from computation (ingestion scripts).
 
-- Change detection reports
-- Collection manifest reviews
-- Documentation updates
-- Release notes verification
+5. **DuckDB.** Embedded, serverless, fast analytical queries. R and Python both read the same file. No infrastructure to maintain.
 
----
+6. **Canonical dataset naming.** `cchs-{year}{s|d}-{release}-{geo}[-{content}][-{subfile}]` — human-readable, parseable, consistent. External IDs (ICES, RData filenames) are stored as aliases.
 
-For more details on specific components, see:
-- [Collections Guide](collections-guide.md)
-- [OSF Sync Guide](osf-sync-guide.md)
-- [UID System](uid-system.md)
+See [PLAN_database_rebuild.md](../development/architecture/PLAN_database_rebuild.md) for the complete set of design decisions, enum references, and schema rationale.

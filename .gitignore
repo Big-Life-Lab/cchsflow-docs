@@ -25,12 +25,19 @@ osf_credentials.R
 # Google Drive credentials (security)
 .secrets/
 .secrets
-# Downloaded data directories
+# Downloaded data directories (mirrored on Google Drive)
 odesi-data/
 cchs-data-docs/
+cchs-osf-docs/
+data/sources/sas-master-labels/
 # Temporary files
 *~
 .DS_Store
+# Python cache
+__pycache__/
+# Claude Code local config
+.claude/
+.mcp.json
 # AI context (local development)
 CLAUDE.md
 # Build artifacts (collections as release assets)
@@ -41,7 +48,9 @@ build/
 _site/
 .quarto/
 
-# ICES Data Dictionary (distributed via GitHub releases)
+# DuckDB databases (build artifacts)
+database/cchs_metadata.duckdb
+database/cchs_metadata.duckdb.wal
 data/ices_cchs_dictionary.duckdb
 data/ices_cchs_dictionary.duckdb.wal
 data/catalog/ices_cchs_availability_matrix.csv

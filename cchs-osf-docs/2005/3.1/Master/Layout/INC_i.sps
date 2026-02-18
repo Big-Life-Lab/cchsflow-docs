@@ -1,6 +1,0 @@
-DATA LIST FILE = INFILE NOTABLE/
- SAMPLEID     1-  20 (A)
- INCEDIA2    21-  21    
- INCEDIA4    22-  22    
- INCEDIA5    23-  23    
-    .

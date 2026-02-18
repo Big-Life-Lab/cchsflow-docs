@@ -1,3 +1,0 @@
-Note that the frequency counts in the data dictionary will not match frequencies run on the share data file. 
-The share file was reissued due to respondents requesting their information be removed as a result of the breach in BC.
-The data dictionary was not recreated because the required source files deleted under the micro data retention policy.
