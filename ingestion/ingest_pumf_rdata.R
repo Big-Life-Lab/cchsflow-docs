@@ -20,9 +20,9 @@ library(duckdb)
 
 # RData filename → canonical dataset_id mapping
 RDATA_DATASET_MAP <- list(
-  "CCHS_2001.RData"      = "cchs-2001s-p-can",
-  "CCHS_2003.RData"      = "cchs-2003s-p-can",
-  "CCHS_2005.RData"      = "cchs-2005s-p-can",
+  "CCHS_2001.RData"      = "cchs-2001d-p-can",
+  "CCHS_2003.RData"      = "cchs-2003d-p-can",
+  "CCHS_2005.RData"      = "cchs-2005d-p-can",
   "CCHS_2007_2008.RData" = "cchs-2007d-p-can",
   "CCHS_2009_2010.RData" = "cchs-2009d-p-can",
   "CCHS_2011_2012.RData" = "cchs-2011d-p-can",

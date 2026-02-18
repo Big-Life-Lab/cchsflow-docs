@@ -30,9 +30,9 @@ library(xml2)
 
 # DDI XML filename → canonical dataset_id mapping
 DDI_DATASET_MAP <- list(
-  "CCHS_2001_DDI.xml"      = "cchs-2001s-p-can",
-  "CCHS_2003_DDI.xml"      = "cchs-2003s-p-can",
-  "CCHS_2005_DDI.xml"      = "cchs-2005s-p-can",
+  "CCHS_2001_DDI.xml"      = "cchs-2001d-p-can",
+  "CCHS_2003_DDI.xml"      = "cchs-2003d-p-can",
+  "CCHS_2005_DDI.xml"      = "cchs-2005d-p-can",
   "CCHS_2007_2008_DDI.xml" = "cchs-2007d-p-can",
   "CCHS_2009_2010_DDI.xml" = "cchs-2009d-p-can",
   "CCHS_2011_2012_DDI.xml" = "cchs-2011d-p-can",
