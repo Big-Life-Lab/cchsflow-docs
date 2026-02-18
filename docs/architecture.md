@@ -147,6 +147,8 @@ The MCP server at `mcp-server/server.py` exposes 9 read-only tools via FastMCP:
 | `suggest_cchsflow_row` | Draft cchsflow worksheet row for harmonization |
 | `get_database_summary` | High-level database statistics |
 
+For tutorials and workflow examples, see [mcp-guide.md](mcp-guide.md). For complete tool specifications, see [mcp-reference.md](mcp-reference.md).
+
 ### Configuration
 
 The MCP server is configured in `.mcp.json` at the repository root. It connects to the DuckDB database via the `CCHS_DB_PATH` environment variable.
@@ -170,7 +172,7 @@ cchsflow-docs/
 │   ├── datasets.csv               # Dataset definitions (251 datasets)
 │   ├── variables.csv              # Variable registry (16,171 variables)
 │   ├── sources/
-│   │   └── sas-master-labels/     # 34 StatCan Master SAS label files
+│   │   └── sas-master-labels/     # 35 StatCan Master SAS label files
 │   └── catalog/
 │       └── cchs_catalog.yaml      # Document-level metadata (1,421 entries)
 ├── development/
@@ -179,7 +181,9 @@ cchsflow-docs/
 │   │   └── PROPOSAL_mcp_metadata_architecture.md
 │   └── ontology/                  # Variable relationship modelling (in progress)
 ├── docs/
-│   └── architecture.md            # This file
+│   ├── architecture.md            # This file
+│   ├── mcp-guide.md               # MCP tool tutorials and workflow examples
+│   └── mcp-reference.md           # MCP tool specifications
 ├── .claude/
 │   └── skills/
 │       ├── cchs-database/         # Database build and maintenance workflow

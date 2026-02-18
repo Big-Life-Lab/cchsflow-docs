@@ -10,6 +10,7 @@ A production metadata catalog system for Canadian health survey documentation in
 | **Complete CHMS files** | [`chms-osf-docs/`](chms-osf-docs/) | Cycles 1-6 (52 files) |
 | **Parsed/extracted content** | [`cchs-extracted/`](cchs-extracted/) | Variable definitions as YAML |
 | **Curated download** | [GitHub Releases](../../releases) | Core Master Collection ZIP |
+| **Query variable metadata** | [MCP server](docs/mcp-guide.md) | 16,899 variables across 251 datasets |
 | **Search by metadata** | [`data/catalog/`](data/catalog/) | YAML catalogs with all file info |
 
 > **Note:** The `cchs-pumf-docs/` folder contains a legacy subset of PUMF files (through 2017 only). For complete documentation, use `cchs-osf-docs/`.
@@ -112,15 +113,33 @@ See [ENVIRONMENT.md](ENVIRONMENT.md) for complete setup instructions, including 
 
 ---
 
-### 🔍 CCHS Variable Browser
+### CCHS variable metadata (MCP server)
 
-**[Browse 14,005 CCHS Variables](https://big-life-lab.github.io/cchsflow-docs/cchs-browser/)** 🔗
+The MCP server provides 9 query tools for exploring CCHS variable metadata programmatically. LLM agents (Claude, ChatGPT) and researchers can search variables, trace them across cycles, compare PUMF vs Master releases, and generate cchsflow harmonisation rows.
+
+- **[Tutorial and how-to guide](docs/mcp-guide.md)** — Walkthrough and task-oriented recipes
+- **[Tool reference](docs/mcp-reference.md)** — Complete specification for all 9 tools
+
+Database: 16,899 variables, 251 datasets, 6 data sources, cycles 2001-2022.
+
+```bash
+# Build the database (~2 min)
+Rscript --vanilla database/build_db.R
+
+# The MCP server is configured in .mcp.json and discovered automatically
+```
+
+---
+
+### CCHS variable browser
+
+**[Browse 14,005 CCHS Variables](https://big-life-lab.github.io/cchsflow-docs/cchs-browser/)**
 
 Interactive searchable table of all Statistics Canada CCHS variables across 231 datasets. Search by variable name, label, module, or type. Export filtered results to CSV.
 
 ---
 
-### 🤖 AI-Powered Documentation Assistant
+### AI-powered documentation assistant
 
 **[CCHS Documentation NotebookLM](https://notebooklm.google.com/notebook/d89f1bf8-1eb5-4bc7-bfd4-462be2c01a08)** 🔗
 
