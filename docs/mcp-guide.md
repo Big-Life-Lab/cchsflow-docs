@@ -4,6 +4,21 @@ The CCHS metadata MCP server provides 9 tools for querying the Canadian Communit
 
 For complete tool specifications, see [mcp-reference.md](mcp-reference.md).
 
+## TL;DR — what can I ask?
+
+The MCP server has metadata for 16,899 CCHS variables across 251 datasets (2001-2022). Ask your LLM agent questions like:
+
+- "Find all smoking cessation variables across all CCHS Master files from 2001 onward"
+- "What response categories does SMKDSTY have, and did they change between cycles?"
+- "Which alcohol variables are common to both the 2013-2014 and 2015-2016 PUMF?"
+- "Show me the question text and universe for GEN_010"
+- "Compare DHHGAGE between the PUMF and Share files for 2017-2018"
+- "Generate a cchsflow harmonisation row for CCC_101 in the 2011-2012 cycle"
+- "How many variables are in the 2022 PUMF?"
+- "What modules group the physical activity variables?"
+
+The agent will call the appropriate MCP tools automatically. No tool syntax required — just describe what you need.
+
 ## Getting started
 
 ### Prerequisites
@@ -67,8 +82,7 @@ Key fields in the response:
 
 | Field | Example value |
 |-------|---------------|
-| `label_short` | Smoking status |
-| `label_long` | Type of smoker: daily, occasional, former daily, former occasional, never |
+| `label_statcan` | Type of smoker - (D) |
 | `question_text` | Type of smoker - (D) |
 | `universe` | All respondents |
 | `section` | Health behaviour |
@@ -247,14 +261,14 @@ suggest_cchsflow_row("GEN_010", "2015-2016")
   "variable_name": "GEN_010",
   "target_cycle": "2015-2016",
   "available_in_cycle": true,
-  "label": "Life satisfaction_cont",
+  "label": "Satisfaction with life in general",
   "question_text": "Using a scale of 0 to 10, where 0 means \"Very dissatisfied\" and 10 means \"Very satisfied\", how do you feel about your life as a whole right now?",
   "cchsflow_name": "GEN_02A2",
   "suggested_row": {
     "variable": "GEN_010",
     "databaseStart": "cchs-2015d-p-can",
     "variableStart": "GEN_010",
-    "variableStartLabel": "Life satisfaction_cont",
+    "variableStartLabel": "Satisfaction with life in general",
     "rec_from": "copy",
     "rec_to": "GEN_02A2",
     "note": "Auto-suggested for cycle 2015-2016. Review before use."
