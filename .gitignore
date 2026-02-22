@@ -30,6 +30,7 @@ odesi-data/
 cchs-data-docs/
 cchs-osf-docs/
 data/sources/sas-master-labels/
+data/sources/613apps/
 # Temporary files
 *~
 .DS_Store
