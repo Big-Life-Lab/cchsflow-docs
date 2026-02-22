@@ -6,7 +6,8 @@
 #
 # Phase 0: Create fresh DuckDB, apply schema, load CSVs
 # Phase 1: Ingest PUMF RData
-# Phase 2: Ingest DDI XML (future)
+# Phase 2: Ingest DDI XML
+# Phase 2.5: Ingest Master PDF Data Dictionary (2022, 2023)
 # Phase 3: Validate merge (future)
 #
 # Usage: Rscript --vanilla database/build_db.R
@@ -153,6 +154,20 @@ if (dir.exists(ddi_dir)) {
   ingest_ddi_xml(con, ddi_dir)
 } else {
   cat("\n\nPhase 2: SKIPPED (DDI directory not found:", ddi_dir, ")\n")
+}
+
+# ------------------------------------------------------------------
+# Phase 2.5: Master PDF Data Dictionary ingestion
+# ------------------------------------------------------------------
+master_dd_dir <- "data/sources/master-pdf-dd/"
+
+if (dir.exists(master_dd_dir) &&
+    length(list.files(master_dd_dir, pattern = "_master_dd\\.csv$")) > 0) {
+  cat("\n\nPhase 2.5: Master PDF Data Dictionary ingestion\n")
+  source("ingestion/ingest_master_pdf_dd.R")
+  ingest_master_pdf_dd(con, master_dd_dir)
+} else {
+  cat("\n\nPhase 2.5: SKIPPED (Master DD CSVs not found in:", master_dd_dir, ")\n")
 }
 
 # ------------------------------------------------------------------
