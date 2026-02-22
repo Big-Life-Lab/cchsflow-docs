@@ -248,6 +248,7 @@ CCHS2021_ONT_SHARE,cchs-2021s-s-ont,2021,2021,ont,single,gen,share,,,689,0,1
 CCHS2021_ONT_SHARE_BOOT,cchs-2021s-s-ont-boot,2021,2021,ont,single,gen,share,,boot,1003,0,1
 CCHS2021_ONT_SHARE_BOOT_HH,cchs-2021s-s-ont-boot.hh,2021,2021,ont,single,gen,share,,boot.hh,1002,0,1
 CCHS2021_ONT_SHARE_HH,cchs-2021s-s-ont-hh,2021,2021,ont,single,gen,share,,hh,2,0,1
+,cchs-2021s-m-can,2021,2021,can,single,gen,master,,,0,0,0
 ,cchs-2022s-m-can,2022,2022,can,single,gen,master,,,255,0,0
 ,cchs-2023s-m-can,2023,2023,can,single,gen,master,,,0,0,0
 ,cchs-2022s-p-can,2022,2022,can,single,gen,pumf,,,255,1,0

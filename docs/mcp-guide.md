@@ -4,7 +4,7 @@
 
 The CCHS metadata server gives AI assistants (Claude, GPT, Gemini, etc.) direct access to the Canadian Community Health Survey variable database. Instead of searching through PDF data dictionaries or spreadsheets, you ask your AI assistant a question in plain English and it queries the database for you.
 
-**What it knows:** metadata for 16,899 CCHS variables across 251 datasets, spanning 2001 to 2022. This includes variable names, labels, question text, response categories with frequencies, and which survey cycles contain each variable.
+**What it knows:** metadata for 16,963 CCHS variables across 253 datasets, spanning 2001 to 2023. This includes variable names, labels, question text, response categories with frequencies, and which survey cycles contain each variable. Master file metadata is available from 2001 to 2023; PUMF metadata from 2001 to 2022.
 
 **What it doesn't have:** the actual survey microdata (respondent-level records). This is a metadata tool — it tells you what variables exist and how they're structured, not the data values themselves.
 
@@ -35,7 +35,7 @@ For technical details on individual tools, see [mcp-reference.md](mcp-reference.
 
 ## TL;DR — what can I ask?
 
-The MCP server has metadata for 16,899 CCHS variables across 251 datasets (2001-2022). Ask your AI assistant questions like:
+The MCP server has metadata for 16,963 CCHS variables across 253 datasets (2001-2023). Ask your AI assistant questions like:
 
 - "Find all smoking cessation variables across all CCHS Master files from 2001 onward"
 - "What response categories does SMKDSTY have, and did they change between cycles?"
@@ -76,7 +76,7 @@ Start with a keyword search.
 
 > *"Search for smoking variables in the CCHS."*
 
-This returns variables like `SMK_06B`, `SMK_09B`, `SMKDSTY`, and others. The variable `SMKDSTY` (Type of smoker — derived) appears across 4 PUMF datasets.
+This returns variables like `SMK_06B`, `SMK_09B`, `SMKDSTY`, and others. The variable `SMKDSTY` (Type of smoker — derived) appears across multiple PUMF and Master datasets.
 
 ### Step 2: get full details
 
@@ -103,16 +103,20 @@ Ask which survey cycles contain the variable.
 
 > *"Which CCHS cycles have SMKDSTY?"*
 
-The assistant will report that SMKDSTY appears in four consecutive dual-year PUMF cycles:
+The assistant will report that SMKDSTY appears in multiple PUMF and Master cycles:
 
-| Dataset | Years | Release |
-|---------|-------|---------|
-| cchs-2007d-p-can | 2007-2008 | PUMF |
-| cchs-2009d-p-can | 2009-2010 | PUMF |
-| cchs-2011d-p-can | 2011-2012 | PUMF |
-| cchs-2013d-p-can | 2013-2014 | PUMF |
+| Dataset | Years | Release | Sources |
+|---------|-------|---------|---------|
+| cchs-2003d-m-can | 2003 | Master | 613apps |
+| cchs-2003d-p-can | 2003 | PUMF | 613apps |
+| cchs-2005d-m-can | 2005 | Master | 613apps |
+| cchs-2005d-p-can | 2005 | PUMF | 613apps |
+| cchs-2007d-p-can | 2007-2008 | PUMF | pumf_rdata, ddi_xml, 613apps |
+| cchs-2009d-p-can | 2009-2010 | PUMF | pumf_rdata, ddi_xml, 613apps |
+| cchs-2011d-p-can | 2011-2012 | PUMF | pumf_rdata, ddi_xml, 613apps |
+| cchs-2013d-p-can | 2013-2014 | PUMF | pumf_rdata, ddi_xml, 613apps |
 
-It is not present in earlier or later PUMF files — the derived variable naming changed over time.
+Master datasets now show alongside PUMF, and multiple data sources are listed for each entry.
 
 ### Step 4: check response categories
 
@@ -141,7 +145,7 @@ Ask whether a variable differs between PUMF, Share, and Master releases.
 
 > *"Compare SMKDSTY between file types for the 2013-2014 cycle."*
 
-In this case only the PUMF release is in the database. When both PUMF and Share/Master are present, the assistant will show whether response categories or labels differ between releases — useful for understanding privacy-related category collapsing.
+The assistant will show both the PUMF and Master releases for this cycle. When both are present, you can compare whether response categories or labels differ between releases — useful for understanding privacy-related category collapsing.
 
 ## How-to recipes
 
@@ -193,7 +197,7 @@ CCHS dataset IDs follow the pattern `cchs-{year}{temporal}-{release}-{geography}
 
 | Component | Values | Example |
 |-----------|--------|---------|
-| Year | 2001-2022 | `2015` |
+| Year | 2001-2023 | `2015` |
 | Temporal | `s` (single-year), `d` (dual-year) | `d` |
 | Release | `p` (PUMF), `s` (Share), `m` (Master), `l` (Linked) | `p` |
 | Geography | `can` (national), `ont` (Ontario), etc. | `can` |

@@ -2,7 +2,7 @@
 
 Complete reference for the 9 MCP tools provided by the CCHS metadata server (`mcp-server/server.py`). For tutorials and workflow examples, see [mcp-guide.md](mcp-guide.md).
 
-The server queries a unified DuckDB database containing 16,899 variables across 251 datasets from 6 data sources spanning CCHS cycles 2001-2022.
+The server queries a unified DuckDB database containing 16,963 variables across 253 datasets from 8 data sources spanning CCHS cycles 2001-2023.
 
 ---
 
@@ -123,7 +123,7 @@ Get full metadata for a specific variable, including question text, response cat
 get_variable_detail("SMKDSTY")
 ```
 
-Response includes label fields, question text, 4 datasets (2007-2014 PUMF cycles), 10 value codes with weighted frequencies, summary statistics from the 2013 cycle, and module group memberships (SMK: Smoking, SMO: Smoking During Pregnancy).
+Response includes label fields, question text, 12 datasets (2003-2014 PUMF and Master cycles), 10 value codes with weighted frequencies, summary statistics from the 2013 cycle, and module group memberships (SMK: Smoking, SMO: Smoking During Pregnancy).
 
 ### Notes
 
@@ -338,15 +338,26 @@ compare_master_pumf("SMKDSTY", "2013-2014")
 {
   "variable_name": "SMKDSTY",
   "cycle": "2013-2014",
-  "releases_found": ["pumf"],
+  "releases_found": ["master", "pumf"],
   "comparisons": [
+    {
+      "dataset_id": "cchs-2013d-m-can",
+      "release": "master",
+      "label": "Type of smoker - (D)",
+      "sources": ["613apps"],
+      "value_codes": [
+        {"code": "1", "label": "DAILY"},
+        {"code": "2", "label": "OCCASIONAL"},
+        {"code": "6", "label": "NEVER SMOKED"}
+      ]
+    },
     {
       "dataset_id": "cchs-2013d-p-can",
       "release": "pumf",
       "label": "Type of smoker - (D)",
       "type": "numeric",
       "intrvl": "discrete",
-      "sources": ["ddi_xml", "pumf_rdata"],
+      "sources": ["613apps", "ddi_xml", "pumf_rdata"],
       "value_codes": [
         {"code": "1", "label": "DAILY", "frequency": 18413},
         {"code": "2", "label": "OCCASIONAL", "frequency": 3135},
@@ -536,15 +547,17 @@ get_database_summary()
 
 ```json
 {
-  "total_variables": 16899,
-  "active_variables": 6429,
-  "total_datasets": 251,
-  "total_variable_dataset_links": 21810,
-  "total_value_codes": 145910,
+  "total_variables": 16963,
+  "active_variables": 7011,
+  "total_datasets": 253,
+  "total_variable_dataset_links": 79251,
+  "total_value_codes": 532215,
   "sources": [
     {"source_id": "ddi_xml", "source_name": "CCHS DDI XML documentation", "authority": "primary", "n_files": 11},
+    {"source_id": "master_pdf_dd", "source_name": "CCHS Master PDF Data Dictionary", "authority": "primary", "n_files": 2},
     {"source_id": "master_sas_label", "source_name": "CCHS Master SAS English label files", "authority": "primary", "n_files": 35},
     {"source_id": "pumf_rdata", "source_name": "CCHS PUMF RData files", "authority": "primary", "n_files": 11},
+    {"source_id": "613apps", "source_name": "613apps.ca CCHS Data Dictionary", "authority": "secondary", "n_files": 24},
     {"source_id": "cchsflow", "authority": "secondary", "n_files": 2},
     {"source_id": "ices_scrape", "authority": "secondary", "n_files": 1},
     {"source_id": "yaml_extract", "authority": "secondary", "n_files": 42}
@@ -556,7 +569,7 @@ get_database_summary()
   ],
   "catalog_metadata": {
     "schema_version": "2.0.0",
-    "build_date": "2026-02-17"
+    "build_date": "2026-02-22"
   }
 }
 ```
@@ -564,5 +577,5 @@ get_database_summary()
 ### Notes
 
 - Use this tool to verify the database is built and to understand its scope before querying.
-- The `active_variables` count (6,429) is a subset of `total_variables` (16,899). Many variables have `temp` status, meaning they appear in metadata but have limited documentation.
+- The `active_variables` count (7,011) is a subset of `total_variables` (16,963). Many variables have `temp` status, meaning they appear in metadata but have limited documentation.
 - The `pumf_national_datasets` array lists only PUMF national files. Share, Master, Linked, and Income datasets are counted in `dataset_releases` but not listed individually.

@@ -29,12 +29,16 @@ data/variables.csv  ─┘         │                        │
                         Phase 0: load CSVs              │
                         Phase 1: ingest RData     mcp-server/server.py
                         Phase 2: ingest DDI XML   (9 query tools)
-                               │                        │
-                    ┌──────────┘               ┌────────┘
-                    ▼                          ▼
-          ../cchsflow-data/            LLM agents, R/Python
-          data/sources/rdata/ (11)     scripts, web frontends
+                        Phase 2.5: ingest Master PDF DD  │
+                        Phase 3: ingest 613apps   ┌─────┘
+                               │                  ▼
+                    ┌──────────┘           LLM agents, R/Python
+                    ▼                     scripts, web frontends
+          ../cchsflow-data/
+          data/sources/rdata/ (11)
           ddi/ (11)
+          data/sources/613apps/parsed/ (2)
+          data/sources/master-pdf-dd/ (4)
 ```
 
 ## Data sources
@@ -43,9 +47,11 @@ data/variables.csv  ─┘         │                        │
 |-----------|------|-----------|-------|---------|
 | `pumf_rdata` | CCHS PUMF RData files | primary | 11 | Variable names, R types, factor levels with frequencies |
 | `ddi_xml` | CCHS DDI XML documentation | primary | 11 | Labels, question text, universe, response categories, summary statistics |
-| `master_sas_label` | CCHS Master SAS English label files | primary | 34 | Variable names and labels from StatCan Master SAS layout files |
+| `master_sas_label` | CCHS Master SAS English label files | primary | 35 | Variable names and labels from StatCan Master SAS layout files |
+| `master_pdf_dd` | CCHS Master PDF Data Dictionary | primary | 2 | Variable definitions, answer categories with frequencies (2022, 2023) |
+| `613apps` | 613apps.ca CCHS Data Dictionary | secondary | 24 | Variable names, labels, format codes, response categories (13 Master + 10 PUMF cycles) |
 | `ices_scrape` | ICES Data Dictionary scrape | secondary | 1 | Variable names, abbreviated labels, dataset IDs, value formats |
-| `cchsflow` | cchsflow R package worksheets | secondary | 2 | Harmonized variable names, family mappings, section/subject classification |
+| `cchsflow` | cchsflow R package worksheets | secondary | 2 | Harmonised variable names, family mappings, section/subject classification |
 | `yaml_extract` | Extracted YAML data dictionaries | secondary | 42 | Variable definitions from PDF data dictionaries (AI-extracted, quality varies) |
 
 Sources are registered in `data/sources.csv` and loaded into the `sources` table during the build.
@@ -60,9 +66,9 @@ These tables are loaded directly from git-tracked CSV files. They define the ref
 
 | Table | Rows | Description |
 |-------|------|-------------|
-| `sources` | 6 | Data source registry with authority level |
-| `datasets` | 251 | One row per survey file release with parsed cycle, temporal_type, release, geo, content |
-| `variables` | 16,171 | One row per unique variable name with three-label model, status, and provenance counts |
+| `sources` | 8 | Data source registry with authority level |
+| `datasets` | 253 | One row per survey file release with parsed cycle, temporal_type, release, geo, content |
+| `variables` | 16,963 | One row per unique variable name with three-label model, status, and provenance counts |
 
 ### DuckDB-only tables
 
@@ -70,15 +76,15 @@ These tables are machine-generated during ingestion. Too large or dynamic for CS
 
 | Table | Rows | Description |
 |-------|------|-------------|
-| `dataset_sources` | ~253 | Which specific files attest each dataset |
-| `dataset_aliases` | ~253 | Maps external IDs (e.g., `CCHS200708_PUMF`) to canonical `dataset_id` |
-| `variable_datasets` | ~21,810 | Per-source metadata for each variable-dataset pair (label, type, position, question_text) |
-| `value_codes` | ~145,910 | Response categories per variable per dataset, separate rows per source |
+| `dataset_sources` | ~276 | Which specific files attest each dataset |
+| `dataset_aliases` | ~274 | Maps external IDs (e.g., `CCHS200708_PUMF`) to canonical `dataset_id` |
+| `variable_datasets` | ~79,251 | Per-source metadata for each variable-dataset pair (label, type, position, question_text) |
+| `value_codes` | ~532,215 | Response categories per variable per dataset, separate rows per source |
 | `variable_summary_stats` | ~10,893 | Distributional statistics from DDI XML (mean, median, stdev, min, max) |
 | `variable_groups` | ~562 | Module classifications from DDI XML (e.g., "SMK: Smoking") |
 | `variable_group_members` | ~9,642 | Which variables belong to which module groups |
-| `variable_families` | 0 | Cross-cycle variable equivalents (Phase 3, not yet populated) |
-| `variable_family_members` | 0 | Maps cycle-specific names to families (Phase 3) |
+| `variable_families` | 0 | Cross-cycle variable equivalents (future) |
+| `variable_family_members` | 0 | Maps cycle-specific names to families (future) |
 | `catalog_metadata` | 3 | Build metadata (schema version, build date, R version) |
 
 ### Views
@@ -125,11 +131,13 @@ The build is deterministic and takes approximately 2 minutes. It deletes the exi
 | 0 | `build_db.R` | CSVs + `schema.sql` | Fresh DuckDB with sources, datasets, variables, dataset_sources, dataset_aliases |
 | 1 | `ingest_pumf_rdata.R` | 11 RData files | variable_datasets, value_codes (source_id = `pumf_rdata`) |
 | 2 | `ingest_ddi_xml.R` | 11 DDI XML files | variable_datasets, value_codes, variable_summary_stats, variable_groups (source_id = `ddi_xml`) |
+| 2.5 | `ingest_master_pdf_dd.R` | 4 Master DD CSVs | variable_datasets, value_codes for 2022-2023 Master (source_id = `master_pdf_dd`) |
+| 3 | `ingest_613apps.R` | 2 parsed CSVs | variable_datasets, value_codes for 13 Master + 9 PUMF cycles (source_id = `613apps`) |
 | Post | `build_db.R` | — | Status promotion: variables with primary sources → `active` |
 
 Future phases (not yet implemented):
-- **Phase 3**: Variable family seeding from cchsflow
-- **Phase 4**: Merge validation and integrity checks
+- **Phase 4**: Variable family seeding from cchsflow
+- **Phase 5**: Merge validation and integrity checks
 
 ## MCP server
 
@@ -160,19 +168,23 @@ cchsflow-docs/
 ├── database/
 │   ├── cchs_metadata.duckdb       # Build artefact (gitignored)
 │   ├── schema.sql                 # v2 schema DDL (13 tables, 6 views)
-│   └── build_db.R                 # Master build script (Phase 0→1→2)
+│   └── build_db.R                 # Master build script (Phase 0→1→2→2.5→3)
 ├── ingestion/
 │   ├── ingest_pumf_rdata.R        # Phase 1: RData → variable_datasets + value_codes
-│   └── ingest_ddi_xml.R          # Phase 2: DDI XML → full enrichment
+│   ├── ingest_ddi_xml.R           # Phase 2: DDI XML → full enrichment
+│   ├── ingest_master_pdf_dd.R     # Phase 2.5: Master PDF DD → variable_datasets + value_codes
+│   └── ingest_613apps.R           # Phase 3: 613apps → variable_datasets + value_codes
 ├── mcp-server/
 │   ├── server.py                  # FastMCP v2 server (9 tools)
 │   └── requirements.txt
 ├── data/
-│   ├── sources.csv                # Source registry (6 sources)
-│   ├── datasets.csv               # Dataset definitions (251 datasets)
-│   ├── variables.csv              # Variable registry (16,171 variables)
+│   ├── sources.csv                # Source registry (8 sources)
+│   ├── datasets.csv               # Dataset definitions (253 datasets)
+│   ├── variables.csv              # Variable registry (16,963 variables)
 │   ├── sources/
-│   │   └── sas-master-labels/     # 35 StatCan Master SAS label files
+│   │   ├── sas-master-labels/     # 35 StatCan Master SAS label files
+│   │   ├── master-pdf-dd/         # Master PDF DD CSVs (2022, 2023)
+│   │   └── 613apps/               # 613apps scraped data (raw + parsed)
 │   └── catalog/
 │       └── cchs_catalog.yaml      # Document-level metadata (1,421 entries)
 ├── development/

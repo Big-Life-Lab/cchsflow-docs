@@ -27,50 +27,90 @@ DEFAULT_PARSED_DIR = os.path.join(
 )
 
 
+def parse_cycle_suffix(suffix: str) -> list[str] | None:
+    """
+    Try to parse a string as a sequence of CCHS cycle identifiers.
+
+    Valid cycle patterns:
+      - N.M where N is 1-4 (pre-2009 version IDs: 1.1, 2.1, 3.1, 4.1)
+      - YYYY-YYYY (dual-year range, e.g., 2015-2016)
+      - YYYY (single year, e.g., 2023)
+
+    Returns list of cycle IDs if the entire string parses, None otherwise.
+    """
+    cycles = []
+    i = 0
+    while i < len(suffix):
+        vm = re.match(r"([1-4]\.[1-9])", suffix[i:])
+        if vm:
+            cycles.append(vm.group(1))
+            i += len(vm.group(0))
+            continue
+        dm = re.match(r"((?:19|20)\d{2})-((?:19|20)\d{2})", suffix[i:])
+        if dm:
+            cycles.append(f"{dm.group(1)}-{dm.group(2)}")
+            i += len(dm.group(0))
+            continue
+        sm = re.match(r"((?:19|20)\d{2})", suffix[i:])
+        if sm:
+            cycles.append(sm.group(1))
+            i += 4
+            continue
+        return None
+    return cycles if cycles else None
+
+
 def extract_variable_name(raw_name: str) -> str:
     """
-    Strip cycle year suffix from a 613apps variable name.
+    Strip cycle suffixes from a 613apps variable name.
 
-    613apps concatenates all cycle years onto the variable name:
-      EAHDVDAS2023           -> EAHDVDAS
-      FSCDVAF22019-2020202120222023  -> FSCDVAF2
-      GEODVSAT2015-20162017-2018...  -> GEODVSAT
-      LSM_0120222023         -> LSM_01
-      ALDDSF4.12009-2010     -> ALDDSF4.1
-      HWT_2A4.12009-2010     -> HWT_2A4.1
+    613apps concatenates cycle identifiers onto variable names. These can be
+    4-digit year ranges (post-2009) and/or version IDs (pre-2009):
+      EAHDVDAS2023                        -> EAHDVDAS
+      ACC_0202015-20162017-2018           -> ACC_020
+      ALWDWKY4.12009-20102011-2012...     -> ALWDWKY
+      INJCDSTT2.1                         -> INJCDSTT
+      ACCZ_102.13.1                       -> ACCZ_10
+      CCC_2020222023                      -> CCC_20
 
-    Strategy: match the base name (letters, digits, underscores, dots
-    following CCHS naming conventions) then the year suffix (starts with
-    a 4-digit year like 20xx or 19xx).
+    Strategy: scan from left to right, finding the earliest split point
+    where the remainder is entirely parseable as cycle identifiers. This
+    avoids the greedy/lazy ambiguity when variable names end with digits
+    that overlap with year prefixes (e.g., ACC_020 + 2015 vs ACC_0 + 202015).
     """
-    m = re.match(
-        r"^([A-Za-z_][A-Za-z0-9_.]*?)((?:20\d{2}|19\d{2})[-0-9]*)$",
-        raw_name,
-    )
-    if m:
-        return m.group(1).upper()
-
-    # Fallback: return as-is (uppercased)
+    for i in range(1, len(raw_name) + 1):
+        suffix = raw_name[i:]
+        if not suffix:
+            continue
+        if parse_cycle_suffix(suffix) is not None:
+            base = raw_name[:i]
+            if re.match(r"^[A-Za-z_]", base):
+                return base.upper()
     return raw_name.upper()
 
 
 def strip_cycle_suffix(value: str) -> str:
     """
-    Strip cycle year suffix from Format or File column values.
+    Strip cycle year and version suffixes from Format or File column values.
 
     Examples:
       D00375F2023              -> D00375F
       hs2023                   -> hs
-      NA2023                   -> NA
       hs2019-2020202120222023  -> hs
       HS2015-2016              -> HS
+      HS2.1                    -> HS
+      HSS12.13.1               -> HSS1
+      NA1.12.13.14.1           -> NA
     """
     if not value:
         return value
 
-    m = re.match(r"^(.+?)((?:20\d{2}|19\d{2})[-0-9]*)$", value)
-    if m:
-        return m.group(1)
+    for i in range(1, len(value) + 1):
+        suffix = value[i:]
+        if not suffix:
+            continue
+        if parse_cycle_suffix(suffix) is not None:
+            return value[:i]
     return value
 
 
@@ -100,39 +140,25 @@ def parse_response_lines(response: str) -> list[dict]:
 
 def extract_cycles_from_suffix(raw_name: str) -> list[str]:
     """
-    Extract the list of cycle years from a variable name suffix.
+    Extract the list of cycle identifiers from a variable name suffix.
 
-    GEODVSAT2015-20162017-20182019-2020202120222023
-    -> ['2015-2016', '2017-2018', '2019-2020', '2021', '2022', '2023']
+    Handles both post-2009 year ranges and pre-2009 version IDs:
+      GEODVSAT2015-20162017-2018...  -> ['2015-2016', '2017-2018', ...]
+      ALWDWKY4.12009-20102011-2012   -> ['4.1', '2009-2010', '2011-2012']
+      INJCDSTT2.1                    -> ['2.1']
+      ACCZ_102.13.1                  -> ['2.1', '3.1']
+      ACC_0202015-20162017-2018      -> ['2015-2016', '2017-2018']
     """
-    m = re.match(r"^[A-Za-z_][A-Za-z0-9_.]*?((?:20\d{2}|19\d{2})[-0-9]*)$", raw_name)
-    if not m:
-        return []
-
-    suffix = m.group(1)
-    cycles = []
-
-    # Parse the suffix: look for YYYY-YYYY (dual-year) or YYYY (single-year)
-    i = 0
-    while i < len(suffix):
-        # Try dual-year: YYYY-YYYY
-        dm = re.match(r"(\d{4})-(\d{4})", suffix[i:])
-        if dm:
-            cycles.append(f"{dm.group(1)}-{dm.group(2)}")
-            i += len(dm.group(0))
+    for i in range(1, len(raw_name) + 1):
+        suffix = raw_name[i:]
+        if not suffix:
             continue
-
-        # Try single-year: YYYY
-        sm = re.match(r"(\d{4})", suffix[i:])
-        if sm:
-            cycles.append(sm.group(1))
-            i += 4
-            continue
-
-        # Skip unexpected characters
-        i += 1
-
-    return cycles
+        cycles = parse_cycle_suffix(suffix)
+        if cycles is not None:
+            base = raw_name[:i]
+            if re.match(r"^[A-Za-z_]", base):
+                return cycles
+    return []
 
 
 def parse_raw_csv(filepath: str) -> tuple[list[dict], list[dict]]:
