@@ -1,6 +1,6 @@
 # CCHS metadata server: tool reference
 
-Complete reference for the 9 MCP tools provided by the CCHS metadata server (`mcp-server/server.py`). For tutorials and workflow examples, see [mcp-guide.md](mcp-guide.md).
+Complete reference for the 10 MCP tools provided by the CCHS metadata server (`mcp-server/server.py`). For tutorials and workflow examples, see [mcp-guide.md](mcp-guide.md).
 
 The server queries a unified DuckDB database containing 16,963 variables across 253 datasets from 8 data sources spanning CCHS cycles 2001-2023.
 
@@ -511,6 +511,50 @@ suggest_cchsflow_row("GEN_010", "2015-2016")
 - When `available_in_cycle` is `false`, the variable was not found in any dataset for that cycle. This may mean it was renamed or dropped.
 - The `suggested_row` is a starting point. Always review the recoding logic before adding to cchsflow worksheets.
 - The `rec_from` field defaults to `copy` when no transformation is needed. Complex recodings require manual specification.
+
+---
+
+## get_source_conflicts
+
+Find label disagreements between data sources for a variable or dataset. Useful for auditing metadata quality and identifying where sources provide different labels for the same variable.
+
+### Parameters
+
+| Name | Type | Default | Description |
+|------|------|---------|-------------|
+| `variable_name` | string | `null` | Optional variable name filter |
+| `dataset_id` | string | `null` | Optional dataset ID filter |
+
+### Returns
+
+Without filters, returns summary counts:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `total_label_conflicts` | integer | Total variable-dataset label disagreements |
+| `total_value_code_conflicts` | integer | Total value code label disagreements |
+| `label_conflict_sources` | array | Breakdown by source pair with counts |
+| `n_label_conflicts` | integer | Same as total (for consistency) |
+| `n_value_code_conflicts` | integer | Same as total (for consistency) |
+
+With filters, returns detailed conflict rows:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `label_conflicts` | array | Each row: variable_name, dataset_id, source_a, label_a, source_b, label_b |
+| `value_code_conflicts` | array | Each row: variable_name, dataset_id, code, source_a, label_a, source_b, label_b |
+
+### Example
+
+```
+get_source_conflicts(variable_name="SMKDSTY")
+```
+
+### Notes
+
+- Conflicts are pairwise: if three sources disagree, you'll see up to three conflict rows (A vs B, A vs C, B vs C).
+- Most conflicts are cosmetic (encoding differences, abbreviation styles). The text normalisation pipeline reduces but does not eliminate these.
+- Use with `variable_name` to audit a specific variable, or with `dataset_id` to audit an entire dataset.
 
 ---
 

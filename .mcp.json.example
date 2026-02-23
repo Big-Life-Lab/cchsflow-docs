@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "cchs-metadata": {
+      "command": "python3",
+      "args": ["mcp-server/server.py"],
+      "disabled": false,
+      "alwaysAllow": [
+        "search_variables",
+        "get_variable_detail",
+        "get_variable_history",
+        "get_dataset_variables",
+        "get_common_variables",
+        "compare_master_pumf",
+        "get_value_codes",
+        "get_source_conflicts",
+        "suggest_cchsflow_row",
+        "get_database_summary"
+      ]
+    }
+  }
+}

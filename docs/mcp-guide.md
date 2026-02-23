@@ -27,9 +27,52 @@ You never need to write queries or tool calls yourself — just ask questions. T
 
 ### Setup
 
-If the MCP server is already configured in your environment (check with your team), you can start asking questions immediately — no setup required on your part.
+**Quick setup** (requires Python 3.8+ and `git`):
 
-If you need to set it up yourself: clone the `cchsflow-docs` repository and open it in an MCP-compatible client (e.g., Claude Code). The server is defined in `.mcp.json` at the repository root and is discovered automatically. The database is maintained by the cchsflow team — you do not need to build it yourself.
+```bash
+git clone https://github.com/Big-Life-Lab/cchsflow-docs.git
+cd cchsflow-docs
+./scripts/setup.sh
+```
+
+The setup script installs Python dependencies, downloads a pre-built database from [GitHub Releases](https://github.com/Big-Life-Lab/cchsflow-docs/releases), and creates the MCP configuration file. Then open the folder in Claude Code or another MCP-compatible client — the tools are available immediately.
+
+**Manual setup** (if the setup script doesn't work for your environment):
+
+1. Clone the repository: `git clone https://github.com/Big-Life-Lab/cchsflow-docs.git`
+2. Install Python dependencies: `pip install -r mcp-server/requirements.txt`
+3. Download `cchs_metadata.duckdb` from the [latest release](https://github.com/Big-Life-Lab/cchsflow-docs/releases) and place it in `database/`
+4. Copy the MCP config template: `cp .mcp.json.example .mcp.json`
+5. Open the folder in an MCP-compatible client
+
+**Build from source** (for developers contributing to the database):
+
+Building requires R 4.2+, `renv`, and the [cchsflow-data](https://github.com/Big-Life-Lab/cchsflow-data) repository cloned as a sibling directory. See [architecture.md](architecture.md) for details.
+
+```bash
+Rscript --vanilla -e "renv::restore()"
+Rscript --vanilla database/build_db.R
+```
+
+**Verify your setup**:
+
+```bash
+python3 -c "
+import duckdb
+con = duckdb.connect('database/cchs_metadata.duckdb', read_only=True)
+n = con.execute('SELECT COUNT(*) FROM variables').fetchone()[0]
+print(f'OK: {n} variables in database')
+con.close()
+"
+```
+
+**Troubleshooting**:
+
+| Error | Solution |
+|-------|----------|
+| `ModuleNotFoundError: No module named 'fastmcp'` | Run `pip install -r mcp-server/requirements.txt` |
+| `FileNotFoundError: cchs_metadata.duckdb` | Download from [GitHub Releases](https://github.com/Big-Life-Lab/cchsflow-docs/releases) or build from source |
+| MCP tools not appearing in your AI client | Check that `.mcp.json` exists in the repo root (copy from `.mcp.json.example`), then restart the client |
 
 For technical details on individual tools, see [mcp-reference.md](mcp-reference.md).
 

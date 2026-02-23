@@ -15,7 +15,26 @@ A unified metadata database and documentation system for the Canadian Community 
 
 ## Quick start
 
-### Build the metadata database
+### Query CCHS variable metadata (researchers)
+
+```bash
+git clone https://github.com/Big-Life-Lab/cchsflow-docs.git
+cd cchsflow-docs
+./scripts/setup.sh
+```
+
+This installs dependencies, downloads a pre-built database from [GitHub Releases](../../releases), and configures the MCP server. Open the folder in Claude Code or another MCP-compatible client and start asking questions.
+
+Requires Python 3.8+. No R installation needed.
+
+- **[Setup guide and tutorials](docs/mcp-guide.md)** — Setup options, walkthrough, and task-oriented recipes
+- **[Tool reference](docs/mcp-reference.md)** — Complete specification for all 10 tools
+
+Database: 16,963 variables, 253 datasets, 8 data sources, cycles 2001-2023.
+
+### Build from source (developers)
+
+For developers contributing to the metadata database:
 
 ```bash
 # Setup R packages (first time)
@@ -23,23 +42,9 @@ Rscript --vanilla -e "renv::restore()"
 
 # Build the unified database (~2 min)
 Rscript --vanilla database/build_db.R
-
-# Install MCP server dependencies
-pip install -r mcp-server/requirements.txt
 ```
 
-The MCP server is configured in `.mcp.json` and discovered automatically by Claude Code and other MCP-compatible clients.
-
-**R version**: 4.2+ required (development on R 4.4.3)
-
-### CCHS variable metadata (MCP server)
-
-The MCP server provides 9 query tools for exploring CCHS variable metadata programmatically. LLM agents (Claude, ChatGPT) and researchers can search variables, trace them across cycles, compare PUMF vs Master releases, and generate cchsflow harmonisation rows.
-
-- **[Tutorial and how-to guide](docs/mcp-guide.md)** — Walkthrough and task-oriented recipes
-- **[Tool reference](docs/mcp-reference.md)** — Complete specification for all 9 tools
-
-Database: 16,899 variables, 251 datasets, 6 data sources, cycles 2001-2022.
+Requires R 4.2+ and the [cchsflow-data](https://github.com/Big-Life-Lab/cchsflow-data) repository cloned as a sibling directory. See [architecture.md](docs/architecture.md) for the full data flow.
 
 ---
 
