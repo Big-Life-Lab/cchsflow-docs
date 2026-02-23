@@ -1,6 +1,6 @@
 # Canadian Community Health Survey documentation and metadata
 
-A unified metadata database and documentation system for the Canadian Community Health Survey (CCHS). Merges variable metadata from 6 data sources into a queryable DuckDB database exposed through an MCP server with 9 query tools.
+A unified metadata database and documentation system for the Canadian Community Health Survey (CCHS). Merges variable metadata from 8 data sources into a queryable DuckDB database exposed through an MCP server and command-line interface with 10 query tools.
 
 ## Finding what you need
 
@@ -27,7 +27,15 @@ This installs dependencies, downloads a pre-built database from [GitHub Releases
 
 Requires Python 3.8+. No R installation needed.
 
-- **[Setup guide and tutorials](docs/mcp-guide.md)** — Setup options, walkthrough, and task-oriented recipes
+**Or query directly from the terminal** without MCP:
+
+```bash
+python3 mcp-server/cli.py search smoking
+python3 mcp-server/cli.py detail SMKDSTY
+python3 mcp-server/cli.py summary
+```
+
+- **[Setup guide and tutorials](docs/mcp-guide.md)** — Setup options, CLI reference, walkthrough, and task-oriented recipes
 - **[Tool reference](docs/mcp-reference.md)** — Complete specification for all 10 tools
 
 Database: 16,963 variables, 253 datasets, 8 data sources, cycles 2001-2023.
@@ -68,7 +76,7 @@ Statistics Canada health survey documentation is scattered across multiple sourc
 **What this repo does:**
 
 1. **Unified metadata database** — Merges variable definitions from DDI XML, PUMF RData files, Master SAS labels, ICES Data Dictionary, cchsflow worksheets, and extracted YAML into a single DuckDB database
-2. **MCP query interface** — 9 tools for searching variables, tracing them across cycles, comparing file types, and generating harmonisation rows
+2. **MCP and CLI query interface** — 10 tools for searching variables, tracing them across cycles, comparing file types, and generating harmonisation rows. Available via MCP (for AI assistants) or the command-line interface (for direct use)
 3. **Documentation catalog** — 1,262 CCHS files with UIDs, provenance tracking, and curated collections via GitHub Releases
 4. **Stable identifiers** — The UID system gives every file a predictable, canonical name regardless of original source
 5. **Full provenance** — Every record traces to a specific data source with authority level
@@ -94,7 +102,8 @@ cchsflow-docs/
 │   ├── ingest_pumf_rdata.R        # Phase 1: PUMF RData → variable_datasets, value_codes
 │   └── ingest_ddi_xml.R           # Phase 2: DDI XML → question text, stats, groups
 ├── mcp-server/
-│   ├── server.py                  # FastMCP v2 server (9 tools)
+│   ├── server.py                  # FastMCP v2 server (10 tools)
+│   ├── cli.py                     # Standalone CLI (same 10 queries, no MCP needed)
 │   └── requirements.txt
 ├── data/
 │   ├── sources.csv                # Data source registry (6 sources)
@@ -108,7 +117,7 @@ cchsflow-docs/
 │   └── ontology/                  # Variable relationship modelling (in progress)
 ├── docs/
 │   ├── mcp-guide.md               # MCP tool tutorials and workflow examples
-│   ├── mcp-reference.md           # MCP tool specifications (all 9 tools)
+│   ├── mcp-reference.md           # MCP tool specifications (all 10 tools)
 │   ├── architecture.md            # System architecture and data flow
 │   ├── uid-system.md              # UID specification
 │   └── glossary.md                # CCHS terminology

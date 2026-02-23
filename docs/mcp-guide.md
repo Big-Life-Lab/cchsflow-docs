@@ -4,6 +4,8 @@
 
 The CCHS metadata server gives AI assistants (Claude, GPT, Gemini, etc.) direct access to the Canadian Community Health Survey variable database. Instead of searching through PDF data dictionaries or spreadsheets, you ask your AI assistant a question in plain English and it queries the database for you.
 
+A **command-line interface** (CLI) is also available for querying the database directly from a terminal, without needing MCP or an AI assistant. See [Command-line interface](#command-line-interface) below.
+
 **What it knows:** metadata for 16,963 CCHS variables across 253 datasets, spanning 2001 to 2023. This includes variable names, labels, question text, response categories with frequencies, and which survey cycles contain each variable. Master file metadata is available from 2001 to 2023; PUMF metadata from 2001 to 2022.
 
 **What it doesn't have:** the actual survey microdata (respondent-level records). This is a metadata tool — it tells you what variables exist and how they're structured, not the data values themselves.
@@ -75,6 +77,47 @@ con.close()
 | MCP tools not appearing in your AI client | Check that `.mcp.json` exists in the repo root (copy from `.mcp.json.example`), then restart the client |
 
 For technical details on individual tools, see [mcp-reference.md](mcp-reference.md).
+
+### Command-line interface
+
+If you prefer querying the database directly from a terminal — without MCP or an AI assistant — use the CLI:
+
+```bash
+python3 mcp-server/cli.py search smoking
+python3 mcp-server/cli.py detail SMKDSTY
+python3 mcp-server/cli.py history SMKDSTY
+python3 mcp-server/cli.py codes SMKDSTY
+python3 mcp-server/cli.py summary
+```
+
+The CLI requires only Python 3 and the `duckdb` package (no FastMCP needed). It supports the same 10 queries as the MCP server.
+
+**All subcommands:**
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `search` | Search by name or label | `search smoking --limit 10` |
+| `detail` | Full metadata for a variable | `detail SMKDSTY` |
+| `history` | Trace across cycles | `history SMKDSTY` |
+| `dataset` | List variables in a dataset | `dataset cchs-2015d-p-can` |
+| `common` | Shared variables between datasets | `common cchs-2013d-p-can cchs-2015d-p-can` |
+| `compare` | Compare file types within a cycle | `compare SMKDSTY 2013-2014` |
+| `codes` | Response categories | `codes SMKDSTY` |
+| `conflicts` | Cross-source label disagreements | `conflicts --variable SMKDSTY` |
+| `cchsflow` | Draft harmonisation row | `cchsflow GEN_010 2015-2016` |
+| `summary` | Database overview | `summary` |
+
+**Options:**
+
+- `--json` — output as JSON instead of formatted tables (place before the subcommand)
+- `--db PATH` — use a different database file
+- `--limit N` — limit results (for `search` and `dataset`)
+
+Example with JSON output:
+
+```bash
+python3 mcp-server/cli.py --json search smoking --limit 5
+```
 
 ## TL;DR — what can I ask?
 
