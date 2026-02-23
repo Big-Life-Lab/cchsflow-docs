@@ -362,7 +362,8 @@ def get_value_codes(variable_name: str) -> str:
     # Get value codes from value_codes table, grouped by dataset
     codes = con.execute("""
         SELECT vc.dataset_id, d.year_start, vc.code, vc.label,
-               vc.frequency, vc.frequency_weighted, vc.source_id
+               vc.frequency, vc.frequency_weighted,
+               vc.is_range, vc.range_low, vc.range_high, vc.source_id
         FROM value_codes vc
         JOIN datasets d ON vc.dataset_id = d.dataset_id
         WHERE vc.variable_name = ?
@@ -389,9 +390,10 @@ def get_value_codes(variable_name: str) -> str:
 
         result["latest_cycle_year"] = int(latest_year)
         result["latest_dataset"] = codes_to_show["dataset_id"].iloc[0]
-        result["codes"] = codes_to_show[
-            ["code", "label", "frequency", "frequency_weighted"]
-        ].to_dict(orient="records")
+        code_cols = ["code", "label", "frequency", "frequency_weighted"]
+        if codes_to_show["is_range"].any():
+            code_cols.extend(["is_range", "range_low", "range_high"])
+        result["codes"] = codes_to_show[code_cols].to_dict(orient="records")
 
         # Summary: how many cycles have codes
         result["n_datasets_with_codes"] = len(codes["dataset_id"].unique())
@@ -482,6 +484,62 @@ def suggest_cchsflow_row(variable_name: str, target_cycle: str) -> str:
             "rec_to": var_info["cchsflow_name"].iloc[0] or variable_name,
             "note": f"Auto-suggested for cycle {target_cycle}. Review before use."
         }
+
+    return json.dumps(result, indent=2, default=_safe_json)
+
+
+@mcp.tool()
+def get_source_conflicts(variable_name: str = None, dataset_id: str = None) -> str:
+    """Find label disagreements between sources for a variable or dataset.
+
+    Without filters, returns summary counts only. With variable_name and/or
+    dataset_id, returns detailed conflict rows.
+
+    Args:
+        variable_name: Optional variable name filter
+        dataset_id: Optional dataset ID filter
+    """
+    con = get_connection()
+    result = {}
+
+    # Build WHERE clause
+    conditions = []
+    params = []
+    if variable_name:
+        conditions.append("variable_name = ?")
+        params.append(variable_name)
+    if dataset_id:
+        conditions.append("dataset_id = ?")
+        params.append(dataset_id)
+    where = " WHERE " + " AND ".join(conditions) if conditions else ""
+
+    # Variable-dataset label conflicts
+    label_conflicts = con.execute(
+        f"SELECT * FROM v_source_conflicts{where} ORDER BY variable_name, dataset_id",
+        params
+    ).fetchdf()
+
+    # Value code label conflicts
+    code_conflicts = con.execute(
+        f"SELECT * FROM v_value_code_conflicts{where} ORDER BY variable_name, dataset_id, code",
+        params
+    ).fetchdf()
+
+    con.close()
+
+    if conditions:
+        result["label_conflicts"] = label_conflicts.to_dict(orient="records") if not label_conflicts.empty else []
+        result["value_code_conflicts"] = code_conflicts.to_dict(orient="records") if not code_conflicts.empty else []
+    else:
+        result["total_label_conflicts"] = len(label_conflicts)
+        result["total_value_code_conflicts"] = len(code_conflicts)
+        if not label_conflicts.empty:
+            result["label_conflict_sources"] = label_conflicts.groupby(
+                ["source_a", "source_b"]
+            ).size().reset_index(name="count").to_dict(orient="records")
+
+    result["n_label_conflicts"] = len(label_conflicts)
+    result["n_value_code_conflicts"] = len(code_conflicts)
 
     return json.dumps(result, indent=2, default=_safe_json)
 

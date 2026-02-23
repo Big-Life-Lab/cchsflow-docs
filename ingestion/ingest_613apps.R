@@ -20,6 +20,8 @@
 library(DBI)
 library(duckdb)
 
+source("ingestion/normalise_text.R")
+
 # Alias map: survey_cycle → canonical dataset_id
 # Must match the aliases seeded in build_db.R
 ALIAS_MAP <- c(
@@ -46,18 +48,6 @@ ALIAS_MAP <- c(
   "master_2022"      = "cchs-2022s-m-can",
   "master_2023"      = "cchs-2023s-m-can"
 )
-
-# Strip surrounding single quotes and unescape doubled quotes.
-# Pre-2015 613apps labels are wrapped: 'DON''T KNOW' → DON'T KNOW
-# Post-2015 labels have no wrapping (this is a no-op for them).
-strip_quotes <- function(x) {
-  out <- x
-  has_quotes <- !is.na(out) & nchar(out) >= 2 &
-    startsWith(out, "'") & endsWith(out, "'")
-  out[has_quotes] <- substr(out[has_quotes], 2, nchar(out[has_quotes]) - 1)
-  out[has_quotes] <- gsub("''", "'", out[has_quotes], fixed = TRUE)
-  out
-}
 
 ingest_613apps <- function(con, data_dir) {
 
@@ -98,11 +88,11 @@ ingest_613apps <- function(con, data_dir) {
   }
 
   # ------------------------------------------------------------------
-  # Step 2: Clean labels (strip quote wrapping)
+  # Step 2: Normalise labels
   # ------------------------------------------------------------------
-  cat("  Cleaning labels...\n")
-  vars_df$label <- strip_quotes(vars_df$label)
-  codes_df$code_label <- strip_quotes(codes_df$code_label)
+  cat("  Normalising labels...\n")
+  vars_df$label <- normalise_label(vars_df$label)
+  codes_df$code_label <- normalise_label(codes_df$code_label)
 
   # ------------------------------------------------------------------
   # Step 3: Insert new variables into variables table

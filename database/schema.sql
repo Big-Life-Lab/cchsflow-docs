@@ -169,6 +169,9 @@ CREATE TABLE IF NOT EXISTS value_codes (
     label VARCHAR,
     frequency INTEGER,                   -- unweighted count (from RData or DDI)
     frequency_weighted DOUBLE,           -- weighted count (from DDI catStat wgtd)
+    is_range BOOLEAN DEFAULT FALSE,      -- TRUE if code represents a range (e.g., '012-121')
+    range_low DOUBLE,                    -- lower bound of range (NULL if not a range)
+    range_high DOUBLE,                   -- upper bound of range (NULL if not a range)
     source_id VARCHAR NOT NULL REFERENCES sources(source_id),
     PRIMARY KEY (variable_name, dataset_id, code, source_id)
 );
@@ -327,3 +330,35 @@ FROM variable_group_members vgm
 JOIN variable_groups vg ON vgm.group_id = vg.group_id
 JOIN datasets d ON vg.dataset_id = d.dataset_id
 ORDER BY vg.dataset_id, vg.group_code, vgm.variable_name;
+
+-- Source conflicts: label disagreements between sources for the same variable-dataset
+CREATE OR REPLACE VIEW v_source_conflicts AS
+SELECT
+    vd1.variable_name, vd1.dataset_id,
+    vd1.source_id AS source_a, vd1.label AS label_a,
+    vd2.source_id AS source_b, vd2.label AS label_b,
+    'label' AS conflict_type
+FROM variable_datasets vd1
+JOIN variable_datasets vd2
+    ON vd1.variable_name = vd2.variable_name
+    AND vd1.dataset_id = vd2.dataset_id
+    AND vd1.source_id < vd2.source_id
+WHERE vd1.label IS NOT NULL
+    AND vd2.label IS NOT NULL
+    AND vd1.label != vd2.label;
+
+-- Value code conflicts: label disagreements between sources for the same code
+CREATE OR REPLACE VIEW v_value_code_conflicts AS
+SELECT
+    vc1.variable_name, vc1.dataset_id, vc1.code,
+    vc1.source_id AS source_a, vc1.label AS label_a,
+    vc2.source_id AS source_b, vc2.label AS label_b
+FROM value_codes vc1
+JOIN value_codes vc2
+    ON vc1.variable_name = vc2.variable_name
+    AND vc1.dataset_id = vc2.dataset_id
+    AND vc1.code = vc2.code
+    AND vc1.source_id < vc2.source_id
+WHERE vc1.label IS NOT NULL
+    AND vc2.label IS NOT NULL
+    AND vc1.label != vc2.label;

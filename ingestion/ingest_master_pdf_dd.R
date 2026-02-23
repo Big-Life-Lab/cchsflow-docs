@@ -19,6 +19,8 @@
 library(DBI)
 library(duckdb)
 
+source("ingestion/normalise_text.R")
+
 # CSV filename prefix → canonical dataset_id mapping
 MASTER_DD_MAP <- list(
   list(year = 2022, dataset_id = "cchs-2022s-m-can",
@@ -68,6 +70,12 @@ ingest_master_pdf_dd <- function(con, data_dir) {
 
     cat(sprintf("    %d variables, %d value codes from CSVs\n",
                 nrow(vars_df), nrow(cats_df)))
+
+    # Normalise text fields
+    vars_df$label <- normalise_label(vars_df$label)
+    vars_df$question_text <- normalise_label(vars_df$question_text)
+    vars_df$universe <- normalise_label(vars_df$universe)
+    cats_df$label <- normalise_label(cats_df$label)
 
     # Update dataset_sources
     invisible(dbExecute(con, paste0(
@@ -151,20 +159,35 @@ ingest_master_pdf_dd <- function(con, data_dir) {
       freq_wgt <- cats_df$frequency_weighted[j]
 
       var_name_sql <- gsub("'", "''", var_name)
-      code_sql <- gsub("'", "''", as.character(code))
+      code_str <- as.character(code)
+      code_sql <- gsub("'", "''", code_str)
       label_sql <- if (is.na(label)) "NULL" else
         paste0("'", gsub("'", "''", label), "'")
 
       freq_sql <- if (is.na(freq)) "NULL" else as.character(as.integer(freq))
       freq_wgt_sql <- if (is.na(freq_wgt)) "NULL" else as.character(freq_wgt)
 
+      # Detect range codes: "NNN-NNN" or "N.N-N.N"
+      range_match <- regmatches(code_str, regexec("^(\\d+\\.?\\d*)\\s*-\\s*(\\d+\\.?\\d*)$", code_str))[[1]]
+      if (length(range_match) == 3) {
+        is_range_sql <- "TRUE"
+        range_low_sql <- range_match[2]
+        range_high_sql <- range_match[3]
+      } else {
+        is_range_sql <- "FALSE"
+        range_low_sql <- "NULL"
+        range_high_sql <- "NULL"
+      }
+
       invisible(dbExecute(con, paste0(
         "INSERT OR IGNORE INTO value_codes ",
         "(variable_name, dataset_id, code, label, frequency, ",
-        "frequency_weighted, source_id) ",
+        "frequency_weighted, is_range, range_low, range_high, source_id) ",
         "VALUES ('", var_name_sql, "', '", dataset_id, "', ",
         "'", code_sql, "', ", label_sql, ", ",
-        freq_sql, ", ", freq_wgt_sql, ", 'master_pdf_dd')"
+        freq_sql, ", ", freq_wgt_sql, ", ",
+        is_range_sql, ", ", range_low_sql, ", ", range_high_sql, ", ",
+        "'master_pdf_dd')"
       )))
       total_vc_inserted <- total_vc_inserted + 1
     }

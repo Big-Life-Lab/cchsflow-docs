@@ -228,25 +228,31 @@ def parse_raw_csv(filepath: str) -> tuple[list[dict], list[dict]]:
                 if not cycles:
                     cycles = [file_cycle]
 
-                variables.append({
-                    "variable_name": var_name,
-                    "variable_raw": var_raw,
-                    "label": label,
-                    "format_code": format_code if format_code != "NA" else "",
-                    "file_code": file_code if file_code != "NA" else "",
-                    "cycles": ",".join(cycles),
-                    "file_cycle": file_cycle,
-                    "survey": file_survey,
-                })
-
-                for code in codes:
-                    value_codes.append({
+                # Emit one row per cycle that this variable actually belongs to.
+                # Grouped rows contain multiple variables with different cycle
+                # suffixes (e.g., SMK_030 for 2015-2021 and SPU_05 for 2022-2023).
+                # Each variable must only be assigned to its own cycles, not to
+                # the file-level cycle.
+                for cycle in cycles:
+                    variables.append({
                         "variable_name": var_name,
-                        "code": code["code"],
-                        "code_label": code["label"],
-                        "file_cycle": file_cycle,
+                        "variable_raw": var_raw,
+                        "label": label,
+                        "format_code": format_code if format_code != "NA" else "",
+                        "file_code": file_code if file_code != "NA" else "",
+                        "cycles": ",".join(cycles),
+                        "file_cycle": cycle,
                         "survey": file_survey,
                     })
+
+                    for code in codes:
+                        value_codes.append({
+                            "variable_name": var_name,
+                            "code": code["code"],
+                            "code_label": code["label"],
+                            "file_cycle": cycle,
+                            "survey": file_survey,
+                        })
 
     return variables, value_codes
 

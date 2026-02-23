@@ -18,8 +18,9 @@ library(duckdb)
 
 db_path <- "database/cchs_metadata.duckdb"
 schema_path <- "database/schema.sql"
+version <- trimws(readLines("VERSION", n = 1, warn = FALSE))
 
-cat("=== Building CCHS Unified Metadata Database v2 ===\n\n")
+cat(sprintf("=== Building CCHS Unified Metadata Database v%s ===\n\n", version))
 
 # ------------------------------------------------------------------
 # Phase 0: Fresh database from schema + CSVs
@@ -154,6 +155,7 @@ cat("    613apps dataset_sources:", n_apps_sources, "\n")
 
 # Write build metadata
 invisible(dbExecute(con, "INSERT INTO catalog_metadata VALUES ('schema_version', '2.0.0')"))
+invisible(dbExecute(con, paste0("INSERT INTO catalog_metadata VALUES ('version', '", version, "')")))
 invisible(dbExecute(con, paste0("INSERT INTO catalog_metadata VALUES ('build_date', '",
                                  Sys.Date(), "')")))
 invisible(dbExecute(con, paste0("INSERT INTO catalog_metadata VALUES ('build_r_version', '",

@@ -18,6 +18,8 @@
 library(DBI)
 library(duckdb)
 
+source("ingestion/normalise_text.R")
+
 # RData filename → canonical dataset_id mapping
 RDATA_DATASET_MAP <- list(
   "CCHS_2001.RData"      = "cchs-2001d-p-can",
@@ -100,7 +102,9 @@ ingest_pumf_rdata <- function(con, rdata_dir) {
 
       # Extract haven_labelled attributes
       var_label <- attr(col, "label")     # variable label (e.g., "Province - (G)")
+      if (!is.null(var_label)) var_label <- normalise_label(var_label)
       value_labels <- attr(col, "labels") # named numeric vector (label = code)
+      if (!is.null(value_labels)) names(value_labels) <- normalise_label(names(value_labels))
 
       # Insert variable if not already in variables table
       var_exists <- dbGetQuery(con, paste0(

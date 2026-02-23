@@ -28,6 +28,8 @@ library(DBI)
 library(duckdb)
 library(xml2)
 
+source("ingestion/normalise_text.R")
+
 # DDI XML filename → canonical dataset_id mapping
 DDI_DATASET_MAP <- list(
   "CCHS_2001_DDI.xml"      = "cchs-2001d-p-can",
@@ -144,13 +146,13 @@ ingest_ddi_xml <- function(con, ddi_dir) {
 
       # --- Extract core metadata ---
       labl_node <- xml_find_first(v, ".//d1:labl", ns)
-      label_en <- if (!is.na(labl_node)) trimws(xml_text(labl_node)) else NA_character_
+      label_en <- if (!is.na(labl_node)) normalise_label(xml_text(labl_node)) else NA_character_
 
       qstn_node <- xml_find_first(v, ".//d1:qstn/d1:qstnLit", ns)
-      question_text <- if (!is.na(qstn_node)) trimws(xml_text(qstn_node)) else NA_character_
+      question_text <- if (!is.na(qstn_node)) normalise_label(xml_text(qstn_node)) else NA_character_
 
       univ_node <- xml_find_first(v, ".//d1:universe", ns)
-      universe <- if (!is.na(univ_node)) trimws(xml_text(univ_node)) else NA_character_
+      universe <- if (!is.na(univ_node)) normalise_label(xml_text(univ_node)) else NA_character_
 
       # --- Extract new fields ---
       intrvl <- xml_attr(v, "intrvl")  # 'discrete' or 'contin'
@@ -242,7 +244,7 @@ ingest_ddi_xml <- function(con, ddi_dir) {
           lbl_node <- xml_find_first(cat_node, ".//d1:labl", ns)
 
           code <- if (!is.na(code_node)) trimws(xml_text(code_node)) else NA_character_
-          lbl <- if (!is.na(lbl_node)) trimws(xml_text(lbl_node)) else NA_character_
+          lbl <- if (!is.na(lbl_node)) normalise_label(xml_text(lbl_node)) else NA_character_
 
           if (!is.na(code) && code != "") {
             # Unweighted frequency
