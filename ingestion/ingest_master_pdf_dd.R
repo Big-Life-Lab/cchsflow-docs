@@ -150,22 +150,17 @@ ingest_master_pdf_dd <- function(con, data_dir) {
       total_vd_inserted <- total_vd_inserted + 1
     }
 
-    # Insert value codes
+    # Insert value codes (no frequencies — Master frequencies are restricted)
     for (j in seq_len(nrow(cats_df))) {
       var_name <- cats_df$variable_name[j]
       code <- cats_df$code[j]
       label <- cats_df$label[j]
-      freq <- cats_df$frequency[j]
-      freq_wgt <- cats_df$frequency_weighted[j]
 
       var_name_sql <- gsub("'", "''", var_name)
       code_str <- as.character(code)
       code_sql <- gsub("'", "''", code_str)
       label_sql <- if (is.na(label)) "NULL" else
         paste0("'", gsub("'", "''", label), "'")
-
-      freq_sql <- if (is.na(freq)) "NULL" else as.character(as.integer(freq))
-      freq_wgt_sql <- if (is.na(freq_wgt)) "NULL" else as.character(freq_wgt)
 
       # Detect range codes: "NNN-NNN" or "N.N-N.N"
       range_match <- regmatches(code_str, regexec("^(\\d+\\.?\\d*)\\s*-\\s*(\\d+\\.?\\d*)$", code_str))[[1]]
@@ -181,11 +176,10 @@ ingest_master_pdf_dd <- function(con, data_dir) {
 
       invisible(dbExecute(con, paste0(
         "INSERT OR IGNORE INTO value_codes ",
-        "(variable_name, dataset_id, code, label, frequency, ",
-        "frequency_weighted, is_range, range_low, range_high, source_id) ",
+        "(variable_name, dataset_id, code, label, ",
+        "is_range, range_low, range_high, source_id) ",
         "VALUES ('", var_name_sql, "', '", dataset_id, "', ",
         "'", code_sql, "', ", label_sql, ", ",
-        freq_sql, ", ", freq_wgt_sql, ", ",
         is_range_sql, ", ", range_low_sql, ", ", range_high_sql, ", ",
         "'master_pdf_dd')"
       )))
